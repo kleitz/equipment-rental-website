@@ -2,7 +2,7 @@ var finalhandler = require('finalhandler')
 var http = require('http')
 var serveStatic = require('serve-static')
 var livereload = require('livereload');
-
+var port = process.env.PORT || 8080;
 // Serve up public/ftp folder
 var serve = serveStatic('app', {'index': ['index.html', 'index.htm']})
 
@@ -16,4 +16,4 @@ var live = livereload.createServer();
 live.watch(__dirname + "/app");
 
 // Listen
-server.listen(80)
+server.listen(port)
