@@ -16,4 +16,4 @@ var live = livereload.createServer();
 live.watch(__dirname + "/app");
 
 // Listen
-server.listen(port)
+server.listen(3001)
