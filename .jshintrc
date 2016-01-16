@@ -1,0 +1,20 @@
+{
+  "globalstrict": true,
+  "globals": {
+    "angular": false,
+    "describe": false,
+    "it": false,
+    "expect": false,
+    "beforeEach": false,
+    "afterEach": false,
+    "module": false,
+    "inject": false,
+    "window": true,
+    "CryptoJS": true,
+    "Backend": true,
+    "backend": true,
+    "data": true,
+    "Image": true,
+    "setTimeout": true
+  }
+}
