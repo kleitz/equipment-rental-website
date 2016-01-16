@@ -1,20 +1,27 @@
 {
-  "name": "angular-seed",
-  "private": true,
-  "version": "0.0.0",
-  "description": "A starter project for AngularJS",
-  "repository": "https://github.com/angular/angular-seed",
-  "license": "MIT",
-  "devDependencies": {
-    "bower": "^1.3.1",
-    "gulp-livereload": "^3.8.1",
-    "http-server": "^0.6.1"
+  "name": "equipment-rental-website",
+  "version": "1.0.0",
+  "description": "An angularjs application",
+  "main": "server.js",
+  "dependencies": {
+    "finalhandler": "^0.4.1",
+    "http": "0.0.0",
+    "livereload": "^0.4.0",
+    "serve-static": "^1.10.0"
   },
+  "devDependencies": {},
   "scripts": {
-    "bower": "bower install",
-    "l": "npm run server && npm run livereload",
-    "server": "http-server ./app -o",
-    "livereload": "livereload app",
-    "sass": "node-sass -w app/sass/ -o app/css/"
-  }
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/remony/equipment-rental-website.git"
+  },
+  "author": "Stuart Douglas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/remony/equipment-rental-website/issues"
+  },
+  "homepage": "https://github.com/remony/equipment-rental-website#readme"
 }
