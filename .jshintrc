@@ -15,6 +15,7 @@
     "backend": true,
     "data": true,
     "Image": true,
-    "setTimeout": true
+    "setTimeout": true,
+    "Cookies": true
   }
 }
