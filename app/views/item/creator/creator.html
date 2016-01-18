@@ -1,19 +1,22 @@
-<div class="login">
-    <div class="login Aligner-item">
+<div class="creator">
+    <div class="title">
         <h1>Add new</h1>
     </div>
-</div>
-
-<div class="login aligner-item--bottom">
     <form ng-submit="create(product)">
         <div class="four columns makemered" ng-show="error">
             <p>{{error}}</p>
         </div>
-        <div class="">
-          <label for="">Cover image <p class="textred" ng-show="message.error.image.enable">{{message.error.image.text}}</p></label>
-            <img ng-src="{{product.image}}" alt="Image preview" id="imagePreview" width="100%" class="imagePreview">
+        <div class="row">
+            <div class="four columns">
+                <label for="">Cover image <p class="textred" ng-show="message.error.image.enable">{{message.error.image.text}}</p></label>
 
-            <input class="u-full-width" value="load" ng-model="product.base64" ng-change="fileChange(this)" id="fileUploader" multiple accept="image/*" type="file" base-sixty-four-input>
+
+                <input class="u-full-width" value="load" ng-model="product.base64" ng-change="fileChange(this)" id="fileUploader" multiple accept="image/*" type="file" base-sixty-four-input>
+            </div>
+            <div class="eight columns">
+                <img ng-src="{{product.image}}" alt="Image preview" id="imagePreview" width="100%" class="imagePreview">
+            </div>
+
         </div>
         <br>
         <div class="">
@@ -31,9 +34,11 @@
         </div>
         <br>
         <div class="">
-          <input type="submit" ng-class="uploadButtonClass" value="{{message.button}}">
+            <input type="submit" ng-class="uploadButtonClass" value="{{message.button}}">
         </div>
 
 
     </form>
+
 </div>
+

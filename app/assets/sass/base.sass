@@ -9,10 +9,12 @@ $primaryColour: #333
 $hoverColour: #ECEFF1
 
 $statusOK: #40C4FF
-$statusError: #FF5722
+$statusError: #df2029
 $statusUnknown: #FFEB3B
 $statusUnavailable: #E91E63
 $statusGreen: #4CAF50
+
+$bordercolour: #e3e3e3
 
 // Font sizes
 $titleSize: 3rem
@@ -69,12 +71,18 @@ $subTitleWeight: 400
       margin: 0 auto
       width: 600px
 
+@mixin basic-style
+  background: #fff
+  border: 1px solid #e3e3e3
+  min-height: 50vh
+
+
 //  Ng-cloak, ensure that things are hidden
 [ng\:cloak], [ng-cloak], .ng-cloak
   display: none
 
 html, body
-  height: 100%
+  background: #ECEFF1
 
 // Wrapper
 
@@ -116,9 +124,10 @@ html, body
 
 .home
   height: 100%
+  @include basic-style
   .welcome
     @include center-children
-    height: 100%
+    @include basic-style
     a
       width: 90%
       display: block
@@ -131,30 +140,68 @@ html, body
 
 .login
   @include center-children
-  height: 300px
-  padding: 30px
-  h1
-    text-align: center
-    font-weight: $titleWeight
+  padding-top: 50px
+
+  .row
+    width: 600px
+    border: 1px solid $bordercolour
+    border-radius: 5px
+    background: #fff
+    .title
+      width: 400px
+      margin: 0 auto
+      text-align: center
+      padding: 20px
+    .form
+      width: 400px
+      min-height: 260px
+      margin: 0 auto
+      .login-button
+        align-items: center
+      .loading
+        @include center-children
+        @include center-text
+        height: 100%
+        p
+          padding: 20px
+          font-weight: 600
+    .error
+      width: 100%
+      min-height: 50px
+      margin-bottom: 30px
+      background: $statusError
+      @include center-children
+      .message
+        color: #fff
 
 .register
   @include center-children
-  height: 100%
-  padding: 20px
-  h1
-    text-align: center
-    font-weight: $titleWeight
-  img
-    width: 100px
-    height: auto
-    padding: 30px
-    @include center-image
+  padding: 50px
+  .form
+    width: 600px
+    background: white
+    border: 1px solid $bordercolour
+    border-radius: 5px
+    form
+      padding: 20px
+    h1
+      text-align: center
+      font-weight: $titleWeight
+      padding: 20px
+    img
+      width: 100px
+      height: auto
+      padding-bottom: 20px
+      @include center-image
+
+
 
 
 // Listings
 
 .listing
   width: 100%
+  @include basic-style
   .subheader
     height: 200px
     @include center-children
@@ -201,6 +248,8 @@ html, body
   .item:hover
     background: $hoverColour
   .paging
+    padding-left: 30px
+    padding-right: 30px
     margin-top: 30px
     margin-bottom: 50px
     .message
@@ -361,6 +410,7 @@ html, body
 
 .user
   width: 100%
+  @include basic-style
   @include center-children
   .profile
     .image
@@ -459,7 +509,8 @@ html, body
 
 .logout
   @include center-children
-  height: 100%
+  @include basic-style
+  min-height: 100px
 
 .cookiedisplaybase
   @include center-children
@@ -498,3 +549,17 @@ html, body
       background: $statusGreen
     .agree:hover
       background: darken($statusGreen, 20%)
+
+.creator
+  @include basic-style
+  .title
+    @include center-text
+  form
+    padding: 60px
+    .row
+      img
+        height: 200px
+        @include center-image
+        width: auto
+      input
+        height: 200px

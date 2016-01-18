@@ -9,14 +9,14 @@
             </div>
         </div>
     </div>
-    <div class="item" ng-repeat="product in products.items" ng-click="goto(product.id)">
+    <div class="item" ng-repeat="product in products.items">
         <div class="row">
             <div class="four columns">
                 <limage class="image" image='{{product}}' height="100" width="100" preview=true></limage>
             </div>
             <div class="six columns">
                 <div class="title">
-                    {{product.title}}
+                    <a href="#/listing/{{product.id}}">{{product.title}}</a>
                 </div>
 
                 <div class="description">
