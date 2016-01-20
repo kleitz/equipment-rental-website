@@ -41,8 +41,7 @@ angular.module('app', [
     'angularMoment',
     'ui-notification',
     'naif.base64',
-    'ngColorThief',
-    'angular-loading-bar'
+    'ngColorThief'
 ]).config(['$routeProvider', '$locationProvider', '$httpProvider', function ($routeProvider, $locationProvider, $httpProvider) {
         $httpProvider.defaults.useXDomain = true;
     //console.log("its all set i guess")
