@@ -20,12 +20,12 @@
         </div>
         <br>
         <div class="">
-            <label for="">Title <p class="textred" ng-show="message.error.title.enable">{{message.error.title.text}}</p></label>
+            <label for="">Title <char-limit input="{{product.title}}", limit="80"></char-limit> <p class="textred" ng-show="message.error.title.enable">{{message.error.title.text}}</p></label>
             <input class="u-full-width" ng-model="product.title" type="text" placeholder="Title: An awesome product">
         </div>
         <br>
         <div class="">
-            <label for="">Description: <p class="textred" ng-show="message.error.description.enable">{{message.error.description.text}}</p></label>
+            <label for="">Description: <char-limit input="{{product.description}}", limit="140"></char-limit><p class="textred" ng-show="message.error.description.enable">{{message.error.description.text}}</p></label>
             <input class="u-full-width" ng-model="product.description" type="text" placeholder="Description: an awesome product">
         </div>
         <div class="">

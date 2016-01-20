@@ -16,6 +16,7 @@
     "data": true,
     "Image": true,
     "setTimeout": true,
-    "Cookies": true
+    "Cookies": true,
+    "domain": true
   }
 }

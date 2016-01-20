@@ -22,7 +22,7 @@ angular.module('app.ownerItems', ['ngRoute'])
         $scope.start = 0;
 
         $scope.goto = function(id) {
-            $location.path('/listing/' + id);
+            $location.path('/owner/listing/' + id);
         }
 
         if ($rootScope.loggedIn) {

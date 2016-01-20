@@ -1,0 +1,135 @@
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none; }
+
+html, body, .wrapper {
+  background: #ECEFF1; }
+
+.itemview {
+  padding: 50px; }
+  .itemview .image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 150px; }
+  .itemview .title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100px; }
+  .itemview .rent {
+    min-height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; }
+    .itemview .rent .text {
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+  .itemview .description {
+    min-height: 100px; }
+  .itemview .owner {
+    border: 1px solid #e3e3e3;
+    padding: 15px; }
+    .itemview .owner a {
+      padding-left: 15px; }
+    .itemview .owner .row {
+      padding-top: 10px; }
+  .itemview qrcode img {
+    max-width: 140px;
+    height: auto; }
+
+.itempreview {
+  padding-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; }
+  .itempreview .content {
+    width: 100%; }
+    .itempreview .content .row .columns .image {
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+    .itempreview .content .row .columns .row .title {
+      margin-top: 30px; }
+    .itempreview .content .row .subtitle {
+      margin-top: 30px; }
+      .itempreview .content .row .subtitle .columns {
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center; }
+        .itempreview .content .row .subtitle .columns .icon {
+          font-size: 5rem;
+          text-align: right; }
+        .itempreview .content .row .subtitle .columns .title {
+          font-align: left;
+          width: 100%; }
+    .itempreview .content .row .information .row .columns .rent {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100px;
+      width: 100%; }
+    .itempreview .content .row .information .row .columns .info {
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+    .itempreview .content .row .information .row .columns .profile {
+      border: 1px solid #e3e3e3;
+      padding: 10px;
+      margin: 10px;
+      width: 100%; }
+    .itempreview .content .row .information .row .columns .dates {
+      margin-top: 20px; }
+  @media screen and (min-width: 0px) {
+    .itempreview .content .row .columns .row .description {
+      text-align: center; }
+    .itempreview .content .row .columns .title {
+      text-align: center;
+      margin-top: -60px; }
+    .itempreview .content .information .row .columns {
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+    .itempreview .content .information .row .qr {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%; }
+    .itempreview .content .information .row .info {
+      text-align: center;
+      width: 100%; } }
+  @media screen and (min-width: 300px) {
+    .itempreview .content .row .columns .row .description {
+      text-align: center; }
+    .itempreview .content .row .columns .title {
+      margin-top: -60px;
+      text-align: center; } }
+  @media screen and (min-width: 700px) {
+    .itempreview .content .row .columns .row .description {
+      text-align: left; }
+    .itempreview .content .row .columns .title {
+      text-align: left;
+      margin-top: 0px; }
+    .itempreview .content .row .information .row .columns .qr {
+      width: 150px; }
+    .itempreview .content .row .information .row .info {
+      text-align: left;
+      width: 100%; } }
+  @media screen and (min-width: 1200px) {
+    .itempreview .content .row .columns .row .description {
+      text-align: left; }
+    .itempreview .content .row .title {
+      text-align: left;
+      margin-top: 0px; }
+    .itempreview .content .information .row .info {
+      text-align: left;
+      width: 100%; } }
+  .itempreview .row .title {
+    font-weight: 600;
+    font-size: 3rem; }
+  .itempreview .row .description {
+    font-weight: 400;
+    font-size: 2.3rem; }

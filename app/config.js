@@ -1,18 +1,21 @@
+'use strict';
 
-
- var domain = 'http://192.168.1.99:3000'
+ //var domain = 'http://192.168.1.99:3000'
 // var domain = 'http://localhost:3000'
-// var domain = 'http://localhost:3000'
-//var domain = 'https://lemondev.xyz:3000'
+ var domain = 'http://localhost:3000'
+//var domain = 'https://karite.xyz:8443';
 var api = '/api';
+var data = '/data';
 
 var backend = domain + api;
-data = domain;
+
+var dataURI = domain + data;
 
 angular.module('app.config', [])
 .factory('Configuration', function() {
     return {
         backend: backend,
-        url: domain
-    }
+        domainURI: domain,
+        dataURI: dataURI
+    };
 });

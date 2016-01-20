@@ -1,5 +1,9 @@
-<div ng-style="imageStyle" ng-click="tap()"></div>
+<div ng-style="imageStyle" ng-mouseenter="hovering()" ng-mouseleave="hovering()" ng-click="tap()">
+    <div  ng-show="hover && preview" ng-style="hoverstyle">
+        <i class="fa fa-search-plus fa-2x"></i>
+    </div>
+</div>
 
 <div ng-style="previewStyle" ng-click="tap()" ng-show="tapped">
-  <div ng-style="imageStyles" />
+    <div ng-style="imageStyles"/>
 </div>

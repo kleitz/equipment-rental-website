@@ -33,6 +33,7 @@ angular.module('app', [
     'app.qrcode',
     'app.limage',
     'app.cookiedisplay',
+    'app.charLimit',
     // Factories
     'app.config',
     'app.auth',
@@ -40,7 +41,8 @@ angular.module('app', [
     'angularMoment',
     'ui-notification',
     'naif.base64',
-    'ngColorThief'
+    'ngColorThief',
+    'angular-loading-bar'
 ]).config(['$routeProvider', '$locationProvider', '$httpProvider', function ($routeProvider, $locationProvider, $httpProvider) {
         $httpProvider.defaults.useXDomain = true;
     //console.log("its all set i guess")

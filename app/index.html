@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" ng-app="app" class="no-js"> <!--<![endif]-->
+<!--[if lt IE 7]>
+<html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" ng-app="app" class="no-js"> <!--<![endif]-->
 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,12 +18,15 @@
 <link rel="stylesheet" href="assets/css/skeleton.css">
 <link rel="stylesheet" href="assets/css/header.css">
 <link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/misc.css">
+<link rel="stylesheet" href="assets/css/item.css">
+<link rel="stylesheet" href="assets/css/loadingBar.css">
 <!-- <link rel="stylesheet" href="bower_components/pure/pure-min.css"> -->
 <link rel="stylesheet" href="app.css">
 <link rel="stylesheet" href="bower_components/animate.css/animate.min.css">
 <!-- <link rel="stylesheet" href="bower_components/angular-toastr/dist/angular-toastr.min.css"> -->
 <link rel="stylesheet" href="bower_components/angular-ui-notification/dist/angular-ui-notification.min.css">
-
+<link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.min.css">
 
 
 <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
@@ -29,12 +36,10 @@
 <body ng-cloak>
 
 
-
-
 <header ng-controller="AuthCtrl">
     <div class="navigation">
         <nav>
-          <ul>
+            <ul>
                 <li><a href="#/"><i class="fa fa-lemon-o"></i> <b>{{site.title}}</b></a></li>
                 <li><a href="#/home"><i class="fa fa-home"></i> Home</a></li>
                 <!-- <li><a href="#/users"><i class="fa fa-users"></i> Users</a></li> -->
@@ -44,57 +49,69 @@
                 <li><a href="#/login" ng-hide="loggedIn">Login</a></li>
                 <li><a href="#/register" ng-hide="loggedIn">Register</a></li>
                 <li class="sub-menu" ng-click="ownerNav = !ownerNav">
-                  <a href="" ng-show="loggedIn">Owner</a>
-                  <ul ng-show="ownerNav">
-                    <li>
-                      <a href='#/owner/listing'>
-                        <i class="fa fa-user"></i> My Items
-                      </a>
-                    </li>
-                  </ul>
+                    <a href="" ng-show="loggedIn">Owner</a>
+                    <ul ng-show="ownerNav">
+                        <li>
+                            <a href='#/owner/listing'>
+                                <i class="fa fa-user"></i> My Items
+                            </a>
+                            <a href='#/create'>
+                                <i class="fa fa-plus"></i> Add new Item
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="right sub-menu" ng-click="profileNav = !profileNav">
-                  <a href="" ng-show="loggedIn">
-                    @{{auth.username}}
-                    <img ng-cloak ng-src="https://secure.gravatar.com/avatar/{{auth.gravatar}}?s=90&d=identicon"/>
-                  </a>
-                  <ul ng-show="profileNav">
-                    <li>
-                      <a href='#/user/{{auth.username}}'>
-                        <i class="fa fa-user"></i> View profile
-                      </a>
-                    </li>
-                    <li>
-                      <a href='#/my/items/current'>
-                        <i class="fa fa-cog"></i> My Items
-                      </a>
-                    </li>
-                    <li>
-                      <a href='#'>
-                        <i class="fa fa-cog"></i> Account Settings
-                      </a>
-                    </li>
-                    <li>
-                      <a href='#/logout'>
-                        <i class="fa fa-power-off"></i> Sign off
-                      </a>
-                    </li>
-                  </ul>
+                    <a href="" ng-show="loggedIn">
+                        @{{auth.username}}
+                        <img ng-cloak ng-src="https://secure.gravatar.com/avatar/{{auth.gravatar}}?s=90&d=identicon"/>
+                    </a>
+                    <ul ng-show="profileNav">
+                        <li>
+                            <a href='#/user/{{auth.username}}'>
+                                <i class="fa fa-user"></i> View profile
+                            </a>
+                        </li>
+                        <li>
+                            <a href='#/my/items/current'>
+                                <i class="fa fa-cog"></i> My Items
+                            </a>
+                        </li>
+                        <li>
+                            <a href='#'>
+                                <i class="fa fa-cog"></i> Account Settings
+                            </a>
+                        </li>
+                        <li>
+                            <a href='#/logout'>
+                                <i class="fa fa-power-off"></i> Sign off
+                            </a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </nav>
     </div>
 </header>
 
+<div class="wrapper">
+    <div class="holder">
+        <ng-view class="ngview"></ng-view>
 
-<div ng-view class="wrapper"></div>
+    </div>
+    <div class="footer">
+        <div class="row">
+            <div class="eight columns">
+                This is a footer
+            </div>
+            <div class="four columns">
+                {{site.description}}
+            </div>
+        </div>
+    </div>
+</div>
 
 <cookiedisplay url="#/cookies"></cookiedisplay>
-<!--<div class="footer">-->
-    <!--<div class="content">-->
-        <!--This is a footer-->
-    <!--</div>-->
-<!--</div>-->
 
 
 
@@ -137,6 +154,7 @@
 <script src="components/qrcode/qrcode.js"></script>
 <script src="components/image/image.js"></script>
 <script src="components/cookiedisplay/cookiedisplay.js"></script>
+<script src="components/charLimit/charLimit.js"></script>
 <!-- Imports -->
 <script src="bower_components/cryptojslib/rollups/sha512.js"></script>
 <script src="bower_components/cryptojslib/rollups/md5.js"></script>
@@ -151,6 +169,7 @@
 <script src="bower_components/moment/min/moment.min.js"></script>
 <script src="bower_components/angular-moment/angular-moment.min.js"></script>
 <script src="bower_components/angular-ui-notification/dist/angular-ui-notification.min.js"></script>
+<script src="bower_components/angular-loading-bar/build/loading-bar.min.js"></script>
 
 </body>
 </html>

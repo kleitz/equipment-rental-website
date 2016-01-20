@@ -10,7 +10,7 @@ angular.module('app.ownerItem', ['ngRoute'])
         });
     }
 ])
-.controller('ownerItemCtrl', ['$rootScope', '$scope', '$http', '$routeParams', 'authFactory', function($rootScope, $scope, $http, $routeParams, authFactory) {
+.controller('ownerItemCtrl', ['$rootScope', '$scope', '$http', '$routeParams', 'authFactory', '$location', function($rootScope, $scope, $http, $routeParams, authFactory, $location) {
         $http({
             url: backend + "/product/" + $routeParams.id,
             method: 'GET',
@@ -30,7 +30,7 @@ angular.module('app.ownerItem', ['ngRoute'])
                 'token': authFactory.getToken()
             },
         }).success(function (data, status, headers, config) {
-
+            $location.path('/owner/listing');
         }).
         error(function (data, status, headers, config) {
             $scope.error = true;

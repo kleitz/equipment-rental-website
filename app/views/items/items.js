@@ -16,11 +16,11 @@ angular.module('app.items', ['ngRoute'])
     } else {
         window.localStorage.setItem("product_count", 10);
         $scope.count = 10;
-    }
+    };
 
     $scope.goto = function(id) {
         $location.path('/listing/' + id);
-    }
+    };
 
 
     $scope.start = 0;
@@ -48,7 +48,7 @@ angular.module('app.items', ['ngRoute'])
             $scope.start = $scope.start - $scope.count;
             updateResults();
         }
-    }
+    };
 
     $scope.forward = function() {
         if ($scope.start >= $scope.products.total - $scope.count) {
@@ -58,7 +58,7 @@ angular.module('app.items', ['ngRoute'])
             $scope.start = $scope.start + $scope.count;
             updateResults();
         }
-    }
+    };
 
     function updateResults() {
         $http({
