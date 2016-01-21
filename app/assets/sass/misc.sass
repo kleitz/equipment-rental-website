@@ -166,8 +166,20 @@
             color: $statusOK
           .Unavailable
             color: $statusUnavailable
+    .tags
+      @include center-children
+      padding: 5px
+      .tag
+        background: none
+        font-weight: 600
+        border: #e3e3e3 solid 1px
+        padding: 5px
+        margin: 5px
+        border-radius: 6px
+      .tag:hover
+        background: $hoverColour
   .item:hover
-    background: $hoverColour
+    //background: $hoverColour
   .paging
     padding-left: 30px
     padding-right: 30px

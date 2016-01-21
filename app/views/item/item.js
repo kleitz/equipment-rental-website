@@ -15,15 +15,9 @@ angular.module('app.item', ['ngRoute', 'app.config'])
             url: backend + "/product/" + $routeParams.id,
             method: 'GET',
         }).success(function(data, status, headers, config) {
-            //if ($rootScope.loggedIn) {
-            //    if (data.items[0].owner.username === $rootScope.auth.username) {
-            //        $location.path('/owner/listing/' + $routeParams.id);
-            //    }
-            //
-            //}
             $scope.product = data.items[0];
 
-            $scope.url = domain + data.items[0].image.size.large
+            //$scope.url = domain + data.items[0].image.size.large
         }).
         error(function(data, status, headers, config) {
           console.log('error');
