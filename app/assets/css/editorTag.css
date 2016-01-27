@@ -1,0 +1,30 @@
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none; }
+
+html, body, .wrapper {
+  background: #ECEFF1; }
+
+.editortags {
+  display: flex;
+  justify-content: left;
+  flex-wrap: wrap;
+  height: auto; }
+  .editortags .editorTagBase {
+    max-width: 100%;
+    padding: 5px; }
+    .editortags .editorTagBase .tag {
+      display: flex;
+      justify-content: stretch;
+      background: #e3e3e3;
+      padding: 5px;
+      border-radius: 10px;
+      width: auto;
+      color: #333;
+      transition: 0.1s; }
+      .editortags .editorTagBase .tag .text {
+        font-weight: 600; }
+      .editortags .editorTagBase .tag .icon {
+        padding-left: 5px; }
+    .editortags .editorTagBase .tag:hover {
+      background: #e74c3c;
+      color: #ecf0f1; }

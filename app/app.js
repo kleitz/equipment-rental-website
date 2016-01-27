@@ -18,6 +18,7 @@ angular.module('app', [
     'app.sessions',
     'app.myItems',
     'app.creator',
+    'app.editor',
     'app.ownerItems',
     'app.ownerItem',
     'app.cookie',
@@ -34,6 +35,7 @@ angular.module('app', [
     'app.limage',
     'app.cookiedisplay',
     'app.charLimit',
+    'app.editorTag',
     // Factories
     'app.config',
     'app.auth',
@@ -55,6 +57,7 @@ angular.module('app', [
         $rootScope.loggedIn = authFactory.getAuth() !== undefined;
         // console.log( authFactory.getToken);
         $rootScope.auth = authFactory.getAuth();
+        console.log($rootScope.auth)
         getSiteIndex()
 
 
