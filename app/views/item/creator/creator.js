@@ -97,6 +97,7 @@ angular.module('app.creator', ['ngRoute'])
               fd.append('description', product.description);
               fd.append('rental_period_limit', product.days);
               fd.append('image', product.base64[0].base64);
+              fd.append('tags', product.tags);
               fd.append('filetype', product.base64[0].filetype);
 
               $http({
