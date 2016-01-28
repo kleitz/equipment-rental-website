@@ -46,8 +46,7 @@ html, body, .wrapper {
   border-right: 1px solid #e3e3e3;
   border-bottom: 1px solid #e3e3e3;
   display: flex;
-  justify-content: center;
-  align-items: center; }
+  justify-content: center; }
   .footer .row {
     width: 100%;
     text-align: center; }
@@ -57,7 +56,6 @@ html, body, .wrapper {
   .home .welcome {
     display: flex;
     justify-content: center;
-    align-items: center;
     min-height: 400px; }
     .home .welcome a {
       width: 90%;
@@ -69,7 +67,6 @@ html, body, .wrapper {
 .login {
   display: flex;
   justify-content: center;
-  align-items: center;
   padding-top: 50px; }
   .login .row {
     background: #fff; }
@@ -87,7 +84,6 @@ html, body, .wrapper {
       .login .row .form .loading {
         display: flex;
         justify-content: center;
-        align-items: center;
         text-align: center;
         height: 100%; }
         .login .row .form .loading p {
@@ -99,15 +95,13 @@ html, body, .wrapper {
       margin-bottom: 30px;
       background: #df2029;
       display: flex;
-      justify-content: center;
-      align-items: center; }
+      justify-content: center; }
       .login .row .error .message {
         color: #fff; }
 
 .register {
   display: flex;
   justify-content: center;
-  align-items: center;
   padding: 50px; }
   .register .form form {
     padding: 20px; }
@@ -129,18 +123,15 @@ html, body, .wrapper {
   .listing .subheader {
     height: 200px;
     display: flex;
-    justify-content: center;
-    align-items: center; }
+    justify-content: center; }
     .listing .subheader .subtitle {
       display: flex;
       justify-content: center;
-      align-items: center;
       font-size: 3rem;
       font-weight: 600; }
     .listing .subheader .options {
       display: flex;
-      justify-content: center;
-      align-items: center; }
+      justify-content: center; }
       .listing .subheader .options input {
         border: none;
         padding: 0;
@@ -160,12 +151,10 @@ html, body, .wrapper {
       font-size: 1.3rem; }
     .listing .item .image {
       display: flex;
-      justify-content: center;
-      align-items: center; }
+      justify-content: center; }
     .listing .item .status {
       display: flex;
       justify-content: center;
-      align-items: center;
       height: 100px;
       float: right;
       margin-right: 1px; }
@@ -201,20 +190,6 @@ html, body, .wrapper {
           color: #40C4FF; }
         .listing .item .status .avail .text .Unavailable {
           color: #E91E63; }
-    .listing .item .tags {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 5px; }
-      .listing .item .tags .tag {
-        background: none;
-        font-weight: 600;
-        border: #e3e3e3 solid 1px;
-        padding: 5px;
-        margin: 5px;
-        border-radius: 6px; }
-      .listing .item .tags .tag:hover {
-        background: #ECEFF1; }
   .listing .paging {
     padding-left: 30px;
     padding-right: 30px;
@@ -225,12 +200,10 @@ html, body, .wrapper {
       margin-bottom: 20px;
       font-size: 1.5rem;
       display: flex;
-      justify-content: center;
-      align-items: center; }
+      justify-content: center; }
     .listing .paging a {
       display: flex;
-      justify-content: center;
-      align-items: center; }
+      justify-content: center; }
   @media screen and (min-width: 0px) {
     .listing {
       padding-top: 10px; } }
@@ -283,17 +256,15 @@ html, body, .wrapper {
   @media screen and (min-width: 1200px) {
     .listing .item {
       margin: 0 auto;
-      width: 600px; } }
+      width: 800px; } }
 
 .user {
   width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center; }
+  justify-content: center; }
   .user .profile .image {
     display: flex;
-    justify-content: center;
-    align-items: center; }
+    justify-content: center; }
     .user .profile .image img {
       width: 100px; }
   .user .profile .columns {
@@ -301,7 +272,6 @@ html, body, .wrapper {
   .user .profile .context {
     display: flex;
     justify-content: center;
-    align-items: center;
     width: 100%; }
     .user .profile .context .username {
       text-align: center;
@@ -351,7 +321,6 @@ html, body, .wrapper {
 .timeline .row .header {
   display: flex;
   justify-content: center;
-  align-items: center;
   min-height: 100px;
   width: 100%; }
 
@@ -377,7 +346,6 @@ html, body, .wrapper {
     .timeline .row .sidebar .item .three {
       display: flex;
       justify-content: center;
-      align-items: center;
       height: 100px; }
     .timeline .row .sidebar .item .nine {
       padding: 25px;
@@ -389,19 +357,16 @@ html, body, .wrapper {
   .timeline .row .sidebar .empty {
     display: flex;
     justify-content: center;
-    align-items: center;
     text-align: center; }
 
 .logout {
   display: flex;
   justify-content: center;
-  align-items: center;
   min-height: 100px; }
 
 .cookiedisplaybase {
   display: flex;
   justify-content: center;
-  align-items: center;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -417,7 +382,6 @@ html, body, .wrapper {
     height: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
     position: absolute;
     right: 0; }
     .cookiedisplaybase .tab i {
@@ -425,7 +389,6 @@ html, body, .wrapper {
     .cookiedisplaybase .tab .decline {
       display: flex;
       justify-content: center;
-      align-items: center;
       height: 100%;
       padding-left: 10px;
       padding-right: 10px;
@@ -435,7 +398,6 @@ html, body, .wrapper {
     .cookiedisplaybase .tab .agree {
       display: flex;
       justify-content: center;
-      align-items: center;
       height: 100%;
       margin: 0;
       padding-left: 10px;
@@ -456,3 +418,47 @@ html, body, .wrapper {
     width: auto; }
   .creator form .row input {
     height: 200px; }
+
+.button-red {
+  color: #df2029;
+  border: 1px solid #df2029; }
+
+.button-red:hover {
+  color: #b21a21;
+  border: 1px solid #b21a21; }
+
+.button-blue {
+  color: #40C4FF;
+  border: 1px solid #40C4FF; }
+
+.button-blue:hover {
+  color: #339dcc;
+  border: 1px solid #339dcc; }
+
+.button-green {
+  color: #4CAF50;
+  border: 1px solid #4CAF50; }
+
+.button-green:hover {
+  color: #3d8c40;
+  border: 1px solid #3d8c40; }
+
+.sidebarresults {
+  position: relative;
+  height: 100%;
+  width: 100%; }
+
+.tags {
+  display: flex;
+  justify-content: left;
+  flex-wrap: wrap;
+  padding: 5px; }
+  .tags .tag {
+    background: none;
+    font-weight: 600;
+    border: #e3e3e3 solid 1px;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 6px; }
+  .tags .tag:hover {
+    background: #ECEFF1; }

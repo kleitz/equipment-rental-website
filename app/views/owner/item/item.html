@@ -1,14 +1,20 @@
 <div class="itemview">
     <div class="content">
-        <button class="button" ng-click="deleteItem()">Delete</button>
+        <button class="button button-red" ng-click="deleteItem()">Delete</button> <a class="button button-green" href="#/listing/{{product.id}}/edit">edit</a>
         <div class="row">
             <div class="five columns">
                 <div class="row image">
-                    <limage class="image" image='{{product}}' preview=true radius="0" height='150' width='150'></limage>
+                    <limage class="image" image='{{product}}' preview=true radius="0" quality="medium" height='300' width='300'></limage>
                 </div>
                 <div class="row title">
                     <h2>{{product.title}}</h2>
 
+                </div>
+                <div class="row">
+                    <h4>Tags</h4>
+                    <div class="tags">
+                        <div class="tag" ng-repeat="tag in product.tags">{{tag.tag}}</div>
+                    </div>
                 </div>
             </div>
             <div class="seven columns">

@@ -9,23 +9,19 @@ html, body, .wrapper {
   .itemview .image {
     display: flex;
     justify-content: center;
-    align-items: center;
     min-height: 150px; }
   .itemview .title {
     display: flex;
     justify-content: center;
-    align-items: center;
     min-height: 100px; }
   .itemview .rent {
     min-height: 250px;
     display: flex;
     justify-content: center;
-    align-items: center;
     flex-direction: column; }
     .itemview .rent .text {
       display: flex;
-      justify-content: center;
-      align-items: center; }
+      justify-content: center; }
   .itemview .description {
     min-height: 100px; }
   .itemview .owner {
@@ -43,14 +39,12 @@ html, body, .wrapper {
   padding-top: 30px;
   display: flex;
   justify-content: center;
-  align-items: center;
   width: 100%; }
   .itempreview .content {
     width: 100%; }
     .itempreview .content .row .columns .image {
       display: flex;
-      justify-content: center;
-      align-items: center; }
+      justify-content: center; }
     .itempreview .content .row .columns .row .title {
       margin-top: 30px; }
     .itempreview .content .row .subtitle {
@@ -58,8 +52,7 @@ html, body, .wrapper {
       .itempreview .content .row .subtitle .columns {
         height: 100px;
         display: flex;
-        justify-content: center;
-        align-items: center; }
+        justify-content: center; }
         .itempreview .content .row .subtitle .columns .icon {
           font-size: 5rem;
           text-align: right; }
@@ -69,13 +62,11 @@ html, body, .wrapper {
     .itempreview .content .row .information .row .columns .rent {
       display: flex;
       justify-content: center;
-      align-items: center;
       min-height: 100px;
       width: 100%; }
     .itempreview .content .row .information .row .columns .info {
       display: flex;
-      justify-content: center;
-      align-items: center; }
+      justify-content: center; }
     .itempreview .content .row .information .row .columns .profile {
       border: 1px solid #e3e3e3;
       padding: 10px;
@@ -91,12 +82,10 @@ html, body, .wrapper {
       margin-top: -60px; }
     .itempreview .content .information .row .columns {
       display: flex;
-      justify-content: center;
-      align-items: center; }
+      justify-content: center; }
     .itempreview .content .information .row .qr {
       display: flex;
       justify-content: center;
-      align-items: center;
       width: 100%; }
     .itempreview .content .information .row .info {
       text-align: center;

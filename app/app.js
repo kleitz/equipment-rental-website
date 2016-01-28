@@ -22,6 +22,8 @@ angular.module('app', [
     'app.ownerItems',
     'app.ownerItem',
     'app.cookie',
+    'app.tags',
+    'app.search',
 
     // Directives
     'app.loginPanel',
@@ -36,6 +38,7 @@ angular.module('app', [
     'app.cookiedisplay',
     'app.charLimit',
     'app.editorTag',
+    'app.tagSearch',
     // Factories
     'app.config',
     'app.auth',

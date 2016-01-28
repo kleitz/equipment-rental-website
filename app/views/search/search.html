@@ -1,0 +1,16 @@
+<div class="searchView">
+    <div class="header">
+        <h1>Search</h1>
+        <i>Enter a tag to search</i>
+    </div>
+    <div class="input">
+        <form ng-submit="search(searchTerm)">
+            <input type="text" ng-model="searchTerm" placeholder="Search items">
+            <input class="button-primary" type="submit" value="Submit">
+        </form>
+    </div>
+    <div class="results" ng-show="showResults" ng-include="'/views/partials/results.html'">
+
+    </div>
+
+</div>

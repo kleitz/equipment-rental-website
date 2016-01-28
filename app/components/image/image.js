@@ -9,7 +9,8 @@ angular.module('app.limage', ['app.config'])
                 height: '=',
                 image: '@',
                 preview: '=',
-                radius: '='
+                radius: '=',
+                quality:'@'
             },
             templateUrl: 'components/image/image.html',
             controller: function ($scope, $colorThief) {
@@ -83,7 +84,17 @@ angular.module('app.limage', ['app.config'])
                             }
 
                             $scope.url = domain + $scope.data.large;
-                            var url = domain + $scope.data.thumb;
+                            var url;
+                            if ($scope.quality === 'small') {
+                                url = domain + $scope.data.small;
+                            } else if ($scope.quality === 'medium') {
+                                url = domain + $scope.data.medium;
+                            } else if ($scope.quality === 'large') {
+                                url = domain + $scope.data.large;
+                            } else {
+                                url = domain + $scope.data.thumb;
+                            }
+
 
                             // $scope.imageStyles.push('background-image': 'url(' + url + ')');
                             //console.log(url);
@@ -98,7 +109,7 @@ angular.module('app.limage', ['app.config'])
                                     $scope.imageStyle.border = '3px solid rgb(' + $colorThief.getColor(img) + ')';
                                     $scope.$apply();
                                 }, 1);
-                            }
+                            };
 
                             img.src = url;
                             if (img.complete) img.onload();
@@ -109,8 +120,8 @@ angular.module('app.limage', ['app.config'])
 
 
                 $scope.hovering = function() {
-                    $scope.hover = !$scope.hover
-                }
+                    $scope.hover = !$scope.hover;
+                };
             },
 
             link: function (scope, elem, attrs, http) {

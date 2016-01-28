@@ -9,51 +9,17 @@
             </div>
         </div>
     </div>
-    <div class="item" ng-repeat="product in products.items">
-        <div class="row">
-            <div class="four columns">
-                <limage class="image" image='{{product}}' height="100" width="100" radius="100" preview=true></limage>
-            </div>
-            <div class="six columns">
-                <div class="title">
-                    <a href="#/listing/{{product.id}}">{{product.title}}</a>
-                </div>
+    <div class="row">
+        <div class="two columns sidebarresults">
+            Stuff here
+        </div>
+        <div class="ten columns">
+            <div class="results" ng-include="'/views/partials/results.html'">
 
-                <div class="description">
-                    {{product.description}}
-                </div>
-            </div>
-            <div class="two columns status">
-                <div class="avail">
-                    <availability class="text" datasource="{{product.id}}"></availability></td>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="tags">
-                <span class="tag" ng-repeat="tag in product.tags"><a>{{tag.tag}}</a></span>
             </div>
         </div>
     </div>
-    <div class="paging">
-        <div class="message">
-            <div class="row">
-                <div class="twelve columns">
-                    Showing {{start}} - {{start + count}} of {{products.total}}
-                </div>
-            </div>
-        </div>
-        <div class="below">
-            <div class="row">
-                <div class="six columns">
-                    <a class="button" ng-click="back()">Previous page</a>
-                </div>
-                <div class="six columns">
-                    <a class="button" ng-click="forward()">Next page</a>
-                </div>
-            </div>
-        </div>
-    </div>
+
 </div>
 
 <!--<div class="settings">-->
