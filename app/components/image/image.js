@@ -10,11 +10,11 @@ angular.module('app.limage', ['app.config'])
                 image: '@',
                 preview: '=',
                 radius: '=',
-                quality:'@'
+                quality: '@'
             },
             templateUrl: 'components/image/image.html',
             controller: function ($scope, $colorThief) {
-
+                var rgb;
                 $scope.tap = function () {
                     if ($scope.preview) {
                         $scope.tapped = !$scope.tapped;
@@ -41,7 +41,7 @@ angular.module('app.limage', ['app.config'])
                     'color': '#fff',
                     'display': 'flex',
                     'justify-content': 'center',
-                'align-items': 'center'
+                    'align-items': 'center'
                 }
 
                 $scope.previewStyle = {
@@ -59,7 +59,7 @@ angular.module('app.limage', ['app.config'])
                     'height': '100%',
                     'width': '100%',
                     'background': 'url("") no-repeat center center',
-                    'background-size': 'contain'
+                    'background-size': 'contain',
                 }
 
                 $scope.imageStyle = {
@@ -104,9 +104,11 @@ angular.module('app.limage', ['app.config'])
                             img.crossOrigin = "Anonymous"
                             img.onload = function () {
                                 setTimeout(function () {
+                                    rgb = $colorThief.getColor(img);
+                                    $scope.previewStyle['background-color'] =  'rgba(' + rgb + ', 0.9)',
                                     $scope.imageStyle['background-image'] = 'url(\"' + url + '\")';
                                     $scope.imageStyles['background-image'] = 'url(\"' + $scope.url + '\")';
-                                    $scope.imageStyle.border = '3px solid rgb(' + $colorThief.getColor(img) + ')';
+                                    $scope.imageStyle.border = '3px solid rgb(' + rgb + ')';
                                     $scope.$apply();
                                 }, 1);
                             };
@@ -119,7 +121,7 @@ angular.module('app.limage', ['app.config'])
                 );
 
 
-                $scope.hovering = function() {
+                $scope.hovering = function () {
                     $scope.hover = !$scope.hover;
                 };
             },

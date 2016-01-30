@@ -7,6 +7,10 @@ angular.module('app.home', ['ngRoute'])
     templateUrl: 'home/home.html',
     controller: 'HomeCtrl'
   });
+    $routeProvider.when('/', {
+        templateUrl: 'home/home.html',
+        controller: 'HomeCtrl'
+    });
 }])
 
 .controller('HomeCtrl', ['$rootScope', '$scope', '$http', 'authFactory', function($rootScope, $scope, $http, authFactory) {

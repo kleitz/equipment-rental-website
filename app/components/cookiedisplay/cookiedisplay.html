@@ -1,14 +1,26 @@
 <div class="cookiedisplaybase animated" ng-class="animation" ng-style="cookiestyle" ng-show="displaycookiebar">
-    <div class="message">
-        We use cookies to personalise content.   <a href="#/cookie">Read more</a>
+    <div class="row">
+        <div class="eight columns">
+            We use cookies to personalise content.   <a href="#/cookie">Read more</a>
+        </div>
+        <div class="four columns">
+            <button class="button button-blue" ng-click="agreeCookie()"><i class="fa fa-check"></i> Agree</button>
+            <button class="button button-red" ng-click="declineCookie()"><i class="fa fa-times"></i>No thanks</button>
+        </div>
     </div>
-    <div class="tab" >
 
-        <div class="agree" ng-click="agreeCookie()">
-            <i class="fa fa-check"></i> I agree
-        </div>
-        <div class="decline" ng-click="declineCookie()">
-            <i class="fa fa-times"></i> No thanks
-        </div>
-    </div>
+
+    <!--<div class="eight columns">-->
+        <!---->
+    <!--</div>-->
+    <!--<div class="four columns" >-->
+        <!--<button class="button button-blue"><i class="fa fa-check"></i> Agree</button>-->
+        <!--<button class="button button-red"><i class="fa fa-times"></i>No thanks</button>-->
+        <!--<div class="agree" ng-click="agreeCookie()">-->
+            <!--<i class="fa fa-check"></i> I agree-->
+        <!--</div>-->
+        <!--<div class="decline" ng-click="declineCookie()">-->
+            <!--<i class="fa fa-times"></i> No thanks-->
+        <!--</div>-->
+    <!--</div>-->
 </div>

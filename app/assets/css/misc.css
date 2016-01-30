@@ -4,40 +4,100 @@
 html, body, .wrapper {
   background: #ECEFF1; }
 
+[class*=column] {
+  width: calc(100%);
+  margin-left: 0rem;
+  margin-right: 0rem; }
+
+a {
+  color: #40C4FF;
+  text-decoration: none; }
+
+a:hover {
+  color: #339dcc;
+  text-decoration: none; }
+
+.row {
+  margin: 0;
+  width: 100%; }
+
+header {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0; }
+  header .navbar {
+    background: #03A9F4 !important;
+    width: 100%;
+    transition: 0.6s;
+    padding: 0; }
+    header .navbar .nav-item, header .navbar .navbar-brand {
+      padding: 10px;
+      margin: 0;
+      transition: 0.1s; }
+    header .navbar .nav-item:hover {
+      background: #0398dc !important; }
+    header .navbar .nav-item.darken:hover {
+      background: #014462 !important; }
+  header .navbar .darken {
+    width: 150px;
+    text-align: right;
+    background: #026592 !important; }
+  header .dropdown-menu {
+    border: 1px solid #e3e3e3;
+    border-top: 0px none;
+    background: #ECEFF1;
+    border-radius: 0px;
+    margin: 0;
+    transition: 0.1s; }
+    header .dropdown-menu a:hover {
+      background: #03A9F4;
+      color: #fff !important; }
+
+.fourOhFour {
+  margin: 0 auto;
+  text-align: center; }
+  .fourOhFour .code {
+    margin-top: 100px;
+    font-size: 5em; }
+
 .wrapper {
   margin-top: 50px;
   height: 100%;
   transition: 0.1s; }
   .wrapper .holder {
     background: #fff;
-    border: 1px solid #e3e3e3;
     border-bottom: none;
     min-height: 50vh; }
     .wrapper .holder .ngview {
       min-height: 500px; }
   @media screen and (min-width: 0px) {
     .wrapper {
-      margin-top: 110px; } }
+      margin-top: 50px;
+      padding-left: 0px;
+      padding-right: 0px; } }
   @media screen and (min-width: 300px) {
     .wrapper {
       padding-left: 0px;
       padding-right: 0px;
-      margin-top: 105px; } }
+      margin-top: 40px; } }
   @media screen and (min-width: 700px) {
     .wrapper {
       padding-left: 30px;
       padding-right: 30px;
-      margin-top: 50px; } }
+      margin-top: 60px; } }
   @media screen and (min-width: 900px) {
     .wrapper {
       padding-left: 100px;
       padding-right: 100px;
-      margin-top: 50px; } }
+      margin-top: 60px; } }
   @media screen and (min-width: 1200px) {
     .wrapper {
       padding-left: 200px;
       padding-right: 200px;
-      margin-top: 50px; } }
+      margin-top: 60px; } }
 
 .footer {
   height: 100px;
@@ -118,6 +178,7 @@ html, body, .wrapper {
 
 .listing {
   width: 100%;
+  min-height: 400px;
   text-align: center;
   height: 50%; }
   .listing .subheader {
@@ -141,8 +202,10 @@ html, body, .wrapper {
         text-align: center;
         width: 50px; }
   .listing .item {
+    min-height: 100px;
     border-bottom: 1px solid #e3e3e3; }
     .listing .item .row {
+      min-height: 100px;
       width: 100%; }
     .listing .item .title {
       font-size: 2.6rem;
@@ -365,15 +428,21 @@ html, body, .wrapper {
   min-height: 100px; }
 
 .cookiedisplaybase {
+  text-align: center;
   display: flex;
   justify-content: center;
   position: fixed;
   bottom: 0;
   left: 0;
-  background: #3c5876;
+  background: #333;
   width: 100%;
   height: 50px;
+  padding: 5px;
   color: #fff; }
+  .cookiedisplaybase .columns {
+    display: flex;
+    justify-content: center;
+    height: 100%; }
   .cookiedisplaybase a {
     color: #fff;
     padding-left: 100px; }
@@ -384,18 +453,22 @@ html, body, .wrapper {
     justify-content: center;
     position: absolute;
     right: 0; }
-    .cookiedisplaybase .tab i {
+  .cookiedisplaybase .button {
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 0 !important; }
+    .cookiedisplaybase .button i {
       padding-right: 10px; }
-    .cookiedisplaybase .tab .decline {
+    .cookiedisplaybase .button .decline {
       display: flex;
       justify-content: center;
       height: 100%;
       padding-left: 10px;
       padding-right: 10px;
       background: #df2029; }
-    .cookiedisplaybase .tab .decline:hover {
+    .cookiedisplaybase .button .decline:hover {
       background: #861319; }
-    .cookiedisplaybase .tab .agree {
+    .cookiedisplaybase .button .agree {
       display: flex;
       justify-content: center;
       height: 100%;
@@ -403,7 +476,7 @@ html, body, .wrapper {
       padding-left: 10px;
       padding-right: 10px;
       background: #4CAF50; }
-    .cookiedisplaybase .tab .agree:hover {
+    .cookiedisplaybase .button .agree:hover {
       background: #2d682f; }
 
 .creator .title {

@@ -5,6 +5,8 @@ $large: 900px
 $extraLarge: 1200px
 
 // Colours: font
+$navigationColour: #03A9F4
+
 $primaryColour: #333
 $hoverColour: #ECEFF1
 
@@ -81,7 +83,7 @@ $subTitleWeight: 400
 
 @mixin basic-style
   background: #fff
-  border: 1px solid #e3e3e3
+  //border: 1px solid #e3e3e3
   border-bottom: none
   min-height: 50vh
 
@@ -94,3 +96,9 @@ $subTitleWeight: 400
 
 html, body, .wrapper
   background: #ECEFF1
+
+
+[class*=column]
+  width: calc(100%)
+  margin-left: 0rem
+  margin-right: 0rem

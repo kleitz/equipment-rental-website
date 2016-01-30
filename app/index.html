@@ -12,25 +12,28 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title ng-bind="site.title">Loading....</title>
 <meta name="description" content="">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
-<link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
-<link rel="stylesheet" href="assets/css/skeleton.css">
-<link rel="stylesheet" href="assets/css/header.css">
+<!--<link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">-->
+<link rel="stylesheet" href="bower_components/skeletonframework/dist/skeleton.min.css">
+<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/misc.css">
 <link rel="stylesheet" href="assets/css/item.css">
 <link rel="stylesheet" href="assets/css/loadingBar.css">
 <link rel="stylesheet" href="assets/css/editorTag.css">
 <link rel="stylesheet" href="assets/css/search.css">
-<!-- <link rel="stylesheet" href="bower_components/pure/pure-min.css"> -->
+<link rel="stylesheet" href="bower_components/pure/pure-min.css">
 <link rel="stylesheet" href="app.css">
 <link rel="stylesheet" href="bower_components/animate.css/animate.min.css">
 <!-- <link rel="stylesheet" href="bower_components/angular-toastr/dist/angular-toastr.min.css"> -->
 <link rel="stylesheet" href="bower_components/angular-ui-notification/dist/angular-ui-notification.min.css">
 <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.min.css">
 
-
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/tether/dist/js/tether.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css"/>
 <base href="/">
@@ -39,61 +42,65 @@
 
 
 <header ng-controller="AuthCtrl">
-    <div class="navigation">
-        <nav>
-            <ul>
-                <li><a href="#/"><i class="fa fa-lemon-o"></i> <b>{{site.title}}</b></a></li>
-                <li><a href="#/home"><i class="fa fa-home"></i> Home</a></li>
-                <!-- <li><a href="#/users"><i class="fa fa-users"></i> Users</a></li> -->
-                <li><a href="#/listing"><i class="fa fa-cubes"></i> Listing</a></li>
-                <!--<li><a href="#/images">Images</a></li>-->
-                <!--<li><a href="#/profile" ng-show="loggedIn">Profile</a></li>-->
-                <li><a href="#/login" ng-hide="loggedIn">Login</a></li>
-                <li><a href="#/register" ng-hide="loggedIn">Register</a></li>
-                <li class="sub-menu" ng-click="ownerNav = !ownerNav">
-                    <a href="" ng-show="loggedIn">Owner</a>
-                    <ul ng-show="ownerNav">
-                        <li>
-                            <a href='#/owner/listing'>
-                                <i class="fa fa-user"></i> My Items
-                            </a>
-                            <a href='#/create'>
-                                <i class="fa fa-plus"></i> Add new Item
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="right sub-menu" ng-click="profileNav = !profileNav">
-                    <a href="" ng-show="loggedIn">
-                        @{{auth.username}}
-                        <img ng-cloak ng-src="https://secure.gravatar.com/avatar/{{auth.gravatar}}?s=90&d=identicon"/>
-                    </a>
-                    <ul ng-show="profileNav">
-                        <li>
-                            <a href='#/user/{{auth.username}}'>
-                                <i class="fa fa-user"></i> View profile
-                            </a>
-                        </li>
-                        <li>
-                            <a href='#/my/items/current'>
-                                <i class="fa fa-cog"></i> My Items
-                            </a>
-                        </li>
-                        <li>
-                            <a href='#'>
-                                <i class="fa fa-cog"></i> Account Settings
-                            </a>
-                        </li>
-                        <li>
-                            <a href='#/logout'>
-                                <i class="fa fa-power-off"></i> Sign off
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-    </div>
+    <div ng-include="'/views/partials/navigation.html'"></div>
+<!--<div class="navigation">-->
+<!--<nav>-->
+<!--<ul>-->
+<!--<li><a href="#/"><i class="fa fa-lemon-o"></i> <b>{{site.title}}</b></a></li>-->
+<!--<li><a href="#/home"><i class="fa fa-home"></i> Home</a></li>-->
+<!--&lt;!&ndash; <li><a href="#/users"><i class="fa fa-users"></i> Users</a></li> &ndash;&gt;-->
+<!--<li><a href="#/listing"><i class="fa fa-cubes"></i> Listing</a></li>-->
+<!--&lt;!&ndash;<li><a href="#/images">Images</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;<li><a href="#/profile" ng-show="loggedIn">Profile</a></li>&ndash;&gt;-->
+<!--<li><a href="#/login" ng-hide="loggedIn">Login</a></li>-->
+<!--<li><a href="#/register" ng-hide="loggedIn">Register</a></li>-->
+<!--<li class="sub-menu" ng-click="ownerNav = !ownerNav">-->
+<!--<a href="" ng-show="loggedIn">Owner</a>-->
+<!--<ul ng-show="ownerNav">-->
+<!--<li>-->
+<!--<a href='#/owner/listing'>-->
+<!--<i class="fa fa-user"></i> My Items-->
+<!--</a>-->
+<!--<a href='#/create'>-->
+<!--<i class="fa fa-plus"></i> Add new Item-->
+<!--</a>-->
+<!--</li>-->
+<!--</ul>-->
+<!--</li>-->
+<!--<li class="right sub-menu" ng-click="profileNav = !profileNav">-->
+<!--<a href="" ng-show="loggedIn">-->
+<!--@{{auth.username}}-->
+<!--<img ng-cloak ng-src="https://secure.gravatar.com/avatar/{{auth.gravatar}}?s=90&d=identicon"/>-->
+<!--</a>-->
+<!--<ul ng-show="profileNav">-->
+<!--<li>-->
+<!--<a href='#/user/{{auth.username}}'>-->
+<!--<i class="fa fa-user"></i> View profile-->
+<!--</a>-->
+<!--</li>-->
+<!--<li>-->
+<!--<a href='#/my/items/current'>-->
+<!--<i class="fa fa-cog"></i> My Items-->
+<!--</a>-->
+<!--</li>-->
+<!--<li>-->
+<!--<a href='#'>-->
+<!--<i class="fa fa-cog"></i> Account Settings-->
+<!--</a>-->
+<!--</li>-->
+<!--<li>-->
+<!--<a href='#/logout'>-->
+<!--<i class="fa fa-power-off"></i> Sign off-->
+<!--</a>-->
+<!--</li>-->
+<!--</ul>-->
+<!--</li>-->
+<!--</ul>-->
+<!--</nav>-->
+<!--</div>-->
+
+
+
 </header>
 
 <div class="wrapper">
@@ -114,7 +121,6 @@
 </div>
 
 <cookiedisplay url="#/cookies"></cookiedisplay>
-
 
 
 <script src="bower_components/angular/angular.min.js"></script>
@@ -142,6 +148,7 @@
 <script src="views/cookie/cookie.js"></script>
 <script src="views/tags/tags.js"></script>
 <script src="views/search/search.js"></script>
+<script src="views/404/fourOhFour.js"></script>
 
 <!-- Settings -->
 <script src="views/settings/sessions/sessions.js"></script>

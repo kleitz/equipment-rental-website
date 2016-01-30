@@ -9,9 +9,10 @@ angular.module('app.loginPanel', ['app.config'])
             },
             templateUrl: 'components/loginPanel/loginPanel.html',
             controller: function($scope, $http, $rootScope, $location, authFactory) {
+
                 $scope.loading = false;
                 $rootScope.$watch('noCookieUsage', function() {
-                    $scope.disable = !$rootScope.noCookieUsage;
+                    $scope.cookiesHere = $rootScope.noCookieUsage;
                 });
 
                 $scope.enableCookie = function() {

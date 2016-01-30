@@ -24,6 +24,7 @@ angular.module('app', [
     'app.cookie',
     'app.tags',
     'app.search',
+    'app.fourOhFour',
 
     // Directives
     'app.loginPanel',
@@ -52,7 +53,7 @@ angular.module('app', [
         $httpProvider.defaults.useXDomain = true;
     //console.log("its all set i guess")
         delete $httpProvider.defaults.headers.common['X-Requested-With'];
-        $routeProvider.otherwise({redirectTo: '/home'});
+        $routeProvider.otherwise({redirectTo: '/fourOhFour'});
         $locationProvider.html5Mode(false);
     }])
 

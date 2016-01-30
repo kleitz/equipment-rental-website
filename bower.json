@@ -28,7 +28,9 @@
     "semantic": "semantic-ui#~2.1.8",
     "ngColorThief": "angular-colorthief#~0.1.0",
     "angular-loading-bar": "~0.8.0",
-    "bootstrap": "v4.0.0-alpha.2"
+    "bootstrap": "v4.0.0-alpha.2",
+    "tether": "^1.1.1",
+    "skeletonframework": "^1.0.6"
   },
   "resolutions": {
     "angular": "1.4.8"

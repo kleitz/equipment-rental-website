@@ -3,3 +3,8 @@
 
 html, body, .wrapper {
   background: #ECEFF1; }
+
+[class*=column] {
+  width: calc(100%);
+  margin-left: 0rem;
+  margin-right: 0rem; }
