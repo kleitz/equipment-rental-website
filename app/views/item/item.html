@@ -1,10 +1,14 @@
 <div class="itemview">
     <div class="content">
-        <button class="button button-red" ng-click="deleteItem()">Delete</button> <a class="button button-green" href="#/listing/{{product.id}}/edit">edit</a>
+        <div class="row" ng-show="owner">
+
+            <button class="button button-red" ng-click="deleteItem()">Delete</button>
+            <a class="button button-green" href="#/listing/{{product.id}}/edit">edit</a>
+        </div>
         <div class="row">
             <div class="five columns">
                 <div class="row image">
-                    <limage class="image" image='{{product}}' preview=true radius="0" quality="medium" height='300' width='300'></limage>
+                    <limage class="image" image='{{product}}' preview=true radius="5" quality="medium" height='150' width='150'></limage>
                 </div>
                 <div class="row title">
                     <h2>{{product.title}}</h2>

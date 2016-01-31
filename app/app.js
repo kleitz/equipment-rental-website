@@ -25,6 +25,8 @@ angular.module('app', [
     'app.tags',
     'app.search',
     'app.fourOhFour',
+    'app.requestProduct',
+    'app.requestProducts',
 
     // Directives
     'app.loginPanel',
@@ -61,7 +63,7 @@ angular.module('app', [
         $rootScope.loggedIn = authFactory.getAuth() !== undefined;
         // console.log( authFactory.getToken);
         $rootScope.auth = authFactory.getAuth();
-        console.log($rootScope.auth)
+        //console.log($rootScope.auth)
         getSiteIndex()
 
 
