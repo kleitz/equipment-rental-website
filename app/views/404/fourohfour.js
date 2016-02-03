@@ -10,5 +10,5 @@ angular.module('app.fourOhFour', ['ngRoute'])
     }])
 
     .controller('fourOhFourCtrl', ['$scope', '$rootScope', 'authFactory', function($scope, $rootScope, authFactory) {
-
+        console.log("wrong route");
     }]);
