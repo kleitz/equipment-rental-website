@@ -9,7 +9,8 @@ a:hover
   color: $statusOK * 0.8
   text-decoration: none
 
-
+.fullwidth
+  width: 100%
 
 // Skeleton fixes
 
@@ -17,6 +18,11 @@ a:hover
   margin: 0
   width: 100%
 
+.fixtop
+  position: absolute!important
+  top: 0!important
+  left: 0!important
+  display: inherit!important
 
 header
   @include center-children
@@ -75,7 +81,7 @@ header
 
   transition: 0.1s
   @media screen and (min-width: 0px)
-    margin-top: 50px
+    margin-top: 40px
     padding-left: 0px
     padding-right: 0px
   @media screen and (min-width: $small)
@@ -85,15 +91,15 @@ header
   @media screen and (min-width: $medium)
     padding-left: 30px
     padding-right: 30px
-    margin-top: 60px
+    margin-top: 50px
   @media screen and (min-width: $large)
     padding-left: 100px
     padding-right: 100px
-    margin-top: 60px
+    margin-top: 50px
   @media screen and (min-width: $extraLarge)
     padding-left: 200px
     padding-right: 200px
-    margin-top: 60px
+    margin-top: 50px
 
 //  Footer
 
@@ -215,14 +221,14 @@ header
       width: 100%
 
     .title
-      font-size: 2.6rem
+      font-size: 2rem
       font-weight: bold
     .description
-      font-size: 1.3rem
-
+      font-size: 1.2rem
     .image
       @include center-children
-
+      min-height: 100px
+      min-width: 100px
     .status
       @include center-children
       height: 100px
@@ -290,6 +296,7 @@ header
 
 .user
   width: 100%
+  padding: 5%
   //@include basic-style
   @include center-children
   .profile
@@ -297,6 +304,7 @@ header
       @include center-children
       img
         width: 100px
+        height: 100px
     .columns
       height: 100%
     .context

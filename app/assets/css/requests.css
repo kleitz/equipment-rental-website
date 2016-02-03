@@ -1,0 +1,46 @@
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none; }
+
+@media screen and (min-width: 0px) {
+  html, body, .wrapper {
+    background: #ECEFF1; } }
+
+@media screen and (min-width: 1028px) {
+  html, body, .wrapper {
+    background: #ECEFF1; } }
+
+[class*=column] {
+  width: calc(100%);
+  margin-left: 0rem;
+  margin-right: 0rem; }
+
+.mdl-layout__header-row {
+  box-shadow: none; }
+
+.requests {
+  padding: 5%; }
+  .requests img {
+    min-width: 50px;
+    min-height: 50px; }
+  .requests .header {
+    text-align: center;
+    font-weight: 600;
+    font-size: 2.3rem;
+    padding-bottom: 20px; }
+  .requests .subheader {
+    font-weight: 400;
+    font-size: 1.3rem;
+    padding-bottom: 50px; }
+  .requests .row {
+    padding: 10px;
+    border-top: 1px solid #e3e3e3; }
+  .requests .noshow {
+    width: 100%;
+    text-align: center; }
+    .requests .noshow .icon {
+      font-weight: 800;
+      font-size: 4rem;
+      color: #999; }
+    .requests .noshow .message {
+      font-size: 1.4rem;
+      color: #999; }

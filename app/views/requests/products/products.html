@@ -1,36 +1,34 @@
-<div class="row">
-    <div class="two columns">
+<div class="requests">
+    <div class="header">
+        Requests
+    </div>
+    <div class="subheader">
+        Showing {{requests.length}} items with results
+    </div>
+    <div class="row" ng-repeat="item in requests" ng-hide="noRequests">
+        <div class="two columns">
 
-    </div>
-    <div class="five columns">
-        <p>{{person.username}}</p>
-    </div>
-    <div class="five columns">
-        <p>{{person.date_requested | amCalendar}}</p>
-    </div>
-</div>
-
-<div class="row" ng-repeat="item in requests" ng-hide="noRequests">
-    <div class="five columns">
-        <b>{{item.title}}</b>
+            <limage class="image" image='{{item}}' height="50" width="50" radius="50" preview=true></limage>
+        </div>
+        <div class="seven columns">
+            <b>{{item.title}}</b>
         <span class="label label-pill label-info">
             {{item.request}}
             <span ng-show="item.request === 1"> request</span>
             <span ng-hide="item.request === 1"> requests</span>
         </span>
-    </div>
-    <div class="two columns">
-        <p>{{item.date_requested | amCalendar}}</p>
-    </div>
-    <div class="five columns">
-        <a class="button" href="#/listing/{{item.id}}/requests">View Requests</a>
-
+        </div>
+        <div class="three columns">
+            <a class="button" href="#/listing/{{item.id}}/requests">View Requests</a>
+        </div>
     </div>
 
-
-</div>
-
-
-<div class="row" ng-show="noRequests">
-    No Requests :(
+    <div class="row noshow" ng-show="noRequests">
+        <div class="icon">
+            <i class="fa fa-frown-o"></i>
+        </div>
+        <div class="message">
+            No requests
+        </div>
+    </div>
 </div>

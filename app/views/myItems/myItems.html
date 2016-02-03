@@ -2,7 +2,7 @@
     <div class="subheader" ng-if="products.total != 0">
         <div class="content">
             <div class="subtitle">
-                <p>Listings</p>
+                <p>My Items</p>
             </div>
             <div class="options">
                 Number of results <input type="number" placeholder="{{count}}" ng-model="count">
@@ -35,7 +35,7 @@
             </div>
             <div class="two columns status">
                 <div class="avail">
-                    <availability class="text" datasource="{{product.id}}"></availability></td>
+                    Due {{product.due | amCalendar}}
                 </div>
             </div>
         </div>

@@ -1,13 +1,21 @@
 [ng\:cloak], [ng-cloak], .ng-cloak {
   display: none; }
 
-html, body, .wrapper {
-  background: #ECEFF1; }
+@media screen and (min-width: 0px) {
+  html, body, .wrapper {
+    background: #ECEFF1; } }
+
+@media screen and (min-width: 1028px) {
+  html, body, .wrapper {
+    background: #ECEFF1; } }
 
 [class*=column] {
   width: calc(100%);
   margin-left: 0rem;
   margin-right: 0rem; }
+
+.mdl-layout__header-row {
+  box-shadow: none; }
 
 .searchView .header {
   text-align: center;

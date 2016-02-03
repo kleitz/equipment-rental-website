@@ -24,7 +24,8 @@
 <link rel="stylesheet" href="assets/css/loadingBar.css">
 <link rel="stylesheet" href="assets/css/editorTag.css">
 <link rel="stylesheet" href="assets/css/search.css">
-<link rel="stylesheet" href="bower_components/pure/pure-min.css">
+<link rel="stylesheet" href="assets/css/requests.css">
+<!--<link rel="stylesheet" href="bower_components/pure/pure-min.css">-->
 <link rel="stylesheet" href="app.css">
 <link rel="stylesheet" href="bower_components/animate.css/animate.min.css">
 <!-- <link rel="stylesheet" href="bower_components/angular-toastr/dist/angular-toastr.min.css"> -->
@@ -42,65 +43,7 @@
 
 
 <header ng-controller="AuthCtrl">
-    <div ng-include="'/views/partials/navigation.html'"></div>
-<!--<div class="navigation">-->
-<!--<nav>-->
-<!--<ul>-->
-<!--<li><a href="#/"><i class="fa fa-lemon-o"></i> <b>{{site.title}}</b></a></li>-->
-<!--<li><a href="#/home"><i class="fa fa-home"></i> Home</a></li>-->
-<!--&lt;!&ndash; <li><a href="#/users"><i class="fa fa-users"></i> Users</a></li> &ndash;&gt;-->
-<!--<li><a href="#/listing"><i class="fa fa-cubes"></i> Listing</a></li>-->
-<!--&lt;!&ndash;<li><a href="#/images">Images</a></li>&ndash;&gt;-->
-<!--&lt;!&ndash;<li><a href="#/profile" ng-show="loggedIn">Profile</a></li>&ndash;&gt;-->
-<!--<li><a href="#/login" ng-hide="loggedIn">Login</a></li>-->
-<!--<li><a href="#/register" ng-hide="loggedIn">Register</a></li>-->
-<!--<li class="sub-menu" ng-click="ownerNav = !ownerNav">-->
-<!--<a href="" ng-show="loggedIn">Owner</a>-->
-<!--<ul ng-show="ownerNav">-->
-<!--<li>-->
-<!--<a href='#/owner/listing'>-->
-<!--<i class="fa fa-user"></i> My Items-->
-<!--</a>-->
-<!--<a href='#/create'>-->
-<!--<i class="fa fa-plus"></i> Add new Item-->
-<!--</a>-->
-<!--</li>-->
-<!--</ul>-->
-<!--</li>-->
-<!--<li class="right sub-menu" ng-click="profileNav = !profileNav">-->
-<!--<a href="" ng-show="loggedIn">-->
-<!--@{{auth.username}}-->
-<!--<img ng-cloak ng-src="https://secure.gravatar.com/avatar/{{auth.gravatar}}?s=90&d=identicon"/>-->
-<!--</a>-->
-<!--<ul ng-show="profileNav">-->
-<!--<li>-->
-<!--<a href='#/user/{{auth.username}}'>-->
-<!--<i class="fa fa-user"></i> View profile-->
-<!--</a>-->
-<!--</li>-->
-<!--<li>-->
-<!--<a href='#/my/items/current'>-->
-<!--<i class="fa fa-cog"></i> My Items-->
-<!--</a>-->
-<!--</li>-->
-<!--<li>-->
-<!--<a href='#'>-->
-<!--<i class="fa fa-cog"></i> Account Settings-->
-<!--</a>-->
-<!--</li>-->
-<!--<li>-->
-<!--<a href='#/logout'>-->
-<!--<i class="fa fa-power-off"></i> Sign off-->
-<!--</a>-->
-<!--</li>-->
-<!--</ul>-->
-<!--</li>-->
-<!--</ul>-->
-<!--</nav>-->
-<!--</div>-->
-
-
-
+    <div class="fullwidth" ng-include="'/views/partials/navigation.html'"></div>
 </header>
 
 <div class="wrapper">

@@ -1,35 +1,28 @@
-<div class="row">
-    <div class="two columns">
-
+<div class="requests">
+    <div class="header">
+        Requests
     </div>
-    <div class="five columns">
-        <p>{{person.username}}</p>
-    </div>
-    <div class="five columns">
-        <p>{{person.date_requested | amCalendar}}</p>
-    </div>
-</div>
-
-<div class="row" ng-repeat="person in requests" ng-hide="noRequests">
-    <div class="three columns">
-        <img ng-cloak ng-src="https://secure.gravatar.com/avatar/{{person.gravatar}}?s=90&d=identicon" width="50px"
-             height="auto"/>
-        <b>{{person.username}}</b>
-    </div>
-    <div class="three columns">
-        <p>{{person.date_requested | amCalendar}}</p>
-    </div>
-    <div class="three columns">
-        <button ng-click="accept(person.username)">Accept</button>
-    </div>
-    <div class="three columns">
-        <button ng-click="cancel(person.username)">Cancel</button>
+    <div class="row" ng-repeat="person in requests" ng-hide="noRequests">
+        <div class="four columns">
+            <img ng-cloak ng-src="https://secure.gravatar.com/avatar/{{person.gravatar}}?s=90&d=identicon" width="50px"
+                 height="auto"/>
+            <b>{{person.username}}</b>
+        </div>
+        <div class="five columns">
+            <p>{{person.date_requested | amCalendar}}</p>
+        </div>
+        <div class="six columns">
+            <button ng-click="accept(person.username)">Accept</button>
+            <button ng-click="deny(person.username)">Cancel</button>
+        </div>
     </div>
 
-
-</div>
-
-
-<div class="row" ng-show="noRequests">
-    No Requests :(
+    <div class="row noshow" ng-show="noRequests">
+        <div class="icon">
+            <i class="fa fa-frown-o"></i>
+        </div>
+        <div class="message">
+            No requests
+        </div>
+    </div>
 </div>

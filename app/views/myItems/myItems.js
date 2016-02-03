@@ -67,6 +67,7 @@ angular.module('app.myItems', ['ngRoute'])
                 }
             }).success(function(data, status, headers, config) {
                 $scope.products = data;
+                console.log(data);
             }).
             error(function(data, status, headers, config) {
                 $scope.error = true;

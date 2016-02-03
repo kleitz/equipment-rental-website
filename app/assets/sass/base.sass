@@ -19,8 +19,8 @@ $statusGreen: #4CAF50
 $bordercolour: #e3e3e3
 
 // Font sizes
-$titleSize: 3rem
-$subtitleSize: 2.3rem
+$titleSize: 2.3rem
+$subtitleSize: 1.3rem
 
 // Font weights
 $titleWeight: 600
@@ -94,11 +94,21 @@ $subTitleWeight: 400
 [ng\:cloak], [ng-cloak], .ng-cloak
   display: none
 
-html, body, .wrapper
-  background: #ECEFF1
+
+@media screen and (min-width: 0px)
+  html, body, .wrapper
+    background: #ECEFF1
+
+
+@media screen and (min-width: 1028px)
+  html, body, .wrapper
+    background: #ECEFF1
 
 
 [class*=column]
   width: calc(100%)
   margin-left: 0rem
   margin-right: 0rem
+
+.mdl-layout__header-row
+  box-shadow: none

@@ -14,6 +14,21 @@ angular.module('app.requestProduct', ['ngRoute', 'app.config'])
         $scope.noRequests = false;
         getRequests();
 
+        $scope.deny = function(username) {
+            $http({
+                url: backend + '/product/' + $routeParams.id + '/request/cancel',
+                method: 'POST',
+                headers: {
+                    'token': authFactory.getToken(),
+                    'username': username
+                },
+            }).success(function (data, status, headers, config) {
+                getRequests();
+                $scope.hasRequest = false;
+            }).error(function (data, status, headers, config) {
+                $scope.error = true;
+            });
+        }
 
         $scope.accept = function (username) {
             console.log(username);

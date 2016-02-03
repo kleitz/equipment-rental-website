@@ -137,8 +137,7 @@ angular.module('app.rentButton', ['app.config'])
                                     }
                                 }
                             }
-                        }).
-                        error(function (data, status, headers, config) {
+                        }).error(function (data, status, headers, config) {
                             $scope.error = true;
                         });
                     } else {
@@ -200,7 +199,7 @@ angular.module('app.rentButton', ['app.config'])
 
                 console.log($rootScope.loggedIn)
 
-                $scope.cancel = function(id) {
+                $scope.cancel = function (id) {
                     $http({
                         url: backend + '/product/' + $scope.datasource.id + '/request/cancel',
                         method: 'POST',
@@ -231,8 +230,7 @@ angular.module('app.rentButton', ['app.config'])
                         }).success(function (data, status, headers, config) {
                             getRentalStatus();
                             getOwnerAvailability();
-                        }).
-                        error(function (data, status, headers, config) {
+                        }).error(function (data, status, headers, config) {
                             $scope.error = true;
                         });
                     }
