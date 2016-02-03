@@ -1,0 +1,30 @@
+<div class="requests">
+    <div class="header">
+        My Requests
+    </div>
+    <div class="subheader">
+        Showing {{requests.length}} ongoing requests.
+    </div>
+    <div class="row" ng-repeat="item in requests" ng-hide="noRequests">
+        <div class="two columns">
+
+            <limage class="image" image='{{item}}' height="50" width="50" radius="50" preview=true></limage>
+        </div>
+        <div class="six columns">
+            <b>{{item.title}}</b>
+        </div>
+        <div class="four columns">
+            <a class="button button-red" ng-click="cancel(item.id, $index)">Cancel request</a>
+            <a class="button button-green" href="#/listing/{{item.id}}">View</a>
+        </div>
+    </div>
+
+    <div class="row noshow" ng-show="noRequests">
+        <div class="icon">
+            <i class="fa fa-frown-o"></i>
+        </div>
+        <div class="message">
+            No requests
+        </div>
+    </div>
+</div>

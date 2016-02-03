@@ -27,6 +27,7 @@ angular.module('app', [
     'app.fourOhFour',
     'app.requestProduct',
     'app.requestProducts',
+    'app.myrequests',
 
     // Directives
     'app.loginPanel',
