@@ -24,7 +24,7 @@ angular.module('app', [
     'app.cookie',
     'app.tags',
     'app.search',
-    'app.fourOhFour',
+    'app.fourohfour',
     'app.requestProduct',
     'app.requestProducts',
     'app.myrequests',

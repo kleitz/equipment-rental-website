@@ -1,10 +1,10 @@
 'use strict';
 
-angular.module('app.fourOhFour', ['ngRoute'])
+angular.module('app.fourohfour', ['ngRoute'])
 
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/fourOhFour', {
-            templateUrl: 'views/404/fourOhFour.html',
+            templateUrl: 'views/404/fourohfour.html',
             controller: 'fourOhFourCtrl'
         });
     }])
