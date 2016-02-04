@@ -4,5 +4,7 @@
 
 This repo holds the AngularJS based web app partition of my Honours Project at Dundee University.
 
+Built using angularjs
+
 > Site name: karite (borrow)
 
