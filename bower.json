@@ -30,7 +30,9 @@
     "angular-loading-bar": "~0.8.0",
     "bootstrap": "v4.0.0-alpha.2",
     "tether": "^1.1.1",
-    "skeletonframework": "^1.0.6"
+    "skeletonframework": "^1.0.6",
+    "angular-ui-bootstrap": "^1.1.2",
+    "angular-bootstrap": "^1.1.2"
   },
   "resolutions": {
     "angular": "1.4.8"

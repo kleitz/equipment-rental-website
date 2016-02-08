@@ -17,6 +17,7 @@
     "Image": true,
     "setTimeout": true,
     "Cookies": true,
-    "domain": true
+    "domain": true,
+    "document": true
   }
 }

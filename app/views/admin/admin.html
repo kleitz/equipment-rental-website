@@ -1,0 +1,25 @@
+<div class="admin" ng-show="loggedIn">
+    <div class="header">
+        <h1>Admin panel</h1>
+    </div>
+    <div class="row">
+        <div class="sidebar two columns">
+            <ul class="navigation">
+                <li><a href="#/admin/listing"><i class="fa fa-cubes"></i> Your Listing</a></li>
+                <li><a href="#/admin/requests/listing"><i class="fa fa-cube"></i> Listing Requests</a></li>
+                <li><a href="#/admin/requests/user"><i class="fa fa-user"></i> User Requests</a></li>
+                <li><a href="#/admin/profile"><i class="fa fa-cog"></i> Profile</a></li>
+            </ul>
+        </div>
+
+        <div class="content ten columns">
+            content
+        </div>
+    </div>
+
+</div>
+
+<div class="admin" ng-hide="loggedIn">
+    <h1>You must be logged in</h1>
+</div>
+

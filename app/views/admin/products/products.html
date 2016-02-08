@@ -1,0 +1,98 @@
+<div class="admin" ng-show="loggedIn">
+    <div class="header">
+        <div class="title">
+            <h1>Admin panel</h1>
+        </div>
+        <div class="subtitle">
+            <h3>Listing</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="sidebar two columns">
+            <ul class="navigation">
+                <li><a href="#/admin/listing"><i class="fa fa-cubes"></i> Your Listing</a></li>
+                <li><a href="#/admin/requests/listing"><i class="fa fa-cube"></i> Listing Requests</a></li>
+                <li><a href="#/admin/requests/user"><i class="fa fa-user"></i> User Requests</a></li>
+                <li><a href="#/admin/profile"><i class="fa fa-cog"></i> Profile</a></li>
+            </ul>
+        </div>
+
+
+        <div class="content ten columns">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Current holder</th>
+                    <th></th>
+
+                    <th>Date Added</th>
+                    <th>Last updated</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="product in products.items">
+                    <td>{{product.title}}</td>
+                    <td>{{product.description}}</td>
+                    <td>
+                        {{openContact}}
+                        <div class="lModal" ng-show="openContact">
+                            <div class="content">
+                                <div class="header">
+                                    Contact user {{product.holder.username}}
+                                </div>
+                                <div class="other">
+                                    <form ng-submit="sendMessage(product.holder.username, notification)">
+                                        <div class="row">
+                                                <label>Title</label>
+                                                <input class="u-full-width" type="text" placeholder="title" ng-model="notification.title">
+                                        </div>
+                                        <label for="exampleMessage">Message</label>
+                                        <textarea class="u-full-width" placeholder="Hi Dave …"
+                                                  id="exampleMessage" ng-model="notification.message"></textarea>
+                                        <label class="example-send-yourself-copy">
+                                            <input type="checkbox">
+                                            <span class="label-body">Send a copy to yourself</span>
+                                        </label>
+                                        <div class="row">
+                                            <div class="columns six">
+                                                <input class="button"  value="cancel" ng-click="openContact = false">
+                                            </div>
+                                            <div class="columns six">
+                                                <input class="button-primary" type="submit" value="Send">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="btn-group" ng-show="product.holder.username">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                {{product.holder.username}} <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a ng-click="openContact = !openContact">Contact</a></li>
+                            </ul>
+                        </div>
+
+
+                    </td>
+                    <!--<td><button ng-click="sendNotification(product.holder.username)" ng-show="product.holder.username">Contact holder</button></td>-->
+                    <td>{{product.date_added | amCalendar}}</td>
+                    <td>{{product.date_updated | amCalendar}}</td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<div class="admin" ng-hide="loggedIn">
+    <h1>You must be logged in</h1>
+</div>
+

@@ -3,6 +3,7 @@
 // Declare app level module which depends on views, and components
 angular.module('app', [
     'ngRoute',
+    'ngAnimate',
     'app.home',
     'app.login',
     'app.logout',
@@ -28,6 +29,10 @@ angular.module('app', [
     'app.requestProduct',
     'app.requestProducts',
     'app.myrequests',
+
+    //Admin panel views
+    'app.admin',
+    'app.admin.listing',
 
     // Directives
     'app.loginPanel',

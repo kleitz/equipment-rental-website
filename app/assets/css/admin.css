@@ -1,0 +1,68 @@
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none; }
+
+@media screen and (min-width: 0px) {
+  html, body, .wrapper {
+    background: #ECEFF1; } }
+
+@media screen and (min-width: 1028px) {
+  html, body, .wrapper {
+    background: #ECEFF1; } }
+
+[class*=column] {
+  width: calc(100%);
+  margin-left: 0rem;
+  margin-right: 0rem; }
+
+.mdl-layout__header-row {
+  box-shadow: none; }
+
+.wrapper.admin {
+  width: 100% !important;
+  padding: 0 !important; }
+
+.admin .header {
+  background: #fff;
+  border-bottom: none;
+  min-height: 50vh;
+  background: #2c3e50;
+  color: #ecf0f1;
+  padding: 15px;
+  min-height: 50px; }
+  .admin .header .title, .admin .header .subtitle {
+    display: flex;
+    justify-content: center; }
+
+.admin .sidebar {
+  background: #2c3e50;
+  color: #ecf0f1;
+  height: 100%;
+  min-height: 45vh; }
+  .admin .sidebar ul, .admin .sidebar li {
+    padding: 0;
+    margin: 0; }
+  .admin .sidebar .navigation {
+    list-style: none;
+    height: 100%;
+    margin: 0;
+    text-align: left;
+    font-size: 0.9rem; }
+    .admin .sidebar .navigation li {
+      margin-top: 10px;
+      padding: 10px; }
+    .admin .sidebar .navigation i {
+      color: #e74c3c;
+      padding-right: 10px;
+      font-size: 2rem; }
+    .admin .sidebar .navigation :hover {
+      background: #e74c3c; }
+    .admin .sidebar .navigation :hover i {
+      color: #ecf0f1; }
+
+.admin .content {
+  min-height: 45vh; }
+  .admin .content table {
+    width: 100%; }
+
+.navbar.admin {
+  background: #014462 !important; }
