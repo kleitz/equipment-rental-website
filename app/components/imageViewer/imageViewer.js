@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('app.limage', ['app.config'])
-    .directive('limage', function () {
+angular.module('app.imageViewer', ['app.config'])
+    .directive('imageViewer', function () {
         return {
             restrict: 'AEC',
             scope: {
@@ -12,7 +12,7 @@ angular.module('app.limage', ['app.config'])
                 radius: '=',
                 quality: '@'
             },
-            templateUrl: 'components/image/image.html',
+            templateUrl: 'components/imageViewer/imageViewer.html',
             controller: function ($scope, $colorThief) {
                 var rgb;
                 $scope.tap = function () {
@@ -77,22 +77,19 @@ angular.module('app.limage', ['app.config'])
                         if ($scope.image !== '{{product}}' && $scope.image !== 'undefined' && $scope.image !== '') {
 
                             $scope.data = JSON.parse($scope.image);
-                            if ($scope.data.images !== undefined) {
-                                $scope.data = $scope.data.images[0].size;
-                            } else {
-                                $scope.data = $scope.data.image[0].size;
-                            }
+                            console.log($scope.data)
 
-                            $scope.url = domain + $scope.data.large;
+
+                            $scope.url = domain + $scope.data.size.large;
                             var url;
                             if ($scope.quality === 'small') {
-                                url = domain + $scope.data.small;
+                                url = domain + $scope.data.size.small;
                             } else if ($scope.quality === 'medium') {
-                                url = domain + $scope.data.medium;
+                                url = domain + $scope.data.size.medium;
                             } else if ($scope.quality === 'large') {
-                                url = domain + $scope.data.large;
+                                url = domain + $scope.data.size.large;
                             } else {
-                                url = domain + $scope.data.thumb;
+                                url = domain + $scope.data.size.thumb;
                             }
 
 
@@ -106,7 +103,7 @@ angular.module('app.limage', ['app.config'])
                                 setTimeout(function () {
                                     rgb = $colorThief.getColor(img);
                                     $scope.previewStyle['background-color'] =  'rgba(' + rgb + ', 0.9)',
-                                    $scope.imageStyle['background-image'] = 'url(\"' + url + '\")';
+                                        $scope.imageStyle['background-image'] = 'url(\"' + url + '\")';
                                     $scope.imageStyles['background-image'] = 'url(\"' + $scope.url + '\")';
                                     $scope.imageStyle.border = '3px solid rgb(' + rgb + ')';
                                     $scope.$apply();

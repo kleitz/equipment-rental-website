@@ -15,6 +15,10 @@
 
                 </div>
                 <div class="row">
+                    <h4>Images</h4>
+                    <image-viewer class="images" image='{{image}}' preview=true radius="5" quality="medium" height='100' width='100' ng-repeat="image in product.image" ng-if="$index >= 1"></image-viewer>
+                </div>
+                <div class="row">
                     <h4>Tags</h4>
                     <div class="tags">
                         <div class="tag" ng-repeat="tag in product.tags">{{tag.tag}}</div>
@@ -31,6 +35,10 @@
                 <div class="row description">
                     <h3>Description</h3>
                     {{product.description}}
+                </div>
+                <div class="row condition">
+                    <h3>Condition</h3>
+                    {{product.condition}}
                 </div>
 
             </div>

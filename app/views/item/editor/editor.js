@@ -10,7 +10,7 @@ angular.module('app.editor', ['ngRoute'])
             });
         }
     ])
-    .controller('itemEditorCtrl', ['$rootScope', '$scope', '$http', '$routeParams', 'authFactory', '$location', function ($rootScope, $scope, $http, $routeParams, authFactory, $location) {
+    .controller('itemEditorCtrl', ['$rootScope', '$scope', '$http', '$routeParams', 'authFactory', '$location', 'Notification', function ($rootScope, $scope, $http, $routeParams, authFactory, $location, Notification) {
 
         function loadData() {
             $http({
@@ -27,7 +27,7 @@ angular.module('app.editor', ['ngRoute'])
                 //$scope.product.tags = tags.toString();
 
                 console.log(data.items[0])
-                $scope.product.image = domain + data.items[0].image.size.large;
+                $scope.product.image = domain + data.items[0].image[0].size.large;
                 //$scope.url = domain + data.items[0].image.size.large
             }).error(function (data, status, headers, config) {
                 console.log('error');
@@ -81,7 +81,7 @@ angular.module('app.editor', ['ngRoute'])
 
         $scope.product = {};
         $scope.message = {
-            button: 'Create',
+            button: 'Edit',
             submit: 'loading',
             loading: 'processing',
             failed: 'failed',
@@ -105,6 +105,66 @@ angular.module('app.editor', ['ngRoute'])
             }
         };
         $scope.uploadButtonClass = [];
+
+        $scope.uploadAnotherImage = function(newImage) {
+            var fd = new FormData();
+            fd.append('image', newImage.base64[0].base64);
+            fd.append('filetype', newImage.base64[0].filetype);
+
+            $http({
+                url: backend + "/product/" + $routeParams.id + "/image/add",
+                method: 'POST',
+                dataType: 'multipart/form-data',
+                data: fd,
+                transformRequest: angular.identity,
+                headers: {
+                    'Content-Type': undefined,
+                    'token': authFactory.getToken(),
+                }
+            }).success(function (data, status, headers, config) {
+                console.log(data)
+            }).error(function (data, status, headers, config) {
+
+                // $scope.success = false;
+
+            });
+        }
+        $scope.fileChange = function(data) {
+            var file = document.getElementById('fileUploader').files[0];
+            var preview = document.getElementById('newimagePreview');
+            if (file) {
+                var reader  = new FileReader();
+                reader.onloadend = function () {
+                    preview.src = reader.result;
+                }
+                reader.readAsDataURL(file)
+            }
+        }
+
+        $scope.edit = function(product) {
+            var fd = new FormData();
+            fd.append('title', product.title);
+            fd.append('description', product.description);
+            fd.append('rental_period_limit', product.days);
+            fd.append('condition', product.condition);
+            $http({
+                url: backend + '/product/' + $routeParams.id + '/edit',
+                method: 'POST',
+                headers: {
+                    'Content-Type': undefined,
+                    'token': authFactory.getToken()
+                },
+                data: fd
+            }).success(function (data, status, headers, config) {
+                Notification.success({message:'Edited successfully', positionY: 'bottom', positionX: 'center'});
+
+            }).error(function (data, status, headers, config) {
+        Notification.error({message: 'Error: Something went wrong', positionY: 'bottom', positionX: 'center'});
+                $scope.error = true;
+            });
+        }
+
+
 
         if ($rootScope.loggedIn) {
             loadData();

@@ -99,6 +99,7 @@ angular.module('app.creator', ['ngRoute'])
               fd.append('image', product.base64[0].base64);
               fd.append('tags', product.tags);
               fd.append('filetype', product.base64[0].filetype);
+              fd.append('condition', product.condition);
 
               $http({
                 url: backend + "/p",
@@ -111,7 +112,7 @@ angular.module('app.creator', ['ngRoute'])
                   'token': authFactory.getToken(),
                 }
               }).success(function (data, status, headers, config) {
-                $location.path('/listing/' + data.items[0].id);
+                $location.path('/owner/listing/' + data.items[0].id);
               }).error(function (data, status, headers, config) {
 
                 // $scope.success = false;

@@ -29,6 +29,10 @@
             <input class="u-full-width" ng-model="product.description" type="text" placeholder="Description: an awesome product">
         </div>
         <div class="">
+            <label for="">Condition: <char-limit input="{{product.condition}}", limit="140"></char-limit><p class="textred" ng-show="message.error.description.enable">{{message.error.description.text}}</p></label>
+            <input class="u-full-width" ng-model="product.condition" type="text" placeholder="Condition: New, Like New, Damaged, etc.">
+        </div>
+        <div class="">
             <label for="">Days availability <p class="textred" ng-show="message.error.days.enable">{{message.error.days.text}}</p></label>
             <input class="u-full-width" ng-model="product.days" type="number" placeholder="7 Days">
         </div>

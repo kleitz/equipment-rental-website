@@ -41,3 +41,15 @@
     .editortags .editorTagBase .tag:hover {
       background: #e74c3c;
       color: #ecf0f1; }
+
+.editor .title {
+  display: flex;
+  justify-content: center;
+  padding: 25px; }
+
+.editor .images {
+  display: flex;
+  justify-content: center; }
+  .editor .images .image {
+    padding: 10px;
+    max-width: 400px; }

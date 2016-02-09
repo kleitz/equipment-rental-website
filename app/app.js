@@ -33,6 +33,8 @@ angular.module('app', [
     //Admin panel views
     'app.admin',
     'app.admin.listing',
+    'app.admin.authorize',
+    'app.admin.site',
 
     // Directives
     'app.loginPanel',
@@ -48,6 +50,7 @@ angular.module('app', [
     'app.charLimit',
     'app.editorTag',
     'app.tagSearch',
+    'app.imageViewer',
     // Factories
     'app.config',
     'app.auth',
