@@ -198,7 +198,7 @@ angular.module('app.editor', ['ngRoute'])
 
                     if (product) {
                         if (product.base64 && product.title && product.description && product.days) {
-                            console.log(product);
+                            //console.log(product);
                             // $scope.uploadButtonClass.push('button-primary');
                             $scope.message.button = $scope.message.loading;
 

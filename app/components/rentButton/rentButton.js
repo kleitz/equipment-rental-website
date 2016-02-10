@@ -77,7 +77,7 @@ angular.module('app.rentButton', ['app.config'])
                                 'token': authFactory.getToken()
                             },
                         }).success(function (data, status, headers, config) {
-                            console.log(data);
+                            //console.log(data);
                             $scope.ownerAvail = data;
                         }).error(function (data, status, headers, config) {
                             $scope.error = true;
@@ -95,7 +95,7 @@ angular.module('app.rentButton', ['app.config'])
                         },
                     }).success(function (data, status, headers, config) {
                         $scope.requestData = data;
-                        console.log(data)
+                        //console.log(data)
                         $scope.hasRequest = data.requested;
                     }).error(function (data, status, headers, config) {
                         $scope.error = true;
@@ -112,7 +112,7 @@ angular.module('app.rentButton', ['app.config'])
                             },
                         }).success(function (data, status, headers, config) {
                             $scope.result = data;
-                            console.log(data)
+                            //console.log(data)
 
 
                             $scope.gotRes = true;
@@ -197,7 +197,8 @@ angular.module('app.rentButton', ['app.config'])
                     }
                 }
 
-                console.log($rootScope.loggedIn)
+                //console.log($rootScope.loggedIn)
+
 
                 $scope.cancel = function (id) {
                     $http({

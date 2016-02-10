@@ -18,7 +18,7 @@ angular.module('app.image', ['ngRoute'])
             url: backend + "/image/" + $routeParams.filename,
             method: 'GET'
         }).success(function(data, status, headers, config) {
-            console.log(data.image);
+            //console.log(data.image);
             $scope.images = data.image;
         }).
             error(function(data, status, headers, config) {

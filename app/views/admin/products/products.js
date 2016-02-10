@@ -51,7 +51,7 @@ angular.module('app.admin.listing', ['ngRoute'])
                 })
             }).success(function(data, status, headers, config) {
                 $scope.openContact = false;
-                console.log(data)
+                //console.log(data)
             }).
             error(function(data, status, headers, config) {
                 $scope.error = true;
@@ -69,11 +69,7 @@ angular.module('app.admin.listing', ['ngRoute'])
                 }
             }).success(function(data, status, headers, config) {
                 $scope.products = data;
-                console.log(data);
 
-                for (var i = 0; i < data.items.length; i++) {
-                    console.log(data.items[i].owner)
-                }
             }).
             error(function(data, status, headers, config) {
                 $scope.error = true;

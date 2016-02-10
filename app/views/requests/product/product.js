@@ -31,7 +31,7 @@ angular.module('app.requestProduct', ['ngRoute', 'app.config'])
         }
 
         $scope.accept = function (username) {
-            console.log(username);
+            //console.log(username);
             $http({
                 url: backend + "/product/" + $routeParams.id + "/request/authorize/" + username,
                 method: 'POST',
@@ -47,7 +47,7 @@ angular.module('app.requestProduct', ['ngRoute', 'app.config'])
         };
 
         $scope.cancel = function(username) {
-            console.log(username);
+            //console.log(username);
         };
 
         function getRequests() {

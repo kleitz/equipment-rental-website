@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.likeHeart', ['app.config'])
-    .directive('likeHeart', function() {
+    .directive('likeHeart', function () {
         return {
             restrict: 'AEC',
             scope: {
@@ -10,18 +10,33 @@ angular.module('app.likeHeart', ['app.config'])
                 path: '@'
             },
             templateUrl: 'components/likeHeart/likeHeart.html',
+            controller: function ($scope, $http, $routeParams, authFactory) {
+                if ($scope.like && $scope.scope) {
+                    var data, tab;
+                    $scope.toggleME = false;
 
-            controller: function($scope, $http, $routeParams, authFactory) {
-                var data, tab;
-                $scope.toggleME = false;
-                //$scope.heartClass = 'fa-heart-o';
+                    $scope.$watch('likes', function (newval, oldval) {
+                        data = JSON.parse(newval);
+                        $scope.likes = data;
+                        scan();
 
-                $scope.$watch('likes', function(newval, oldval) {
-                    data = JSON.parse(newval);
-                    $scope.likes = data;
-                    scan();
+                    });
 
-                });
+                    $scope.tap = function () {
+                        tab = JSON.parse($scope.scope);
+                        if (tab.id) {
+                            tab = tab.id;
+                        } else {
+                            tab = tab.product_id;
+                        }
+
+                        if (data.liked) {
+                            unlike(tab);
+                        } else {
+                            like(tab);
+                        }
+                    }
+                }
 
                 function scan() {
                     if (data.liked) {
@@ -75,39 +90,8 @@ angular.module('app.likeHeart', ['app.config'])
 
                 }
 
-                $scope.tap = function() {
-                    tab = JSON.parse($scope.scope);
-                    if (tab.id) {
-                        tab = tab.id;
-                    } else {
-                        tab = tab.product_id;
-                    }
-
-                    if (data.liked) {
-                        unlike(tab);
-                    } else {
-                        like(tab);
-                    }
-                }
-
-                //$scope.hover = function(active) {
-                //    if (!active) {
-                //        if (data.liked) {
-                //            $scope.heartClass = 'fa-heart-o liked';
-                //            $scope.textClass = 'light';
-                //        } else {
-                //            $scope.heartClass = 'fa-heart-o unliked';
-                //            $scope.textClass = 'dark';
-                //        }
-                //
-                //    } else {
-                //        $scope.heartClass = 'fa-heart liked';
-                //        $scope.textClass = 'light';
-                //
-                //    }
-                //};
             },
-            link: function(scope, elem, attrs) {
+            link: function (scope, elem, attrs) {
                 // Just for altering the DOM
             }
         };

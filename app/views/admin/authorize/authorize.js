@@ -65,11 +65,11 @@ angular.module('app.admin.authorize', ['ngRoute'])
                 }
             }).success(function(data, status, headers, config) {
                 $scope.products = data;
-                console.log(data);
+                //console.log(data);
 
-                for (var i = 0; i < data.items.length; i++) {
-                    console.log(data.items[i].owner)
-                }
+                //for (var i = 0; i < data.items.length; i++) {
+                //    console.log(data.items[i].owner)
+                //}
             }).
             error(function(data, status, headers, config) {
                 $scope.error = true;

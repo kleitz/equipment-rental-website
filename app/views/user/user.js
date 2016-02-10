@@ -18,7 +18,7 @@ angular.module('app.user', ['ngRoute'])
                 url: backend + "/user/" + $routeParams.user,
                 method: 'GET'
             }).success(function(data, status, headers, config) {
-                console.log(data);
+                //console.log(data);
                 $scope.user = data;
                 $http({
                     url: backend + "/identify/qr/user",

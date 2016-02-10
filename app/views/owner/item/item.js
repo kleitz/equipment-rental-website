@@ -22,7 +22,7 @@ angular.module('app.ownerItem', ['ngRoute'])
         });
 
     $scope.deleteItem = function() {
-        console.log("deleteing");
+        //console.log("deleteing");
         $http({
             url: backend + '/product/' + $routeParams.id + '/delete',
             method: 'DELETE',

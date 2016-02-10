@@ -69,7 +69,7 @@ angular.module('app.ownerItems', ['ngRoute'])
                 }
             }).success(function(data, status, headers, config) {
                 $scope.products = data;
-                console.log(data);
+                //console.log(data);
             }).
             error(function(data, status, headers, config) {
                 $scope.error = true;
