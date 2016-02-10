@@ -127,7 +127,7 @@ angular.module('app.rentButton', ['app.config'])
                                     if ($scope.gotRes) {
                                         if (data.owner) {
                                             $scope.holding = true;
-                                            $scope.availability = 'You current own this';
+                                            $scope.availability = 'You currently own this';
                                         } else {
                                             $scope.availability = "Unavailable";
                                             $scope.status = "Unavailable";
