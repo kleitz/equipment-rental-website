@@ -16,7 +16,7 @@ angular.module('app.likeHeart', ['app.config'])
                     $scope.toggleME = false;
 
                     $scope.$watch('likes', function (newval, oldval) {
-                        data = JSON.parse(newval);
+                        data = JSON.parse($scope.likes);
                         $scope.likes = data;
                         scan();
 
