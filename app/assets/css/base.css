@@ -7,7 +7,7 @@
 
 @media screen and (min-width: 1028px) {
   html, body, .wrapper {
-    background: #ECEFF1; } }
+    background: #fafafa; } }
 
 [class*=column] {
   width: calc(100%);

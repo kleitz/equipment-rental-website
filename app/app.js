@@ -51,6 +51,8 @@ angular.module('app', [
     'app.editorTag',
     'app.tagSearch',
     'app.imageViewer',
+    'app.editorImage',
+    'app.likeHeart',
     // Factories
     'app.config',
     'app.auth',

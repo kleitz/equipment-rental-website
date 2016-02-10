@@ -16,7 +16,7 @@ angular.module('app.requestProducts', ['ngRoute', 'app.config'])
 
 
         $scope.cancel = function(username) {
-            console.log(username);
+            //console.log(username);
         };
 
         function getRequests() {
@@ -30,11 +30,11 @@ angular.module('app.requestProducts', ['ngRoute', 'app.config'])
                     'count': 10
                 }
             }).success(function (data, status, headers, config) {
-                console.log(data.items)
+                //console.log(data.requests)
                 if (data.total === 0) {
                     $scope.noRequests = true;
                 }
-                $scope.requests = data.items;
+                $scope.requests = data.requests;
             }).error(function (data, status, headers, config) {
                 $scope.error = true;
             });

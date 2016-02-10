@@ -7,7 +7,7 @@
 
 @media screen and (min-width: 1028px) {
   html, body, .wrapper {
-    background: #ECEFF1; } }
+    background: #fafafa; } }
 
 [class*=column] {
   width: calc(100%);
@@ -43,7 +43,8 @@ header {
   position: fixed;
   width: 100%;
   top: 0;
-  left: 0; }
+  left: 0;
+  z-index: 100; }
   header .navbar {
     background: #03A9F4 !important;
     width: 100%;
@@ -219,7 +220,8 @@ header {
         width: 50px; }
   .listing .item {
     min-height: 100px;
-    border-bottom: 1px solid #e3e3e3; }
+    border-bottom: 1px solid #e3e3e3;
+    max-width: 100%; }
     .listing .item .row {
       min-height: 100px;
       width: 100%; }
@@ -337,7 +339,7 @@ header {
   @media screen and (min-width: 1200px) {
     .listing .item {
       margin: 0 auto;
-      width: 800px; } }
+      width: 100%; } }
 
 .user {
   width: 100%;
@@ -578,3 +580,12 @@ header {
       border-bottom: 1px solid #e3e3e3; }
     .lModal .content .other {
       padding: 10px; }
+
+.comment {
+  border-bottom: 1px solid #e3e3e3;
+  padding: 20px; }
+
+.deletebutton {
+  color: #df2029; }
+  .deletebutton :hover {
+    color: #9c161d; }

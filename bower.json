@@ -32,7 +32,9 @@
     "tether": "^1.1.1",
     "skeletonframework": "^1.0.6",
     "angular-ui-bootstrap": "^1.1.2",
-    "angular-bootstrap": "^1.1.2"
+    "angular-bootstrap": "^1.1.2",
+    "ics.js": "^0.1.3",
+    "angular-ical": "^1.1.0"
   },
   "resolutions": {
     "angular": "1.4.8"

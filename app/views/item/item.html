@@ -1,14 +1,15 @@
 <div class="itemview">
     <div class="content">
-        <div class="row" ng-show="owner">
 
+        <div class="row" ng-hide="product.owner == auth.owner" ng-cloak>
             <button class="button button-red" ng-click="deleteItem()">Delete</button>
             <a class="button button-green" href="#/listing/{{product.id}}/edit">edit</a>
         </div>
         <div class="row">
             <div class="five columns">
                 <div class="row image">
-                    <limage class="image" image='{{product}}' preview=true radius="5" quality="medium" height='150' width='150'></limage>
+                    <limage class="image" image='{{product}}' preview=true radius="5" quality="medium" height='150'
+                            width='150'></limage>
                 </div>
                 <div class="row title">
                     <h2>{{product.title}}</h2>
@@ -16,7 +17,8 @@
                 </div>
                 <div class="row">
                     <h4>Images</h4>
-                    <image-viewer class="images" image='{{image}}' preview=true radius="5" quality="medium" height='100' width='100' ng-repeat="image in product.image" ng-if="$index >= 1"></image-viewer>
+                    <image-viewer class="images" image='{{image}}' preview=true radius="5" quality="medium" height='100'
+                                  width='100' ng-repeat="image in product.image" ng-if="$index >= 1"></image-viewer>
                 </div>
                 <div class="row">
                     <h4>Tags</h4>
@@ -66,7 +68,41 @@
             </div>
         </div>
 
+        <div class="row">
+            <h4>Add comment</h4>
+            <form ng-submit="addComment(comment)">
+                <input type="text" ng-model="comment.message">
+                <input type="submit" value="Comment" ng-hide="comment.processing">
+                <input type="button" value="Processing...." ng-show="comment.processing">
+            </form>
 
+
+        </div>
+        <div class="row">
+            <h4>Comments</h4>
+            <div class="comments">
+                <div class="comment row animated fadeIn"
+                     ng-repeat="comment in product.comments | orderBy:'-date_added'">
+                    <div class="two columns">
+                        <img ng-cloak
+                             ng-src="https://secure.gravatar.com/avatar/{{comment.author.gravatar}}?s=90&d=identicon"
+                             width="50px" height="auto"/>
+
+                    </div>
+                    <div class="two columns">
+                        <a href="#/user/{{comment.author.username}}">@{{comment.author.username}}</a>
+                    </div>
+                    <div class="six columns">
+                        {{comment.message}}
+                    </div>
+                    <div class="two columns">
+                        <!--<span am-time-ago="comment.date_added"></span>-->
+                        <span class="deletebutton" ng-click="deleteComment(comment.id, $index)" ng-if="comment.author.username == auth.username"><i class="fa fa-times"></i> Delete</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

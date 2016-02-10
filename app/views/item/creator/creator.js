@@ -112,7 +112,7 @@ angular.module('app.creator', ['ngRoute'])
                   'token': authFactory.getToken(),
                 }
               }).success(function (data, status, headers, config) {
-                $location.path('/owner/listing/' + data.items[0].id);
+                $location.path('/listing/' + data.items[0].id);
               }).error(function (data, status, headers, config) {
 
                 // $scope.success = false;

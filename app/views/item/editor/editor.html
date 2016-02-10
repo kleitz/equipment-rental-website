@@ -3,35 +3,12 @@
         <h1>Editor</h1>
     </div>
 
-    <!--<div class="four columns makemered" ng-show="error">-->
-        <!--<p>{{error}}</p>-->
-    <!--</div>-->
     <div class="row">
         <div class="six columns images">
-            <div class="image">
+            <div class="mainImage">
                 <h2>Main Image</h2>
-                <img ng-src="{{product.image}}" alt="Image preview" id="imagePreview" width="100%" height="auto"
-                     class="imagePreview">
-                <form ng-submit="uploadAnotherImage(newimage)">
-                    <div class="row">
-                        <div class="four columns">
-                            <label for="">Add new image<p class="textred" ng-show="message.error.image.enable">{{message.error.image.text}}</p></label>
-
-
-                            <input class="u-full-width" value="load" ng-model="newimage.base64" ng-change="fileChange(this)" id="fileUploader" multiple accept="image/*" type="file" base-sixty-four-input>
-                            <div class="">
-                                <input type="submit" ng-class="uploadButtonClass" value="Add Image">
-                            </div>
-                        </div>
-
-
-
-                        <div class="eight columns">
-                            <img ng-src="{{newimage.image}}" alt="Image preview" id="newimagePreview" width="100%" class="imagePreview">
-                        </div>
-
-                    </div>
-                </form>
+                <img ng-src="{{preDomain}}{{product.image[0].size.large}}" alt="Image preview" id="imagePreview" width="100%" height="auto"
+                     class="imagePreview animated fadeIn">
             </div>
         </div>
         <div class="six columns">
@@ -96,6 +73,36 @@
             </form>
         </div>
 
+    </div>
+    <div class="row">
+        <h3>Images</h3>
+        <p>Hover over an item to select preview or delete</p>
+        <div class="images">
+            <div class="image" ng-repeat="image in product.image track by $index">
+                <editor-image class="images animate-enter animated fadeIn" image='{{image}}' index="{{$index}}" preview=true radius="5" quality="medium" height='200' width='150'></editor-image>
+
+            </div>
+        </div>
+        <form ng-submit="uploadAnotherImage(newimage)">
+            <div class="row">
+                <div class="four columns">
+                    <label for="">Add new image<p class="textred" ng-show="message.error.image.enable">{{message.error.image.text}}</p></label>
+
+
+                    <input class="u-full-width" value="load" ng-model="newimage.base64" ng-change="fileChange(this)" id="fileUploader" multiple accept="image/*" type="file" base-sixty-four-input>
+                    <div class="">
+                        <input type="submit" ng-class="uploadButtonClass" value="Add Image">
+                    </div>
+                </div>
+
+
+
+                <div class="eight columns">
+                    <img ng-src="{{newimage.image}}" alt="Image preview" id="newimagePreview" width="100%" class="imagePreview">
+                </div>
+
+            </div>
+        </form>
     </div>
     <div class="row">
         <!--<div class="four columns">-->

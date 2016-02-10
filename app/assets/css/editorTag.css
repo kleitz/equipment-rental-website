@@ -7,7 +7,7 @@
 
 @media screen and (min-width: 1028px) {
   html, body, .wrapper {
-    background: #ECEFF1; } }
+    background: #fafafa; } }
 
 [class*=column] {
   width: calc(100%);
@@ -47,9 +47,16 @@
   justify-content: center;
   padding: 25px; }
 
+.editor .mainImage {
+  max-width: 400px;
+  padding: 10px; }
+
 .editor .images {
   display: flex;
-  justify-content: center; }
+  justify-content: left;
+  flex-wrap: wrap; }
   .editor .images .image {
+    display: flex;
+    justify-content: stretch;
     padding: 10px;
     max-width: 400px; }

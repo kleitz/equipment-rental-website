@@ -10,13 +10,13 @@ angular.module('app.items', ['ngRoute'])
         });
     }
 ])
-.controller('itemsCtrl', ['$rootScope', '$scope', '$http', '$location', function($rootScope, $scope, $http, $location, $watch) {
+.controller('itemsCtrl', ['$rootScope', '$scope', '$http', '$location', 'authFactory', function($rootScope, $scope, $http, $location, authFactory, $watch) {
     if (window.localStorage.getItem("product_count")) {
         $scope.count = parseInt(window.localStorage.getItem("product_count"));
     } else {
         window.localStorage.setItem("product_count", 10);
         $scope.count = 10;
-    };
+    }
 
     $scope.goto = function(id) {
         $location.path('/listing/' + id);
@@ -66,7 +66,8 @@ angular.module('app.items', ['ngRoute'])
             method: 'GET',
             headers: {
                 'Start':$scope.start,
-                'Count':$scope.count
+                'Count':$scope.count,
+                'token': authFactory.getToken(),
             }
         }).success(function(data, status, headers, config) {
             $scope.products = data;

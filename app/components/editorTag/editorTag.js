@@ -11,8 +11,6 @@ angular.module('app.editorTag', ['app.config', 'app.auth'])
             },
             templateUrl: 'components/editorTag/editorTag.html',
             controller: function($scope, $routeParams, $http, authFactory, $timeout) {
-                console.log($scope.index)
-
                 $scope.tagclass = "editorTagBase";
 
                 $scope.remove = function() {

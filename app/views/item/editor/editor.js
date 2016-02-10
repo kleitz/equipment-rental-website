@@ -20,15 +20,7 @@ angular.module('app.editor', ['ngRoute'])
                 $scope.product = data.items[0];
                 $scope.product.days = data.items[0].product_rental_period_limit;
 
-                //var tags = [];
-                //for (var i = 0; i < data.items[0].tags.length; i++) {
-                //    tags.push(data.items[0].tags[i].tag)
-                //}
-                //$scope.product.tags = tags.toString();
-
-                console.log(data.items[0])
-                $scope.product.image = domain + data.items[0].image[0].size.large;
-                //$scope.url = domain + data.items[0].image.size.large
+                $scope.preDomain = domain;
             }).error(function (data, status, headers, config) {
                 console.log('error');
                 $scope.error = true;
@@ -37,7 +29,7 @@ angular.module('app.editor', ['ngRoute'])
 
         $scope.addTag = function() {
             addTag();
-        }
+        };
 
         function getTags() {
             $http({
@@ -53,6 +45,10 @@ angular.module('app.editor', ['ngRoute'])
 
         $scope.$on('refreshTags', function(index) {
             $scope.product.tags.splice(index.targetScope.index, 1);
+        });
+
+        $scope.$on('refreshImageEditor', function(index) {
+            $scope.product.image.splice(index.targetScope.index, 1);
         });
 
         function addTag() {
@@ -122,13 +118,15 @@ angular.module('app.editor', ['ngRoute'])
                     'token': authFactory.getToken(),
                 }
             }).success(function (data, status, headers, config) {
-                console.log(data)
+                Notification.success({message:'Image Added: it will appear shortly', positionY: 'bottom', positionX: 'center'});
+                loadData();
+                var preview = document.getElementById('newimagePreview');
+                preview.src = "";
             }).error(function (data, status, headers, config) {
-
-                // $scope.success = false;
-
+                Notification.error({message: 'Error: Something went wrong', positionY: 'bottom', positionX: 'center'});
+                $scope.error = true;
             });
-        }
+        };
         $scope.fileChange = function(data) {
             var file = document.getElementById('fileUploader').files[0];
             var preview = document.getElementById('newimagePreview');
@@ -136,10 +134,10 @@ angular.module('app.editor', ['ngRoute'])
                 var reader  = new FileReader();
                 reader.onloadend = function () {
                     preview.src = reader.result;
-                }
-                reader.readAsDataURL(file)
+                };
+                reader.readAsDataURL(file);
             }
-        }
+        };
 
         $scope.edit = function(product) {
             var fd = new FormData();
@@ -162,7 +160,7 @@ angular.module('app.editor', ['ngRoute'])
         Notification.error({message: 'Error: Something went wrong', positionY: 'bottom', positionX: 'center'});
                 $scope.error = true;
             });
-        }
+        };
 
 
 
@@ -230,7 +228,7 @@ angular.module('app.editor', ['ngRoute'])
                         }
                     }
                 }
-            }
+            };
         }
 
     }]);
