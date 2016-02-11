@@ -16,10 +16,6 @@ angular.module('app.likeHeart', ['app.config'])
                     return object === {}.constructor;
                 }
 
-                function returnJSON(object) {
-                    return JSON.parse(object)
-                }
-
                 var data, tab;
                 $scope.toggleME = false;
 
@@ -41,20 +37,20 @@ angular.module('app.likeHeart', ['app.config'])
                 });
 
                 $scope.tap = function () {
+                    console.log("we tapped")
                     tab = JSON.parse($scope.scope);
                     if (tab.id) {
                         tab = tab.id;
                     } else {
                         tab = tab.product_id;
                     }
-                    if (isObject(data)) {
-
-                        if (data.liked) {
-                            unlike(tab);
-                        } else {
-                            like(tab);
-                        }
+                    
+                    if (data.liked) {
+                        unlike(tab);
+                    } else {
+                        like(tab);
                     }
+
                 };
 
 
