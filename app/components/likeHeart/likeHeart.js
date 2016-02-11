@@ -10,25 +10,44 @@ angular.module('app.likeHeart', ['app.config'])
                 path: '@'
             },
             templateUrl: 'components/likeHeart/likeHeart.html',
-            controller: function ($scope, $http, $routeParams, authFactory) {
-                if ($scope.like && $scope.scope) {
-                    var data, tab;
-                    $scope.toggleME = false;
+            controller: function ($scope, $attrs, $http, $routeParams, authFactory) {
 
-                    $scope.$watch('likes', function (newval, oldval) {
-                        data = JSON.parse($scope.likes);
-                        $scope.likes = data;
-                        scan();
+                function isObject(object) {
+                    return object === {}.constructor;
+                }
 
-                    });
+                function returnJSON(object) {
+                    return JSON.parse(object)
+                }
 
-                    $scope.tap = function () {
-                        tab = JSON.parse($scope.scope);
-                        if (tab.id) {
-                            tab = tab.id;
-                        } else {
-                            tab = tab.product_id;
-                        }
+                var data, tab;
+                $scope.toggleME = false;
+
+                $scope.$watch('likes', function (newval, oldval) {
+
+                    // Check if input is a json (starts of as a string and then becomes a json?????)
+                    if (isObject(newval.constructor)) {
+                        // If it is a json, just set the value
+                        data = newval;
+                    } else {
+                        // If not then we have to parse it from the string
+                        data = JSON.parse(newval);
+                    }
+
+
+                    $scope.likes = data;
+                    scan();
+
+                });
+
+                $scope.tap = function () {
+                    tab = JSON.parse($scope.scope);
+                    if (tab.id) {
+                        tab = tab.id;
+                    } else {
+                        tab = tab.product_id;
+                    }
+                    if (isObject(data)) {
 
                         if (data.liked) {
                             unlike(tab);
@@ -36,20 +55,25 @@ angular.module('app.likeHeart', ['app.config'])
                             like(tab);
                         }
                     }
-                }
+                };
+
 
                 function scan() {
-                    if (data.liked) {
-                        $scope.heartClass = 'fa-heart liked';
-                    } else {
-                        $scope.heartClass = 'fa-heart-o unliked';
-                    }
+                    if (data) {
 
-                    $scope.number = data.likes;
-                    if (data.likes == 1) {
-                        $scope.value = ' like';
-                    } else {
-                        $scope.value = ' likes';
+
+                        if (data.liked) {
+                            $scope.heartClass = 'fa-heart liked';
+                        } else {
+                            $scope.heartClass = 'fa-heart-o unliked';
+                        }
+
+                        $scope.number = data.likes;
+                        if (data.likes == 1) {
+                            $scope.value = ' like';
+                        } else {
+                            $scope.value = ' likes';
+                        }
                     }
                 }
 
