@@ -6,20 +6,21 @@
             <a class="button button-green" href="#/listing/{{product.id}}/edit">edit</a>
         </div>
         <div class="row">
-            <div class="five columns">
-                <div class="row image">
-                    <limage class="image" image='{{product}}' preview=true radius="5" quality="medium" height='150'
-                            width='150'></limage>
-                </div>
-                <div class="row title">
-                    <h2>{{product.title}}</h2>
-
-                </div>
+            <div class="eight columns">
                 <div class="row">
-                    <h4>Images</h4>
-                    <image-viewer class="images" image='{{image}}' preview=true radius="5" quality="medium" height='100'
-                                  width='100' ng-repeat="image in product.image" ng-if="$index >= 1"></image-viewer>
+                    <div class="gallery">
+
+                        <image-gallery images="{{product.image}}"></image-gallery>
+                    </div>
+                    <!--<limage class="image" image='{{product}}' preview=true radius="5" quality="medium" height='150'-->
+                    <!--width='150'></limage>-->
                 </div>
+
+                <!--<div class="row">-->
+                <!--<h4>Images</h4>-->
+                <!--<image-viewer class="images" image='{{image}}' preview=true radius="5" quality="medium" height='100'-->
+                <!--width='100' ng-repeat="image in product.image" ng-if="$index >= 1"></image-viewer>-->
+                <!--</div>-->
                 <div class="row">
                     <h4>Tags</h4>
                     <div class="tags">
@@ -27,7 +28,11 @@
                     </div>
                 </div>
             </div>
-            <div class="seven columns">
+            <div class="four columns">
+                <div class="row title">
+                    <h2>{{product.title}}</h2>
+
+                </div>
                 <div class="row rent">
                     <div class="text">
                         Available for {{product.product_rental_period_limit}} days.
@@ -97,7 +102,11 @@
                     </div>
                     <div class="two columns">
                         <!--<span am-time-ago="comment.date_added"></span>-->
-                        <span class="deletebutton" ng-click="deleteComment(comment.id, $index)" ng-if="comment.author.username == auth.username"><i class="fa fa-times"></i> Delete</span>
+                        <span class="deletebutton" ng-click="deleteComment(comment.id, $index)"
+                              ng-if="comment.author.username == auth.username"><i class="fa fa-times"></i> Delete</span>
+
+                        <span class="approvebutton" ng-click="approveComment(comment.id, $index)"
+                              ng-if="!comment.authorized"><i class="fa fa-times"></i> Approve</span>
                     </div>
 
                 </div>

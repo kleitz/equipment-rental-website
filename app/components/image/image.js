@@ -10,7 +10,8 @@ angular.module('app.limage', ['app.config'])
                 image: '@',
                 preview: '=',
                 radius: '=',
-                quality: '@'
+                quality: '@',
+                colour: '@'
             },
             templateUrl: 'components/image/image.html',
             controller: function ($scope, $colorThief) {
@@ -105,6 +106,8 @@ angular.module('app.limage', ['app.config'])
                             img.onload = function () {
                                 setTimeout(function () {
                                     rgb = $colorThief.getColor(img);
+                                    $scope.$emit('gotColour', $scope.index, rgb);
+                                    $scope.colour = rgb;
                                     $scope.previewStyle['background-color'] =  'rgba(' + rgb + ', 0.9)',
                                     $scope.imageStyle['background-image'] = 'url(\"' + url + '\")';
                                     $scope.imageStyles['background-image'] = 'url(\"' + $scope.url + '\")';

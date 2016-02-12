@@ -87,7 +87,7 @@ angular.module('app.editorImage', ['app.config'])
                         if ($scope.image !== '{{product}}' && $scope.image !== 'undefined' && $scope.image !== '') {
 
                             $scope.data = JSON.parse($scope.image);
-                            console.log($scope.data)
+                            //console.log($scope.data)
 
 
                             $scope.url = domain + $scope.data.size.large;

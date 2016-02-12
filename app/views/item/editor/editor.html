@@ -45,7 +45,14 @@
                     <input class="u-full-width" ng-model="product.days" type="number" placeholder="7 Days">
                 </div>
                 <br>
-
+                <label class="example-send-yourself-copy">
+                    <input type="checkbox" ng-model="product.comments_enabled">
+                    <span class="label-body">Enable Comments</span>
+                </label>
+                <label class="example-send-yourself-copy">
+                    <input type="checkbox" ng-model="product.comments_require_approval">
+                    <span class="label-body">Comments require approval</span>
+                </label>
                 <br>
                 <div class="">
                     <input type="submit" ng-class="uploadButtonClass" value="{{message.button}}">

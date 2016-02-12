@@ -195,9 +195,7 @@ header {
 
 .listing {
   width: 100%;
-  min-height: 400px;
-  text-align: center;
-  height: 50%; }
+  min-height: 400px; }
   .listing .subheader {
     height: 200px;
     display: flex;
@@ -219,127 +217,12 @@ header {
         text-align: center;
         width: 50px; }
   .listing .item {
-    min-height: 100px;
-    border-bottom: 1px solid #e3e3e3;
-    max-width: 100%; }
-    .listing .item .row {
-      min-height: 100px;
-      width: 100%; }
-    .listing .item .title {
-      font-size: 2rem;
-      font-weight: bold; }
-    .listing .item .description {
-      font-size: 1.2rem; }
-    .listing .item .image {
-      display: flex;
-      justify-content: center;
-      min-height: 100px;
-      min-width: 100px; }
-    .listing .item .status {
-      display: flex;
-      justify-content: center;
-      height: 100px;
-      float: right;
-      margin-right: 1px; }
-      .listing .item .status .avail .text {
-        font-weight: bold;
-        text-align: center; }
-        @media screen and (min-width: 0px) {
-          .listing .item .status .avail .text {
-            padding-top: 10px; } }
-        .listing .item .status .avail .text .item {
-          margin: 0 auto;
-          width: 100%; }
-        @media screen and (min-width: 300px) {
-          .listing .item .status .avail .text {
-            text-align: center; }
-            .listing .item .status .avail .text .title {
-              padding-top: 10px; } }
-        @media screen and (min-width: 700px) {
-          .listing .item .status .avail .text {
-            text-align: left; }
-            .listing .item .status .avail .text .title {
-              padding-top: 0px; } }
-        @media screen and (min-width: 900px) {
-          .listing .item .status .avail .text {
-            text-align: left; } }
-        @media screen and (min-width: 1200px) {
-          .listing .item .status .avail .text {
-            text-align: left; }
-            .listing .item .status .avail .text .item {
-              margin: 0 auto;
-              width: 600px; } }
-        .listing .item .status .avail .text .Available {
-          color: #40C4FF; }
-        .listing .item .status .avail .text .Unavailable {
-          color: #E91E63; }
-  .listing .paging {
-    padding-left: 30px;
-    padding-right: 30px;
-    margin-top: 30px;
-    margin-bottom: 50px; }
-    .listing .paging .message {
-      margin-top: 10px;
-      margin-bottom: 20px;
-      font-size: 1.5rem;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e3e3e3; }
+    .listing .item .like, .listing .item .image_center {
       display: flex;
       justify-content: center; }
-    .listing .paging a {
-      display: flex;
-      justify-content: center; }
-  @media screen and (min-width: 0px) {
-    .listing {
-      padding-top: 10px; } }
-  .listing .item {
-    margin: 0 auto;
-    width: 100%; }
-  @media screen and (min-width: 300px) {
-    .listing {
-      text-align: center; }
-      .listing .title {
-        padding-top: 10px; } }
-  @media screen and (min-width: 700px) {
-    .listing {
-      text-align: left; }
-      .listing .title {
-        padding-top: 0px; } }
-  @media screen and (min-width: 900px) {
-    .listing {
-      text-align: left; } }
-  @media screen and (min-width: 1200px) {
-    .listing {
-      text-align: left; }
-      .listing .item {
-        margin: 0 auto;
-        width: 600px; } }
-  .listing .message {
-    text-align: center; }
-    .listing .message .icon {
-      font-size: 6rem; }
-  @media screen and (min-width: 0px) {
-    .listing .title {
-      padding-top: 10px; }
-    .listing .item {
-      margin: 0 auto;
-      width: 100%; }
-      .listing .item .row {
-        padding-top: 30px; }
-      .listing .item .avail .text {
-        width: 100%; } }
-  @media screen and (min-width: 300px) {
-    .listing .title {
-      padding-top: 10px; }
-      .listing .title .avail .text {
-        width: 100%; } }
-  @media screen and (min-width: 700px) {
-    .listing .title {
-      padding-top: 0px; }
-      .listing .title .avail .text {
-        width: 100px; } }
-  @media screen and (min-width: 1200px) {
-    .listing .item {
-      margin: 0 auto;
-      width: 100%; } }
 
 .user {
   width: 100%;
@@ -546,17 +429,23 @@ header {
 .tags {
   display: flex;
   justify-content: left;
-  flex-wrap: wrap;
-  padding: 5px; }
+  flex-wrap: wrap; }
+  .tags .holder {
+    display: flex;
+    flex-direction: column; }
   .tags .tag {
     background: none;
-    font-weight: 600;
-    border: #e3e3e3 solid 1px;
-    padding: 5px;
-    margin: 5px;
-    border-radius: 6px; }
+    padding: 4px;
+    min-height: 32px; }
   .tags .tag:hover {
-    background: #ECEFF1; }
+    background: #e3e3e3; }
+  .tags .tab {
+    background: #40C4FF;
+    height: 15px;
+    min-width: 40px;
+    border-right: 2px solid #339dcc; }
+  .tags .tab:hover {
+    background: #206280; }
 
 .lModal {
   position: absolute;
@@ -589,3 +478,7 @@ header {
   color: #df2029; }
   .deletebutton :hover {
     color: #9c161d; }
+
+.avail {
+  text-align: right;
+  font-weight: 600; }

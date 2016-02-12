@@ -16,6 +16,7 @@ angular.module('app.config', [])
     return {
         backend: backend,
         domainURI: domain,
-        dataURI: dataURI
+        dataURI: dataURI,
+        domain: domain
     };
 });

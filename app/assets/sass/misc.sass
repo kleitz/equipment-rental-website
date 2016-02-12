@@ -215,84 +215,89 @@ header
         text-align: center
         width: 50px
   .item
-    min-height: 100px
+    //min-height: 100px
+    padding-top: 15px
+    padding-bottom: 15px
     border-bottom: 1px solid #e3e3e3
-    max-width: 100%
+    //max-width: 100%
+    .like, .image_center
+      @include center-children
+
     .row
-      min-height: 100px
-      width: 100%
+      //min-height: 100px
+      //width: 100%
 
-    .title
-      font-size: 2rem
-      font-weight: bold
-    .description
-      font-size: 1.2rem
-    .image
-      @include center-children
-      min-height: 100px
-      min-width: 100px
-    .status
-      @include center-children
-      height: 100px
-      float: right
-      margin-right: 1px
-      .avail
-        .text
-          @include bold
-          @include responsive-text
-          .Available
-            color: $statusOK
-          .Unavailable
-            color: $statusUnavailable
+    //.title
+    //  font-size: 2rem
+    //  font-weight: bold
+    //.description
+    //  font-size: 1.2rem
+    //.image
+    //  @include center-children
+    //  min-height: 100px
+    //  min-width: 100px
+    //.status
+    //  @include center-children
+    //  height: 100px
+    //  float: right
+    //  margin-right: 1px
+    //  .avail
+    //    .text
+    //      @include bold
+    //      @include responsive-text
+    //      .Available
+    //        color: $statusOK
+    //      .Unavailable
+    //        color: $statusUnavailable
 
-  .item:hover
-    //background: $hoverColour
-  .paging
-    padding-left: 30px
-    padding-right: 30px
-    margin-top: 30px
-    margin-bottom: 50px
-    .message
-      margin-top: 10px
-      margin-bottom: 20px
-      font-size: 1.5rem
-      @include center-children
-    a
-      @include center-children
-  @include responsive-text
-  //@include center-children
-  height: 50%
-  .message
-    @include center-text
-    .icon
-      font-size: 6rem
-  @media screen and (min-width: 0px)
-    .title
-      padding-top: 10px
-    .item
-      margin: 0 auto
-      width: 100%
-      .row
-        padding-top: 30px
-      .avail
-        .text
-          width: 100%
-  @media screen and (min-width: $small)
-    .title
-      padding-top: 10px
-      .avail
-        .text
-          width: 100%
-  @media screen and (min-width: $medium)
-    .title
-      padding-top: 0px
-      .avail
-        .text
-          width: 100px
-  @media screen and (min-width: $extraLarge)
-    .item
-      margin: 0 auto
-      width: 100%
+  //.item:hover
+  //  //background: $hoverColour
+  //.paging
+  //  padding-left: 30px
+  //  padding-right: 30px
+  //  margin-top: 30px
+  //  margin-bottom: 50px
+  //  .message
+  //    margin-top: 10px
+  //    margin-bottom: 20px
+  //    font-size: 1.5rem
+  //    @include center-children
+  //  a
+  //    @include center-children
+  //@include responsive-text
+  ////@include center-children
+  //height: 50%
+  //.message
+  //  @include center-text
+  //  .icon
+  //    font-size: 6rem
+  //@media screen and (min-width: 0px)
+  //  .title
+  //    padding-top: 10px
+  //  .item
+  //    margin: 0 auto
+  //    width: 100%
+  //    .row
+  //      padding-top: 30px
+  //    .avail
+  //      .text
+  //        width: 100%
+  //@media screen and (min-width: $small)
+  //  .title
+  //    padding-top: 10px
+  //    .avail
+  //      .text
+  //        width: 100%
+  //@media screen and (min-width: $medium)
+  //  .title
+  //    padding-top: 0px
+  //    .avail
+  //      .text
+  //        width: 100px
+  //@media screen and (min-width: $extraLarge)
+  //  .item
+  //    margin: 0 auto
+  //    width: 100%
 
 //  User profile
 
@@ -491,18 +496,60 @@ header
   height: 100%
   width: 100%
 
+$red: random(256)-1
+$green: random(256)-1
+$blue: random(256)-1
+
+$randomcolour: rgb($red, $green, $blue)
+
 .tags
   @include center-tags
-  padding: 5px
+  .holder
+    display: flex
+    flex-direction: column
   .tag
     background: none
-    font-weight: 600
-    border: #e3e3e3 solid 1px
-    padding: 5px
-    margin: 5px
-    border-radius: 6px
+    padding: 4px
+    min-height: 32px
   .tag:hover
-    background: $hoverColour
+    background: #e3e3e3
+  .tab
+    background: $statusOK
+    height: 15px
+    min-width: 40px
+    border-right: 2px solid $statusOK * 0.8
+  .tab:hover
+    background: $statusOK *0.5
+
+//.tags
+//  //@include center-tags
+//  //@include tags-right
+//  @include tags-bottom-right
+//  //padding: 5px
+//  .tag
+//    background: $statusOK
+//    font-weight: 600
+//    border: #e3e3e3 * 0.9 solid 0px
+//    padding: 5px
+//    margin: 5px
+//    border-radius: 0px
+//    height: 4px
+//    overflow: hidden
+//    a
+//      color: #333
+//  .holder
+//    @include center-image
+//  .tab
+//    background: $statusError
+//    height: 10px
+//    width: 100%
+//  .tag:hover
+//    border-radius: 5px
+//
+//    border: #e3e3e3 * 0.9 solid 1px
+//    background: none
+//    height: auto
+//    overflow: inherit
 
 
 
@@ -540,3 +587,7 @@ header
   color: $statusError
   :hover
     color: $statusError * 0.7
+
+.avail
+  text-align: right
+  font-weight: 600

@@ -17,6 +17,9 @@ angular.module('app.item', ['ngRoute', 'app.config'])
         $http({
             url: backend + "/product/" + $routeParams.id,
             method: 'GET',
+            headers: {
+                'token': authFactory.getToken()
+            }
         }).success(function (data, status, headers, config) {
             $scope.product = data.items[0];
             //console.log(data.items[0])
@@ -40,8 +43,23 @@ angular.module('app.item', ['ngRoute', 'app.config'])
             }
         };
 
-        $scope.deleteComment = function(cid, index) {
+        $scope.deleteComment = function (cid, index) {
             deleteComment(cid, index);
+        }
+
+        $scope.approveComment = function (cid, id) {
+            $http({
+                url: backend + "/product/" + $routeParams.id + '/comment/' + cid + '/approve',
+                method: 'POST',
+                headers: {
+                    'token': authFactory.getToken()
+                }
+            }).success(function (data, status, headers, config) {
+                $scope.product.comments[index].approved = true;
+            }).error(function (data, status, headers, config) {
+                console.log('error');
+            }).finally(function () {
+            });
         }
 
         function sendComment(comment) {

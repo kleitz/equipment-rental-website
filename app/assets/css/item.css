@@ -47,6 +47,10 @@
   .itemview qrcode img {
     max-width: 140px;
     height: auto; }
+  .itemview .gallery {
+    height: 100%;
+    width: 100%;
+    padding: 10px; }
 
 .itempreview {
   padding-top: 30px;

@@ -10,7 +10,8 @@ angular.module('app.items', ['ngRoute'])
         });
     }
 ])
-.controller('itemsCtrl', ['$rootScope', '$scope', '$http', '$location', 'authFactory', function($rootScope, $scope, $http, $location, authFactory, $watch) {
+.controller('itemsCtrl', ['$rootScope', '$scope', '$http', '$location', 'authFactory', '$colorThief',
+    function($rootScope, $scope, $http, $location, authFactory, $colorThief, $watch) {
     if (window.localStorage.getItem("product_count")) {
         $scope.count = parseInt(window.localStorage.getItem("product_count"));
     } else {
@@ -71,6 +72,8 @@ angular.module('app.items', ['ngRoute'])
             }
         }).success(function(data, status, headers, config) {
             $scope.products = data;
+            var urls = [];
+
         }).
         error(function(data, status, headers, config) {
             $scope.error = true;

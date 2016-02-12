@@ -19,7 +19,7 @@ angular.module('app.editor', ['ngRoute'])
             }).success(function (data, status, headers, config) {
                 $scope.product = data.items[0];
                 $scope.product.days = data.items[0].product_rental_period_limit;
-
+                console.log(data)
                 $scope.preDomain = domain;
             }).error(function (data, status, headers, config) {
                 console.log('error');
@@ -145,6 +145,8 @@ angular.module('app.editor', ['ngRoute'])
             fd.append('description', product.description);
             fd.append('rental_period_limit', product.days);
             fd.append('condition', product.condition);
+            fd.append('comments_require_approval', product.comments_require_approval)
+            fd.append('comments_enabled', product.comments_enabled)
             $http({
                 url: backend + '/product/' + $routeParams.id + '/edit',
                 method: 'POST',

@@ -44,7 +44,7 @@ angular.module('app.likeHeart', ['app.config'])
                     } else {
                         tab = tab.product_id;
                     }
-                    
+
                     if (data.liked) {
                         unlike(tab);
                     } else {

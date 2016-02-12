@@ -53,6 +53,7 @@ angular.module('app', [
     'app.imageViewer',
     'app.editorImage',
     'app.likeHeart',
+    'app.imageGallery',
     // Factories
     'app.config',
     'app.auth',

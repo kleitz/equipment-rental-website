@@ -1,0 +1,158 @@
+@import 'base'
+image-gallery
+  height: 100%
+  width: 100%
+  overflow: hidden
+
+@media screen and (min-width: 0px)
+  .imageGalleryBase
+    .gallery
+      display: flex
+      flex-direction: column-reverse
+      .showcase
+        min-height: 300px
+        width: 100%
+        animationDuration: 0.5s !important
+        pointer-events: none
+      .thumbnails
+        margin-top: 10px
+        display: flex
+        flex-direction: row
+        flex-wrap: wrap
+        .thumb
+          margin: 5px
+          box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.3)
+          height: 90px
+          width: 90px
+        .cover
+          height: 100px
+          width: 100px
+          //position: absolute
+          background: rgba(30, 30, 30, 0.6)
+          //margin-top: - 100px
+          pointer-events: none
+          color: white
+          z-index: 301
+          @include center-center
+          i
+            font-size: 2rem
+@media screen and (min-width: 470px)
+  .imageGalleryBase
+    .gallery
+      display: flex
+      flex-direction: column-reverse
+      .showcase
+        height: 100%
+        width: 100%
+        background: url('') no-repeat center center
+        background-size: contain
+      .thumbnails
+
+        margin-top: 10px
+        display: flex
+        flex-direction: row
+        .thumb
+          margin-right: 10px
+          box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.3)
+        .cover
+          height: 100px
+          width: 100px
+          //position: absolute
+          background: rgba(30, 30, 30, 0.6)
+          //margin-top: - 100px
+          pointer-events: none
+          color: white
+          z-index: 301
+          @include center-center
+          i
+            font-size: 2rem
+
+
+@media screen and (min-width: 1575px)
+  .imageGalleryBase
+    position: relative
+    overflow: hidden
+    height: 100%
+    width: 100%
+    .gallery
+      @include center-children
+      flex-direction: row
+    .showcase
+      min-height: 300px
+      width: 300px
+    .thumbnails
+      display: flex
+      flex-direction: column!important
+      position: absolute
+      left: 0
+      top: 0
+      margin-top: 0px
+      .thumb
+        height: 150px
+        width: 150px
+        margin-bottom: 10px
+        box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.3)
+      .cover
+        height: 100px
+        width: 100px
+        //position: absolute
+        background: rgba(30, 30, 30, 0.6)
+        //margin-top: - 100px
+        pointer-events: none
+        color: white
+        z-index: 301
+        @include center-center
+        i
+          font-size: 2rem
+
+
+
+
+.largescreen
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  z-index: 300
+  @include center-center
+  .shadow
+    height: 100%
+    width: 100%
+    background-color: rgba(30, 30, 30, 0.5)
+    position: fixed
+    top: 0
+    left: 0
+  .window
+    max-width: 80%
+    width: 100%
+    max-height: 80%
+    height: 100%
+    background: black
+    overflow: hidden
+    z-index: 400
+    .close
+      .fa
+        color: #fff !important
+      position: fixed
+      top: 11%
+      right: 11%
+    .pic
+      height: 100%
+      background: black
+      @include center-center
+      img
+        max-width: 100%
+        max-height: 760px
+    .controls
+      @include center-center
+      position: fixed
+      background: #fafafa
+      color: white
+
+      width: 80%
+      margin-top: -20px
+      bottom: 10%
+      height: 60px
+      a
+        margin: 0
