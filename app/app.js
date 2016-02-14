@@ -29,12 +29,15 @@ angular.module('app', [
     'app.requestProduct',
     'app.requestProducts',
     'app.myrequests',
+    'app.owner',
+    'app.owner.comments',
 
     //Admin panel views
     'app.admin',
     'app.admin.listing',
     'app.admin.authorize',
     'app.admin.site',
+    'app.admin.users',
 
     // Directives
     'app.loginPanel',

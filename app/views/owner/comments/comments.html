@@ -1,0 +1,63 @@
+<div class="owner">
+    <div class="row">
+        <div class="three columns sidebar">
+
+            <div class="image">
+                <img ng-src="https://secure.gravatar.com/avatar/{{auth.gravatar}}?s=90&d=identicon" width="100%"
+                     height="auto"/>
+            </div>
+            <h5>{{product.title}}</h5>
+            <p>{{product.description}}</p>
+            <p><b>Likes:</b> {{product.likes.likes}}</p>
+            <p><b>Requests:</b> {{product.requests.length}}</p>
+            <p><b>Date added: </b> {{product.date_added | amCalendar}}</p>
+            <p><b>Date updated: </b> {{product.date_updated | amCalendar}}</p>
+
+
+        </div>
+        <div class="nine columns">
+            <h1>Owner Manager</h1>
+            <div class="row row-button">
+                <div class="four columns">
+                    <a class="button" href="#/owner">Back</a>
+                </div>
+                <div class="four columns">
+                    <a class="button button-green" href="#/create">Add new item to Listing</a>
+                </div>
+                <div class="four columns">
+                    <a class="button" href="#/listing/{{product.id}}">View Product</a>
+                </div>
+            </div>
+            <table class="table table-striped animated fadeIn" ng-show="product">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>Username</th>
+                    <th>Comment</th>
+                    <th>Date Added</th>
+                    <th>Last updated</th>
+                    <th>Authorized</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                {{products[0].comments}}
+                <tr ng-repeat="comment in comments |  orderBy:'-date_added'">
+
+                    <td> <img ng-src="https://secure.gravatar.com/avatar/{{comment.author.gravatar}}?s=90&d=identicon" width="100%"
+                              height="auto"/></td>
+                    <td>{{comment.author.username}}</td>
+                    <td>{{comment.message}}</td>
+                    <td>{{comment.date_added | amCalendar}}</td>
+                    <td>{{comment.date_updated | amCalendar}}</td>
+                    <td>
+                        <i class="fa fa-check" ng-show="comment.authorized"></i>
+                        <button ng-hide="comment.authorized">Authorize</button>
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

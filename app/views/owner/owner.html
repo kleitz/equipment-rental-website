@@ -1,0 +1,58 @@
+<div class="owner">
+    <div class="row">
+        <div class="three columns sidebar">
+
+            <div class="image">
+                <img ng-src="https://secure.gravatar.com/avatar/{{auth.gravatar}}?s=90&d=identicon" width="100%"
+                     height="auto"/>
+            </div>
+            <p class="animated fadeIn" ng-show="products.total">You have {{products.total}} Items listed</p>
+
+
+        </div>
+        <div class="nine columns">
+            <h1>Owner Manager</h1>
+            <div class="row row-button">
+                <div class="four columns">
+                    <a class="button" href="#/owner/listing">Your Listing</a>
+                </div>
+                <div class="four columns">
+                    <a class="button button-green" href="#/create">Add new item to Listing</a>
+                </div>
+                <div class="four columns">
+                    <a class="button" href="#/requests">Listings with Requests</a>
+                </div>
+            </div>
+            <table class="table table-striped animated fadeIn" ng-show="products">
+                <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Comments</th>
+                    <th>Requests</th>
+                    <th>Likes</th>
+                    <th>Date Added</th>
+                    <th>Last updated</th>
+                    <th></th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="product in products.items">
+                    <td>{{product.title}}</td>
+                    <td>{{product.description}}</td>
+                    <td><a class="button" href="#/owner/comments/{{product.id}}" ng-show="product.comments.length > 0">{{product.comments.length}} comments</a><span
+                            ng-show="product.comments.length === 0"> No comments.</span></td>
+                    <td><a class="button" ng-show="product.requests.total > 0">{{product.requests.total}}
+                        comments</a><span ng-show="product.requests.total === 0"> No requests.</span></td>
+                    <td>{{product.likes.likes}} likes</td>
+                    <td>{{product.date_added | amCalendar}}</td>
+                    <td>{{product.date_updated | amCalendar}}</td>
+                    <td><a class="button button-green" href="#/listing/{{product.id}}/edit">Edit</a></td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -10,23 +10,28 @@ angular.module('app.admin', ['ngRoute'])
             });
         }
     ])
-    .controller('adminCtrl', ['$rootScope', '$scope', '$http', 'authFactory', function($rootScope, $scope, $http, authFactory) {
-        if ($rootScope.loggedIn) {
-            angular.element(document.getElementsByClassName('wrapper')).addClass('admin');
-            //angular.element(document.getElementsByClassName('body')).addClass('admin');
-            //angular.element(document.getElementsByClassName('html')).css('background': '#2c3e50');
-            angular.element(document.getElementsByClassName('navbar')).addClass('admin');
-            //debugger
+    .controller('adminCtrl', ['$rootScope', '$scope', '$http', 'authFactory', '$window', function($rootScope, $scope, $http, authFactory, $window) {
+        if ($rootScope.auth.role !== 'admin') {
+            $window.location.href = '#/';
         } else {
-            $scope.view = false;
+            if ($rootScope.loggedIn) {
+                angular.element(document.getElementsByClassName('wrapper')).addClass('admin');
+                //angular.element(document.getElementsByClassName('body')).addClass('admin');
+                //angular.element(document.getElementsByClassName('html')).css('background': '#2c3e50');
+                angular.element(document.getElementsByClassName('navbar')).addClass('admin');
+                //debugger
+            } else {
+                $scope.view = false;
+            }
+
+            $scope.$on('$locationChangeStart', function( event ) {
+                angular.element(document.getElementsByClassName('wrapper')).removeClass('admin');
+                //angular.element(document.getElementsByClassName('body')).removeClass('admin');
+                //angular.element(document.getElementsByClassName('html')).removeClass('admin');
+                angular.element(document.getElementsByClassName('navbar')).removeClass('admin');
+            });
         }
 
-        $scope.$on('$locationChangeStart', function( event ) {
-            angular.element(document.getElementsByClassName('wrapper')).removeClass('admin');
-            //angular.element(document.getElementsByClassName('body')).removeClass('admin');
-            //angular.element(document.getElementsByClassName('html')).removeClass('admin');
-            angular.element(document.getElementsByClassName('navbar')).removeClass('admin');
-        });
 
 
     }]);

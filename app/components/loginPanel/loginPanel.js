@@ -38,7 +38,7 @@ angular.module('app.loginPanel', ['app.config'])
 
                             }
                         }).success(function(data, status, headers, config) {
-                            authFactory.setAuth(data.token, data.username, data.gravatar, Date.parse(data.expiry))
+                            authFactory.setAuth(data.token, data.username, data.gravatar, Date.parse(data.expiry), data.role)
                             $rootScope.auth = authFactory.getAuth();
                             $scope.error = false;
                             $rootScope.loggedIn = true;

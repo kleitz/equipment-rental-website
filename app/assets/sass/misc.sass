@@ -83,23 +83,23 @@ header
   transition: 0.1s
   @media screen and (min-width: 0px)
     margin-top: 40px
-    padding-left: 0px
-    padding-right: 0px
+    //padding-left: 0px
+    //padding-right: 0px
   @media screen and (min-width: $small)
-    padding-left: 0px
-    padding-right: 0px
+    //padding-left: 0px
+    //padding-right: 0px
     margin-top: 40px
   @media screen and (min-width: $medium)
-    padding-left: 30px
-    padding-right: 30px
+    //padding-left: 30px
+    //padding-right: 30px
     margin-top: 50px
   @media screen and (min-width: $large)
-    padding-left: 100px
-    padding-right: 100px
+    //padding-left: 100px
+    //padding-right: 100px
     margin-top: 50px
   @media screen and (min-width: $extraLarge)
-    padding-left: 200px
-    padding-right: 200px
+    //padding-left: 200px
+    //padding-right: 200px
     margin-top: 50px
 
 //  Footer
@@ -591,3 +591,26 @@ $randomcolour: rgb($red, $green, $blue)
 .avail
   text-align: right
   font-weight: 600
+
+
+.btn-group
+  border: 1px solid #e3e3e3
+  border-radius: 10px
+
+.row-button
+  .columns
+    @include center-children
+
+
+.owner
+  padding: 40px
+  .sidebar
+    text-align: center
+  h1
+    @include center-center
+  .image
+    @include center-image
+    max-width: 150px
+  .nine
+    .row
+      padding-top: 40px

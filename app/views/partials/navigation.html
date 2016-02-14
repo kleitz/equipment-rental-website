@@ -13,17 +13,23 @@
             <li class="nav-item">
                 <a class="nav-link" href="#/listing">Listing</a>
             </li>
-            <li class="nav-item dropdown" ng-show="loggedIn">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="" role="button" aria-haspopup="true"
-                   aria-expanded="false">
-                    Owner Manager
-                </a>
-                <div class="dropdown-menu animated fadeIn" aria-labelledby="Preview">
-                    <a class="dropdown-item" href="#/owner/listing">Items</a>
-                    <a class="dropdown-item" href="#/create">Add new listing</a>
-                    <a class="dropdown-item" href="#/requests">Requests</a>
-                </div>
+            <li class="nav-item">
+                <a class="nav-link" href="#/owner">Owner Manager</a>
             </li>
+            <li class="nav-item" ng-show="auth.role === 'admin'">
+                <a class="nav-link" href="#/admin">Admin Manager</a>
+            </li>
+            <!--<li class="nav-item dropdown" ng-show="loggedIn">-->
+                <!--<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="" role="button" aria-haspopup="true"-->
+                   <!--aria-expanded="false">-->
+                    <!--Owner Manager-->
+                <!--</a>-->
+                <!--<div class="dropdown-menu animated fadeIn" aria-labelledby="Preview">-->
+                    <!--<a class="dropdown-item" href="#/owner/listing">Items</a>-->
+                    <!--<a class="dropdown-item" href="#/create">Add new listing</a>-->
+                    <!--<a class="dropdown-item" href="#/requests">Requests</a>-->
+                <!--</div>-->
+            <!--</li>-->
             <li class="nav-item pull-xs-right" ng-hide="loggedIn">
                 <a class="nav-link" href="#/login">Login</a>
             </li>

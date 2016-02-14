@@ -14,12 +14,13 @@ angular.module('app.auth', [])
             getAuth: function () {
                 return Cookies.getJSON('auth');
             },
-            setAuth: function (token, username, gravatar, expire) {
+            setAuth: function (token, username, gravatar, expire, role) {
                 var expiry = new Date(expire);
                 Cookies.set('auth', JSON.stringify({
                     token: token,
                     username: username,
-                    gravatar: gravatar
+                    gravatar: gravatar,
+                    role: role
                 }), {expires: expiry});
             },
             killAuth: function () {

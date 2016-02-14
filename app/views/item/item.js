@@ -82,6 +82,22 @@ angular.module('app.item', ['ngRoute', 'app.config'])
             });
         }
 
+        $scope.deleteItem = function() {
+            //console.log("deleteing");
+            $http({
+                url: backend + '/product/' + $routeParams.id + '/delete',
+                method: 'DELETE',
+                headers: {
+                    'token': authFactory.getToken()
+                },
+            }).success(function (data, status, headers, config) {
+                $location.path('/listing');
+            }).
+            error(function (data, status, headers, config) {
+                $scope.error = true;
+            });
+        };
+
         function deleteComment(cid, index) {
             //    /product/:pid/comment
             $http({
