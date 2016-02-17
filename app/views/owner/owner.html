@@ -39,12 +39,12 @@
                 </thead>
                 <tbody>
                 <tr ng-repeat="product in products.items">
-                    <td>{{product.title}}</td>
+                    <td><a href="#/listing/{{product.id}}">{{product.title}}</a></td>
                     <td>{{product.description}}</td>
                     <td><a class="button" href="#/owner/comments/{{product.id}}" ng-show="product.comments.length > 0">{{product.comments.length}} comments</a><span
                             ng-show="product.comments.length === 0"> No comments.</span></td>
-                    <td><a class="button" ng-show="product.requests.total > 0">{{product.requests.total}}
-                        comments</a><span ng-show="product.requests.total === 0"> No requests.</span></td>
+                    <td><a class="button" href="#/listing/{{product.id}}/requests" ng-show="product.requests.total > 0">{{product.requests.total}}
+                        requests</a><span ng-show="product.requests.total === 0"> No requests.</span></td>
                     <td>{{product.likes.likes}} likes</td>
                     <td>{{product.date_added | amCalendar}}</td>
                     <td>{{product.date_updated | amCalendar}}</td>

@@ -14,7 +14,15 @@ angular.module('app.home', ['ngRoute'])
 }])
 
 .controller('HomeCtrl', ['$rootScope', '$scope', '$http', 'authFactory', function($rootScope, $scope, $http, authFactory) {
-	if ($rootScope.loggedIn) {
+	$scope.test = {"items": [
+        {"title":"lol"},
+        {"title":"lol"},
+        {"title":"lol"},
+        {"title":"lol"}
+    ]};
+    $scope.domain = domain;
+
+    if ($rootScope.loggedIn) {
         $scope.view = true;
         $scope.showHello = false;
         sayHello();
@@ -36,6 +44,7 @@ angular.module('app.home', ['ngRoute'])
             }
         }).success(function(data, status, headers, config) {
             $scope.timeline = data;
+            console.log(data)
             $scope.showTimeline = true;
         }).
         error(function(data, status, headers, config) {

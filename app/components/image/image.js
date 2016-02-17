@@ -85,6 +85,7 @@ angular.module('app.limage', ['app.config'])
                             }
 
                             $scope.url = domain + $scope.data.large;
+                            console.log(domain)
                             var url;
                             if ($scope.quality === 'small') {
                                 url = domain + $scope.data.small;

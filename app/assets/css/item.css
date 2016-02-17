@@ -107,7 +107,7 @@
     .itempreview .content .information .row .info {
       text-align: center;
       width: 100%; } }
-  @media screen and (min-width: 300px) {
+  @media screen and (min-width: 500px) {
     .itempreview .content .row .columns .row .description {
       text-align: center; }
     .itempreview .content .row .columns .title {

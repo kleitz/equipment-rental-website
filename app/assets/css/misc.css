@@ -85,33 +85,41 @@ header {
   height: 100%;
   transition: 0.1s; }
   .wrapper .holder {
-    background: #fff;
     border-bottom: none;
     min-height: 50vh; }
     .wrapper .holder .ngview {
       min-height: 500px; }
   @media screen and (min-width: 0px) {
     .wrapper {
-      margin-top: 40px; } }
-  @media screen and (min-width: 300px) {
+      margin-top: 40px;
+      padding-left: 0px;
+      padding-right: 0px; } }
+  @media screen and (min-width: 500px) {
     .wrapper {
+      padding-left: 0px;
+      padding-right: 0px;
       margin-top: 40px; } }
   @media screen and (min-width: 700px) {
     .wrapper {
+      padding-left: 30px;
+      padding-right: 30px;
       margin-top: 50px; } }
   @media screen and (min-width: 900px) {
     .wrapper {
+      padding-left: 100px;
+      padding-right: 100px;
       margin-top: 50px; } }
   @media screen and (min-width: 1200px) {
     .wrapper {
+      padding-left: 200px;
+      padding-right: 200px;
       margin-top: 50px; } }
 
 .footer {
+  width: 100%;
   height: 100px;
-  background: #FAFAFA;
-  border-left: 1px solid #e3e3e3;
-  border-right: 1px solid #e3e3e3;
-  border-bottom: 1px solid #e3e3e3;
+  background: #e3e3e3;
+  border-top: 1px solid #cccccc;
   display: flex;
   justify-content: center; }
   .footer .row {
@@ -185,7 +193,20 @@ header {
 
 .listing {
   width: 100%;
-  min-height: 400px; }
+  min-height: 400px;
+  padding: 10px; }
+  .listing .options {
+    margin-top: 210px;
+    border: 1px solid #E3E3E3;
+    border-radius: 5px;
+    background: #fff;
+    padding: 10px; }
+    .listing .options .option {
+      padding: 10px;
+      margin-bottom: 10px; }
+      .listing .options .option input {
+        width: 100%;
+        margin: 5px; }
   .listing .subheader {
     height: 200px;
     display: flex;
@@ -204,12 +225,15 @@ header {
         margin: 0;
         border-bottom: 1px solid #e3e3e3;
         margin-left: 20px;
-        text-align: center;
-        width: 50px; }
+        text-align: center; }
+  .listing .item:hover {
+    background: #fcfcfc; }
   .listing .item {
     padding-top: 15px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #e3e3e3; }
+    margin-bottom: 15px;
+    border: 1px solid #e3e3e3;
+    border-radius: 5px;
+    background: #fff; }
     .listing .item .like, .listing .item .image_center {
       display: flex;
       justify-content: center; }
@@ -248,7 +272,7 @@ header {
       display: block;
       margin: 0 auto;
       width: 100px; } }
-  @media screen and (min-width: 300px) {
+  @media screen and (min-width: 500px) {
     .user .image {
       height: 100px; }
     .user .context {
@@ -275,47 +299,6 @@ header {
       display: block;
       margin: 0 auto;
       width: 250px; } }
-
-.timeline .row .header {
-  display: flex;
-  justify-content: center;
-  min-height: 100px;
-  width: 100%; }
-
-.timeline .row .content {
-  min-height: 400px; }
-
-.timeline .row .sidebar {
-  min-height: 400px;
-  width: 100%;
-  margin: 0; }
-  .timeline .row .sidebar .top {
-    border: 2px solid #333; }
-    .timeline .row .sidebar .top .title {
-      font-weight: 400;
-      font-size: 1.3rem;
-      text-align: center; }
-    .timeline .row .sidebar .top .description {
-      text-align: center;
-      font-size: 1.2rem; }
-  .timeline .row .sidebar .item {
-    min-height: 100px;
-    border-bottom: 2px solid #e3e3e3; }
-    .timeline .row .sidebar .item .three {
-      display: flex;
-      justify-content: center;
-      height: 100px; }
-    .timeline .row .sidebar .item .nine {
-      padding: 25px;
-      padding-left: 0; }
-      .timeline .row .sidebar .item .nine h5 {
-        margin: 0; }
-  .timeline .row .sidebar .item:hover {
-    background: #ECEFF1; }
-  .timeline .row .sidebar .empty {
-    display: flex;
-    justify-content: center;
-    text-align: center; }
 
 .logout {
   display: flex;

@@ -1,19 +1,35 @@
 <div class="listing">
-    <div class="subheader">
-        <div class="content">
-            <div class="subtitle">
-                <p>Listings</p>
-            </div>
-            <div class="options">
-                Number of results <input type="number" placeholder="{{count}}" ng-model="count">
-            </div>
-        </div>
-    </div>
     <div class="row">
-        <div class="two columns sidebarresults">
-            Stuff here
+        <div class="three columns options">
+            <div class="option">
+                <h4>Search</h4>
+                <form ng-submit="search(searchTerm)">
+                    <input type="text" ng-model="searchTerm" placeholder="Search items">
+                    <input class="button-primary" type="submit" value="Search">
+                    <i class="fa fa-spinner fa-spin" ng-hide="products"></i>
+                </form>
+            </div>
+            <div class="option">
+                <h4>Items to show</h4>
+                <input type="number" placeholder="{{count}}" ng-model="count">
+            </div>
         </div>
-        <div class="ten columns">
+        <div class="nine columns">
+            <div class="subheader">
+                <div class="content">
+                    <div class="subtitle">
+                        <p>Listings</p>
+                    </div>
+
+                    <div class="row">
+                        <b>Showing {{products.total}} Items</b>
+                    </div>
+                    <!--<div class="options">-->
+
+                    <!--</div>-->
+                </div>
+            </div>
+
             <div class="results" ng-include="'/views/partials/results.html'">
 
             </div>
