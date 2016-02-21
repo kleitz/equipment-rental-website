@@ -12,6 +12,9 @@
     .itemview .rent button {
       width: 100%;
       padding: 0; }
+  .itemview .content, .itemview .description {
+    max-width: 100%;
+    word-break: break-all; }
   .itemview .owner {
     margin: 0;
     padding: 10px;
@@ -40,3 +43,5 @@
       display: flex;
       align-items: center;
       justify-content: center; }
+  .itemview .comment-creator .input {
+    width: 100%; }

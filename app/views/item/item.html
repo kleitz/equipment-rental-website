@@ -25,22 +25,47 @@
                     <h3>Condition</h3>
                     {{product.condition}}
                 </div>
+                <div class="row">
+                    <div class="rent">
+                        <div class="text">
+                            Available for {{product.product_rental_period_limit}} days.
+                        </div>
+                        <rent-button class="select" datasource="product"></rent-button>
+                    </div>
+                </div>
             </div>
         </div>
-
 
 
         <div class="row content">
             <div class="eight columns">
                 <h3>Content</h3>
-                <span ng-bind-html="product.content"></span>
+                <span class="content" ng-bind-html="product.content"></span>
             </div>
             <div class="four columns">
-                <div class="row rent">
-                    <div class="text">
-                        Available for {{product.product_rental_period_limit}} days.
+                <div class="row">
+
+                    <qrcode class="code row" type="product" source={{product}}></qrcode>
+                    <i class="info row"><b>Mobile app: </b>Scan me</i>
+
+
+                </div>
+                <div class="row">
+                    <div class=" owner">
+                        <h4>Owner</h4>
+                        <img ng-cloak
+                             ng-src="https://secure.gravatar.com/avatar/{{product.owner.gravatar}}?s=90&d=identicon"
+                             width="50px" height="auto"/>
+                        <a href="#/user/{{product.owner.username}}">@{{product.owner.username}}</a>
+                        <div class="row">
+                            Last updated: {{product.date_updated | amCalendar}}
+                        </div>
+                        <div class="row">
+                            Date Added: {{product.date_added | amCalendar}}
+                        </div>
+
+
                     </div>
-                    <rent-button class="select" datasource="product"></rent-button>
                 </div>
             </div>
         </div>
@@ -52,35 +77,19 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="five columns">
-                <qrcode class="code row" type="product" source={{product}}></qrcode>
-                <i class="info row"><b>Mobile app: </b>Scan me</i>
-            </div>
-            <div class="seven columns">
-                <div class="row owner">
-                    <h4>Owner</h4>
-                    <img ng-cloak
-                         ng-src="https://secure.gravatar.com/avatar/{{product.owner.gravatar}}?s=90&d=identicon"
-                         width="50px" height="auto"/>
-                    <a href="#/user/{{product.owner.username}}">@{{product.owner.username}}</a>
-                    <div class="row">
-                        Last updated: {{product.date_updated | amCalendar}}
-                    </div>
-                    <div class="row">
-                        Date Added: {{product.date_added | amCalendar}}
-                    </div>
-                </div>
 
-            </div>
-        </div>
-
-        <div class="row">
+        <div class="row comment-creator">
             <h4>Add comment</h4>
             <form ng-submit="addComment(comment)">
-                <input type="text" ng-model="comment.message">
-                <input type="submit" value="Comment" ng-hide="comment.processing">
-                <input type="button" value="Processing...." ng-show="comment.processing">
+                <div class="nine columns">
+
+                    <input class="input" type="text" ng-model="comment.message">
+                </div>
+                <div class="three columns">
+
+                    <input type="submit" value="Comment" ng-hide="comment.processing">
+                    <input type="button" value="Processing...." ng-show="comment.processing">
+                </div>
             </form>
 
 

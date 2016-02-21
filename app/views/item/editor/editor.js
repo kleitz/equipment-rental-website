@@ -48,7 +48,7 @@ angular.module('app.editor', ['ngRoute'])
         });
 
         $scope.$on('refreshImageEditor', function(index) {
-            $scope.product.image.splice(index.targetScope.index, 1);
+            $scope.product.images.splice(index.targetScope.index, 1);
         });
 
         function addTag() {
@@ -176,9 +176,9 @@ angular.module('app.editor', ['ngRoute'])
 
 
                     if (!product.base64) {
-                        $scope.message.error.image.enable = true;
+                        $scope.message.error.images.enable = true;
                     } else {
-                        $scope.message.error.image.enable = false;
+                        $scope.message.error.images.enable = false;
                     }
 
                     if (!product.title) {

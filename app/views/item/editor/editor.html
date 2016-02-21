@@ -4,7 +4,7 @@
             <div class="six columns">
                 <div class="mainImage">
                     <h2>Main Image</h2>
-                    <img ng-src="{{preDomain}}{{product.image[0].size.large}}" alt="Image preview" id="imagePreview"
+                    <img ng-src="{{preDomain}}{{product.images[0].size.large}}" alt="Image preview" id="imagePreview"
                          width="100%" height="auto"
                          class="imagePreview animated fadeIn">
                 </div>
@@ -108,7 +108,7 @@
         <h3>Images</h3>
         <p>Hover over an item to select preview or delete</p>
         <div class="preview-images">
-            <div class="preview-image" ng-repeat="image in product.image track by $index">
+            <div class="preview-image" ng-repeat="image in product.images track by $index">
                 <editor-image class="images animate-enter animated fadeIn" image='{{image}}' index="{{$index}}"
                               preview=true radius="5" quality="medium" height='200' width='150'></editor-image>
 
