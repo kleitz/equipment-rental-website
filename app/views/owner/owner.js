@@ -25,6 +25,22 @@ angular.module('app.owner', ['ngRoute'])
             $location.path('/owner/listing/' + id);
         }
 
+        $scope.deleteItem = function(id) {
+            //console.log("deleteing");
+            $http({
+                url: backend + '/product/' + id + '/delete',
+                method: 'DELETE',
+                headers: {
+                    'token': authFactory.getToken()
+                },
+            }).success(function (data, status, headers, config) {
+                updateResults();
+            }).
+            error(function (data, status, headers, config) {
+                $scope.error = true;
+            });
+        };
+
         if ($rootScope.loggedIn) {
             updateResults();
         } else {

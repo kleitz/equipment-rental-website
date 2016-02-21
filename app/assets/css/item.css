@@ -1,141 +1,42 @@
-[ng\:cloak], [ng-cloak], .ng-cloak {
-  display: none; }
-
-@media screen and (min-width: 0px) {
-  html, body, .wrapper {
-    background: #ECEFF1; } }
-
-@media screen and (min-width: 1028px) {
-  html, body, .wrapper {
-    background: #fafafa; } }
-
-[class*=column] {
-  width: calc(100%);
-  margin-left: 0rem;
-  margin-right: 0rem; }
-
-.mdl-layout__header-row {
-  box-shadow: none; }
-
 .itemview {
-  padding: 50px; }
-  .itemview .image {
-    display: flex;
-    justify-content: center;
-    min-height: 150px; }
-  .itemview .title {
-    display: flex;
-    justify-content: center;
-    min-height: 100px; }
+  background: white;
+  border: 1.4px solid #e3e3e3;
+  border-radius: 5px;
+  padding: 20px; }
+  .itemview .code img {
+    max-width: 150px; }
   .itemview .rent {
-    min-height: 250px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column; }
-    .itemview .rent .text {
-      display: flex;
-      justify-content: center; }
-  .itemview .description {
-    min-height: 100px; }
+    padding: 10px;
+    border: 1.4px solid #e3e3e3;
+    border-radius: 5px; }
+    .itemview .rent button {
+      width: 100%;
+      padding: 0; }
   .itemview .owner {
-    border: 1px solid #e3e3e3;
-    padding: 15px; }
-    .itemview .owner a {
-      padding-left: 15px; }
-    .itemview .owner .row {
-      padding-top: 10px; }
-  .itemview qrcode img {
-    max-width: 140px;
-    height: auto; }
-  .itemview .gallery {
-    height: 100%;
-    width: 100%;
-    padding: 10px; }
-
-.itempreview {
-  padding-top: 30px;
-  display: flex;
-  justify-content: center;
-  width: 100%; }
-  .itempreview .content {
-    width: 100%; }
-    .itempreview .content .row .columns .image {
+    margin: 0;
+    padding: 10px;
+    border: 1.4px solid #e3e3e3;
+    border-radius: 5px; }
+  .itemview h3 {
+    margin: 0; }
+  .itemview .comment {
+    margin: 0;
+    padding: 10px;
+    min-height: 90px; }
+    .itemview .comment .icon img {
+      border-radius: 100%; }
+    .itemview .comment .username {
+      min-height: 40px;
       display: flex;
+      align-items: center;
       justify-content: center; }
-    .itempreview .content .row .columns .row .title {
-      margin-top: 30px; }
-    .itempreview .content .row .subtitle {
-      margin-top: 30px; }
-      .itempreview .content .row .subtitle .columns {
-        height: 100px;
-        display: flex;
-        justify-content: center; }
-        .itempreview .content .row .subtitle .columns .icon {
-          font-size: 5rem;
-          text-align: right; }
-        .itempreview .content .row .subtitle .columns .title {
-          font-align: left;
-          width: 100%; }
-    .itempreview .content .row .information .row .columns .rent {
+    .itemview .comment .message {
+      min-height: 40px;
       display: flex;
-      justify-content: center;
-      min-height: 100px;
-      width: 100%; }
-    .itempreview .content .row .information .row .columns .info {
-      display: flex;
+      align-items: center;
       justify-content: center; }
-    .itempreview .content .row .information .row .columns .profile {
-      border: 1px solid #e3e3e3;
-      padding: 10px;
-      margin: 10px;
-      width: 100%; }
-    .itempreview .content .row .information .row .columns .dates {
-      margin-top: 20px; }
-  @media screen and (min-width: 0px) {
-    .itempreview .content .row .columns .row .description {
-      text-align: center; }
-    .itempreview .content .row .columns .title {
-      text-align: center;
-      margin-top: -60px; }
-    .itempreview .content .information .row .columns {
+    .itemview .comment .other {
+      min-height: 40px;
       display: flex;
+      align-items: center;
       justify-content: center; }
-    .itempreview .content .information .row .qr {
-      display: flex;
-      justify-content: center;
-      width: 100%; }
-    .itempreview .content .information .row .info {
-      text-align: center;
-      width: 100%; } }
-  @media screen and (min-width: 500px) {
-    .itempreview .content .row .columns .row .description {
-      text-align: center; }
-    .itempreview .content .row .columns .title {
-      margin-top: -60px;
-      text-align: center; } }
-  @media screen and (min-width: 700px) {
-    .itempreview .content .row .columns .row .description {
-      text-align: left; }
-    .itempreview .content .row .columns .title {
-      text-align: left;
-      margin-top: 0px; }
-    .itempreview .content .row .information .row .columns .qr {
-      width: 150px; }
-    .itempreview .content .row .information .row .info {
-      text-align: left;
-      width: 100%; } }
-  @media screen and (min-width: 1200px) {
-    .itempreview .content .row .columns .row .description {
-      text-align: left; }
-    .itempreview .content .row .title {
-      text-align: left;
-      margin-top: 0px; }
-    .itempreview .content .information .row .info {
-      text-align: left;
-      width: 100%; } }
-  .itempreview .row .title {
-    font-weight: 600;
-    font-size: 2.3rem; }
-  .itempreview .row .description {
-    font-weight: 400;
-    font-size: 1.3rem; }

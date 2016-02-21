@@ -1,0 +1,63 @@
+.home {
+  padding: 0px; }
+  .home .header {
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+  .home .upcoming {
+    padding-bottom: 20px; }
+  .home .column {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+    margin-top: 20px; }
+  .home h4 {
+    margin-bottom: 5px; }
+
+.current-rental {
+  min-height: 200px; }
+  .current-rental .product {
+    height: 200px; }
+  .current-rental .tab {
+    height: 200px;
+    color: #2C3E50 !important; }
+  .current-rental .tab:hover {
+    background: #dad9d7 !important; }
+
+.updated {
+  min-height: 100px; }
+  .updated .product {
+    height: 75px; }
+  .updated .tab {
+    height: 75px;
+    color: #2C3E50 !important; }
+  .updated .tab:hover {
+    background: #dad9d7 !important; }
+
+.newest {
+  min-height: 100px; }
+  .newest .product {
+    height: 75px; }
+  .newest .tab {
+    height: 75px;
+    color: #2C3E50 !important; }
+  .newest .tab:hover {
+    background: #dad9d7 !important; }
+
+.added {
+  min-height: 200px; }
+  .added .product {
+    height: 100px; }
+  .added .tab {
+    height: 100px;
+    color: #2C3E50 !important; }
+  .added .tab:hover {
+    background: #dad9d7 !important; }
+
+@media screen and (min-width: 0px) {
+  .home {
+    padding: 0px; } }
+
+@media screen and (min-width: 700px) {
+  .home {
+    padding: 0px; } }

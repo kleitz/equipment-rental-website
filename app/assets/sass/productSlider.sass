@@ -1,0 +1,132 @@
+@import 'base'
+
+.productSliderBase
+  //width: 100%
+  //background: $navigation-background * 0.8
+  .products
+    display: flex
+    margin: 0
+    padding: 0
+
+    .product
+      .thumb
+        height: 100%
+        //width: 100%
+        display: flex
+        align-items: center
+        position: relative
+        .title
+          position: absolute
+          bottom: 0
+          width: 100%
+          height: 50px
+          font-size: 1.2rem
+          @include center-center
+          background: inherit
+          //-webkit-filter: blur(3px)
+          background-attachment: inherit
+          @-moz-document url-prefix()
+           background: none
+          background-position-y: 100px
+          //background:  rgba($navigation-background, 0.7)
+          color: white
+          p
+            color: inherit
+            margin-top: 40px
+            text-shadow: 0px 0px 6px rgba(30, 30, 30, 1)
+            text-align: center
+            z-index: 1
+      .thumb > .title::before
+        content: ""
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+
+        background: inherit
+        background-attachment: inherit
+        @-moz-document url-prefix()
+          background: none
+          background-attachment: local
+
+        background-position-y: -10px
+        -webkit-filter: blur(12px)
+        filter: blur(12px)
+        transform: scale(2) translateY(20px)
+
+
+    .tab
+      @include center-center
+      color: #fff
+      background-color: inherit
+    .tab:hover
+      background-color: inherit
+
+@media screen and (min-width: 0px)
+  .products
+    padding-bottom: 20px
+    padding-top: 20px
+    padding-right: 0px
+    padding-left: 0px
+    flex-wrap: inherit
+    min-height: 0px
+    overflow-x: scroll
+    .product
+
+      height: 100%
+      width: 250px
+      margin-bottom: 0px
+      .thumb
+        width: 250px
+    .tab
+      height: inherit
+      width: 50px
+      i
+        transform: rotate(0deg)
+    //padding-bottom: 20px
+    //padding-top: 20px
+    //padding-right: 0px
+    //padding-left: 0px
+    //flex-wrap: inherit
+    //min-height: 390px
+    //.product
+      //width: 100%
+      //height: 100px
+      //margin-bottom: 10px
+    //.tab
+      //display: flex
+      //height: 50px
+      //width: 100%
+      //i
+      //  transform: rotate(90deg)
+@media screen and (min-width: $medium)
+  .products
+    padding-bottom: 0px
+    padding-top: 0px
+    padding-right: 20px
+    padding-left: 20px
+    flex-wrap: inherit
+    min-height: 0px
+    overflow: hidden
+    overflow-x: hidden
+    height: 100%
+    .product
+      flex-grow: 1
+      height: 100px
+      width: auto
+      overflow: hidden
+      margin-bottom: 0px
+      .thumb
+        flex-grow:
+        height: 100%
+        width: auto
+    .tab
+      min-height: 100%
+      width: 50px
+      i
+        //height: 100%
+        transform: rotate(0deg)
+      //display: flex
+      //align-items: center
+      //justify-content: center

@@ -8,33 +8,60 @@
         </div>
         <div class="row">
             <div class="four columns">
-                <label for="">Cover image <p class="textred" ng-show="message.error.image.enable">{{message.error.image.text}}</p></label>
+                <label for="">Cover image <p class="textred" ng-show="message.error.image.enable">
+                    {{message.error.image.text}}</p></label>
 
 
-                <input class="u-full-width" value="load" ng-model="product.base64" ng-change="fileChange(this)" id="fileUploader" multiple accept="image/*" type="file" base-sixty-four-input>
+                <input class="image" value="load" ng-model="product.base64" ng-change="fileChange(this)"
+                       id="fileUploader" multiple accept="image/*" type="file" base-sixty-four-input>
+
             </div>
             <div class="eight columns">
-                <img ng-src="{{product.image}}" alt="Image preview" id="imagePreview" width="100%" class="imagePreview">
+                <div class="image-preview">
+
+                    <img ng-src="{{product.image}}" alt="Image preview" id="imagePreview" width="100%" class="imagePreview">
+                </div>
             </div>
 
         </div>
         <br>
-        <div class="">
-            <label for="">Title <char-limit input="{{product.title}}", limit="80"></char-limit> <p class="textred" ng-show="message.error.title.enable">{{message.error.title.text}}</p></label>
-            <input class="u-full-width" ng-model="product.title" type="text" placeholder="Title: An awesome product">
+        <div class="row">
+            <div class="six columns">
+                <label for="">Title
+                    <char-limit input="{{product.title}}" , limit="80"></char-limit>
+                    <p class="textred" ng-show="message.error.title.enable">{{message.error.title.text}}</p></label>
+                <input class="u-full-width" ng-model="product.title" type="text" placeholder="Title: An awesome product">
+            </div>
+
+            <div class="six columns">
+                <label for="">Description:
+                    <char-limit input="{{product.description}}" , limit="140"></char-limit>
+                    <p class="textred" ng-show="message.error.description.enable">{{message.error.description.text}}</p>
+                </label>
+                <input class="u-full-width" ng-model="product.description" type="text"
+                       placeholder="Description: an awesome product">
+            </div>
         </div>
-        <br>
-        <div class="">
-            <label for="">Description: <char-limit input="{{product.description}}", limit="140"></char-limit><p class="textred" ng-show="message.error.description.enable">{{message.error.description.text}}</p></label>
-            <input class="u-full-width" ng-model="product.description" type="text" placeholder="Description: an awesome product">
+        <div class="row editor-view">
+            <label>Content</label>
+            <text-angular ng-model="product.content"></text-angular>
         </div>
-        <div class="">
-            <label for="">Condition: <char-limit input="{{product.condition}}", limit="140"></char-limit><p class="textred" ng-show="message.error.description.enable">{{message.error.description.text}}</p></label>
-            <input class="u-full-width" ng-model="product.condition" type="text" placeholder="Condition: New, Like New, Damaged, etc.">
-        </div>
-        <div class="">
-            <label for="">Days availability <p class="textred" ng-show="message.error.days.enable">{{message.error.days.text}}</p></label>
-            <input class="u-full-width" ng-model="product.days" type="number" placeholder="7 Days">
+
+        <div class="row">
+
+            <div class="six columns">
+                <label for="">Condition:
+                    <char-limit input="{{product.condition}}" , limit="140"></char-limit>
+                    <p class="textred" ng-show="message.error.description.enable">{{message.error.description.text}}</p>
+                </label>
+                <input class="u-full-width" ng-model="product.condition" type="text"
+                       placeholder="Condition: New, Like New, Damaged, etc.">
+            </div>
+            <div class="six columns">
+                <label for="">Days availability <p class="textred" ng-show="message.error.days.enable">
+                    {{message.error.days.text}}</p></label>
+                <input class="u-full-width" ng-model="product.days" type="number" placeholder="7 Days">
+            </div>
         </div>
         <br>
         <div class="">
@@ -45,7 +72,6 @@
         <div class="">
             <input type="submit" ng-class="uploadButtonClass" value="{{message.button}}">
         </div>
-
 
 
     </form>

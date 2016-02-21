@@ -13,6 +13,7 @@ angular.module('app.availability', ['app.config'])
                     function handleFooChange( ) {
                         if ($attrs.datasource != "{{product.id}}") {
                             $scope.showLoading = false;
+                            $scope.availabilityClass = {};
                             //$scope.datasource =  $attrs.datasource;
                             // console.log('/p/' + $attrs.datasource + '/availability');
                             $http({
@@ -22,6 +23,7 @@ angular.module('app.availability', ['app.config'])
                               // console.log(data)
                                 if (data.available) {
                                     $scope.availability = "Available";
+                                    $scope.availabilityClass.color = "green";
                                 } else {
                                     $scope.availability = "Unavailable";
                                 }

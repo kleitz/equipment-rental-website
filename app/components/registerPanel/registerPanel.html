@@ -1,4 +1,3 @@
-
 <div class="register">
     <div class="form">
         <h1>Register</h1>
@@ -6,19 +5,45 @@
             <div class="error">
                 {{error}}
             </div>
+            <div class="row">
+                <div class="six columns">
 
-            <img ng-cloak height="100%" width="auto" ng-src="https://secure.gravatar.com/avatar/{{gravatar}}?s=90&d=identicon" width="100%" height="auto"/>
+                    <img ng-cloak height="100%" width="auto"
+                         ng-src="https://secure.gravatar.com/avatar/{{gravatar}}?s=90&d=identicon" width="100%"
+                         height="auto"/>
+                </div>
+                <div class="six columns">
+                    <label>Username</label>
+                    <input class="u-full-width" ng-model="user.name" type="text" placeholder="Lemon">
 
-            <label for="username">Username</label>
-            <input class="u-full-width" ng-model="user.name" type="text" placeholder="Lemon">
+                </div>
+            </div>
 
-            <label for="email">Email</label>
-            <input class="u-full-width" ng-model="user.email" type="email" placeholder="lemon@lemondev.xyz">
+            <div class="row">
+                <div class="six columns">
+                    <label>Email</label>
+                    <input class="u-full-width" ng-model="user.email" type="email" placeholder="lemon@lemondev.xyz">
+                </div>
+                <div class="six columns">
+                    <label>Password</label>
+                    <input class="u-full-width" ng-model="user.password" type="password" placeholder="********">
 
-            <label for="password">Password</label>
-            <input class="u-full-width" ng-model="user.password" type="password" placeholder="********">
+                </div>
+            </div>
+            <div class="row">
+                <label>Recaptcha</label>
+                <div
+                        ng-model="user.recaptcha"
+                        vc-recaptcha
+                        key="'6LezuhgTAAAAAN6nl10E87XVrktOuW9Wany464St'">
 
-            <input class="button-primary" type="submit" value="Submit" >
+                </div>
+
+            </div>
+
+            <div class="row">
+                <input class="button-primary" type="submit" value="Register">
+            </div>
 
         </form>
     </div>

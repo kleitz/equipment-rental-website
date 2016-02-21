@@ -10,142 +10,52 @@
                     <a class="button" type="submit" href="#/login">Login</a>
                 </div>
             </div>
-            <div class="buttons">
-
-
-            </div>
         </div>
     </div>
     <div class="timeline row" ng-show="loggedIn">
         <div class="row">
-            <div class="header">
-                <h1>{{message}}</h1>
+            <div class="header animated slideInUp">
+                <h3>{{message}}</h3>
             </div>
         </div>
         <div class="row">
-            <!--<div class="two columns">-->
-                <!--<div class="profile">-->
-                    <!--<div class="image">-->
-                        <!--<img ng-src="https://secure.gravatar.com/avatar/{{auth.gravatar}}?s=90&d=identicon" width="auto"-->
-                             <!--height="100px"/>-->
-                    <!--</div>-->
-                    <!--<div class="title">-->
-                        <!--<p>{{auth.username}}</p>-->
-                    <!--</div>-->
-                    <!--<div class="summary">-->
-                        <!--<div class="row">-->
-                            <!--You are currently holding <b>{{timeline.total}}</b>-->
-                            <!--<span ng-if="timeline.total == 1">item</span><span ng-if="timeline.total !== 1">items</span>.-->
-                        <!--</div>-->
-                        <!--<div class="row">-->
-                            <!--<h3>Holding</h3>-->
-                            <!--<div class="row" ng-repeat="product in timeline.items">-->
-                                <!--{{product.title}}-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--<div class="row"></div>-->
-                        <!--<div class="row"></div>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="eight columns">-->
-                <div class="content">
-                    <div class="row">
-
-                        <div class="column sub_title">
-                            <h3>Your upcoming returns</h3>
-                        </div>
+            <!--<div class="nine columns">-->
+            <div class="content animated slideInUp">
+                <div class="row upcoming">
+                    <div class="column sub_title">
+                        <h3>Your upcoming returns</h3>
+                        <product-slider class="current-rental" endpoint="/p/rent/current" numbertoshow="3" type="holding" limit="3"></product-slider>
                     </div>
-                    <div class="yourItems">
-                        <div class="cubes">
-                            <a class="cube row" href="#/listing/{{item.id}}" ng-repeat="item in timeline.items">
+                </div>
+                </div>
+                <div class="row">
 
-                                <div class="four columns">
-                                    <div class="cover"
-                                         ng-style="{
-                                    'background':'url({{domain}}{{item.images[0].size.small}}) no-repeat center center', 'background-size': 'contain', 'overflow':'hidden'}">
-
-                                    </div>
-                                </div>
-
-                                <div class="eight columns">
-                                    <div class="subtitle">
-                                        <div class="row">
-                                            <h4>{{item.title}}</h4>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="row date">
-                                    <div class="text">
-                                        <p><i class="fa fa-clock-o"></i> Due: {{item.due | amCalendar}}</p>
-                                    </div>
-                                </div>
-
-
-                            </a>
-                        </div>
+                    <div class="column sub_title animated slideInUp">
+                        <h4>Recently Updated</h4>
+                        <product-slider class="newest" endpoint="/products/updated/newest" numbertoshow="4" limit="3"></product-slider>
                     </div>
-
-                    <div class="row">
-
-                        <div class="column sub_title">
-                            <h3>Recent Additions</h3>
+                    <div class="column sub_title animated slideInUp">
+                        <h4>Recently Added</h4>
+                        <product-slider class="added" endpoint="/products/added/newest" numbertoshow="5" limit="3"></product-slider>
+                    </div>
+                    <div class="column sub_title animated slideInUp">
+                        <h4>Most Liked</h4>
+                        <product-slider class="updated" endpoint="/products/likes/most" numbertoshow="4" limit="3"></product-slider>
+                    </div>
+                </div>
+                <div class="row">
+                    <h4>Popular Tags</h4>
+                    <div class="tags">
+                        <div class="tag animated slideInUp" ng-repeat="tag in populartags" ng-style="getTagClass(tag)">
+                            <a href="#/tags/{{tag.title}}">{{tag.title}}: {{tag.amount}}</a>
                         </div>
                     </div>
                 </div>
+            </div>
 
-            <!--</div>-->
-            <!--<div class="two columns">-->
-
-            <!--</div>-->
 
         </div>
-        <!--<div class="row">-->
-        <!--<div class="header">-->
-        <!--<i class="fa fa-circle-o-notch fa-spin fa-2x animated fadeIn" ng-hide="showHello"></i>-->
-        <!--<h3 ng-show="showHello" class="animated fadeIn"><b>{{message}}</b></h3>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--<div class="row">-->
-        <!--<div class="eight columns">-->
-        <!--<div class="content">-->
 
-        <!--</div>-->
-        <!--</div>-->
-        <!--<div class="four columns">-->
-        <!--<div class="sidebar">-->
-        <!--<div class="top animated fadeIn">-->
-        <!--<div class="title">-->
-        <!--Timeline-->
-        <!--</div>-->
-        <!--<div class="description">-->
-        <!--<span>Upcoming items</span>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--<i class="fa fa-circle-o-notch fa-spin fa-2x animated fadeIn" ng-hide="showTimeline"></i>-->
-        <!--<div class="item empty">-->
-        <!--<div>-->
-        <!--<h5>Looks empty here</h5>-->
-        <!--<a href="#/listing">Go to listing</a>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--<div class="item animated fadeIn" ng-if="timeline.total != 0" ng-repeat="product in timeline.items" ng-show="showTimeline">-->
-        <!--<div class="row">-->
-        <!--<div class="three columns">-->
-        <!--<limage class="image" image='{{product}}' height="50" width="50" preview=false></limage>-->
-        <!--</div>-->
-        <!--<div class="nine columns">-->
-        <!--<h5>{{product.title}}</h5>-->
-        <!--<i>{{product.due | amCalendar}}</i>-->
-        <!--</div>-->
-
-
-        <!--</div>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--</div>-->
 
 
     </div>

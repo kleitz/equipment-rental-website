@@ -1,19 +1,18 @@
 <div class="editor">
-    <div class="title">
-        <h1>Editor</h1>
-    </div>
-
-    <div class="row">
-        <div class="six columns images">
-            <div class="mainImage">
-                <h2>Main Image</h2>
-                <img ng-src="{{preDomain}}{{product.image[0].size.large}}" alt="Image preview" id="imagePreview" width="100%" height="auto"
-                     class="imagePreview animated fadeIn">
+    <form ng-submit="edit(product)">
+        <div class="row">
+            <div class="six columns">
+                <div class="mainImage">
+                    <h2>Main Image</h2>
+                    <img ng-src="{{preDomain}}{{product.image[0].size.large}}" alt="Image preview" id="imagePreview"
+                         width="100%" height="auto"
+                         class="imagePreview animated fadeIn">
+                </div>
             </div>
-        </div>
-        <div class="six columns">
-            <form ng-submit="edit(product)">
+            <div class="six columns">
                 <div class="">
+                    <br>
+                    <br>
                     <label for="">Title
                         <char-limit input="{{product.title}}" , limit="80"></char-limit>
                         <p class="textred" ng-show="message.error.title.enable">{{message.error.title.text}}</p></label>
@@ -30,101 +29,112 @@
                     <input class="u-full-width" ng-model="product.description" type="text"
                            placeholder="Description: an awesome product">
                 </div>
-                <div class="">
-                    <label for="">Description:
-                        <char-limit input="{{product.condition}}" , limit="140"></char-limit>
-                        <p class="textred" ng-show="message.error.description.enable">
-                            {{message.error.description.text}}</p>
-                    </label>
-                    <input class="u-full-width" ng-model="product.condition" type="text"
-                           placeholder="Examples: New, Like New, Damaged">
-                </div>
-                <div class="">
-                    <label for="">Days availability <p class="textred" ng-show="message.error.days.enable">
-                        {{message.error.days.text}}</p></label>
-                    <input class="u-full-width" ng-model="product.days" type="number" placeholder="7 Days">
-                </div>
-                <br>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="six columns">
+                <label>Description:
+                    <char-limit input="{{product.condition}}" , limit="140"></char-limit>
+                    <p class="textred" ng-show="message.error.description.enable">
+                        {{message.error.description.text}}</p>
+                </label>
+                <input class="u-full-width" ng-model="product.condition" type="text"
+                       placeholder="Examples: New, Like New, Damaged">
+            </div>
+            <div class="six columns">
+                <label>Days availability <p class="textred" ng-show="message.error.days.enable">
+                    {{message.error.days.text}}</p></label>
+                <input class="u-full-width" ng-model="product.days" type="number" placeholder="7 Days">
+            </div>
+
+
+        </div>
+        <div class="row">
+            <div class="six columns">
+
                 <label class="example-send-yourself-copy">
                     <input type="checkbox" ng-model="product.comments_enabled">
                     <span class="label-body">Enable Comments</span>
                 </label>
+                <i>Enabling comments will allow users to leave comments and see them</i>
+            </div>
+            <div class="six columns">
+
                 <label class="example-send-yourself-copy">
                     <input type="checkbox" ng-model="product.comments_require_approval">
                     <span class="label-body">Comments require approval</span>
                 </label>
-                <br>
-                <div class="">
-                    <input type="submit" ng-class="uploadButtonClass" value="{{message.button}}">
-                </div>
-            </form>
-            <form ng-submit="addTag()" class="editor tags">
-                <label for="tags">Tags</label>
-                <div class="">
-                    <br>
-                    <i>Enter tags separated with ,</i>
-                    <div class="">
+                <i>Enabling approval will only show comments which have been approved by you</i>
+            </div>
+        </div>
+        <div class="row">
+            <div class="row editor-view">
+                <label>Content</label>
+                <text-angular ng-model="product.content"></text-angular>
+            </div>
+        </div>
+        <div class="row">
 
-                        <input ng-model="product.input.tags" type="text" placeholder="separate tags with ,">
-
-                        <input type="submit" ng-class="uploadButtonClass" value="{{message.button}}">
-                    </div>
-
-                </div>
-                <i>Click on a tag to remove</i>
-                <div class="editortags">
-                    <editor-tag class="editortag animated fadeIn" title="{{tag.tag}}" productid="{{product.id}}"
-                                index="{{$index}}" ng-repeat="tag in product.tags track by $index"></editor-tag>
-                </div>
-
-            </form>
+            <input type="submit" ng-class="uploadButtonClass" value="Update listing information">
         </div>
 
+    </form>
+
+    <div class="row">
+        <form ng-submit="addTag()" class="editor tags">
+            <div class="row">
+                <label for="tags">Tags</label>
+                <br>
+                <i>Enter tags separated with ,</i>
+                <div class="">
+
+                    <input ng-model="product.input.tags" type="text" placeholder="separate tags with ,">
+
+                    <input type="submit" ng-class="uploadButtonClass" value="{{message.button}}">
+                </div>
+
+            </div>
+            <br>
+            <i>Click on a tag to remove</i>
+            <div class="editortags row">
+                <editor-tag class="editortag animated fadeIn" title="{{tag.tag}}" productid="{{product.id}}"
+                            index="{{$index}}" ng-repeat="tag in product.tags track by $index"></editor-tag>
+            </div>
+
+        </form>
     </div>
     <div class="row">
         <h3>Images</h3>
         <p>Hover over an item to select preview or delete</p>
-        <div class="images">
-            <div class="image" ng-repeat="image in product.image track by $index">
-                <editor-image class="images animate-enter animated fadeIn" image='{{image}}' index="{{$index}}" preview=true radius="5" quality="medium" height='200' width='150'></editor-image>
+        <div class="preview-images">
+            <div class="preview-image" ng-repeat="image in product.image track by $index">
+                <editor-image class="images animate-enter animated fadeIn" image='{{image}}' index="{{$index}}"
+                              preview=true radius="5" quality="medium" height='200' width='150'></editor-image>
 
             </div>
         </div>
         <form ng-submit="uploadAnotherImage(newimage)">
             <div class="row">
                 <div class="four columns">
-                    <label for="">Add new image<p class="textred" ng-show="message.error.image.enable">{{message.error.image.text}}</p></label>
+                    <label for="">Add new image<p class="textred" ng-show="message.error.image.enable">
+                        {{message.error.image.text}}</p></label>
 
 
-                    <input class="u-full-width" value="load" ng-model="newimage.base64" ng-change="fileChange(this)" id="fileUploader" multiple accept="image/*" type="file" base-sixty-four-input>
+                    <input class="u-full-width" value="load" ng-model="newimage.base64" ng-change="fileChange(this)"
+                           id="fileUploader" multiple accept="image/*" type="file" base-sixty-four-input>
                     <div class="">
                         <input type="submit" ng-class="uploadButtonClass" value="Add Image">
                     </div>
                 </div>
 
 
-
                 <div class="eight columns">
-                    <img ng-src="{{newimage.image}}" alt="Image preview" id="newimagePreview" width="100%" class="imagePreview">
+                    <img ng-src="{{newimage.image}}" alt="Image preview" id="newimagePreview" width="100%"
+                         class="imagePreview">
                 </div>
 
             </div>
         </form>
     </div>
-    <div class="row">
-        <!--<div class="four columns">-->
-        <!--<label for="">Cover image <p class="textred" ng-show="message.error.image.enable">{{message.error.image.text}}</p></label>-->
-
-
-        <!--<input class="u-full-width" value="load" ng-model="product.base64" ng-change="fileChange(this)" id="fileUploader" multiple accept="image/*" type="file" base-sixty-four-input>-->
-        <!--</div>-->
-        <!--<div class="eight columns">-->
-        <!--<img ng-src="{{product.image}}" alt="Image preview" id="imagePreview" width="100%" class="imagePreview">-->
-        <!--</div>-->
-
-    </div>
-    <br>
-
-
 </div>
-

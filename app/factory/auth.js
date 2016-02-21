@@ -3,7 +3,11 @@ angular.module('app.auth', [])
     .factory('authFactory', function () {
         return {
             getToken: function () {
-                return Cookies.getJSON('auth').token;
+                if (Cookies.getJSON('auth')) {
+                    return Cookies.getJSON('auth').token;
+                }
+                return "";
+
             },
             getUsername: function () {
                 return Cookies.getJSON('auth').username;

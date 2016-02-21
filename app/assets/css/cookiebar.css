@@ -1,0 +1,51 @@
+.cookiedisplaybase {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background: #333;
+  width: 100%;
+  height: 50px;
+  padding: 5px;
+  color: #fff; }
+  .cookiedisplaybase .columns {
+    display: flex;
+    justify-content: center;
+    height: 100%; }
+  .cookiedisplaybase a {
+    color: #fff;
+    padding-left: 100px; }
+  .cookiedisplaybase .tab {
+    min-width: 100px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    right: 0; }
+  .cookiedisplaybase .button {
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 0 !important; }
+    .cookiedisplaybase .button i {
+      padding-right: 10px; }
+    .cookiedisplaybase .button .decline {
+      display: flex;
+      justify-content: center;
+      height: 100%;
+      padding-left: 10px;
+      padding-right: 10px;
+      background: #df2029; }
+    .cookiedisplaybase .button .decline:hover {
+      background: #861319; }
+    .cookiedisplaybase .button .agree {
+      display: flex;
+      justify-content: center;
+      height: 100%;
+      margin: 0;
+      padding-left: 10px;
+      padding-right: 10px;
+      background: #4CAF50; }
+    .cookiedisplaybase .button .agree:hover {
+      background: #2d682f; }

@@ -1,0 +1,35 @@
+.editor {
+  background: white;
+  height: 100%; }
+  .editor .preview-images {
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap; }
+    .editor .preview-images .preview-image {
+      margin-top: 5px;
+      margin-right: 5px; }
+
+.creator, .editor {
+  background: white;
+  padding: 20px;
+  border: 1.4px solid #e3e3e3;
+  border-radius: 5px; }
+  .creator .image-preview img, .editor .image-preview img {
+    width: auto;
+    max-height: 300px; }
+  .creator .btn-toolbar, .editor .btn-toolbar {
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap; }
+  .creator .btn-group, .editor .btn-group {
+    display: flex;
+    flex-wrap: wrap; }
+  .creator .editor-view .ta-editor, .editor .editor-view .ta-editor {
+    border: 1.4px solid #e3e3e3;
+    border-radius: 5px; }
+  .creator .editor-view .btn, .editor .editor-view .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    padding: 10px; }

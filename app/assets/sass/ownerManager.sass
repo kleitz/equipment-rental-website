@@ -1,0 +1,118 @@
+@import 'base'
+
+.owner
+  padding: 40px
+  border: $main-border
+  border-radius: $main-border-radius
+  background: white
+  b, p
+    padding: 0
+    margin: 0
+  .button
+    width: 100%
+    padding: 0
+    padding-left: 5px
+    padding-right: 5px
+  .image
+    img
+      width: 100px
+      height: auto
+
+
+.lModal
+  position: absolute
+  top: -10px
+  left: 0
+  width: 100%
+  height: 100%
+
+  background: rgba(50, 50, 50, 0.8)
+  @include center-children
+  z-index: 100
+
+  .content
+    position: relative
+    background: #fff
+    width: 60%
+    min-height: 500px
+    max-height: 500px
+    margin-top: 5%
+    .header
+      background: #E3E3E3
+      margin-top: 0
+      @include center-center
+      font-size: 2rem
+      color: #333333
+      border-bottom: 1px solid #e3e3e3
+    .other
+      margin-top: 50px
+      @include center-center
+      text-align: center
+      padding: 10px
+
+
+
+.comment
+  border-bottom: 1px solid #e3e3e3
+  padding: 20px
+
+
+.deletebutton
+  color: $statusError
+  :hover
+    color: $statusError * 0.7
+
+.avail
+  text-align: right
+  font-weight: 600
+
+
+.btn-group
+  border: 1px solid #e3e3e3
+  border-radius: 10px
+
+.row-button
+  .columns
+    @include center-children
+
+
+
+.requests
+  background: white
+  border: $main-border
+  border-radius: $main-border-radius
+  padding: 20px
+  img
+    min-width: 50px
+    min-height: 50px
+  .header
+    text-align: center
+    //@include title
+    padding-bottom: 20px
+  img
+    border-radius: 100px
+  .four
+    @include center-center
+    b
+      margin-left: 10px
+  .subheader
+    //@include subtitle
+    padding-bottom: 50px
+  .row
+    padding: 10px
+    border-top: 1px solid #e3e3e3
+  .buttons
+    @include center-center
+    button
+      margin-left: 10px
+  .noshow
+    //@include center-children
+    width: 100%
+    //@include center-text
+    .icon
+      font-weight: 800
+      font-size: 4rem
+      color: #999
+    .message
+      font-size: 1.4rem
+      color: #999

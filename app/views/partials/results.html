@@ -1,101 +1,39 @@
-<div class="listing">
+<div class="listing" infinite-scroll="pagingUpdate()">
 
-    <div class="item" ng-repeat="product in products.items" ng-show="products.items">
+    <div class="item" ng-repeat="product in products.items track by $index" ng-show="products.items">
         <div class="row">
-        <div class="three columns">
+            <div class="three columns">
 
-            <div class="row image_center">
-                <limage class="image" image='{{product}}' height="120" width="120" radius="120" preview=true></limage>
-            </div>
-
-        </div>
-
-        <div class="nine columns">
-            <div class="row">
-                <div class="eight columns"><a href="#/listing/{{product.id}}">
-                    <h3>{{product.title | limitTo:20}}</h3></a>
+                <div class="row image_center">
+                    <limage class="image" image='{{product}}' height="120" width="120" radius="120"
+                            preview=true></limage>
                 </div>
-                <div class="four columns">
-                    <div class="avail">
-                        <availability class="text" datasource="{{product.id}}"></availability>
-                    </div>
+
+            </div>
+
+            <div class="six columns">
+                <div class="row">
+                    <a href="#/listing/{{product.id}}">
+                        <h3>{{product.title | limitTo:20}}</h3>
+                    </a>
+
+
                 </div>
-            </div>
-            <div class="row">
-                <i>{{product.description | limitTo:56}}...</i>
-            </div>
+                <div class="row">
+                    <i>{{product.description | limitTo:56}}...</i>
+                </div>
 
-        </div>
-        </div>
-        <div class="row">
-            <div class="three columns like">
-                <like-heart likes="{{product.likes}}" scope="{{product}}"></like-heart>
             </div>
-            <div class="nine columns">
-                <!--<div class="row">-->
-                    <!--<div class="tags">-->
-                        <!--<span class="holder" ng-mouseenter="hover = true" ng-mouseleave="hover = false" ng-repeat="tag in product.tags | limitTo:3">-->
-                            <!--<a class="tag" href="#/tags/{{tag.tag}}">-->
-                                <!--<span ng-show="hover">{{tag.tag}}</span>-->
-                            <!--</a>-->
-                            <!--<span class="tab"></span>-->
-                        <!--</span>-->
+            <div class="three columns">
 
-                    <!--</div>-->
+                <div class="row like">
+                    <like-heart likes="{{product.likes}}" scope="{{product}}"></like-heart>
+                </div>
+                <div class="row avil">
+                    <availability class="text" datasource="{{product.id}}"></availability>
                 </div>
             </div>
         </div>
+
     </div>
 </div>
-
-<!--<div class="listing">-->
-<!--<div class="item" ng-repeat="product in products.items">-->
-<!--<div class="row">-->
-<!--<div class="four columns">-->
-<!--<limage class="image" image='{{product}}' height="100" width="100" radius="100" preview=true></limage>-->
-<!--</div>-->
-<!--<div class="six columns">-->
-<!--<div class="title">-->
-<!--&lt;!&ndash;<a href="#/owner/listing/{{product.id}}" ng-show="product.owner.username === auth.username">{{product.title}}</a>&ndash;&gt;-->
-<!--<a href="#/listing/{{product.id}}">{{product.title}}</a>-->
-<!--</div>-->
-
-<!--<div class="description">-->
-<!--{{product.description}}-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="two columns status">-->
-<!--<div class="avail">-->
-<!--<availability class="text" datasource="{{product.id}}"></availability></td>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="row">-->
-<!--<div class="tags">-->
-<!--<span class="tag" ng-repeat="tag in product.tags | limitTo:3"><a href="#/tags/{{tag.tag}}">{{tag.tag}}</a></span>-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="row">-->
-<!--<like-heart likes="{{product.likes}}" scope="{{product}}" ></like-heart>-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="paging">-->
-<!--<div class="message">-->
-<!--<div class="row">-->
-<!--<div class="twelve columns">-->
-<!--Showing {{start}} - {{start + count}} of {{products.total}}-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="below">-->
-<!--<div class="row">-->
-<!--<div class="six columns">-->
-<!--<a class="button" ng-click="back()">Previous page</a>-->
-<!--</div>-->
-<!--<div class="six columns">-->
-<!--<a class="button" ng-click="forward()">Next page</a>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->

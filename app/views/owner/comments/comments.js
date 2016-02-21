@@ -17,7 +17,8 @@ angular.module('app.owner.comments', ['ngRoute'])
             window.localStorage.setItem("product_count", 2);
             $scope.count = 2;
         }
-
+        $scope.domain = domain;
+        //console.log(domain)
 
         $scope.start = 0;
 

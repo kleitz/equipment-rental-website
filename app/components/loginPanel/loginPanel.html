@@ -30,12 +30,21 @@
 
            </div>
             <form ng-submit="login(user)" ng-hide="loading">
+                <div class="row">
+                    <div class="six columns">
+                        <label for="">Username</label>
+                        <input class="u-full-width" ng-model="user.name" type="text" placeholder="Lemon">
 
-                <label for="">Username</label>
-                <input class="u-full-width" ng-model="user.name" type="text" placeholder="Lemon">
-                <label for="">Password</label>
-                <input class="u-full-width" ng-model="user.password" type="password" placeholder="********" id="">
-                <input class="button-primary login-button" type="submit" value="login">
+                    </div>
+                    <div class="six columns">
+                        <label for="">Password</label>
+                        <input class="u-full-width" ng-model="user.password" type="password" placeholder="********" id="">
+
+                    </div>
+                </div>
+                <div class="login-button row">
+                    <input class="button-primary" type="submit" value="login">
+                </div>
             </form>
         </div>
         <div class="options">

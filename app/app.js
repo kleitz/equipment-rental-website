@@ -57,6 +57,7 @@ angular.module('app', [
     'app.editorImage',
     'app.likeHeart',
     'app.imageGallery',
+    'app.productSlider',
     // Factories
     'app.config',
     'app.auth',
@@ -65,21 +66,54 @@ angular.module('app', [
     'ui-notification',
     'naif.base64',
     'ngColorThief',
-    'angular-loading-bar'
+    'angular-loading-bar',
+    'vcRecaptcha',
+    'textAngular',
+    'infinite-scroll'
 ]).config(['$routeProvider', '$locationProvider', '$httpProvider', function ($routeProvider, $locationProvider, $httpProvider) {
         $httpProvider.defaults.useXDomain = true;
-    //console.log("its all set i guess")
+        //console.log("its all set i guess")
         delete $httpProvider.defaults.headers.common['X-Requested-With'];
         $routeProvider.otherwise({redirectTo: '/fourOhFour'});
         $locationProvider.html5Mode(false);
     }])
 
-    .controller('AuthCtrl', ['$scope', '$rootScope', 'authFactory', '$http', function ($scope, $rootScope, authFactory, $http) {
+    .controller('AuthCtrl', ['$scope', '$rootScope', 'authFactory', '$http', '$timeout', function ($scope, $rootScope, authFactory, $http, $timeout) {
         $rootScope.loggedIn = authFactory.getAuth() !== undefined;
         // console.log( authFactory.getToken);
         $rootScope.auth = authFactory.getAuth();
+        $scope.userDropDownShow = false;
         //console.log($rootScope.auth)
-        getSiteIndex()
+        getSiteIndex();
+
+        var toggle = false;
+        $scope.showUserDropDown = function() {
+            $scope.userDropDownShow = !$scope.userDropDownShow;
+            $timeout(function() {
+                $scope.$apply();
+            }, 1);
+
+        }
+
+        window.addEventListener("mouseup", function onMouseUp(){
+            // Make sure all menu items are closed
+            $scope.userDropDownShow = false;
+            $timeout(function() {
+                $scope.$apply();
+            }, 1);
+        }, false);
+
+        $scope.toggleNavi = function () {
+            if (toggle) {
+                angular.element(document.querySelector('.items')).css('display', 'none');
+            } else {
+                angular.element(document.querySelector('.items')).css('display', 'flex');
+
+            }
+
+
+            toggle = !toggle;
+        };
 
 
         function getSiteIndex() {

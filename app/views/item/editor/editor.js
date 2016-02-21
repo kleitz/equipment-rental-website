@@ -147,6 +147,8 @@ angular.module('app.editor', ['ngRoute'])
             fd.append('condition', product.condition);
             fd.append('comments_require_approval', product.comments_require_approval)
             fd.append('comments_enabled', product.comments_enabled)
+            fd.append('content', product.content)
+            console.log(product)
             $http({
                 url: backend + '/product/' + $routeParams.id + '/edit',
                 method: 'POST',

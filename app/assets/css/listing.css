@@ -1,0 +1,56 @@
+.listing .header {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.listing .results .item {
+  background: #fefefe;
+  border: 1.4px solid #e3e3e3;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  padding: 20px; }
+  .listing .results .item .image_center {
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    .listing .results .item .image_center .image {
+      margin: 0; }
+  .listing .results .item .like {
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+  .listing .results .item .avil {
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    .listing .results .item .avil .Unavailable {
+      color: #df2029; }
+    .listing .results .item .avil .Available {
+      color: #4CAF50; }
+
+.listing .results .item:hover {
+  background: #fbfbfb; }
+
+.listing .results .item.ng-enter {
+  animation: fadeInUp 0.7s; }
+
+.listing .results .item.ng-enter-stagger {
+  transition-delay: 0.1s;
+  -webkit-transition-delay: 0.1s;
+  transition-duration: 0s;
+  -webkit-transition-duration: 0s; }
+
+.listing a {
+  text-decoration: none; }
+
+.listing .options {
+  background: white;
+  border: 1.4px solid #e3e3e3;
+  border-radius: 5px;
+  padding: 5px; }
+  .listing .options input, .listing .options select, .listing .options .button {
+    width: 100%; }
+  .listing .options .option {
+    margin-top: 5px; }
+  .listing .options .button {
+    padding: 0; }

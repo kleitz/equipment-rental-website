@@ -57,6 +57,23 @@ angular.module('app.admin.users', ['ngRoute'])
 
         }
 
+        $scope.deleteUser = function(index, username) {
+            $http({
+                url: backend + '/user/' + username,
+                method: 'DELETE',
+                headers: {
+                    'token': authFactory.getToken()
+                }
+            }).success(function(data, status, headers, config) {
+                //$scope.users[index].role = role;
+                //$scope.openRoleChangger = false;
+                getUsers();
+            }).
+            error(function(data, status, headers, config) {
+                $scope.error = true;
+            });
+        }
+
 
         function getUsers() {
             $http({

@@ -14,9 +14,6 @@
   margin-left: 0rem;
   margin-right: 0rem; }
 
-.mdl-layout__header-row {
-  box-shadow: none; }
-
 a {
   color: #40C4FF;
   text-decoration: none; }
@@ -25,10 +22,6 @@ a:hover {
   color: #339dcc; }
 
 .fullwidth {
-  width: 100%; }
-
-.row {
-  margin: 0;
   width: 100%; }
 
 .fixtop {
@@ -54,8 +47,17 @@ header {
       padding: 10px;
       margin: 0;
       transition: 0.1s; }
+    header .navbar .navbar-brand {
+      margin-right: 30px; }
+    header .navbar .nav-item {
+      background: #0398dc !important;
+      margin: 0;
+      padding: 0; }
+    header .navbar li {
+      margin: 0 !important;
+      padding: 0 !important; }
     header .navbar .nav-item:hover {
-      background: #0398dc !important; }
+      background: #0287c3 !important; }
     header .navbar .nav-item.darken:hover {
       background: #014462 !important; }
   header .navbar .darken {
@@ -72,6 +74,26 @@ header {
     header .dropdown-menu a:hover {
       background: #03A9F4;
       color: #fff !important; }
+  @media screen and (min-width: 0px) {
+    header .navbar {
+      padding-left: 0px;
+      padding-right: 0px; } }
+  @media screen and (min-width: 500px) {
+    header .navbar {
+      padding-left: 0px;
+      padding-right: 0px; } }
+  @media screen and (min-width: 700px) {
+    header .navbar {
+      padding-left: 30px;
+      padding-right: 30px; } }
+  @media screen and (min-width: 900px) {
+    header .navbar {
+      padding-left: 100px;
+      padding-right: 100px; } }
+  @media screen and (min-width: 1200px) {
+    header .navbar {
+      padding-left: 200px;
+      padding-right: 200px; } }
 
 .fourOhFour {
   margin: 0 auto;
@@ -233,7 +255,8 @@ header {
     margin-bottom: 15px;
     border: 1px solid #e3e3e3;
     border-radius: 5px;
-    background: #fff; }
+    background: #fff;
+    width: 100% !important; }
     .listing .item .like, .listing .item .image_center {
       display: flex;
       justify-content: center; }

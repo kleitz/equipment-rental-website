@@ -1,6 +1,6 @@
 <div class="requests">
     <div class="header">
-        Requests
+        <h1>Requests</h1>
     </div>
     <div class="row" ng-repeat="person in requests" ng-hide="noRequests">
         <div class="four columns">
@@ -8,10 +8,10 @@
                  height="auto"/>
             <b>{{person.username}}</b>
         </div>
-        <div class="five columns">
+        <div class="two columns">
             <p>{{person.date_requested | amCalendar}}</p>
         </div>
-        <div class="six columns">
+        <div class="six columns buttons">
             <button ng-click="accept(person.username)">Accept</button>
             <button ng-click="deny(person.username)">Cancel</button>
         </div>

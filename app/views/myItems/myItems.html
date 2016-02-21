@@ -1,22 +1,28 @@
 <div class="listing">
-    <div class="subheader" ng-if="products.total != 0">
+    <div class="header" ng-if="products.total != 0">
         <div class="content">
             <div class="subtitle">
-                <p>My Items</p>
+                <h1>My Items</h1>
             </div>
         </div>
     </div>
     <div class="message" ng-if="products.total == 0">
-        <div class="icon">
-            <i class="fa fa-frown-o"></i>
-        </div>
-        <div class="text">
-            <h3>Looks like you don't have any items</h3>
-            <a href="#/listing">Click here to get started!</a>
+        <div class="container">
+
+            <div class="icon">
+                <i class="fa fa-frown-o"></i>
+            </div>
+            <div class="message">
+                <p>Looks like you don't have any items</p>
+            </div>
+            <div class="link">
+                <a href="#/listing">Click here to get started!</a>
+            </div>
 
         </div>
+
     </div>
-    <div class="results" ng-include="'/views/partials/results.html'">
+    <div class="results" ng-include="'/views/partials/myItems.html'">
 
     </div>
 </div>

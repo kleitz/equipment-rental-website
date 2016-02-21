@@ -16,30 +16,48 @@
 <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
 <!--<link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">-->
 <link rel="stylesheet" href="bower_components/skeletonframework/dist/skeleton.min.css">
-<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+<!--<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">-->
 
 <link rel="stylesheet" href="assets/css/base.css">
-<link rel="stylesheet" href="assets/css/misc.css">
+<link rel="stylesheet" href="assets/css/core.css">
+<link rel="stylesheet" href="assets/css/navigation.css">
+<link rel="stylesheet" href="assets/css/cookiebar.css">
+<link rel="stylesheet" href="assets/css/listing.css">
+<link rel="stylesheet" href="assets/css/profile.css">
+<link rel="stylesheet" href="assets/css/message.css">
+<link rel="stylesheet" href="assets/css/auth.css">
+<link rel="stylesheet" href="assets/css/editor.css">
+<link rel="stylesheet" href="assets/css/tags.css">
+<link rel="stylesheet" href="assets/css/ownerManager.css">
+<link rel="stylesheet" href="assets/css/adminManager.css">
 <link rel="stylesheet" href="assets/css/item.css">
-<link rel="stylesheet" href="assets/css/loadingBar.css">
-<link rel="stylesheet" href="assets/css/editorTag.css">
-<link rel="stylesheet" href="assets/css/search.css">
-<link rel="stylesheet" href="assets/css/requests.css">
-<link rel="stylesheet" href="assets/css/admin.css">
+<link rel="stylesheet" href="assets/css/productSlider.css">
+<link rel="stylesheet" href="assets/css/home.css">
+<!--<link rel="stylesheet" href="assets/css/misc.css">-->
+<!--<link rel="stylesheet" href="assets/css/item.css">-->
+<!--<link rel="stylesheet" href="assets/css/loadingBar.css">-->
+<!--<link rel="stylesheet" href="assets/css/editorTag.css">-->
+<!--<link rel="stylesheet" href="assets/css/search.css">-->
+<!--<link rel="stylesheet" href="assets/css/requests.css">-->
+<!--<link rel="stylesheet" href="assets/css/admin.css">-->
 <link rel="stylesheet" href="assets/css/likeHeart.css">
 <link rel="stylesheet" href="assets/css/imageGallery.css">
-<link rel="stylesheet" href="assets/css/homepage.css">
+<!--<link rel="stylesheet" href="assets/css/homepage.css">-->
 <!--<link rel="stylesheet" href="bower_components/pure/pure-min.css">-->
-<link rel="stylesheet" href="app.css">
+<!--<link rel="stylesheet" href="app.css">-->
 <link rel="stylesheet" href="bower_components/animate.css/animate.min.css">
 <!-- <link rel="stylesheet" href="bower_components/angular-toastr/dist/angular-toastr.min.css"> -->
 <link rel="stylesheet" href="bower_components/angular-ui-notification/dist/angular-ui-notification.min.css">
 <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.min.css">
 
+<script
+        src="https://www.google.com/recaptcha/api.js?onload=vcRecaptchaApiLoaded&render=explicit"
+        async defer
+></script>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
-<script src="bower_components/tether/dist/js/tether.min.js"></script>
-<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+<!--<script src="bower_components/tether/dist/js/tether.min.js"></script>-->
+<!--<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>-->
+<!--<script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>-->
 <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css"/>
 <base href="/">
 </head>
@@ -51,23 +69,20 @@
 </header>
 
 <div class="wrapper">
-    <div class="holder">
-        <ng-view class="ngview"></ng-view>
-
-    </div>
-
-</div>
-
-<div class="footer">
-    <div class="row">
-        <div class="eight columns">
-            This is a footer
-        </div>
-        <div class="four columns">
-            {{site.description}}
+    <ng-view class="view"></ng-view>
+    <div class="footer">
+        <div class="row">
+            <div class="eight columns">
+                This is a footer
+            </div>
+            <div class="four columns">
+                {{site.description}}
+            </div>
         </div>
     </div>
 </div>
+
+
 
 <cookiedisplay url="#/cookies"></cookiedisplay>
 
@@ -135,6 +150,7 @@
 <script src="components/tagSearch/tagSearch.js"></script>
 <script src="components/likeHeart/likeHeart.js"></script>
 <script src="components/imageGallery/imageGallery.js"></script>
+<script src="components/productSlider/productSlider.js"></script>
 
 <!-- Imports -->
 <script src="bower_components/cryptojslib/rollups/sha512.js"></script>
@@ -152,6 +168,13 @@
 <script src="bower_components/angular-moment/angular-moment.min.js"></script>
 <script src="bower_components/angular-ui-notification/dist/angular-ui-notification.min.js"></script>
 <script src="bower_components/angular-loading-bar/build/loading-bar.min.js"></script>
+<script type="text/javascript" src="bower_components/angular-recaptcha/release/angular-recaptcha.min.js"></script>
+<link rel='stylesheet' href='/bower_components/textAngular/dist/textAngular.css'>
+<script src='bower_components/textAngular/dist/textAngular-rangy.min.js'></script>
+<script src='bower_components/textAngular/dist/textAngular-sanitize.min.js'></script>
+<script src='bower_components/textAngular/dist/textAngular.min.js'></script>
+<script src='bower_components/pleasejs/dist/please.js'></script>
+<script src='bower_components/ngInfiniteScroll/build/ng-infinite-scroll.min.js'></script>
 
 </body>
 </html>

@@ -1,0 +1,57 @@
+@import 'base'
+
+.tags
+  @include center-tags
+  .holder
+    display: flex
+    flex-direction: column
+  .tag
+    border: $main-border
+    border-radius: 20px
+    margin: 5px
+    text-align: center
+    min-width: 50px
+
+
+    padding: 4px
+    padding-left: 10px
+    padding-right: 10px
+    min-height: 32px
+
+    a
+      color: inherit
+      text-decoration: none
+    a:hover
+      color: inherit * 0.7
+  .tag:hover
+    background: #e3e3e3
+  .tab
+    background: $statusOK
+    height: 15px
+    min-width: 40px
+    border-right: 2px solid $statusOK * 0.8
+  .tab:hover
+    background: $statusOK *0.5
+.editortags
+  @include center-tags
+  height: auto
+  .editorTagBase
+    max-width: 100%
+    padding: 5px
+
+
+    .tag
+      @include center-tag
+      background: #e3e3e3
+      padding: 5px
+      border-radius: 10px
+      width: auto
+      color: #333
+      transition: 0.1s
+      .text
+        font-weight: 600
+      .icon
+        padding-left: 5px
+    .tag:hover
+      background: #e74c3c
+      color: #ecf0f1

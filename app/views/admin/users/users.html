@@ -1,6 +1,9 @@
 <div class="admin" ng-show="loggedIn">
     <div class="header">
-        <h1>Admin panel</h1>
+
+        <div class="title">
+            <h3>Users</h3>
+        </div>
     </div>
     <div class="row">
         <div class="sidebar two columns">
@@ -21,6 +24,8 @@
                     <th>Email</th>
                     <th>Role</th>
                     <th>Date Registered</th>
+                    <th>Change Role</th>
+                    <th>Delete User</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -59,6 +64,30 @@
                                             </div>
                                             <div class="columns six">
                                                 <input class="button-primary" type="submit" value="Send">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <button class="button-red" ng-click="user.openDeleteUser = !user.openDeleteUser">Delete User</button>
+                        <div class="lModal" ng-show="user.openDeleteUser">
+                            <div class="content">
+                                <div class="header">
+                                    Delete User {{user.username}}
+                                </div>
+                                <div class="other">
+                                    <form ng-submit="deleteUser($index, user.username, element)">
+                                        <div class="row">
+                                            <p>Do you wish to delete user {{user.username}}</p>
+                                            <div class="columns six">
+                                                <input class="button"  value="NO" ng-click="user.openDeleteUser = false">
+                                            </div>
+                                            <div class="columns six">
+                                                <input class="button-minor" type="submit" value="Confirm Delete" ng-click="user.openDeleteUser = false">
                                             </div>
                                         </div>
                                     </form>

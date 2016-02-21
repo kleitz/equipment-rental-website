@@ -1,44 +1,22 @@
 <div class="itemview">
     <div class="content">
-
-        <div class="row" ng-hide="product.owner == auth.owner" ng-cloak>
+        <div class="row" ng-show="product.owner.username == auth.username">
             <button class="button button-red" ng-click="deleteItem()">Delete</button>
             <a class="button button-green" href="#/listing/{{product.id}}/edit">edit</a>
+        </div>
+        <div class="row title">
+            <h1>{{product.title}}</h1>
         </div>
         <div class="row">
             <div class="eight columns">
                 <div class="row">
                     <div class="gallery">
 
-                        <image-gallery images="{{product.image}}"></image-gallery>
-                    </div>
-                    <!--<limage class="image" image='{{product}}' preview=true radius="5" quality="medium" height='150'-->
-                    <!--width='150'></limage>-->
-                </div>
-
-                <!--<div class="row">-->
-                <!--<h4>Images</h4>-->
-                <!--<image-viewer class="images" image='{{image}}' preview=true radius="5" quality="medium" height='100'-->
-                <!--width='100' ng-repeat="image in product.image" ng-if="$index >= 1"></image-viewer>-->
-                <!--</div>-->
-                <div class="row">
-                    <h4>Tags</h4>
-                    <div class="tags">
-                        <div class="tag" ng-repeat="tag in product.tags">{{tag.tag}}</div>
+                        <image-gallery images="{{product.images}}"></image-gallery>
                     </div>
                 </div>
             </div>
             <div class="four columns">
-                <div class="row title">
-                    <h2>{{product.title}}</h2>
-
-                </div>
-                <div class="row rent">
-                    <div class="text">
-                        Available for {{product.product_rental_period_limit}} days.
-                    </div>
-                    <rent-button class="select" datasource="product"></rent-button>
-                </div>
                 <div class="row description">
                     <h3>Description</h3>
                     {{product.description}}
@@ -47,13 +25,37 @@
                     <h3>Condition</h3>
                     {{product.condition}}
                 </div>
-
             </div>
         </div>
+
+
+
+        <div class="row content">
+            <div class="eight columns">
+                <h3>Content</h3>
+                <span ng-bind-html="product.content"></span>
+            </div>
+            <div class="four columns">
+                <div class="row rent">
+                    <div class="text">
+                        Available for {{product.product_rental_period_limit}} days.
+                    </div>
+                    <rent-button class="select" datasource="product"></rent-button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <h4>Tags</h4>
+            <div class="tags">
+                <div class="tag" ng-repeat="tag in product.tags">{{tag.tag}}</div>
+            </div>
+        </div>
+
         <div class="row">
             <div class="five columns">
-                <qrcode class="code" type="product" source={{product}}></qrcode>
-                <i class="info">Scan me</i>
+                <qrcode class="code row" type="product" source={{product}}></qrcode>
+                <i class="info row"><b>Mobile app: </b>Scan me</i>
             </div>
             <div class="seven columns">
                 <div class="row owner">
@@ -88,19 +90,19 @@
             <div class="comments">
                 <div class="comment row animated fadeIn"
                      ng-repeat="comment in product.comments | orderBy:'-date_added'">
-                    <div class="two columns">
+                    <div class="two columns icon">
                         <img ng-cloak
                              ng-src="https://secure.gravatar.com/avatar/{{comment.author.gravatar}}?s=90&d=identicon"
                              width="50px" height="auto"/>
 
                     </div>
-                    <div class="two columns">
+                    <div class="two columns username">
                         <a href="#/user/{{comment.author.username}}">@{{comment.author.username}}</a>
                     </div>
-                    <div class="six columns">
+                    <div class="six columns message">
                         {{comment.message}}
                     </div>
-                    <div class="two columns">
+                    <div class="two columns other">
                         <!--<span am-time-ago="comment.date_added"></span>-->
                         <span class="deletebutton" ng-click="deleteComment(comment.id, $index)"
                               ng-if="comment.author.username == auth.username"><i class="fa fa-times"></i> Delete</span>

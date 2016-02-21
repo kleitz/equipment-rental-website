@@ -1,0 +1,55 @@
+@import 'base'
+
+.wrapper.admin
+  width: 100%!important
+  padding: 0!important
+
+.admin
+  .header
+    //@include center-children
+    //@include basic-style
+    background: $navigation-background*0.8
+    color: white
+    padding: 15px
+    margin-top: 60px
+    //min-height: 50px
+    .title, .subtitle
+      @include center-children
+
+  .sidebar
+    background: $navigation-background*0.8
+    //color: $adminSideBarTextColour
+    height: 100%
+    margin-left: -0px
+    min-height: 50vh
+    ul, li
+      padding: 0
+      margin: 0
+      background: $navigation-background*0.8
+    .navigation
+      list-style: none
+      //min-height: 10vh
+      //padding: 10px
+      height: 100%
+      margin: 0
+      text-align: left
+      li
+        margin-top: 10px
+        padding: 10px
+
+      font-size: 0.9rem
+      i
+        //color: $adminSideBarHover
+        padding-right: 10px
+        font-size: 2rem
+    li:hover
+      background: $navigation-background*0.6
+    li:hover i
+      color: #e3e3e3
+  .content
+    //min-height: 45vh
+    table
+      width: 100%
+
+.navbar.admin
+  //background: $navigationColour*0.4!important

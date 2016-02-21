@@ -28,7 +28,10 @@ angular.module('app.home', ['ngRoute'])
         sayHello();
 
         $scope.showTimeline = false;
-        getTimeline();
+        //getTimeline();
+        //getNewestProducts();
+        //getRecentlyUpdatedProducts();
+        getPopularTags();
 
     } else {
         $scope.view = false;
@@ -44,8 +47,80 @@ angular.module('app.home', ['ngRoute'])
             }
         }).success(function(data, status, headers, config) {
             $scope.timeline = data;
+            $scope.showTimeline = true;
+
+        }).
+        error(function(data, status, headers, config) {
+            $scope.error = true;
+        });
+    }
+
+    function getNewestProducts() {
+        $http({
+            url: backend + "/products/added/newest",
+            method: 'GET',
+            headers: {
+                'Count': 5,
+                'token': authFactory.getToken()
+            }
+        }).success(function(data, status, headers, config) {
+            $scope.added = data;
+            $scope.showTimeline = true;
+
+        }).
+        error(function(data, status, headers, config) {
+            $scope.error = true;
+        });
+    }
+    function getRecentlyUpdatedProducts() {
+        $http({
+            url: backend + "/products/updated/newest",
+            method: 'GET',
+            headers: {
+                'Count': 5,
+                'token': authFactory.getToken()
+            }
+        }).success(function(data, status, headers, config) {
+            $scope.updated = data;
             console.log(data)
             $scope.showTimeline = true;
+
+        }).
+        error(function(data, status, headers, config) {
+            $scope.error = true;
+        });
+    }
+
+    $scope.getTagClass = function(tag) {
+        return {
+            'background': tag.colour,
+            'color': 'white'
+            //'font-size': '1rem'
+        }
+    }
+
+    function getPopularTags() {
+        $http({
+            url: backend + "/filter/tags/popular",
+            method: 'GET',
+            headers: {
+                'Start': 0,
+                'Count': 10,
+                'token': authFactory.getToken()
+            }
+        }).success(function(data, status, headers, config) {
+            $scope.populartags = [];
+            for (var i = 0; i < data.length; i++) {
+                var colour = Please.make_color();
+                //console.log(colour)
+                $scope.populartags.push({
+                    "title": data[i].title,
+                    "amount": data[i].amount,
+                    "colour": colour[0]
+                });
+            }
+
+            console.log(data)
         }).
         error(function(data, status, headers, config) {
             $scope.error = true;

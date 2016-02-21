@@ -1,0 +1,38 @@
+@import 'base'
+
+.login
+  background: #fff
+  margin-top: 100px
+  border: $main-border
+  border-radius: $main-border-radius
+  padding: 20px
+  .error
+    @include center-center
+    .message
+      padding: 5px
+      border: 1px solid $statusError
+      border-radius: $main-border-radius
+      color: $statusError
+      width: auto
+  .login-button
+    @include center-center
+    width: 100%
+
+.logout
+  background: #fff
+  border: $main-border
+  border-radius: $main-border-radius
+  padding: 20px
+  text-align: center
+  @include center-center
+  .container
+    width: 100%
+  .button
+    margin: 0 auto
+
+
+.register
+  background: #fff
+  border: $main-border
+  border-radius: $main-border-radius
+  padding: 20px

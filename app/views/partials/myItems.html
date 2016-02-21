@@ -1,0 +1,39 @@
+<div class="listing">
+
+    <div class="item" ng-repeat="product in products.items" ng-show="products.items">
+        <div class="row">
+            <div class="three columns">
+
+                <div class="row image_center">
+                    <limage class="image" image='{{product}}' height="120" width="120" radius="120"
+                            preview=true></limage>
+                </div>
+
+            </div>
+
+            <div class="six columns">
+                <div class="row">
+                    <a href="#/listing/{{product.id}}">
+                        <h3>{{product.title | limitTo:20}}</h3>
+                    </a>
+
+
+                </div>
+                <div class="row">
+                    <i>{{product.description | limitTo:56}}...</i>
+                </div>
+
+            </div>
+            <div class="three columns">
+
+                <div class="row like">
+                    <like-heart likes="{{product.likes}}" scope="{{product}}"></like-heart>
+                </div>
+                <div class="row avil">
+                    <b>Due {{product.due | amCalendar}}</b>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

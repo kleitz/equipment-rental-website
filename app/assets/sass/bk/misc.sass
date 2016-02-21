@@ -1,0 +1,677 @@
+@import 'base'
+
+// fonts
+
+a
+  color: $statusOK
+  text-decoration: none
+a:hover
+  color: $statusOK * 0.8
+  //text-decoration: none
+
+.fullwidth
+  width: 100%
+
+// Skeleton fixes
+
+.row
+  //margin: 0
+  //padding: 0
+  //width: 100%
+
+.fixtop
+  position: absolute!important
+  top: 0!important
+  left: 0!important
+  display: inherit!important
+
+header
+  @include center-children
+  position: fixed
+  width: 100%
+  top: 0
+  left: 0
+  z-index: 100
+  .navbar
+    background: $navigationColour!important
+    width: 100%
+    transition: 0.6s
+    padding: 0
+    .nav-item, .navbar-brand
+      padding: 10px
+      margin: 0
+      transition: 0.1s
+    .navbar-brand
+      margin-right: 30px
+    .nav-item
+      background: $navigationColour*0.9!important
+      margin: 0
+      padding: 0
+    li
+      margin: 0!important
+      padding: 0!important
+      //background: $navigationColour*0.3!important
+    .nav-item:hover
+      background: $navigationColour*0.8!important
+    .nav-item.darken:hover
+      background: $navigationColour*0.4!important
+  .navbar .darken
+    width: 150px
+    text-align: right
+    background: $navigationColour*0.6!important
+  .dropdown-menu
+    border: 1px solid #e3e3e3
+    border-top: 0px none
+    background: #ECEFF1
+    border-radius: 0px
+    margin: 0
+    transition: 0.1s
+    a:hover
+      background: $navigationColour
+      color: #fff!important
+  @media screen and (min-width: 0px)
+    .navbar
+      padding-left: 0px
+      padding-right: 0px
+  @media screen and (min-width: $small)
+    .navbar
+      padding-left: 0px
+      padding-right: 0px
+  @media screen and (min-width: $medium)
+    .navbar
+      padding-left: 30px
+      padding-right: 30px
+  @media screen and (min-width: $large)
+    .navbar
+      padding-left: 100px
+      padding-right: 100px
+  @media screen and (min-width: $extraLarge)
+    .navbar
+      padding-left: 200px
+      padding-right: 200px
+
+//  404
+
+.fourOhFour
+  margin: 0 auto
+  text-align: center
+  .code
+    margin-top: 100px
+    font-size: 5em
+
+
+// Wrapper
+
+.wrapper
+  .holder
+    @include basic-style
+    .ngview
+      min-height: 500px
+  margin-top: 50px
+  height: 100%
+
+  transition: 0.1s
+  @media screen and (min-width: 0px)
+    margin-top: 40px
+    padding-left: 0px
+    padding-right: 0px
+  @media screen and (min-width: $small)
+    padding-left: 0px
+    padding-right: 0px
+    margin-top: 40px
+  @media screen and (min-width: $medium)
+    padding-left: 30px
+    padding-right: 30px
+    margin-top: 50px
+  @media screen and (min-width: $large)
+    padding-left: 100px
+    padding-right: 100px
+    margin-top: 50px
+  @media screen and (min-width: $extraLarge)
+    padding-left: 200px
+    padding-right: 200px
+    margin-top: 50px
+
+//  Footer
+
+.footer
+
+  width: 100%
+  height: 100px
+  background: #e3e3e3
+  //border-left: 1px solid #e3e3e3
+  //border-right: 1px solid #e3e3e3
+  border-top: 1px solid #e3e3e3 * 0.9
+  @include center-children
+  .row
+    width: 100%
+    @include center-text
+
+
+//  Home
+
+.home
+  height: 100%
+  //@include basic-style
+
+  .welcome
+    @include center-children
+    min-height: 400px
+
+    //@include basic-style
+    a
+      width: 90%
+      display: block
+      margin: 0 auto
+    .column
+      padding: 10px
+
+
+//  Login
+
+.login
+  @include center-children
+  padding-top: 50px
+
+  .row
+    //width: 600px
+    background: #fff
+    .title
+      width: 400px
+      margin: 0 auto
+      text-align: center
+      padding: 20px
+    .form
+      width: 400px
+      min-height: 260px
+      margin: 0 auto
+      .login-button
+        align-items: center
+      .loading
+        @include center-children
+        @include center-text
+        height: 100%
+        p
+          padding: 20px
+          font-weight: 600
+    .error
+      width: 100%
+      min-height: 50px
+      margin-bottom: 30px
+      background: $statusError
+      @include center-children
+      .message
+        color: #fff
+
+.register
+  @include center-children
+  padding: 50px
+  .form
+    //width: 600px
+    form
+      padding: 20px
+    h1
+      text-align: center
+      font-weight: $titleWeight
+      padding: 20px
+    img
+      width: 100px
+      height: auto
+      padding-bottom: 20px
+      @include center-image
+
+
+
+
+// Listings
+
+.listing
+  width: 100%
+  min-height: 400px
+  padding: 10px
+  //@include basic-style
+  .options
+    //background: pink
+    margin-top: 210px
+    border: 1px solid #E3E3E3
+    border-radius: 5px
+    background: #fff
+    margin:
+    padding: 10px
+    .option
+      input
+        width: 100%
+        margin: 5px
+      padding: 10px
+      //border: 1px solid #e3e3e3
+      //border-radius: 10px
+      margin-bottom: 10px
+      //form
+      //  @include center-children
+        //width: 100%
+        //input
+        //  width: 100%
+        //a
+        //  width: 30px
+  .subheader
+    height: 200px
+    @include center-children
+    .subtitle
+      @include center-children
+      font-size: $titleSize
+      font-weight: $titleWeight
+    .options
+      @include center-children
+      input
+        border: none
+        padding: 0
+        margin: 0
+        border-bottom: 1px solid #e3e3e3
+        margin-left: 20px
+        text-align: center
+        //width: 50px
+  .item:hover
+    background: #fff * 0.99
+  .item
+    //min-height: 100px
+    padding-top: 15px
+    margin-bottom: 15px
+    border: 1px solid #e3e3e3
+    border-radius: 5px
+    background: #fff
+    width: 100%!important
+    //max-width: 100%
+    .like, .image_center
+      @include center-children
+
+    .row
+      //min-height: 100px
+      //width: 100%
+
+    //.title
+    //  font-size: 2rem
+    //  font-weight: bold
+    //.description
+    //  font-size: 1.2rem
+    //.image
+    //  @include center-children
+    //  min-height: 100px
+    //  min-width: 100px
+    //.status
+    //  @include center-children
+    //  height: 100px
+    //  float: right
+    //  margin-right: 1px
+    //  .avail
+    //    .text
+    //      @include bold
+    //      @include responsive-text
+    //      .Available
+    //        color: $statusOK
+    //      .Unavailable
+    //        color: $statusUnavailable
+
+  //.item:hover
+  //  //background: $hoverColour
+  //.paging
+  //  padding-left: 30px
+  //  padding-right: 30px
+  //  margin-top: 30px
+  //  margin-bottom: 50px
+  //  .message
+  //    margin-top: 10px
+  //    margin-bottom: 20px
+  //    font-size: 1.5rem
+  //    @include center-children
+  //  a
+  //    @include center-children
+  //@include responsive-text
+  ////@include center-children
+  //height: 50%
+  //.message
+  //  @include center-text
+  //  .icon
+  //    font-size: 6rem
+  //@media screen and (min-width: 0px)
+  //  .title
+  //    padding-top: 10px
+  //  .item
+  //    margin: 0 auto
+  //    width: 100%
+  //    .row
+  //      padding-top: 30px
+  //    .avail
+  //      .text
+  //        width: 100%
+  //@media screen and (min-width: $small)
+  //  .title
+  //    padding-top: 10px
+  //    .avail
+  //      .text
+  //        width: 100%
+  //@media screen and (min-width: $medium)
+  //  .title
+  //    padding-top: 0px
+  //    .avail
+  //      .text
+  //        width: 100px
+  //@media screen and (min-width: $extraLarge)
+  //  .item
+  //    margin: 0 auto
+  //    width: 100%
+
+//  User profile
+
+.user
+  width: 100%
+  padding: 5%
+  //@include basic-style
+  @include center-children
+  .profile
+    .image
+      @include center-children
+      img
+        width: 100px
+        height: 100px
+    .columns
+      height: 100%
+    .context
+      @include center-children
+      width: 100%
+      .username
+        @include center-text
+        @include title
+  .qr
+    .code
+      height: auto
+
+  @media screen and (min-width: 0px)
+    .image
+      height: 100px
+    .context
+      height: 100px
+    .qr
+      h2
+        @include center-text
+      .code
+        @include center-image
+        width: 100px
+  @media screen and (min-width: $small)
+    .image
+      height: 100px
+    .context
+      height: 100px
+  @media screen and (min-width: $medium)
+    .image
+      height: 200px
+    .context
+      height: 200px
+    .qr
+      h2
+        @include center-text
+      .code
+        @include center-image
+        width: 150px
+  @media screen and (min-width: $extraLarge)
+    .image
+      height: 300px
+    .context
+      height: 300px
+    .qr
+      h2
+        @include center-text
+      .code
+        @include center-image
+        width: 250px
+
+
+//.timeline
+//  .row
+//    .header
+//      @include center-children
+//      min-height: 100px
+//      width: 100%
+//    .content
+//      min-height: 400px
+//    .sidebar
+//      min-height: 400px
+//      width: 100%
+//      margin: 0
+//      .top
+//        border: 2px solid #333
+//        .title
+//          @include subtitle
+//          @include center-text
+//        .description
+//          @include center-text
+//          font-size: 1.2rem
+//
+//      .item
+//        min-height: 100px
+//        border-bottom: 2px solid #e3e3e3
+//        .three
+//          @include center-children
+//          height: 100px
+//        .nine
+//          padding: 25px
+//          padding-left: 0
+//          h5
+//            margin: 0
+//      .item:hover
+//        background: $hoverColour
+//      .empty
+//        @include center-children
+//        @include center-text
+
+.logout
+  @include center-children
+  //@include basic-style
+  min-height: 100px
+
+.cookiedisplaybase
+  @include center-text
+  @include center-children
+  position: fixed
+  bottom: 0
+  left: 0
+  background: #333
+  width: 100%
+  height: 50px
+  padding: 5px
+  color: #fff
+  .columns
+    @include center-children
+    height: 100%
+  a
+    color: #fff
+    padding-left: 100px
+  .tab
+    min-width: 100px
+    height: 100%
+    @include center-children
+    position: absolute
+    right: 0
+  .button
+    margin-right: 10px
+    margin-left: 10px
+    margin-bottom: 0!important
+    i
+      padding-right: 10px
+    .decline
+      @include center-children
+      height: 100%
+      padding-left: 10px
+      padding-right: 10px
+      background: $statusError
+    .decline:hover
+      background: darken($statusError, 20%)
+    .agree
+      @include center-children
+      height: 100%
+      margin: 0
+      padding-left: 10px
+      padding-right: 10px
+      background: $statusGreen
+    .agree:hover
+      background: darken($statusGreen, 20%)
+
+.creator
+  //@include basic-style
+  .title
+    @include center-text
+  form
+    padding: 60px
+    .row
+      img
+        height: 200px
+        @include center-image
+        width: auto
+      input
+        height: 200px
+
+
+
+
+.button-red
+  color: $statusError
+  border: 1px solid $statusError
+.button-red:hover
+  color: $statusError * 0.8
+  border: 1px solid $statusError * 0.8
+.button-blue
+  color: $statusOK
+  border: 1px solid $statusOK
+.button-blue:hover
+  color: $statusOK * 0.8
+  border: 1px solid $statusOK * 0.8
+.button-green
+  color: $statusGreen
+  border: 1px solid $statusGreen
+.button-green:hover
+  color: $statusGreen * 0.8
+  border: 1px solid $statusGreen * 0.8
+
+
+.sidebarresults
+  position: relative
+  height: 100%
+  width: 100%
+
+$red: random(256)-1
+$green: random(256)-1
+$blue: random(256)-1
+
+$randomcolour: rgb($red, $green, $blue)
+
+.tags
+  @include center-tags
+  .holder
+    display: flex
+    flex-direction: column
+  .tag
+    background: none
+    padding: 4px
+    min-height: 32px
+  .tag:hover
+    background: #e3e3e3
+  .tab
+    background: $statusOK
+    height: 15px
+    min-width: 40px
+    border-right: 2px solid $statusOK * 0.8
+  .tab:hover
+    background: $statusOK *0.5
+
+//.tags
+//  //@include center-tags
+//  //@include tags-right
+//  @include tags-bottom-right
+//  //padding: 5px
+//  .tag
+//    background: $statusOK
+//    font-weight: 600
+//    border: #e3e3e3 * 0.9 solid 0px
+//    padding: 5px
+//    margin: 5px
+//    border-radius: 0px
+//    height: 4px
+//    overflow: hidden
+//    a
+//      color: #333
+//  .holder
+//    @include center-image
+//  .tab
+//    background: $statusError
+//    height: 10px
+//    width: 100%
+//  .tag:hover
+//    border-radius: 5px
+//
+//    border: #e3e3e3 * 0.9 solid 1px
+//    background: none
+//    height: auto
+//    overflow: inherit
+
+
+
+.lModal
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background: rgba(50, 50, 50, 0.8)
+  @include center-children
+  z-index: 100
+
+  .content
+    position: relative
+    background: #fff
+    width: 60%
+    height: 300px
+    margin-top: 10%
+    .header
+      background: #E3E3E3
+      color: #333333
+      border-bottom: 1px solid #e3e3e3
+    .other
+      padding: 10px
+
+
+
+.comment
+  border-bottom: 1px solid #e3e3e3
+  padding: 20px
+
+
+.deletebutton
+  color: $statusError
+  :hover
+    color: $statusError * 0.7
+
+.avail
+  text-align: right
+  font-weight: 600
+
+
+.btn-group
+  border: 1px solid #e3e3e3
+  border-radius: 10px
+
+.row-button
+  .columns
+    @include center-children
+
+
+.owner
+  padding: 40px
+  .sidebar
+    text-align: center
+  h1
+    @include center-center
+  .image
+    @include center-image
+    max-width: 150px
+  .nine
+    .row
+      padding-top: 40px

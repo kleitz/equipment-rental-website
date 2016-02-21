@@ -1,0 +1,154 @@
+@import 'base'
+
+.itemview
+  //@include basic-style
+  padding: 50px
+  .image
+    @include center-children
+    //background: pink
+    min-height: 150px
+  .title
+    @include center-children
+    min-height: 100px
+    //background: red
+  .rent
+    //@include center-children
+    //background: hotpink
+
+    min-height: 250px
+    //@include border-info
+    @include center-children
+    flex-direction: column
+    .text
+      @include center-children
+  .description
+    //@include center-text
+    min-height: 100px
+    //background: deeppink
+  .owner
+    @include border-info
+    padding: 15px
+    a
+      padding-left: 15px
+    .row
+      padding-top: 10px
+  qrcode
+    img
+      max-width: 140px
+      height: auto
+  .gallery
+    height: 100%
+    width: 100%
+    padding: 10px
+
+//  Item: an item from the listings
+.itempreview
+  padding-top: 30px
+  @include center-children
+  width: 100%
+  .content
+    width: 100%
+    .row
+      .columns
+        .image
+          @include center-children
+        .row
+          .title
+            margin-top: 30px
+      .subtitle
+        margin-top: 30px
+        .columns
+          height: 100px
+          @include center-children
+          .icon
+            font-size: 5rem
+            text-align: right
+          .title
+            font-align: left
+            width: 100%
+      .information
+        .row
+          .columns
+            .rent
+              @include center-children
+              min-height: 100px
+              width: 100%
+            .info
+              @include center-children
+            .profile
+              border: 1px solid #e3e3e3
+              padding: 10px
+              margin: 10px
+              width: 100%
+            .dates
+              margin-top: 20px
+
+  @media screen and (min-width: 0px)
+    .content
+      .row
+        .columns
+          .row
+            .description
+              text-align: center
+          .title
+            text-align: center
+            margin-top: -60px
+      .information
+        .row
+          .columns
+            @include center-children
+          .qr
+            @include center-children
+            width: 100%
+          .info
+            text-align: center
+            width: 100%
+
+  @media screen and (min-width: $small)
+    .content
+      .row
+        .columns
+          .row
+            .description
+              text-align: center
+          .title
+            margin-top: -60px
+            text-align: center
+  @media screen and (min-width: $medium)
+    .content
+      .row
+        .columns
+          .row
+            .description
+              text-align: left
+          .title
+            text-align: left
+            margin-top: 0px
+        .information
+          .row
+            .columns
+              .qr
+                width: 150px
+            .info
+              text-align: left
+              width: 100%
+  @media screen and (min-width: $extraLarge)
+    .content
+      .row
+        .columns
+          .row
+            .description
+              text-align: left
+        .title
+          text-align: left
+          margin-top: 0px
+      .information
+        .row
+          .info
+            text-align: left
+            width: 100%
+  .row
+    .title
+      @include title
+    .description
+      @include subtitle

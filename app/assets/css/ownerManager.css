@@ -1,0 +1,111 @@
+.owner {
+  padding: 40px;
+  border: 1.4px solid #e3e3e3;
+  border-radius: 5px;
+  background: white; }
+  .owner b, .owner p {
+    padding: 0;
+    margin: 0; }
+  .owner .button {
+    width: 100%;
+    padding: 0;
+    padding-left: 5px;
+    padding-right: 5px; }
+  .owner .image img {
+    width: 100px;
+    height: auto; }
+
+.lModal {
+  position: absolute;
+  top: -10px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(50, 50, 50, 0.8);
+  display: flex;
+  justify-content: center;
+  z-index: 100; }
+  .lModal .content {
+    position: relative;
+    background: #fff;
+    width: 60%;
+    min-height: 500px;
+    max-height: 500px;
+    margin-top: 5%; }
+    .lModal .content .header {
+      background: #E3E3E3;
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: #333333;
+      border-bottom: 1px solid #e3e3e3; }
+    .lModal .content .other {
+      margin-top: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 10px; }
+
+.comment {
+  border-bottom: 1px solid #e3e3e3;
+  padding: 20px; }
+
+.deletebutton {
+  color: #df2029; }
+  .deletebutton :hover {
+    color: #9c161d; }
+
+.avail {
+  text-align: right;
+  font-weight: 600; }
+
+.btn-group {
+  border: 1px solid #e3e3e3;
+  border-radius: 10px; }
+
+.row-button .columns {
+  display: flex;
+  justify-content: center; }
+
+.requests {
+  background: white;
+  border: 1.4px solid #e3e3e3;
+  border-radius: 5px;
+  padding: 20px; }
+  .requests img {
+    min-width: 50px;
+    min-height: 50px; }
+  .requests .header {
+    text-align: center;
+    padding-bottom: 20px; }
+  .requests img {
+    border-radius: 100px; }
+  .requests .four {
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    .requests .four b {
+      margin-left: 10px; }
+  .requests .subheader {
+    padding-bottom: 50px; }
+  .requests .row {
+    padding: 10px;
+    border-top: 1px solid #e3e3e3; }
+  .requests .buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    .requests .buttons button {
+      margin-left: 10px; }
+  .requests .noshow {
+    width: 100%; }
+    .requests .noshow .icon {
+      font-weight: 800;
+      font-size: 4rem;
+      color: #999; }
+    .requests .noshow .message {
+      font-size: 1.4rem;
+      color: #999; }

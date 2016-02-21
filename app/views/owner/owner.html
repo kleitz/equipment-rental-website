@@ -10,29 +10,30 @@
 
 
         </div>
-        <div class="nine columns">
+        <div class="row">
             <h1>Owner Manager</h1>
             <div class="row row-button">
                 <div class="four columns">
                     <a class="button" href="#/owner/listing">Your Listing</a>
                 </div>
                 <div class="four columns">
-                    <a class="button button-green" href="#/create">Add new item to Listing</a>
+                    <a class="button button-green" href="#/create">Add new Listing</a>
                 </div>
                 <div class="four columns">
-                    <a class="button" href="#/requests">Listings with Requests</a>
+                    <a class="button" href="#/requests">Listings Requests</a>
                 </div>
             </div>
             <table class="table table-striped animated fadeIn" ng-show="products">
                 <thead>
                 <tr>
                     <th>Title</th>
-                    <th>Description</th>
+                    <!--<th>Description</th>-->
                     <th>Comments</th>
                     <th>Requests</th>
                     <th>Likes</th>
-                    <th>Date Added</th>
-                    <th>Last updated</th>
+                    <!--<th>Date Added</th>-->
+                    <!--<th>Last updated</th>-->
+                    <th></th>
                     <th></th>
 
                 </tr>
@@ -40,15 +41,16 @@
                 <tbody>
                 <tr ng-repeat="product in products.items">
                     <td><a href="#/listing/{{product.id}}">{{product.title}}</a></td>
-                    <td>{{product.description}}</td>
+                    <!--<td>{{product.description}}</td>-->
                     <td><a class="button" href="#/owner/comments/{{product.id}}" ng-show="product.comments.length > 0">{{product.comments.length}} comments</a><span
                             ng-show="product.comments.length === 0"> No comments.</span></td>
                     <td><a class="button" href="#/listing/{{product.id}}/requests" ng-show="product.requests.total > 0">{{product.requests.total}}
                         requests</a><span ng-show="product.requests.total === 0"> No requests.</span></td>
                     <td>{{product.likes.likes}} likes</td>
-                    <td>{{product.date_added | amCalendar}}</td>
-                    <td>{{product.date_updated | amCalendar}}</td>
+                    <!--<td>{{product.date_added | amCalendar}}</td>-->
+                    <!--<td>{{product.date_updated | amCalendar}}</td>-->
                     <td><a class="button button-green" href="#/listing/{{product.id}}/edit">Edit</a></td>
+                    <td><a class="button button-red" ng-click="deleteItem(product.id)">Delete</a></td>
                 </tr>
 
                 </tbody>

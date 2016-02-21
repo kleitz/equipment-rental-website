@@ -22,7 +22,7 @@ angular.module('app.item', ['ngRoute', 'app.config'])
             }
         }).success(function (data, status, headers, config) {
             $scope.product = data.items[0];
-            //console.log(data.items[0])
+            console.log(data.items[0])
             //$scope.url = domain + data.items[0].image.size.large
         }).error(function (data, status, headers, config) {
             console.log('error');

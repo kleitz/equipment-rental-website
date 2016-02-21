@@ -1,11 +1,16 @@
+// Variables
+$backgroundcolour: #F2F1EF
+
+//$navigation-background: #03A9F4
+$navigation-background: #2C3E50
+//$navigation-background: #272A34
+
+
 // Media queries
 $small: 500px
 $medium: 700px
 $large: 900px
 $extraLarge: 1200px
-
-// Colours: font
-$navigationColour: #03A9F4
 
 $primaryColour: #333
 $hoverColour: #ECEFF1
@@ -16,30 +21,34 @@ $statusUnknown: #FFEB3B
 $statusUnavailable: #E91E63
 $statusGreen: #4CAF50
 
+$content-background: #fefefe
+
 $bordercolour: #e3e3e3
+$main-border: 1.4px solid $bordercolour
+$main-border-radius: 5px
 
-// Admin panel colours
-
-$adminSidebarBackground: #2c3e50
-$adminSideBarTextColour: #ecf0f1
-$adminSideBarHover: #e74c3c
-
-
-// Font sizes
-$titleSize: 2.3rem
-$subtitleSize: 1.3rem
-
-// Font weights
-$titleWeight: 600
-$subTitleWeight: 400
-
-@mixin center-children
-  display: flex
-  justify-content: center
+// Mixins
 
 @mixin center-center
   display: flex
   align-items: center
+  justify-content: center
+
+@mixin center-right
+  display: flex
+  align-items: center
+  justify-content: flex-end
+
+@mixin center-left
+  display: flex
+  align-items: center
+  justify-content: flex-start
+
+@mixin center-text
+  text-align: center
+
+@mixin center-children
+  display: flex
   justify-content: center
 
 @mixin center-tag
@@ -69,79 +78,3 @@ $subTitleWeight: 400
   justify-content: flex-end
   align-items: flex-end
   align-self: flex-end
-
-
-@mixin center-image
-  display: block
-  margin: 0 auto
-
-@mixin center-text
-  text-align: center
-
-@mixin bold
-  font-weight: bold
-
-@mixin title
-  font-weight: $titleWeight
-  font-size: $titleSize
-
-@mixin subtitle
-  font-weight: $subTitleWeight
-  font-size: $subtitleSize
-
-@mixin responsive-text
-  @media screen and (min-width: 0px)
-    .title
-    padding-top: 10px
-  text-align: center
-  .item
-    margin: 0 auto
-    width: 100%
-  @media screen and (min-width: $small)
-    .title
-      padding-top: 10px
-    text-align: center
-  @media screen and (min-width: $medium)
-    .title
-      padding-top: 0px
-    text-align: left
-  @media screen and (min-width: $large)
-    text-align: left
-  @media screen and (min-width: $extraLarge)
-    text-align: left
-    .item
-      margin: 0 auto
-      width: 600px
-
-@mixin basic-style
-  //background: #fff
-  //border: 1px solid #e3e3e3
-  border-bottom: none
-  min-height: 50vh
-
-@mixin border-info
-  border: 1px solid #e3e3e3
-
-//  Ng-cloak, ensure that things are hidden
-[ng\:cloak], [ng-cloak], .ng-cloak
-  display: none
-
-
-@media screen and (min-width: 0px)
-  html, body, .wrapper
-    background: #ECEFF1
-
-
-@media screen and (min-width: 1028px)
-  html, body, .wrapper
-    background: #fafafa
-    .content
-
-
-[class*=column]
-  width: calc(100%)
-  margin-left: 0rem
-  margin-right: 0rem
-
-.mdl-layout__header-row
-  box-shadow: none

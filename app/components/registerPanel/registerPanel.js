@@ -18,8 +18,9 @@ angular.module('app.registerPanel', ['app.config'])
               );
                 $scope.register = function(user) {
                     // console.log(user);
+                    console.log(user)
                     if (user !== undefined && user.name !== "" && user.email !== "" && user.password !== "" &&
-                    user.name !== " " && user.email !== " ") {
+                    user.name !== " " && user.email !== " " && user.recaptcha != "") {
                         console.log("time to register")
                         var hash = CryptoJS.SHA512(user.password).toString();
 
@@ -29,7 +30,8 @@ angular.module('app.registerPanel', ['app.config'])
                             data: {
                                 'username': user.name,
                                 'password': hash,
-                                'email':user.email
+                                'email':user.email,
+                                'recaptcha': user.recaptcha
                             },
                             headers: {
                                 'Content-Type': 'multipart/form-data'

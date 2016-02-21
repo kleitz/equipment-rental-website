@@ -1,58 +1,167 @@
-<nav class="navbar navbar-full navbar-dark bg-primary" ng-controller="AuthCtrl">
-    <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2">
-        &#9776;
-    </button>
-    <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
-        <a class="navbar-brand" href="#/">
+<div class="navigation navigation-fixed">
+    <ul class="menu">
+        <li class="item-hamburger" ng-click="toggleNavi()">
+            <i class="fa fa-bars"></i>
+        </li>
+        <li class="logo">
             <i class="fa fa-lemon-o"></i> <b>{{site.title}}</b>
-        </a>
-        <ul class="nav navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="#/"><i class="fa fa-home"></i> Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#/listing">Listing</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#/owner">Owner Manager</a>
-            </li>
-            <li class="nav-item" ng-show="auth.role === 'admin'">
-                <a class="nav-link" href="#/admin">Admin Manager</a>
-            </li>
-            <!--<li class="nav-item dropdown" ng-show="loggedIn">-->
-                <!--<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="" role="button" aria-haspopup="true"-->
-                   <!--aria-expanded="false">-->
-                    <!--Owner Manager-->
-                <!--</a>-->
-                <!--<div class="dropdown-menu animated fadeIn" aria-labelledby="Preview">-->
-                    <!--<a class="dropdown-item" href="#/owner/listing">Items</a>-->
-                    <!--<a class="dropdown-item" href="#/create">Add new listing</a>-->
-                    <!--<a class="dropdown-item" href="#/requests">Requests</a>-->
-                <!--</div>-->
-            <!--</li>-->
-            <li class="nav-item pull-xs-right" ng-hide="loggedIn">
-                <a class="nav-link" href="#/login">Login</a>
-            </li>
-            <li class="nav-item pull-xs-right" ng-hide="loggedIn">
-                <a class="nav-link" href="#/register">Register</a>
-            </li>
-            <li class="nav-item dropdown pull-xs-right darken" ng-show="loggedIn">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="" role="button" aria-haspopup="true"
-                   aria-expanded="false">
-                    <!--<img ng-cloak class="profileimage" height=50 width="auto" ng-src="https://secure.gravatar.com/avatar/{{auth.gravatar}}?s=90&d=identicon"/>-->
-                    <span class="username">
-                        @{{auth.username}}
-                    </span>
+        </li>
+        <div class="items">
+            <a href="#/">
+                <li class="item">
+                    Home
+                </li>
+            </a>
+            <a href="#/listing">
+                <li class="item">
+                    Listing
+                </li>
+            </a>
+            <a href="#/owner" ng-show="loggedIn">
+                <li class="item">
+                    Owner Manager
+                </li>
+            </a>
+            <a href="#/admin" ng-show="auth.role === 'admin'">
+                <li class="item">
+                    Admin Manager
+                </li>
+            </a>
 
-                </a>
-                <div class="dropdown-menu dropdown-menu-right animated fadeIn" aria-labelledby="Preview">
-                    <a class="dropdown-item" href="#/user/{{auth.username}}"><i class="fa fa-user"></i> View Profile</a>
-                    <a class="dropdown-item" href="#/my/items/current"><i class="fa fa-cog"></i> My Items</a>
-                    <a class="dropdown-item" href="#/my/requests"><i class="fa fa-cog"></i> My Requests</a>
-                    <a class="dropdown-item" href="#"><i class="fa fa-cog"></i> Account Settings</a>
-                    <a class="dropdown-item" href="#/logout"><i class="fa fa-power-off"></i> Sign off</a>
-                </div>
-            </li>
-        </ul>
-    </div>
-</nav>
+            <a href="#/register" ng-hide="loggedIn">
+                <li class="item item-right">
+                    Register
+                </li>
+            </a>
+            <a href="#/login" ng-hide="loggedIn">
+                <li class="item item-right">
+                    Login
+                </li>
+            </a>
+
+
+            <a ng-show="loggedIn">
+                <li class="item item-right" ng-click="showUserDropDown()">
+                    <div class="details">
+                        <div class="username">
+                            @{{auth.username}}
+                        </div>
+
+                        <div class="image" ng-style="{
+    'background':'url(https://secure.gravatar.com/avatar/{{auth.gravatar}}?s=90&d=identicon) no-repeat center center', 'background-size': 'cover', 'overflow':'hidden'}">
+                        </div>
+                    </div>
+                    <ul class="dropdown-items-right" ng-show="userDropDownShow">
+                        <a href="#/user/{{auth.username}}" ng-click="showUserDropDown()" ng-show="loggedIn">
+                            <li class="dropdown-item">
+                                View Profile
+                            </li>
+                        </a>
+                        <a href="#/my/items/current" ng-click="showUserDropDown()" ng-show="loggedIn">
+                            <li class="dropdown-item">
+                                My Items
+                            </li>
+                        </a>
+                        <a href="#/my/requests" ng-click="showUserDropDown()" ng-show="loggedIn">
+                            <li class="dropdown-item">
+                                My Requests
+                            </li>
+                        </a>
+                        <a href="#/logout" ng-click="showUserDropDown()" ng-show="loggedIn">
+                            <li class="dropdown-item">
+                                Sign Out
+                            </li>
+                        </a>
+                    </ul>
+                </li>
+
+
+            </a>
+            <a href="#/user/{{auth.username}}" ng-show="loggedIn">
+                <li class="item dropdown-item-dropped">
+                    View Profile
+                </li>
+            </a>
+            <a href="#/my/items/current" ng-show="loggedIn">
+                <li class="item dropdown-item-dropped">
+                    My Items
+                </li>
+            </a>
+            <a href="#/my/requests" ng-show="loggedIn">
+                <li class="item dropdown-item-dropped">
+                    My Requests
+                </li>
+            </a>
+            <a href="#/logout" ng-show="loggedIn">
+                <li class="item dropdown-item-dropped">
+                    Sign Out
+                </li>
+            </a>
+        </div>
+
+    </ul>
+</div>
+
+
+<!--<nav class="navigation" ng-controller="AuthCtrl">-->
+<!--<button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2">-->
+<!--&#9776;-->
+<!--</button>-->
+<!--<div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">-->
+<!--<a class="navbar-brand" href="#/">-->
+<!--<i class="fa fa-lemon-o"></i> <b>{{site.title}}</b>-->
+<!--</a>-->
+<!--<ul class="nav navbar-nav">-->
+<!--<div class="nav-items">-->
+<!--<li class="nav-item">-->
+<!--<a class="nav-link" href="#/"><i class="fa fa-home"></i> Home <span class="sr-only">(current)</span></a>-->
+<!--</li>-->
+<!--<li class="nav-item">-->
+<!--<a class="nav-link" href="#/listing">Listing</a>-->
+<!--</li>-->
+<!--<li class="nav-item">-->
+<!--<a class="nav-link" href="#/owner">Owner Manager</a>-->
+<!--</li>-->
+<!--<li class="nav-item" ng-show="auth.role === 'admin'">-->
+<!--<a class="nav-link" href="#/admin">Admin Manager</a>-->
+<!--</li>-->
+<!--&lt;!&ndash;<li class="nav-item dropdown" ng-show="loggedIn">&ndash;&gt;-->
+<!--&lt;!&ndash;<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="" role="button" aria-haspopup="true"&ndash;&gt;-->
+<!--&lt;!&ndash;aria-expanded="false">&ndash;&gt;-->
+<!--&lt;!&ndash;Owner Manager&ndash;&gt;-->
+<!--&lt;!&ndash;</a>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="dropdown-menu animated fadeIn" aria-labelledby="Preview">&ndash;&gt;-->
+<!--&lt;!&ndash;<a class="dropdown-item" href="#/owner/listing">Items</a>&ndash;&gt;-->
+<!--&lt;!&ndash;<a class="dropdown-item" href="#/create">Add new listing</a>&ndash;&gt;-->
+<!--&lt;!&ndash;<a class="dropdown-item" href="#/requests">Requests</a>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;</li>&ndash;&gt;-->
+<!--<li class="nav-item pull-xs-right" ng-hide="loggedIn">-->
+<!--<a class="nav-link" href="#/login">Login</a>-->
+<!--</li>-->
+<!--<li class="nav-item pull-xs-right" ng-hide="loggedIn">-->
+<!--<a class="nav-link" href="#/register">Register</a>-->
+<!--</li>-->
+<!--<li class="nav-item dropdown pull-xs-right darken" ng-show="loggedIn">-->
+<!--<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="" role="button"-->
+<!--aria-haspopup="true"-->
+<!--aria-expanded="false">-->
+<!--&lt;!&ndash;<img ng-cloak class="profileimage" height=50 width="auto" ng-src="https://secure.gravatar.com/avatar/{{auth.gravatar}}?s=90&d=identicon"/>&ndash;&gt;-->
+<!--<span class="username">-->
+<!--@{{auth.username}}-->
+<!--</span>-->
+
+<!--</a>-->
+<!--<div class="dropdown-menu dropdown-menu-right animated fadeIn" aria-labelledby="Preview">-->
+<!--<a class="dropdown-item" href="#/user/{{auth.username}}"><i class="fa fa-user"></i> View Profile</a>-->
+<!--<a class="dropdown-item" href="#/my/items/current"><i class="fa fa-cog"></i> My Items</a>-->
+<!--<a class="dropdown-item" href="#/my/requests"><i class="fa fa-cog"></i> My Requests</a>-->
+<!--<a class="dropdown-item" href="#"><i class="fa fa-cog"></i> Account Settings</a>-->
+<!--<a class="dropdown-item" href="#/logout"><i class="fa fa-power-off"></i> Sign off</a>-->
+<!--</div>-->
+<!--</li>-->
+<!--</div>-->
+
+<!--</ul>-->
+<!--</div>-->
+<!--</nav>-->

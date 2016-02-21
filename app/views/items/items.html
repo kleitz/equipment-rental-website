@@ -1,6 +1,45 @@
 <div class="listing">
+    <!--<div class="row header">-->
+        <!--<h1>Listing</h1>-->
+    <!--</div>-->
     <div class="row">
         <div class="three columns options">
+            <h2>Listings</h2>
+            {{busy}}
+            <div class="option">
+                Showing {{products.total}} Items
+                <h4>Items to show</h4>
+                <div class="row">
+
+                    <form ng-submit="changeViewAmount(count)">
+                        <div class="four columns">
+                            <input type="number" placeholder="{{count}}" ng-model="count">
+
+                        </div>
+                        <div class="eight columns">
+
+                            <input type="submit" value="Update">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="option">
+                <h4>Sort by</h4>
+                <select ng-change="getFilteredResults()" ng-model="filter.sortBy">
+                    <option value="added: newest first">Added: newest first</option>
+                    <option value="added: oldest first">Added: oldest first</option>
+                    <option value="updated: newest first">Updated: newest first</option>
+                    <option value="updated: oldest first">Updated: oldest first</option>
+                    <option value="Likes: Most likes">Likes: Most likes</option>
+                    <option value="Likes: Least likes">Likes: Least likes</option>
+                    <!--<option value="Duration: Highest first">Duration: Highest first</option>-->
+                    <!--<option value="Duration: Lowest first">Duration: Lowest first</option>-->
+                </select>
+            </div>
+            <!--<div class="option">-->
+                <!--<h4>Show for {{filter.days}} days</h4>-->
+                <!--<input type="range" id="weight" min="1" value="7" max="365" ng-model="filter.days">-->
+            <!--</div>-->
             <div class="option">
                 <h4>Search</h4>
                 <form ng-submit="search(searchTerm)">
@@ -9,27 +48,13 @@
                     <i class="fa fa-spinner fa-spin" ng-hide="products"></i>
                 </form>
             </div>
-            <div class="option">
-                <h4>Items to show</h4>
-                <input type="number" placeholder="{{count}}" ng-model="count">
+            <div class="option" ng-if="auth.role == 'owner' || auth.role == 'admin'">
+                <h4>Owner Panel</h4>
+                <a class="button" href="#/create">Add new listing</a>
+                <a class="button" href="#/owner/listing">View your listings</a>
             </div>
         </div>
         <div class="nine columns">
-            <div class="subheader">
-                <div class="content">
-                    <div class="subtitle">
-                        <p>Listings</p>
-                    </div>
-
-                    <div class="row">
-                        <b>Showing {{products.total}} Items</b>
-                    </div>
-                    <!--<div class="options">-->
-
-                    <!--</div>-->
-                </div>
-            </div>
-
             <div class="results" ng-include="'/views/partials/results.html'">
 
             </div>

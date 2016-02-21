@@ -1,0 +1,36 @@
+@import 'base'
+
+.editor
+  background: white
+  height: 100%
+  .preview-images
+    @include center-tags
+    .preview-image
+      margin-top: 5px
+      margin-right: 5px
+
+.creator, .editor
+  background: white
+  padding: 20px
+  border: $main-border
+  border-radius: $main-border-radius
+  .image-preview
+    img
+      //max-width: 500px
+      width: auto
+      max-height: 300px
+  .btn-toolbar
+    @include center-tags
+  .btn-group
+    display: flex
+    flex-wrap: wrap
+
+  .editor-view
+    .ta-editor
+      border: $main-border
+      border-radius: $main-border-radius
+    .btn
+      @include center-center
+      width: auto
+      padding: 10px
+

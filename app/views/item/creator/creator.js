@@ -100,6 +100,9 @@ angular.module('app.creator', ['ngRoute'])
               fd.append('tags', product.tags);
               fd.append('filetype', product.base64[0].filetype);
               fd.append('condition', product.condition);
+              fd.append('content', product.content)
+                console.log(product)
+
 
               $http({
                 url: backend + "/p",

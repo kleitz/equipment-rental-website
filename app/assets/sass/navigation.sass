@@ -1,0 +1,154 @@
+@import 'base'
+
+.navigation
+  background: $navigation-background
+  height: 60px
+  z-index: 3000
+  a
+    text-decoration: none
+    color: white
+  ul
+    list-style-type: none
+    margin: 0
+    padding: 0
+  .item-hamburger
+    float: left
+    display: none
+    padding: 0
+    margin: 0
+    @include center-center
+    width: 30px
+    height: 60px
+    color: white
+  .item-hamburger:hover
+    color: #333
+
+
+  .item
+    background: $navigation-background*0.9
+    @include center-center
+    height: 60px
+    padding-left: 10px
+    padding-right: 10px
+    float: left
+    display: inline-block
+    a
+      text-decoration: none
+      color: white
+  .item:hover
+    background: $navigation-background*0.8
+  .item-right
+    background: $navigation-background
+    @include center-tags
+    padding-left: 10px
+    padding-right: 10px
+    height: 60px
+    float: right
+  .details
+    //width: 200px
+
+    display: flex
+    //flex-direction: row
+    //align-items: flex-start
+    .username
+      @include center-center
+      padding-right: 20px
+    .image
+      height: 40px
+      width: 40px
+      margin-right: -5px
+      border-radius: 60px
+      position: relative
+
+  .item-right:hover
+    background: $navigation-background*0.9
+  .logo
+    background: $navigation-background
+    color: white
+    height: 60px
+    float: left
+    margin-bottom: 0
+    margin-right: 20px
+    margin-left: 10px
+    @include center-center
+    i
+      margin-left: 5px
+      margin-right: 10px
+  .active
+    background: greenyellow
+  .dropdown-items-right
+    background: $navigation-background
+    position: absolute
+    display: inline-block
+    top: 60px
+    width: 200px
+  .dropdown-item
+    height: 50px
+    margin: 0
+    padding: 0
+
+    @include center-center
+  .dropdown-item:hover
+    background: $navigation-background*0.8
+  .dropdown-item-dropped
+    background: $navigation-background*0.85
+  .dropdown-item-dropped:hover
+    background: $navigation-background*0.75
+.navigation-fixed
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+
+
+.navigation
+  @media screen and (min-width: 0px)
+    //margin-top: 50px
+    .item-hamburger
+      display: flex
+      //margin-top: -50px
+    .logo
+      font-size: 1.6rem
+      z-index: 300
+      //margin-top: -25px
+    .item
+      //display: none
+      margin: 0
+      display: inline-flex
+      float: none
+      width: 100%
+    .items
+      display: none
+      flex-direction: column
+      justify-content: flex-start
+      margin: 0
+      padding: 0
+      width: 100%
+    .dropdown-items-right
+      display: none
+    .dropdown-item-dropped
+      display: inline-flex
+  //@media screen and (min-width: $small)
+
+
+  @media screen and (min-width: $medium)
+    .item-hamburger
+      display: none
+
+    .item
+      display: flex
+      float: left
+      width: auto
+    .item-right
+      float: right
+    .items
+      display: inherit!important
+      width: auto
+      margin-top: 0
+    .dropdown-items-right
+      display: inline-block
+    .dropdown-item-dropped
+      display: none
+  //@media screen and (min-width: $large)
+
+  //@media screen and (min-width: $extraLarge)
