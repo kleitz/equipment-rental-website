@@ -10,12 +10,15 @@ angular.module('app.myrequests', ['ngRoute', 'app.config'])
             });
         }
     ])
-    .controller('myrequestsCtrl', ['$rootScope', '$scope', '$http', '$routeParams', '$location', 'Configuration', 'authFactory', function ($rootScope, $scope, $http, $routeParams, $location, Configuration, authFactory) {
+    .controller('myrequestsCtrl', ['$rootScope', '$scope', '$http', '$routeParams', '$location', 'Configuration', 'authFactory', 'Notification',
+        function ($rootScope, $scope, $http, $routeParams, $location, Configuration, authFactory, Notification) {
         $scope.noRequests = false;
         getRequests();
 
 
         $scope.cancel = function(id, index) {
+            var title = $scope.requests[index].title
+            Notification.info({message: 'Canceling ' + title, positionY: 'bottom', positionX: 'center'});
             $http({
                 url: backend + '/product/' + id + '/request/cancel',
                 method: 'POST',
@@ -25,8 +28,10 @@ angular.module('app.myrequests', ['ngRoute', 'app.config'])
             }).success(function (data, status, headers, config) {
                 $scope.requests.splice(index, 1);
                 $scope.hasRequest = false;
+                Notification.success({message: 'You have canceled ' + title, positionY: 'bottom', positionX: 'center'});
             }).error(function (data, status, headers, config) {
                 $scope.error = true;
+                Notification.error({message: 'something went wrong', positionY: 'bottom', positionX: 'center'});
             });
         };
 

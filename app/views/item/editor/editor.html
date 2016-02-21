@@ -1,97 +1,101 @@
 <div class="editor">
-    <form ng-submit="edit(product)">
-        <div class="row">
-            <div class="six columns">
-                <div class="mainImage">
-                    <h2>Main Image</h2>
-                    <img ng-src="{{preDomain}}{{product.images[0].size.large}}" alt="Image preview" id="imagePreview"
-                         width="100%" height="auto"
-                         class="imagePreview animated fadeIn">
+    <div class="main">
+        <form ng-submit="edit(product)">
+            <div class="row">
+                <div class="six columns">
+                    <div class="mainImage">
+                        <h2>Editor: Main Content</h2>
+                        <img ng-src="{{preDomain}}{{product.images[0].size.large}}" alt="Image preview"
+                             id="imagePreview"
+                             width="100%" height="auto"
+                             class="imagePreview animated fadeIn">
+                    </div>
                 </div>
+                <div class="six columns">
+                    <div class="">
+                        <br>
+                        <br>
+                        <label for="">Title
+                            <char-limit input="{{product.title}}" , limit="80"></char-limit>
+                            <p class="textred" ng-show="message.error.title.enable">{{message.error.title.text}}</p>
+                        </label>
+                        <input class="u-full-width" ng-model="product.title" type="text"
+                               placeholder="Title: An awesome product">
+                    </div>
+                    <br>
+                    <div class="">
+                        <label for="">Description:
+                            <char-limit input="{{product.description}}" , limit="140"></char-limit>
+                            <p class="textred" ng-show="message.error.description.enable">
+                                {{message.error.description.text}}</p>
+                        </label>
+                        <input class="u-full-width" ng-model="product.description" type="text"
+                               placeholder="Description: an awesome product">
+                    </div>
+                </div>
+
             </div>
-            <div class="six columns">
-                <div class="">
-                    <br>
-                    <br>
-                    <label for="">Title
-                        <char-limit input="{{product.title}}" , limit="80"></char-limit>
-                        <p class="textred" ng-show="message.error.title.enable">{{message.error.title.text}}</p></label>
-                    <input class="u-full-width" ng-model="product.title" type="text"
-                           placeholder="Title: An awesome product">
-                </div>
-                <br>
-                <div class="">
-                    <label for="">Description:
-                        <char-limit input="{{product.description}}" , limit="140"></char-limit>
+            <div class="row">
+                <div class="six columns">
+                    <label>Description:
+                        <char-limit input="{{product.condition}}" , limit="140"></char-limit>
                         <p class="textred" ng-show="message.error.description.enable">
                             {{message.error.description.text}}</p>
                     </label>
-                    <input class="u-full-width" ng-model="product.description" type="text"
-                           placeholder="Description: an awesome product">
+                    <input class="u-full-width" ng-model="product.condition" type="text"
+                           placeholder="Examples: New, Like New, Damaged">
+                </div>
+                <div class="six columns">
+                    <label>Days availability <p class="textred" ng-show="message.error.days.enable">
+                        {{message.error.days.text}}</p></label>
+                    <input class="u-full-width" ng-model="product.days" type="number" placeholder="7 Days">
+                </div>
+
+
+            </div>
+            <div class="row">
+                <div class="six columns">
+
+                    <label class="example-send-yourself-copy">
+                        <input type="checkbox" ng-model="product.comments_enabled">
+                        <span class="label-body">Enable Comments</span>
+                    </label>
+                    <i>Enabling comments will allow users to leave comments and see them</i>
+                </div>
+                <div class="six columns">
+
+                    <label class="example-send-yourself-copy">
+                        <input type="checkbox" ng-model="product.comments_require_approval">
+                        <span class="label-body">Comments require approval</span>
+                    </label>
+                    <i>Enabling approval will only show comments which have been approved by you</i>
                 </div>
             </div>
-
-        </div>
-        <div class="row">
-            <div class="six columns">
-                <label>Description:
-                    <char-limit input="{{product.condition}}" , limit="140"></char-limit>
-                    <p class="textred" ng-show="message.error.description.enable">
-                        {{message.error.description.text}}</p>
-                </label>
-                <input class="u-full-width" ng-model="product.condition" type="text"
-                       placeholder="Examples: New, Like New, Damaged">
+            <div class="row">
+                <div class="row editor-view">
+                    <label>Content</label>
+                    <text-angular ng-model="product.content"></text-angular>
+                </div>
             </div>
-            <div class="six columns">
-                <label>Days availability <p class="textred" ng-show="message.error.days.enable">
-                    {{message.error.days.text}}</p></label>
-                <input class="u-full-width" ng-model="product.days" type="number" placeholder="7 Days">
+            <div class="row">
+
+                <input type="submit" class="button-blue-filled" ng-class="uploadButtonClass"
+                       value="Update listing information">
             </div>
 
-
-        </div>
-        <div class="row">
-            <div class="six columns">
-
-                <label class="example-send-yourself-copy">
-                    <input type="checkbox" ng-model="product.comments_enabled">
-                    <span class="label-body">Enable Comments</span>
-                </label>
-                <i>Enabling comments will allow users to leave comments and see them</i>
-            </div>
-            <div class="six columns">
-
-                <label class="example-send-yourself-copy">
-                    <input type="checkbox" ng-model="product.comments_require_approval">
-                    <span class="label-body">Comments require approval</span>
-                </label>
-                <i>Enabling approval will only show comments which have been approved by you</i>
-            </div>
-        </div>
-        <div class="row">
-            <div class="row editor-view">
-                <label>Content</label>
-                <text-angular ng-model="product.content"></text-angular>
-            </div>
-        </div>
-        <div class="row">
-
-            <input type="submit" ng-class="uploadButtonClass" value="Update listing information">
-        </div>
-
-    </form>
+        </form>
+    </div>
 
     <div class="row">
         <form ng-submit="addTag()" class="editor tags">
             <div class="row">
-                <label for="tags">Tags</label>
-                <br>
+                <h3>Tags</h3>
                 <i>Enter tags separated with ,</i>
                 <div class="">
 
                     <input ng-model="product.input.tags" type="text" placeholder="separate tags with ,">
 
-                    <input type="submit" ng-class="uploadButtonClass" value="{{message.button}}">
+                    <input type="submit" class="button-blue-filled" ng-class="uploadButtonClass" value="{{message.button}}">
                 </div>
 
             </div>
@@ -104,7 +108,10 @@
 
         </form>
     </div>
-    <div class="row">
+
+
+
+    <div class="row images-base">
         <h3>Images</h3>
         <p>Hover over an item to select preview or delete</p>
         <div class="preview-images">
@@ -124,7 +131,7 @@
                     <input class="u-full-width" value="load" ng-model="newimage.base64" ng-change="fileChange(this)"
                            id="fileUploader" multiple accept="image/*" type="file" base-sixty-four-input>
                     <div class="">
-                        <input type="submit" ng-class="uploadButtonClass" value="Add Image">
+                        <input type="submit" class="button-blue-filled" ng-class="uploadButtonClass" value="Add Image">
                     </div>
                 </div>
 

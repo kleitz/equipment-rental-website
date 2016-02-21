@@ -8,6 +8,15 @@
     .editor .preview-images .preview-image {
       margin-top: 5px;
       margin-right: 5px; }
+  .editor .main {
+    border: 1.4px solid #e3e3e3;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 60px; }
+  .editor .images-base {
+    border: 1.4px solid #e3e3e3;
+    border-radius: 5px;
+    padding: 5px; }
 
 .creator, .editor {
   background: white;
@@ -22,6 +31,7 @@
     justify-content: left;
     flex-wrap: wrap; }
   .creator .btn-group, .editor .btn-group {
+    border: none;
     display: flex;
     flex-wrap: wrap; }
   .creator .editor-view .ta-editor, .editor .editor-view .ta-editor {

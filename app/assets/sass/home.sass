@@ -1,6 +1,18 @@
 @import 'base'
 
 .home
+  .welcome
+    background: white
+    border: $main-border
+    border-radius: $main-border-radius
+    padding: 20px
+    .title
+      @include center-center
+    .buttons
+      .six
+        @include center-center
+  .row
+    margin-top: 20px
   //background: white
   //border: $main-border
   //border-radius: $main-border-radius
@@ -32,18 +44,18 @@
 .updated
   min-height: 100px
   .product
-   height: 75px
+   height: 100px
   .tab
-    height: 75px
+    height: 100px
     color: $navigation-background!important
   .tab:hover
     background: $backgroundcolour * 0.9!important
 .newest
   min-height: 100px
   .product
-    height: 75px
+    height: 100px
   .tab
-    height: 75px
+    height: 100px
     color: $navigation-background!important
 
   .tab:hover
@@ -51,9 +63,9 @@
 .added
   min-height: 200px
   .product
-    height: 100px
+    height: 150px
   .tab
-    height: 100px
+    height: 150px
     color: $navigation-background!important
   .tab:hover
     background: $backgroundcolour * 0.9!important

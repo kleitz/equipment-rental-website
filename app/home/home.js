@@ -28,7 +28,7 @@ angular.module('app.home', ['ngRoute'])
         sayHello();
 
         $scope.showTimeline = false;
-        //getTimeline();
+        getTimeline();
         //getNewestProducts();
         //getRecentlyUpdatedProducts();
         getPopularTags();

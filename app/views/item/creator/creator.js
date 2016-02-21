@@ -10,7 +10,8 @@ angular.module('app.creator', ['ngRoute'])
         });
     }
 ])
-.controller('itemCreatorCtrl', ['$rootScope', '$scope', '$http', '$routeParams', 'authFactory', '$location', function($rootScope, $scope, $http, $routeParams, authFactory, $location) {
+.controller('itemCreatorCtrl', ['$rootScope', '$scope', '$http', '$routeParams', 'authFactory', '$location', 'Notification',
+  function($rootScope, $scope, $http, $routeParams, authFactory, $location, Notification) {
   $scope.product = {};
   $scope.message = {
     button: 'Create',
@@ -116,8 +117,9 @@ angular.module('app.creator', ['ngRoute'])
                 }
               }).success(function (data, status, headers, config) {
                 $location.path('/listing/' + data.items[0].id);
+                Notification.success({message: 'Success, listing added', positionY: 'bottom', positionX: 'center', replaceMessage: true});
               }).error(function (data, status, headers, config) {
-
+                Notification.error({message: 'Oops something went wrong', positionY: 'bottom', positionX: 'center', replaceMessage: true});
                 // $scope.success = false;
 
               });

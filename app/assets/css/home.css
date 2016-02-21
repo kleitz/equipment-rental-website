@@ -1,5 +1,20 @@
 .home {
   padding: 0px; }
+  .home .welcome {
+    background: white;
+    border: 1.4px solid #e3e3e3;
+    border-radius: 5px;
+    padding: 20px; }
+    .home .welcome .title {
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+    .home .welcome .buttons .six {
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+  .home .row {
+    margin-top: 20px; }
   .home .header {
     display: flex;
     align-items: center;
@@ -27,9 +42,9 @@
 .updated {
   min-height: 100px; }
   .updated .product {
-    height: 75px; }
+    height: 100px; }
   .updated .tab {
-    height: 75px;
+    height: 100px;
     color: #2C3E50 !important; }
   .updated .tab:hover {
     background: #dad9d7 !important; }
@@ -37,9 +52,9 @@
 .newest {
   min-height: 100px; }
   .newest .product {
-    height: 75px; }
+    height: 100px; }
   .newest .tab {
-    height: 75px;
+    height: 100px;
     color: #2C3E50 !important; }
   .newest .tab:hover {
     background: #dad9d7 !important; }
@@ -47,9 +62,9 @@
 .added {
   min-height: 200px; }
   .added .product {
-    height: 100px; }
+    height: 150px; }
   .added .tab {
-    height: 100px;
+    height: 150px;
     color: #2C3E50 !important; }
   .added .tab:hover {
     background: #dad9d7 !important; }

@@ -8,7 +8,7 @@ angular.module('app.loginPanel', ['app.config'])
                 datasource: '='
             },
             templateUrl: 'components/loginPanel/loginPanel.html',
-            controller: function($scope, $http, $rootScope, $location, authFactory) {
+            controller: function($scope, $http, $rootScope, $location, authFactory, Notification) {
 
                 $scope.loading = false;
                 $rootScope.$watch('noCookieUsage', function() {
@@ -44,16 +44,19 @@ angular.module('app.loginPanel', ['app.config'])
                             $rootScope.loggedIn = true;
                             $location.path( "/home");
                             $scope.loading = false;
+                            Notification.success({message: 'こんにちは, ' + data.username, positionY: 'bottom', positionX: 'center', replaceMessage: true});
                         }).
                         error(function(data, status, headers, config) {
                             $scope.showError = true;
                             $scope.error = data.message;
                             $scope.loading = false;
+                            Notification.error({message: 'Something went wrong', positionY: 'bottom', positionX: 'center', replaceMessage: true});
                         });
                     } else {
                         $scope.showError = true;
                         $scope.loading = false;
                         $scope.error = "You are missing values";
+                        Notification.error({message: 'You are missing details', positionY: 'bottom', positionX: 'center', replaceMessage: true});
                     }
 
 

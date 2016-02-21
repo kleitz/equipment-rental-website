@@ -53,6 +53,33 @@ header {
   position: absolute;
   top: 0; }
 
+.button-green {
+  color: #4CAF50 !important;
+  border-color: #4CAF50 !important; }
+
+.button-green-filled {
+  color: white !important;
+  border-color: transparent !important;
+  background: #4CAF50 !important; }
+
+.button-red {
+  color: #df2029 !important;
+  border-color: #df2029 !important; }
+
+.button-red-filled {
+  color: white !important;
+  border-color: transparent !important;
+  background: #df2029 !important; }
+
+.button-blue {
+  color: #33C3F0 !important;
+  border-color: #33C3F0 !important; }
+
+.button-blue-filled {
+  color: white !important;
+  border-color: transparent !important;
+  background: #33C3F0 !important; }
+
 @media screen and (min-width: 0px) {
   body .wrapper {
     margin: 0;
@@ -126,5 +153,18 @@ header {
   left: 0;
   right: 0;
   bottom: -150px;
-  min-height: 150px;
+  min-height: 100px;
   background: #e8e7e5; }
+  .footer .full-height {
+    min-height: 100px; }
+  .footer .columns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem; }
+  .footer .copyright {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem; }

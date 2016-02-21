@@ -27,7 +27,7 @@ angular.module('app.editor', ['ngRoute'])
             });
         }
 
-        $scope.addTag = function() {
+        $scope.addTag = function () {
             addTag();
         };
 
@@ -43,15 +43,16 @@ angular.module('app.editor', ['ngRoute'])
             });
         }
 
-        $scope.$on('refreshTags', function(index) {
+        $scope.$on('refreshTags', function (index) {
             $scope.product.tags.splice(index.targetScope.index, 1);
         });
 
-        $scope.$on('refreshImageEditor', function(index) {
+        $scope.$on('refreshImageEditor', function (index) {
             $scope.product.images.splice(index.targetScope.index, 1);
         });
 
         function addTag() {
+            Notification.info({message: 'Tags are now uploading', positionY: 'bottom', positionX: 'center', replaceMessage: true});
             $http({
                 url: backend + '/product/' + $routeParams.id + '/tag',
                 method: 'POST',
@@ -68,9 +69,10 @@ angular.module('app.editor', ['ngRoute'])
                 }
 
                 $scope.product.input.tags = '';
-
+                Notification.success({message: 'tags added', positionY: 'bottom', positionX: 'center', replaceMessage: true});
             }).error(function (data, status, headers, config) {
                 console.log('error');
+                Notification.error({message: 'Something went wrong', positionY: 'bottom', positionX: 'center', replaceMessage: true});
                 $scope.error = true;
             });
         }
@@ -102,11 +104,11 @@ angular.module('app.editor', ['ngRoute'])
         };
         $scope.uploadButtonClass = [];
 
-        $scope.uploadAnotherImage = function(newImage) {
+        $scope.uploadAnotherImage = function (newImage) {
             var fd = new FormData();
             fd.append('image', newImage.base64[0].base64);
             fd.append('filetype', newImage.base64[0].filetype);
-
+            Notification.info({message: 'Image is now uploading', positionY: 'bottom', positionX: 'center', replaceMessage: true});
             $http({
                 url: backend + "/product/" + $routeParams.id + "/image/add",
                 method: 'POST',
@@ -118,20 +120,24 @@ angular.module('app.editor', ['ngRoute'])
                     'token': authFactory.getToken(),
                 }
             }).success(function (data, status, headers, config) {
-                Notification.success({message:'Image Added: it will appear shortly', positionY: 'bottom', positionX: 'center'});
+                Notification.success({
+                    message: 'Image Added: it will appear shortly',
+                    positionY: 'bottom',
+                    positionX: 'center', replaceMessage: true
+                });
                 loadData();
                 var preview = document.getElementById('newimagePreview');
                 preview.src = "";
             }).error(function (data, status, headers, config) {
-                Notification.error({message: 'Error: Something went wrong', positionY: 'bottom', positionX: 'center'});
+                Notification.error({message: 'Error: Something went wrong', positionY: 'bottom', positionX: 'center', replaceMessage: true});
                 $scope.error = true;
             });
         };
-        $scope.fileChange = function(data) {
+        $scope.fileChange = function (data) {
             var file = document.getElementById('fileUploader').files[0];
             var preview = document.getElementById('newimagePreview');
             if (file) {
-                var reader  = new FileReader();
+                var reader = new FileReader();
                 reader.onloadend = function () {
                     preview.src = reader.result;
                 };
@@ -139,7 +145,7 @@ angular.module('app.editor', ['ngRoute'])
             }
         };
 
-        $scope.edit = function(product) {
+        $scope.edit = function (product) {
             var fd = new FormData();
             fd.append('title', product.title);
             fd.append('description', product.description);
@@ -158,16 +164,15 @@ angular.module('app.editor', ['ngRoute'])
                 },
                 data: fd
             }).success(function (data, status, headers, config) {
-                Notification.success({message:'Edited successfully', positionY: 'bottom', positionX: 'center'});
+                Notification.success({message: 'Edited successfully', positionY: 'bottom', positionX: 'center'});
 
             }).error(function (data, status, headers, config) {
-        Notification.error({message: 'Error: Something went wrong', positionY: 'bottom', positionX: 'center'});
+                Notification.error({message: 'Error: Something went wrong', positionY: 'bottom', positionX: 'center'});
                 $scope.error = true;
             });
         };
 
-
-
+        $scope.imageBusy = false;
         if ($rootScope.loggedIn) {
             loadData();
 
@@ -201,35 +206,43 @@ angular.module('app.editor', ['ngRoute'])
 
 
                     if (product) {
-                        if (product.base64 && product.title && product.description && product.days) {
-                            //console.log(product);
-                            // $scope.uploadButtonClass.push('button-primary');
-                            $scope.message.button = $scope.message.loading;
 
-                            var fd = new FormData();
-                            fd.append('title', product.title);
-                            fd.append('description', product.description);
-                            fd.append('rental_period_limit', product.product_rental_period_limit);
-                            fd.append('tags', product.tags);
+                        if (!$scope.imageBusy) {
+                            if (product.base64 && product.title && product.description && product.days) {
+                                //console.log(product);
+                                $scope.imageBusy = true;
+                                // $scope.uploadButtonClass.push('button-primary');
+                                $scope.message.button = $scope.message.loading;
 
-                            $http({
-                                url: backend + "/p",
-                                method: 'POST',
-                                dataType: 'multipart/form-data',
-                                data: fd,
-                                transformRequest: angular.identity,
-                                headers: {
-                                    'Content-Type': undefined,
-                                    'token': authFactory.getToken(),
-                                }
-                            }).success(function (data, status, headers, config) {
-                                $location.path('/listing/' + data.items[0].id);
-                            }).error(function (data, status, headers, config) {
+                                var fd = new FormData();
+                                fd.append('title', product.title);
+                                fd.append('description', product.description);
+                                fd.append('rental_period_limit', product.product_rental_period_limit);
+                                fd.append('tags', product.tags);
 
-                                // $scope.success = false;
+                                $http({
+                                    url: backend + "/p",
+                                    method: 'POST',
+                                    dataType: 'multipart/form-data',
+                                    data: fd,
+                                    transformRequest: angular.identity,
+                                    headers: {
+                                        'Content-Type': undefined,
+                                        'token': authFactory.getToken(),
+                                    }
+                                }).success(function (data, status, headers, config) {
+                                    $location.path('/listing/' + data.items[0].id);
 
-                            });
+                                }).error(function (data, status, headers, config) {
+
+                                    // $scope.success = false;
+
+                                }).finally(function () {
+                                    $scope.imageBusy = false;
+                                });
+                            }
                         }
+
                     }
                 }
             };

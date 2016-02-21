@@ -1,6 +1,9 @@
 @import 'base'
 
 .listing
+  min-height: 600px
+  h1
+    word-break: break-all
   .header
     @include center-center
   .results
@@ -36,9 +39,9 @@
     text-decoration: none
 
   .options
-    background: white
-    border: $main-border
-    border-radius: $main-border-radius
+    //background: white
+    //border: $main-border
+    //border-radius: $main-border-radius
     padding: 5px
     input, select, .button
       width: 100%
@@ -46,3 +49,12 @@
       margin-top: 5px
     .button
       padding: 0
+@media screen and (min-width: 0px)
+  .options
+    position: relative
+    width: 100%
+
+@media screen and (min-width: $medium)
+  .options
+    position: fixed
+    width: 200px

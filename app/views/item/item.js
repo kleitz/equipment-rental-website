@@ -10,7 +10,8 @@ angular.module('app.item', ['ngRoute', 'app.config'])
             });
         }
     ])
-    .controller('itemCtrl', ['$rootScope', '$scope', '$http', '$routeParams', '$location', 'Configuration', 'authFactory', function ($rootScope, $scope, $http, $routeParams, $location, Configuration, authFactory) {
+    .controller('itemCtrl', ['$rootScope', '$scope', '$http', '$routeParams', '$location', 'Configuration', 'authFactory', 'Notification',
+        function ($rootScope, $scope, $http, $routeParams, $location, Configuration, authFactory, Notification) {
         $scope.message = {
             'processing': 'false'
         }
@@ -73,8 +74,10 @@ angular.module('app.item', ['ngRoute', 'app.config'])
                 }
             }).success(function (data, status, headers, config) {
                 $scope.comment.success = true;
+                Notification.success({message: 'Comment added: ' + comment, positionY: 'bottom', positionX: 'center', replaceMessage: true});
             }).error(function (data, status, headers, config) {
                 console.log('error');
+                Notification.error({message: 'Something went wrong', positionY: 'bottom', positionX: 'center', replaceMessage: true});
                 $scope.comment.success = true;
             }).finally(function () {
                 //console.log("its over")
@@ -92,9 +95,11 @@ angular.module('app.item', ['ngRoute', 'app.config'])
                 },
             }).success(function (data, status, headers, config) {
                 $location.path('/listing');
+                Notification.success({message: 'Item has been deleted', positionY: 'bottom', positionX: 'center', replaceMessage: true});
             }).
             error(function (data, status, headers, config) {
                 $scope.error = true;
+                Notification.error({message: 'Something went wrong', positionY: 'bottom', positionX: 'center', replaceMessage: true});
             });
         };
 

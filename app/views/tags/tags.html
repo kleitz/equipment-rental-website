@@ -1,57 +1,14 @@
 <div class="listing">
-    <div class="subheader">
-        <div class="content">
-            <div class="subtitle">
-                <p>Listings</p>
-            </div>
+    <div class="row">
+        <div class="three columns">
             <div class="options">
-                Number of results <input type="number" placeholder="{{count}}" ng-model="count">
+                <h1>Tag:</h1>
+                <h3>{{currentTag}}</h3>
             </div>
         </div>
-    </div>
-    <div class="item" ng-repeat="product in products.items">
-        <div class="row">
-            <div class="four columns">
-                <limage class="image" image='{{product}}' height="100" width="100" radius="100" preview=true></limage>
-            </div>
-            <div class="six columns">
-                <div class="title">
-                    <a href="#/owner/listing/{{product.id}}" ng-show="product.owner.username === auth.username">{{product.title}}</a>
-                    <a href="#/listing/{{product.id}}"  ng-show="product.owner.username !== auth.username">{{product.title}}</a>
-                </div>
+        <div class="nine columns">
+            <div class="results" ng-include="'/views/partials/results.html'">
 
-                <div class="description">
-                    {{product.description}}
-                </div>
-            </div>
-            <div class="two columns status">
-                <div class="avail">
-                    <availability class="text" datasource="{{product.id}}"></availability></td>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="tags">
-                <span class="tag" ng-repeat="tag in product.tags"><a href="#/tags/{{tag.tag}}">{{tag.tag}}</a></span>
-            </div>
-        </div>
-    </div>
-    <div class="paging">
-        <div class="message">
-            <div class="row">
-                <div class="twelve columns">
-                    Showing {{start}} - {{start + count}} of {{products.total}}
-                </div>
-            </div>
-        </div>
-        <div class="below">
-            <div class="row">
-                <div class="six columns">
-                    <a class="button" ng-click="back()">Previous page</a>
-                </div>
-                <div class="six columns">
-                    <a class="button" ng-click="forward()">Next page</a>
-                </div>
             </div>
         </div>
     </div>

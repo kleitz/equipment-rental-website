@@ -60,6 +60,28 @@ p
 header
   position: absolute
   top: 0
+
+.button-green
+  color: $statusGreen!important
+  border-color: $statusGreen!important
+.button-green-filled
+  color: white!important
+  border-color: transparent!important
+  background: $statusGreen!important
+.button-red
+  color: $statusError!important
+  border-color: $statusError!important
+.button-red-filled
+  color: white!important
+  border-color: transparent!important
+  background: $statusError!important
+.button-blue
+  color: $statusOK!important
+  border-color: $statusOK!important
+.button-blue-filled
+  color: white!important
+  border-color: transparent!important
+  background: $statusOK!important
 body
   @media screen and (min-width: 0px)
     .wrapper
@@ -130,6 +152,15 @@ body
   left: 0
   right: 0
   bottom: -150px
-  min-height: 150px
+  min-height: 100px
+  .full-height
+    min-height: 100px
+  .columns
+    @include center-center
+    font-size: 1.3rem
+  .copyright
+    padding: 10px
+    @include center-center
+    font-size: 1.2rem
 
   background: $backgroundcolour * 0.96

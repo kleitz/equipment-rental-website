@@ -72,12 +72,15 @@
     <ng-view class="view"></ng-view>
     <div class="footer">
         <div class="row">
-            <div class="eight columns">
-                This is a footer
+            <div class="eight columns full-height">
+                {{site.title}}
             </div>
-            <div class="four columns">
+            <div class="four columns full-height">
                 {{site.description}}
             </div>
+        </div>
+        <div class="row copyright">
+            2016
         </div>
     </div>
 </div>

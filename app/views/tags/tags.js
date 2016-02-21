@@ -11,6 +11,7 @@ angular.module('app.tags', ['ngRoute'])
         }
     ])
     .controller('tagsCtrl', ['$rootScope', '$scope', '$http', '$location', '$routeParams', function($rootScope, $scope, $http, $location, $routeParams, $watch) {
+        $scope.currentTag = $routeParams.tag
         if (window.localStorage.getItem("product_count")) {
             $scope.count = parseInt(window.localStorage.getItem("product_count"));
         } else {

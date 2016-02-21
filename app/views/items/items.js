@@ -96,7 +96,8 @@ angular.module('app.items', ['ngRoute'])
             }
 
             $scope.getFilteredResults = function () {
-
+                resetProducts();
+                $scope.start = $scope.start + $scope.count;
                 switch ($scope.filter.sortBy) {
                     case 'added: newest first':
                         sortByUrl = '/added/newest';
@@ -130,7 +131,7 @@ angular.module('app.items', ['ngRoute'])
             }
 
             function getFilteredResults(url) {
-                console.log("lets go!")
+
                 if (!$scope.noMoreData) {
                     $http({
                         url: url,
