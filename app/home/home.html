@@ -1,7 +1,7 @@
 <div class="home">
     <div class="welcome" ng-hide="loggedIn">
         <div class="content">
-            <h1 class="animated slideInDown">Welcome, ______?</h1>
+            <h1 class="">Welcome, ______?</h1>
             <div class="row animated fadeIn">
                 <div class="one-half column">
                     <a class="button button-primary" type="submit" href="#/register">Register</a>
@@ -14,13 +14,13 @@
     </div>
     <div class="timeline row" ng-show="loggedIn">
         <div class="row">
-            <div class="header animated slideInUp">
+            <div class="header">
                 <h3>{{message}}</h3>
             </div>
         </div>
         <div class="row">
             <!--<div class="nine columns">-->
-            <div class="content animated slideInUp">
+            <div class="content">
                 <div class="row upcoming">
                     <div class="column sub_title">
                         <h3>Your upcoming returns</h3>
@@ -30,15 +30,15 @@
                 </div>
                 <div class="row">
 
-                    <div class="column sub_title animated slideInUp">
+                    <div class="column sub_title">
                         <h4>Recently Updated</h4>
                         <product-slider class="newest" endpoint="/products/updated/newest" numbertoshow="4" limit="3"></product-slider>
                     </div>
-                    <div class="column sub_title animated slideInUp">
+                    <div class="column sub_title">
                         <h4>Recently Added</h4>
                         <product-slider class="added" endpoint="/products/added/newest" numbertoshow="5" limit="3"></product-slider>
                     </div>
-                    <div class="column sub_title animated slideInUp">
+                    <div class="column sub_title">
                         <h4>Most Liked</h4>
                         <product-slider class="updated" endpoint="/products/likes/most" numbertoshow="4" limit="3"></product-slider>
                     </div>
@@ -46,7 +46,7 @@
                 <div class="row">
                     <h4>Popular Tags</h4>
                     <div class="tags">
-                        <div class="tag animated slideInUp" ng-repeat="tag in populartags" ng-style="getTagClass(tag)">
+                        <div class="tag" ng-repeat="tag in populartags" ng-style="getTagClass(tag)">
                             <a href="#/tags/{{tag.title}}">{{tag.title}}: {{tag.amount}}</a>
                         </div>
                     </div>
