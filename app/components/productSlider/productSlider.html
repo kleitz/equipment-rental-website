@@ -5,9 +5,7 @@
                 <i class="fa fa-arrow-left"></i>
             </div>
             <a href="#/listing/{{product.id}}" class="product" ng-repeat="product in products.items track by $index">
-                <div class="thumb animated fadeIn" ng-mouseover="changeImage($index)"
-                     ng-mouseenter="hover(true, $index)"
-                     ng-mouseleave="hover(false, $index)" ng-click="selectImage($index)" ng-style="getClass(product)">
+                <div class="thumb animated fadeIn" ng-mouseover="changeImage($index)" ng-style="getClass(product)">
                     <div class="title">
                         <p ng-show="type == 'holding'"><b>{{product.title}}</b><br>
                             Due: {{product.due | amCalendar}}</p>
