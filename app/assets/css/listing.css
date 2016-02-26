@@ -41,21 +41,13 @@
     -webkit-transition-duration: 0s; }
   .listing a {
     text-decoration: none; }
-  .listing .options {
+  .listing .option-b {
     padding: 5px; }
-    .listing .options input, .listing .options select, .listing .options .button {
+  .listing .option {
+    padding: 5px; }
+    .listing .option input, .listing .option select, .listing .option .button {
       width: 100%; }
-    .listing .options .option {
+    .listing .option .option {
       margin-top: 5px; }
-    .listing .options .button {
+    .listing .option .button {
       padding: 0; }
-
-@media screen and (min-width: 0px) {
-  .options {
-    position: relative;
-    width: 100%; } }
-
-@media screen and (min-width: 700px) {
-  .options {
-    position: fixed;
-    width: 200px; } }

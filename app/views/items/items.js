@@ -13,6 +13,9 @@ angular.module('app.items', ['ngRoute'])
     .controller('itemsCtrl', ['$rootScope', '$scope', '$http', '$location', 'authFactory', '$colorThief',
         function ($rootScope, $scope, $http, $location, authFactory, $colorThief, $watch) {
             var sortByUrl = '/updated/newest';
+            $scope.listingOptions = {
+                enablePaging: false
+        };
             $scope.busy = false;
             if (window.localStorage.getItem("product_count")) {
                 $scope.count = parseInt(window.localStorage.getItem("product_count"));
@@ -20,6 +23,16 @@ angular.module('app.items', ['ngRoute'])
                 window.localStorage.setItem("product_count", 10);
                 $scope.count = 10;
             }
+
+            if (window.localStorage.getItem('enablePaging')) {
+
+                $scope.listingOptions.enablePaging = window.localStorage.getItem('enablePaging');
+
+            } else {
+                window.localStorage.setItem("enablePaging", false);
+                $scope.listingOptions.enablePaging = false;
+            }
+            console.log($scope.listingOptions.enablePaging)
 
             $scope.goto = function (id) {
                 $location.path('/listing/' + id);
@@ -62,6 +75,20 @@ angular.module('app.items', ['ngRoute'])
 
             }
 
+            $scope.changePaging = function (option) {
+                //if (option) {
+                //    $scope.listingOptions.enablePaging = !$scope.listingOptions.enablePaging
+                //} else {
+                //    if ($scope.listingOptions.enablePaging) {
+                //        $scope.listingOptions.enablePaging = false;
+                //    } else {
+                //        $scope.listingOptions.enablePaging = true;
+                //    }
+                //}
+                //console.log($scope.listingOptions.enablePaging)
+                //window.localStorage.setItem("enablePaging", $scope.listingOptions.enablePaging);
+            }
+
             $scope.back = function () {
                 //$scope.start + $scope.count > $scope.products.total
 
@@ -87,11 +114,13 @@ angular.module('app.items', ['ngRoute'])
             var page = 0;
 
             $scope.pagingUpdate = function () {
-                if ($scope.busy) return;
-                if (!$scope.products) return;
-                $scope.busy = true;
-                $scope.start = $scope.start + $scope.count;
-                getFilteredResults(backend + '/products' + sortByUrl);
+                if (!$scope.enablePaging) {
+                    if ($scope.busy) return;
+                    if (!$scope.products) return;
+                    $scope.busy = true;
+                    $scope.start = $scope.start + $scope.count;
+                    getFilteredResults(backend + '/products' + sortByUrl);
+                }
 
             }
 
