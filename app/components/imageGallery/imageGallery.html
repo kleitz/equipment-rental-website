@@ -3,20 +3,18 @@
     <div class="row gallery">
         <div class="thumbnails">
             <div class="thumbnail" ng-repeat="image in source track by $index" ng-if="$index < 3">
-                <div class="thumb" ng-mouseover="changeImage($index)" ng-mouseenter="hover(true, $index)"
+                <div class="thumb" ng-mouseenter="changeImage($index)"
                      ng-mouseleave="hover(false, $index)" ng-click="selectImage($index)" ng-style="{
     'background':'url({{domain}}{{image.size.thumb}}) no-repeat center center', 'background-size': 'cover', 'overflow':'hidden'}">
                     <div class="cover" ng-show="isHovering[$index].active == true">
                         <i class="fa fa-search-plus"></i>
                     </div>
                 </div>
-
-                <!--<img ng-src="{{domain}}{{image.size.thumb}}"/>-->
             </div>
         </div>
 
-        <div class="showcase" id="thisshowcase" ng-style="showcaseImage">
-            <div class="cover" ng-show="isHovering[$index].active == true">
+        <div class="showcase" ng-class="imagePreviewClass" id="thisshowcase" ng-style="showcaseImage">
+            <div class="cover">
                 <i class="fa fa-search-plus"></i>
             </div>
         </div>
@@ -26,14 +24,20 @@
     </div>
 </div>
 
-<div class="largescreen" ng-show="displayLargeScreen">
+<div class="largescreen" ng-show="displayLargeScreen" ng-class="largeScreenClass">
     <div class="shadow" ng-click="closeLargeScreen()"></div>
-    <div class="window">
+    <div class="window" ng-keydown="keyPress($event)">
 
-        <div class="row">
-            <div class="pic">
-                <img ng-src="{{domain}}{{selectedImage.size.large}}">
-            </div>
+        <div class="left">
+            <i class="fa fa-arrow-left" ng-click="changeFSIndex(0)"></i>
+        </div>
+        <div class="pic">
+            <img ng-src="{{domain}}{{images[selectedImage].size.large}}">
+
+        </div>
+
+        <div class="right">
+            <i class="fa fa-arrow-right" ng-click="changeFSIndex(1)"></i>
         </div>
         <div class="row">
 

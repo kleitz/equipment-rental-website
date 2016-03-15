@@ -31,7 +31,8 @@ angular.module('app.registerPanel', ['app.config'])
                                 'username': user.name,
                                 'password': hash,
                                 'email':user.email,
-                                'recaptcha': user.recaptcha
+                                'recaptcha': user.recaptcha,
+                                'dateofbirth': user.dateOfBirth
                             },
                             headers: {
                                 'Content-Type': 'multipart/form-data'

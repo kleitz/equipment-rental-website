@@ -25,13 +25,14 @@
 
             </div>
             <div class="three columns">
+                <div class="avil">
+                    <availability class="text" datasource="{{product.id}}" showdays="{{product.product_rental_period_limit}}"></availability>
 
+                </div>
                 <div class="row like">
                     <like-heart likes="{{product.likes}}" scope="{{product}}"></like-heart>
                 </div>
-                <div class="row avil">
-                    <availability class="text" datasource="{{product.id}}"></availability>
-                </div>
+
             </div>
         </div>
 

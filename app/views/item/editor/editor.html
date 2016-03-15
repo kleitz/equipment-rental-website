@@ -1,22 +1,24 @@
-<div class="editor">
+<div class="editor row">
     <div class="main">
-        <form ng-submit="edit(product)">
+        <form id="content" ng-submit="edit(product)">
+            <h1>Editor</h1>
             <div class="row">
-                <div class="six columns">
+                <h2>Main Content</h2>
+                <div class="four columns">
+
                     <div class="mainImage">
-                        <h2>Editor: Main Content</h2>
                         <img ng-src="{{preDomain}}{{product.images[0].size.large}}" alt="Image preview"
                              id="imagePreview"
                              width="100%" height="auto"
                              class="imagePreview animated fadeIn">
                     </div>
                 </div>
-                <div class="six columns">
+                <div class="eight columns">
                     <div class="">
                         <br>
                         <br>
                         <label for="">Title
-                            <char-limit input="{{product.title}}" , limit="80"></char-limit>
+                            <char-limit input="{{product.title}}" limit="80"></char-limit>
                             <p class="textred" ng-show="message.error.title.enable">{{message.error.title.text}}</p>
                         </label>
                         <input class="u-full-width" ng-model="product.title" type="text"
@@ -25,7 +27,7 @@
                     <br>
                     <div class="">
                         <label for="">Description:
-                            <char-limit input="{{product.description}}" , limit="140"></char-limit>
+                            <char-limit input="{{product.description}}" limit="140"></char-limit>
                             <p class="textred" ng-show="message.error.description.enable">
                                 {{message.error.description.text}}</p>
                         </label>
@@ -37,8 +39,8 @@
             </div>
             <div class="row">
                 <div class="six columns">
-                    <label>Description:
-                        <char-limit input="{{product.condition}}" , limit="140"></char-limit>
+                    <label>Condition:
+                        <char-limit input="{{product.condition}}" limit="140"></char-limit>
                         <p class="textred" ng-show="message.error.description.enable">
                             {{message.error.description.text}}</p>
                     </label>
@@ -78,70 +80,105 @@
                 </div>
             </div>
             <div class="row">
-
                 <input type="submit" class="button-blue-filled" ng-class="uploadButtonClass"
                        value="Update listing information">
             </div>
 
         </form>
-    </div>
+        <hr>
+        <div class="row">
+            <form id="tags" ng-submit="addTag()" class="tags">
+                <div class="row">
+                    <h3>Tags</h3>
+                    <i>Enter tags separated with ,</i>
+                    <div class="">
 
-    <div class="row">
-        <form ng-submit="addTag()" class="editor tags">
-            <div class="row">
-                <h3>Tags</h3>
-                <i>Enter tags separated with ,</i>
-                <div class="">
+                        <input ng-model="product.input.tags" type="text" placeholder="separate tags with ,">
 
-                    <input ng-model="product.input.tags" type="text" placeholder="separate tags with ,">
+                        <input type="submit" class="button-blue-filled" ng-class="uploadButtonClass"
+                               value="Add">
+                    </div>
 
-                    <input type="submit" class="button-blue-filled" ng-class="uploadButtonClass" value="{{message.button}}">
+                </div>
+                <br>
+                <i>Click on a tag to remove</i>
+                <div class="editortags row">
+                    <editor-tag class="editortag animated fadeIn" title="{{tag.tag}}" productid="{{product.id}}"
+                                index="{{$index}}" ng-repeat="tag in product.tags track by $index"></editor-tag>
+                </div>
+
+            </form>
+        </div>
+        <hr>
+
+        <div class="row images-base" id="images">
+            <h3>Images</h3>
+            <p>Hover over an item to select preview or delete</p>
+            <div class="preview-images">
+
+                <div class="preview-image" ng-repeat="image in product.images track by $index">
+
+                    <editor-image class="images animate-enter animated fadeIn" image='{{image}}' index="{{$index}}"
+                                  preview=true radius="5" quality="medium" height='200' width='150'></editor-image>
+
                 </div>
 
             </div>
-            <br>
-            <i>Click on a tag to remove</i>
-            <div class="editortags row">
-                <editor-tag class="editortag animated fadeIn" title="{{tag.tag}}" productid="{{product.id}}"
-                            index="{{$index}}" ng-repeat="tag in product.tags track by $index"></editor-tag>
-            </div>
+            <form ng-submit="uploadAnotherImage(newimage)">
+                <div class="row" flow-init="{singleFile: true}"
+                     flow-name="newImage.flow"
+                     flow-files-added="processFiles($files)">
 
-        </form>
-    </div>
+                    <div class="six columns">
 
 
+                        <h2>Cover Image</h2>
+                        <i>This image will be seen first</i>
 
-    <div class="row images-base">
-        <h3>Images</h3>
-        <p>Hover over an item to select preview or delete</p>
-        <div class="preview-images">
-            <div class="preview-image" ng-repeat="image in product.images track by $index">
-                <editor-image class="images animate-enter animated fadeIn" image='{{image}}' index="{{$index}}"
-                              preview=true radius="5" quality="medium" height='200' width='150'></editor-image>
+                        <div class="drop-zone animated" flow-drop
+                             ng-class="DropZoneClass"
+                             flow-drag-enter="dropZoneEnter()"
+                             flow-drag-leave="dropZoneLeave()"
+                             ng-click="InsertItems($flow)">
+                            Drag And Drop your file here
+                        </div>
 
-            </div>
-        </div>
-        <form ng-submit="uploadAnotherImage(newimage)">
-            <div class="row">
-                <div class="four columns">
-                    <label for="">Add new image<p class="textred" ng-show="message.error.image.enable">
-                        {{message.error.image.text}}</p></label>
+                        <input type="file" flow-btn/>
+
+                        <!-- End of image upload -->
+                        <input class="button-blue-filled" type="submit">
 
 
-                    <input class="u-full-width" value="load" ng-model="newimage.base64" ng-change="fileChange(this)"
-                           id="fileUploader" multiple accept="image/*" type="file" base-sixty-four-input>
-                    <div class="">
-                        <input type="submit" class="button-blue-filled" ng-class="uploadButtonClass" value="Add Image">
+
+                    </div>
+                    <div class="six columns">
+
+
+                        <img class="flowPreview" ng-class="imagePreviewClass" flow-img="newImage.flow.files[0]"/>
                     </div>
                 </div>
+                <!--<div class="row">-->
+                    <!--<div class="four columns">-->
+                        <!--<label for="">Add new image<p class="textred" ng-show="message.error.image.enable">-->
+                            <!--{{message.error.image.text}}</p></label>-->
 
 
-                <div class="eight columns">
-                    <img ng-src="{{newimage.image}}" alt="Image preview" id="newimagePreview" width="100%"
-                         class="imagePreview">
-                </div>
+                        <!--<input class="u-full-width" value="load" ng-model="newimage.base64" ng-change="fileChange(this)"-->
+                               <!--id="fileUploader" multiple accept="image/*" type="file" base-sixty-four-input>-->
+                        <!--<div class="">-->
+                            <!--<input type="submit" class="button-blue-filled" ng-class="uploadButtonClass"-->
+                                   <!--value="Add Image">-->
+                        <!--</div>-->
+                    <!--</div>-->
 
-            </div>
-        </form>
+
+                    <!--<div class="eight columns">-->
+                        <!--<img ng-src="{{newimage.image}}" alt="Image preview" id="newimagePreview" width="100%"-->
+                             <!--class="imagePreview">-->
+                    <!--</div>-->
+
+                <!--</div>-->
+            </form>
+        </div>
     </div>
 </div>

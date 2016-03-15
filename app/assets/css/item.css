@@ -1,31 +1,122 @@
 .itemview {
   background: white;
+  position: relative;
   border: 1.4px solid #e3e3e3;
   border-radius: 5px;
-  padding: 20px; }
+  padding: 20px;
+  min-height: 500px; }
+  .itemview .loading {
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    .itemview .loading i {
+      font-size: 4rem;
+      padding-bottom: 10px; }
+    .itemview .loading p {
+      font-size: 1.4rem;
+      font-weight: 600; }
+  .itemview .title {
+    position: relative;
+    min-height: 50px;
+    min-width: 100px; }
+    .itemview .title h1 {
+      margin: 0; }
+  .itemview .description-holder {
+    position: relative;
+    min-height: 30px; }
+  .itemview .title-content {
+    position: relative !important;
+    min-height: 50px;
+    min-width: 100px; }
+  .itemview .gallery {
+    position: relative;
+    height: 500px;
+    margin-bottom: 20px; }
+  .itemview .hint {
+    padding-left: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    white-space: nowrap;
+    z-index: 2; }
+    .itemview .hint .Unavailable {
+      padding: 5px;
+      border: 1px solid #df2029;
+      border-radius: 5px;
+      color: #df2029; }
+    .itemview .hint .Available {
+      padding: 5px;
+      color: #4CAF50;
+      border: 1px solid #4CAF50;
+      border-radius: 5px; }
   .itemview .code img {
     max-width: 150px; }
   .itemview .rent {
-    padding: 10px;
-    border: 1.4px solid #e3e3e3;
-    border-radius: 5px; }
+    padding: 10px; }
     .itemview .rent button {
       width: 100%;
       padding: 0; }
+      .itemview .rent button h2 {
+        margin-bottom: 10px; }
   .itemview .content, .itemview .description {
+    margin: 0;
+    padding: 0;
     max-width: 100%;
     word-break: break-all; }
-  .itemview .owner {
+  .itemview .flow-bottom {
+    height: 500px;
+    display: flex;
+    align-items: flex-end; }
+    .itemview .flow-bottom .columns {
+      width: 100%; }
+  .itemview .qr-pane {
+    padding: 20px; }
+  .itemview .owner-pane {
     margin: 0;
+    margin-top: 30px;
+    margin-bottom: 30px;
     padding: 10px;
-    border: 1.4px solid #e3e3e3;
-    border-radius: 5px; }
+    animation-duration: 1s;
+    animation-name: fadeIn; }
+    .itemview .owner-pane .detail {
+      display: flex; }
+      .itemview .owner-pane .detail .username {
+        margin-left: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center; }
+        .itemview .owner-pane .detail .username a {
+          font-size: 1rem;
+          text-decoration: none; }
+      .itemview .owner-pane .detail .image {
+        height: 50px; }
+        .itemview .owner-pane .detail .image img {
+          border-radius: 100%;
+          height: 100%;
+          width: auto; }
+  .itemview .details ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0; }
+    .itemview .details ul li {
+      margin: 0;
+      padding: 0;
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      font-size: 1.1rem; }
+  .itemview form {
+    padding: 0;
+    margin: 0; }
   .itemview h3 {
     margin: 0; }
   .itemview .comment {
     margin: 0;
     padding: 10px;
-    min-height: 90px; }
+    min-height: 90px;
+    animation-name: fadeIn;
+    animation-duration: 0.3s; }
     .itemview .comment .icon img {
       border-radius: 100%; }
     .itemview .comment .username {
@@ -45,3 +136,80 @@
       justify-content: center; }
   .itemview .comment-creator .input {
     width: 100%; }
+  .itemview .label-pill {
+    border: 1px solid #E3E3E3;
+    border-radius: 20px;
+    padding: 10px; }
+  .itemview .row {
+    padding: 0;
+    margin: 0; }
+  .itemview .float {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+  .itemview .rent {
+    min-height: 300px; }
+  .itemview .editor {
+    border: none; }
+  .itemview .content-view {
+    position: relative; }
+    .itemview .content-view .content {
+      min-height: 100px; }
+    .itemview .content-view button {
+      margin-top: 10px; }
+  .itemview .owner-row {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 200; }
+    .itemview .owner-row .button:hover {
+      color: #fff !important;
+      border: 1px solid #3498db !important;
+      background: #3498db !important;
+      transition: 0.5s; }
+  .itemview .sharing {
+    margin-top: 40px;
+    margin-bottom: 30px; }
+
+.itemview.edit {
+  background: #a3a3a3;
+  border: 1px solid #a3a3a3;
+  -webkit-filter: brightness(100%) !important; }
+  .itemview.edit .gallery, .itemview.edit .qr-pane, .itemview.edit .comment-creator, .itemview.edit .sharing, .itemview.edit .info {
+    -webkit-filter: brightness(80%); }
+
+@media screen and (min-width: 0px) {
+  .itemview .title {
+    display: inline; }
+    .itemview .title .hint {
+      padding-left: 0px; } }
+
+@media screen and (min-width: 900px) {
+  .itemview .title {
+    display: flex; }
+    .itemview .title .hint {
+      padding-left: 30px; } }
+
+.floating-edit {
+  position: absolute;
+  top: 0;
+  left: 0; }
+
+.textEditor input {
+  width: 500px; }
+
+.rentbuttonbase {
+  position: relative; }
+  .rentbuttonbase .primary {
+    position: absolute;
+    animation-duration: 0.3s;
+    animation-name: fadeIn; }
+  .rentbuttonbase .primary.ng-hide {
+    animation-duration: 0.3s;
+    animation-name: fadeOut; }

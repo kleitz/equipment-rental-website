@@ -7,11 +7,13 @@
     align-items: center;
     justify-content: center; }
   .listing .results .item {
+    max-width: 800px;
     background: #fefefe;
     border: 1.4px solid #e3e3e3;
     border-radius: 5px;
     margin-bottom: 20px;
-    padding: 20px; }
+    padding: 30px;
+    min-height: 180px; }
     .listing .results .item .image_center {
       display: flex;
       align-items: center;
@@ -19,17 +21,28 @@
       .listing .results .item .image_center .image {
         margin: 0; }
     .listing .results .item .like {
+      height: 120px;
       display: flex;
-      align-items: center;
-      justify-content: center; }
+      align-items: flex-end;
+      justify-content: flex-end; }
+      .listing .results .item .like like-heart {
+        height: 30px; }
     .listing .results .item .avil {
+      position: relative;
+      white-space: nowrap;
       display: flex;
       align-items: center;
-      justify-content: center; }
+      justify-content: flex-end; }
       .listing .results .item .avil .Unavailable {
+        padding: 5px;
+        border: 1px solid #df2029;
+        border-radius: 5px;
         color: #df2029; }
       .listing .results .item .avil .Available {
-        color: #4CAF50; }
+        padding: 5px;
+        color: #4CAF50;
+        border: 1px solid #4CAF50;
+        border-radius: 5px; }
   .listing .results .item:hover {
     background: #fbfbfb; }
   .listing .results .item.ng-enter {

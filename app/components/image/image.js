@@ -17,21 +17,35 @@ angular.module('app.limage', ['app.config'])
             controller: function ($scope, $colorThief) {
                 var rgb;
                 $scope.tap = function () {
-                    if ($scope.preview) {
-                        $scope.tapped = !$scope.tapped;
-                        var img = new Image();
+                    var img = new Image();
+                    img.onload = function () {
+                        setTimeout(function () {
+                            $scope.previewloaded = true;
+                            $scope.imageStyles['background-image'] = 'url(\"' + $scope.url + '\")';
+                            $scope.$apply();
+                        }, 0);
+                    };
 
-                        img.onload = function () {
-                            setTimeout(function () {
-                                $scope.imageStyles['background-image'] = 'url(\"' + $scope.url + '\")';
-                                $scope.$apply();
-                            }, 1);
-                        }
+                    if ($scope.tapped) {
+
+                        $scope.previewClass = 'close';
+                        setTimeout(function() {
+                            $scope.tapped = false;
+                            $scope.$apply()
+                        }, 200)
+
+
+
+
+
+                    } else {
+                        $scope.tapped = true;
+                        $scope.previewClass = 'open';
 
                         img.src = $scope.url;
                         if (img.complete) img.onload();
-
                     }
+
                 }
 
                 $scope.hoverstyle = {

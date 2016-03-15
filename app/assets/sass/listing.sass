@@ -8,23 +8,38 @@
     @include center-center
   .results
       .item
+        max-width: 800px
         background: $content-background
         border: $main-border
         border-radius: $main-border-radius
         margin-bottom: 20px
-        padding: 20px
+        padding: 30px
+        min-height: 180px
         .image_center
           @include center-center
           .image
             margin: 0
         .like
-          @include center-center
+          height: 120px
+          @include bottom-right
+          like-heart
+            height: 30px
         .avil
-          @include center-center
+          //@include center-center
+          //border: 1px solid $navigation-background
+          position: relative
+          white-space: nowrap
+          @include center-right
           .Unavailable
+            padding: 5px
+            border: 1px solid $statusError
+            border-radius: 5px
             color: $statusError
           .Available
+            padding: 5px
             color: $statusGreen
+            border: 1px solid $statusGreen
+            border-radius: 5px
       .item:hover
         background: $content-background*0.988
       .item.ng-enter

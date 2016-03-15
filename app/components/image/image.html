@@ -4,6 +4,6 @@
     </div>
 </div>
 
-<div ng-style="previewStyle" ng-click="tap()" ng-show="tapped">
-    <div ng-style="imageStyles"/>
+<div class="limagePreview" ng-style="previewStyle" ng-class="previewClass" ng-click="tap()" ng-show="tapped && previewloaded">
+    <div class="image" ng-style="imageStyles"/>
 </div>

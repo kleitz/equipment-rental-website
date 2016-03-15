@@ -11,17 +11,28 @@ html, body
 html
   height: 100%
   box-sizing: border-box
-  background: $backgroundcolour * 0.96
 
 *,
 *:before,
 *:after
   box-sizing: inherit
 
+.background
+  width: 110%
+  height: 120%
 
+  -webkit-filter: blur(10px)
+  -moz-filter: blur(10px)
+  filter: blur(10px)
+  position: fixed!important
+  background-attachment: fixed
+  //left: 0
+  margin-left: -100px!important
+  margin-top: -100px!important
 
 body
   background-color: $backgroundcolour
+
   //font-family: $bodyFontFamily
   font-size: 16px
   //@media (max-width: 768px)
@@ -40,6 +51,7 @@ body
 //  Font Sizes
 html
   font-size: 1rem
+  //background-color: $backgroundcolour
 h1
   font-size: 3rem
   font-weight: bold
@@ -62,26 +74,91 @@ header
   top: 0
 
 .button-green
+  transition: 0.3s!important
   color: $statusGreen!important
   border-color: $statusGreen!important
+.button-green:hover
+  transition: 0.3s!important
+  color: $statusGreen*0.8!important
+  border-color: $statusGreen*0.8!important
+
 .button-green-filled
+  transition: 0.3s!important
   color: white!important
   border-color: transparent!important
   background: $statusGreen!important
+.button-green-filled:hover
+  background: $statusGreen*0.8!important
+
 .button-red
+  transition: 0.3s!important
   color: $statusError!important
   border-color: $statusError!important
+.button-red:hover
+  transition: 0.3s!important
+  color: $statusError*0.8!important
+  border-color: $statusError*0.8!important
 .button-red-filled
   color: white!important
   border-color: transparent!important
   background: $statusError!important
+.button-red-filled:hover
+  color: white!important
+  border-color: transparent!important
+  background: $statusError*0.8!important
 .button-blue
+  transition: 0.3s!important
   color: $statusOK!important
   border-color: $statusOK!important
+.button-blue:hover
+  color: $statusOK*0.9!important
+  border-color: $statusOK*0.9!important
 .button-blue-filled
+  transition: 0.3s!important
   color: white!important
   border-color: transparent!important
   background: $statusOK!important
+.button-blue-filled:hover
+  color: white!important
+  border-color: transparent!important
+  background: $statusOK*0.8!important
+
+.button-hint-filled
+  color: white!important
+  border-color: transparent!important
+  background: $navigation-background!important
+.button-hint-filled.entering
+  animation-duration: 0.3s
+  animation-name: bounceIn
+.button-hint-filled.leaving
+  animation-duration: 0.3s
+  animation-name: bounceOut
+.button-plus
+  color: white!important
+  border-color: transparent!important
+  background: $navigation-background!important
+  min-width: 30px
+  min-height: 30px
+  margin-right: 5px
+  @include center-center
+  font-size: 1.2rem
+  border-radius: 100%
+.button-plus:hover
+  color: white!important
+  background: #e85445!important
+.button-icon-row
+  display: flex
+  margin-left: 10px
+  margin-right: 10px
+.button-icon-row.entering
+  animation-duration: 0.3s
+  animation-name: bounceIn
+.button-icon-row.leaving
+  animation-duration: 0.3s
+  animation-name: bounceOut
+
+
+
 body
   @media screen and (min-width: 0px)
     .wrapper
@@ -164,3 +241,32 @@ body
     font-size: 1.2rem
 
   background: $backgroundcolour * 0.96
+
+
+
+
+
+  // MISC
+.limagePreview
+  @include center-center
+  .image
+    height: 80%!important
+    transition: 0.3s
+.limagePreview.open
+  animation-duration: 0.3s
+  animation-name: fadeIn
+.limagePreview.close
+  animation-duration: 0.3s
+  animation-name: fadeOut
+//.inputTitle
+//  display: flex
+//  input
+//    padding: 0
+//    margin: 0
+//    position: relative
+//    min-height: 50px
+//    min-width: 100px
+//    border: none!important
+//    font-size: 3rem
+//    font-weight: bold
+//    width: 100%

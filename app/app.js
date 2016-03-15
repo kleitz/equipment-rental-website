@@ -64,12 +64,14 @@ angular.module('app', [
     //  Dependencies
     'angularMoment',
     'ui-notification',
-    'naif.base64',
     'ngColorThief',
     'angular-loading-bar',
     'vcRecaptcha',
     'textAngular',
-    'infinite-scroll'
+    'infinite-scroll',
+    '720kb.socialshare',
+    'flow',
+    'naif.base64'
 ]).config(['$routeProvider', '$locationProvider', '$httpProvider', function ($routeProvider, $locationProvider, $httpProvider) {
         $httpProvider.defaults.useXDomain = true;
         //console.log("its all set i guess")
@@ -84,6 +86,14 @@ angular.module('app', [
         $rootScope.auth = authFactory.getAuth();
         $scope.userDropDownShow = false;
         //console.log($rootScope.auth)
+
+        $rootScope.bodyStyle = {
+            background: 'url() no-repeat center center',
+            '-webkit-background-size': 'cover',
+            '-moz-background-size': 'cover',
+            '-o-background-size': 'cover',
+            'background-size': 'cover'
+        };
         getSiteIndex();
 
         var toggle = false;
@@ -93,7 +103,9 @@ angular.module('app', [
                 $scope.$apply();
             }, 1);
 
-        }
+        };
+
+
 
         window.addEventListener("mouseup", function onMouseUp(){
             // Make sure all menu items are closed

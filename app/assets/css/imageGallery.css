@@ -10,7 +10,7 @@ image-gallery {
     .imageGalleryBase .gallery .showcase {
       min-height: 300px;
       width: 100%;
-      animationDuration: 0.5s !important;
+      -webkit-backface-visibility: hidden;
       pointer-events: none; }
     .imageGalleryBase .gallery .thumbnails {
       margin-top: 10px;
@@ -102,6 +102,14 @@ image-gallery {
         .imageGalleryBase .thumbnails .cover i {
           font-size: 2rem; } }
 
+.largescreen.open {
+  animation-duration: 0.3s;
+  animation-name: fadeIn; }
+
+.largescreen.closed {
+  animation-duration: 0.3s;
+  animation-name: fadeIn; }
+
 .largescreen {
   position: fixed;
   top: 0;
@@ -112,6 +120,9 @@ image-gallery {
   display: flex;
   align-items: center;
   justify-content: center; }
+  .largescreen .closed {
+    animation-duration: 3s;
+    animation-name: fadeOut; }
   .largescreen .shadow {
     height: 100%;
     width: 100%;
@@ -120,6 +131,7 @@ image-gallery {
     top: 0;
     left: 0; }
   .largescreen .window {
+    position: relative;
     max-width: 80%;
     width: 100%;
     max-height: 80%;
@@ -127,13 +139,40 @@ image-gallery {
     background: black;
     overflow: hidden;
     z-index: 400; }
+    .largescreen .window .left {
+      color: white;
+      font-size: 2rem;
+      position: absolute;
+      z-index: 100;
+      left: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%; }
+      .largescreen .window .left i {
+        text-shadow: 0px 0px 5px black; }
+    .largescreen .window .right {
+      color: white;
+      font-size: 2rem;
+      position: absolute;
+      z-index: 100;
+      top: 0;
+      right: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      height: 100%; }
+      .largescreen .window .right i {
+        text-shadow: 0px 0px 5px black; }
     .largescreen .window .close {
       position: fixed;
       top: 11%;
-      right: 11%; }
+      right: 11%;
+      z-index: 101; }
       .largescreen .window .close .fa {
         color: #fff !important; }
     .largescreen .window .pic {
+      position: relative;
       height: 100%;
       background: black;
       display: flex;
@@ -147,11 +186,23 @@ image-gallery {
       align-items: center;
       justify-content: center;
       position: fixed;
-      background: #fafafa;
+      background: rgba(30, 30, 30, 0.5);
       color: white;
       width: 80%;
       margin-top: -20px;
       bottom: 10%;
       height: 60px; }
       .largescreen .window .controls a {
+        color: white; }
+      .largescreen .window .controls a {
         margin: 0; }
+  .largescreen .imagePreviewClass.changing {
+    animation-name: fadeOut;
+    animation-duration: 0.3s; }
+  .largescreen .imagePreviewClass.new {
+    animation-name: fadeIn;
+    animation-duration: 0.3s; }
+
+.showcase.new {
+  animation-name: fadeIn;
+  animation-duration: 0.3s; }

@@ -7,13 +7,23 @@ html, body {
 
 html {
   height: 100%;
-  box-sizing: border-box;
-  background: #e8e7e5; }
+  box-sizing: border-box; }
 
 *,
 *:before,
 *:after {
   box-sizing: inherit; }
+
+.background {
+  width: 110%;
+  height: 120%;
+  -webkit-filter: blur(10px);
+  -moz-filter: blur(10px);
+  filter: blur(10px);
+  position: fixed !important;
+  background-attachment: fixed;
+  margin-left: -100px !important;
+  margin-top: -100px !important; }
 
 body {
   background-color: #F2F1EF;
@@ -54,31 +64,106 @@ header {
   top: 0; }
 
 .button-green {
+  transition: 0.3s !important;
   color: #4CAF50 !important;
   border-color: #4CAF50 !important; }
 
+.button-green:hover {
+  transition: 0.3s !important;
+  color: #3d8c40 !important;
+  border-color: #3d8c40 !important; }
+
 .button-green-filled {
+  transition: 0.3s !important;
   color: white !important;
   border-color: transparent !important;
   background: #4CAF50 !important; }
 
+.button-green-filled:hover {
+  background: #3d8c40 !important; }
+
 .button-red {
+  transition: 0.3s !important;
   color: #df2029 !important;
   border-color: #df2029 !important; }
+
+.button-red:hover {
+  transition: 0.3s !important;
+  color: #b21a21 !important;
+  border-color: #b21a21 !important; }
 
 .button-red-filled {
   color: white !important;
   border-color: transparent !important;
   background: #df2029 !important; }
 
+.button-red-filled:hover {
+  color: white !important;
+  border-color: transparent !important;
+  background: #b21a21 !important; }
+
 .button-blue {
+  transition: 0.3s !important;
   color: #33C3F0 !important;
   border-color: #33C3F0 !important; }
 
+.button-blue:hover {
+  color: #2eb0d8 !important;
+  border-color: #2eb0d8 !important; }
+
 .button-blue-filled {
+  transition: 0.3s !important;
   color: white !important;
   border-color: transparent !important;
   background: #33C3F0 !important; }
+
+.button-blue-filled:hover {
+  color: white !important;
+  border-color: transparent !important;
+  background: #299cc0 !important; }
+
+.button-hint-filled {
+  color: white !important;
+  border-color: transparent !important;
+  background: #2C3E50 !important; }
+
+.button-hint-filled.entering {
+  animation-duration: 0.3s;
+  animation-name: bounceIn; }
+
+.button-hint-filled.leaving {
+  animation-duration: 0.3s;
+  animation-name: bounceOut; }
+
+.button-plus {
+  color: white !important;
+  border-color: transparent !important;
+  background: #2C3E50 !important;
+  min-width: 30px;
+  min-height: 30px;
+  margin-right: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  border-radius: 100%; }
+
+.button-plus:hover {
+  color: white !important;
+  background: #e85445 !important; }
+
+.button-icon-row {
+  display: flex;
+  margin-left: 10px;
+  margin-right: 10px; }
+
+.button-icon-row.entering {
+  animation-duration: 0.3s;
+  animation-name: bounceIn; }
+
+.button-icon-row.leaving {
+  animation-duration: 0.3s;
+  animation-name: bounceOut; }
 
 @media screen and (min-width: 0px) {
   body .wrapper {
@@ -168,3 +253,19 @@ header {
     align-items: center;
     justify-content: center;
     font-size: 1.2rem; }
+
+.limagePreview {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  .limagePreview .image {
+    height: 80% !important;
+    transition: 0.3s; }
+
+.limagePreview.open {
+  animation-duration: 0.3s;
+  animation-name: fadeIn; }
+
+.limagePreview.close {
+  animation-duration: 0.3s;
+  animation-name: fadeOut; }

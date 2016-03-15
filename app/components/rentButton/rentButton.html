@@ -1,61 +1,121 @@
-<div class="rentbuttonbase" ng-show="loggedIn">
+<!--{{status}}-->
+<!--{{availability}}-->
+<!--{{ownerAvail}}-->
+<div class="rentbuttonbase animated fadeIn" ng-show="status.isLoggedIn && status.gotRes">
 
-    <button ng-class="rentButtonClass" id="rentButton" ng-click="click('something')" ng-hide="isOwner || hasRequest">
-        {{availability}}
-    </button>
-    <!-- Only the owner of the item will see this -->
-    <div class="owner" ng-show="isOwner">
-        <div class="currentlyTaken" ng-show="!ownerAvail.available">
-            <p>User <b>{{ownerAvail.owner}}</b> took out this item <b>{{ownerAvail.date_taken | amCalendar}}</b> and is
-                due
-                <b>{{ownerAvail.date_due | amCalendar}}</b></p>
+
+    <!-- Users should be able to see this -->
+
+    <div class="primary" ng-show="status.gotRes && !status.isOwner && !status.isHolding && !status.hasRequest">
+        <!--<div class="primary" ng-show="status.state == 'rent'">-->
+        <button class="button-green-filled" id="rentButton"
+                ng-click="click('something')">
+            Request Listing
+        </button>
+        Available for {{datasource.product_rental_period_limit}} days
+    </div>
+    <!-- Only users with requests should see this -->
+    <div class="primary" ng-show="status.gotRes && status.hasRequest">
+        <div class="row">
+            <button class="button-red" ng-click="cancel()">Cancel Request</button>
+        </div>
+        <div class="row">
+            You have requested this item <b>{{userRequest.date_requested | amCalendar}}</b>
+        </div>
+        <div class="row">
+            Please await acceptance by {{datasource.owner.username}}
+        </div>
+    </div>
+
+    <!-- Only users that are holding the item should see this -->
+    <div class="primary" ng-show="status.gotRes && status.isHolding">
+        <h3 class="animated fadeIn">Listing Status</h3>
+        <!--<h4>You currently hold this</h4>-->
+        <span class="animated fadeIn">Due in <b><span am-time-ago="request.date_due"></span></b></span>
+        <p class="animated fadeIn">You rented <b><span am-time-ago="request.date_taken"></span></b></p>
+    </div>
+
+
+    <!-- Owners should only see this -->
+    <div class="owner-pane" ng-show="status.gotRes && status.isOwner">
+        <!-- Should only show when someone is holding -->
+        <h3>Listing Status</h3>
+        <div class="" ng-show="status.hasHolder">
+            <p>User <b>{{ownerAvailResult.owner}}</b> took out this item <b>{{ownerAvailResult.date_taken | amCalendar}}</b>
+                and is due
+                <b>{{ownerAvailResult.date_due | amCalendar}}</b></p>
             <button ng-click="return()">Mark item as returned</button>
         </div>
-        <div class="currentlyFree" ng-hide="!ownerAvail.available">
-            <div class="row">
-                <span class="label label-pill label-info">{{requestData.num_of_request}} <span
-                        ng-show="requestData.num_of_request === 1"> request</span><span
-                        ng-hide="requestData.num_of_request === 1"> requests</span></span>
-            </div>
-            <div class="row">
-
-                <a class="button" href="#/listing/{{datasource.id}}/requests" ng-show="requestData.num_of_request > 0">
-                    View
-                    <span ng-show="requestData.num_of_request === 1"> request</span>
-                    <span ng-hide="requestData.num_of_request === 1"> requests</span>
-                </a>
-            </div>
+        <div class="" ng-show="status.noHolder">
+            There are {{RequestsStatus.num_of_request}}
+            <span ng-show="RequestsStatus.num_of_request === 1"> request</span>
+            <span ng-hide="RequestsStatus.num_of_request === 1"> requests</span>
+            <a class="button" href="#/listing/{{datasource.id}}/requests" ng-show="RequestsStatus.num_of_request > 0">
+                View
+                <span ng-show="RequestsStatus.num_of_request === 1"> request</span>
+                <span ng-hide="RequestsStatus.num_of_request === 1"> requests</span>
+            </a>
         </div>
     </div>
 
-    <div class="activerequest" ng-show="hasRequest">
-        <div class="row">
-            You have requested this item <b>{{requestData.date_requested | amCalendar}}</b>
-        </div>
-        <div class="row">
-            Please await acceptance by owner
-        </div>
-        <div class="row">
-            <button ng-click="cancel()">Cancel Request</button>
-        </div>
+
+    <!-- Only the owner of the item will see this -->
+    <!--<div ng-show="isOwner">-->
+    <!--<div class="currentlyTaken" ng-show="!ownerAvail.available">-->
+    <!--<p>User <b>{{ownerAvail.owner}}</b> took out this item <b>{{ownerAvail.date_taken | amCalendar}}</b> and is-->
+    <!--due-->
+    <!--<b>{{ownerAvail.date_due | amCalendar}}</b></p>-->
+    <!--<button ng-click="return()">Mark item as returned</button>-->
+    <!--</div>-->
 
 
-    </div>
+    <!--&lt;!&ndash; Only Listing owner will see this &ndash;&gt;-->
+    <!--<div class="currentlyFree" ng-hide="!ownerAvail.available">-->
+    <!--<div class="row owner-pane">-->
+    <!--<h3>Owner Info</h3>-->
+    <!--<span class="pin-info">{{requestData.num_of_request}} <span-->
+    <!--ng-show="requestData.num_of_request === 1"> request</span><span-->
+    <!--ng-hide="requestData.num_of_request === 1"> requests</span></span>-->
+    <!--</div>-->
 
-    <!-- Only the renter of the item will see this -->
-    <div class="renter">
 
-    </div>
+    <!--<div class="row">-->
+
+    <!--<a class="button" href="#/listing/{{datasource.id}}/requests" ng-show="requestData.num_of_request > 0">-->
+    <!--View-->
+    <!--<span ng-show="requestData.num_of_request === 1"> request</span>-->
+    <!--<span ng-hide="requestData.num_of_request === 1"> requests</span>-->
+    <!--</a>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+
+    <!--<div class="activerequest" ng-show="hasRequest">-->
+    <!--<div class="row">-->
+    <!--<button class="button-red" ng-click="cancel()">Cancel Request</button>-->
+    <!--</div>-->
+    <!--<div class="row">-->
+    <!--You have requested this item <b>{{requestData.date_requested | amCalendar}}</b>-->
+    <!--</div>-->
+    <!--<div class="row">-->
+    <!--Please await acceptance by owner-->
+    <!--</div>-->
 
 
-    <div class="rent_status" ng-show="isOwner">
-        <p>Due in <span am-time-ago="result.date_due"></span></p>
-        <p>You rented <span am-time-ago="result.date_taken"></span></p>
-        <!--<button ng-click="return(datasource.id)">Return</button>-->
-    </div>
+    <!--</div>-->
+
+    <!--&lt;!&ndash; Only the renter of the item will see this &ndash;&gt;-->
+    <!--<div class="rent_status" ng-show="holding">-->
+    <!--<h3 class="animated fadeIn">Listing Status</h3>-->
+    <!--&lt;!&ndash;<h4>You currently hold this</h4>&ndash;&gt;-->
+    <!--<span class="animated fadeIn">Due in <b><span am-time-ago="result.date_due"></span></b></span>-->
+    <!--<p class="animated fadeIn">You rented <b><span am-time-ago="result.date_taken"></span></b></p>-->
+    <!--&lt;!&ndash;<button ng-click="return(datasource.id)">Return</button>&ndash;&gt;-->
+    <!--</div>-->
+
 </div>
 
-<div class="notloggedin" ng-hide="loggedIn">
-    This listing is <b>{{status}}</b>
+<div class="notloggedin" ng-hide="status.isLoggedIn">
+    This listing is <b>{{availability}}</b>
 </div>
 

@@ -15,7 +15,7 @@ angular.module('app.editorTag', ['app.config', 'app.auth'])
 
                 $scope.remove = function() {
                     Notification.info({message: 'Removing ' + $scope.title, positionY: 'bottom', positionX: 'center', replaceMessage: true});
-                    console.log('removing tag ' + $scope.title + ' from ' + $scope.productid)
+                    //console.log('removing tag ' + $scope.title + ' from ' + $scope.productid)
                     $http({
                         url: backend + '/product/' + $routeParams.id + '/tag/' + $scope.title + '/remove',
                         method: 'DELETE',
@@ -25,8 +25,14 @@ angular.module('app.editorTag', ['app.config', 'app.auth'])
                         }
                     }).success(function (data, status, headers, config) {
                         //$scope.tagclass = "editorTagBase animated fadeOut";
-                        Notification.success({message: 'Tag ' + $scope.title + ' has been removed', positionY: 'bottom', positionX: 'center', replaceMessage: true});
-                        $scope.$emit('refreshTags', $scope.index);
+
+                        $scope.tagclass = 'editorTagBase leave';
+
+
+                        setTimeout(function() {
+                            Notification.success({message: 'Tag ' + $scope.title + ' has been removed', positionY: 'bottom', positionX: 'center', replaceMessage: true});
+                            $scope.$emit('refreshTags', $scope.index);
+                        }, 300);
 
 
                     }).error(function (data, status, headers, config) {

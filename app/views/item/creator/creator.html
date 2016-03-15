@@ -1,80 +1,104 @@
 <div class="creator">
-    <div class="title">
-        <h1>Add new</h1>
-    </div>
-    <form ng-submit="create(product)">
-        <div class="four columns makemered" ng-show="error">
-            <p>{{error}}</p>
-        </div>
-        <div class="row">
-            <div class="four columns">
-                <label for="">Cover image <p class="textred" ng-show="message.error.image.enable">
-                    {{message.error.image.text}}</p></label>
+    <!--<div class="floating">-->
+    <!--<button ng-click="preview = !preview">Preview</button>-->
+    <!--</div>-->
+    <!--<div class="row" ng-show="preview" ng-include="'/views/item/item.html'"></div>-->
+    <div class="row">
+
+        <form ng-submit="create(product)">
+            <h1>Listing Creator</h1>
+            <div class="row">
+                <h2>Title</h2>
+                <i>What is it called?</i>
+                <!--<char-limit input="{{product.title}}" limit="80"></char-limit>-->
+                <p class="textred" ng-show="message.error.title.enable">{{message.error.title.text}}</p>
+                <input class="u-full-width" ng-model="product.title" type="text"
+                       placeholder="Title: An awesome product">
 
 
-                <input class="image" value="load" ng-model="product.base64" ng-change="fileChange(this)"
-                       id="fileUploader" multiple accept="image/*" type="file" base-sixty-four-input>
-
-            </div>
-            <div class="eight columns">
-                <div class="image-preview">
-
-                    <img ng-src="{{product.image}}" alt="Image preview" id="imagePreview" width="100%" class="imagePreview">
-                </div>
-            </div>
-
-        </div>
-        <br>
-        <div class="row">
-            <div class="six columns">
-                <label for="">Title
-                    <char-limit input="{{product.title}}" , limit="80"></char-limit>
-                    <p class="textred" ng-show="message.error.title.enable">{{message.error.title.text}}</p></label>
-                <input class="u-full-width" ng-model="product.title" type="text" placeholder="Title: An awesome product">
-            </div>
-
-            <div class="six columns">
-                <label for="">Description:
-                    <char-limit input="{{product.description}}" , limit="140"></char-limit>
-                    <p class="textred" ng-show="message.error.description.enable">{{message.error.description.text}}</p>
+                <h2>Description</h2>
+                <i>A short description</i>
+                <!--<char-limit input="{{product.description}}" limit="140"></char-limit>-->
+                <p class="textred" ng-show="message.error.description.enable">{{message.error.description.text}}</p>
                 </label>
                 <input class="u-full-width" ng-model="product.description" type="text"
                        placeholder="Description: an awesome product">
             </div>
-        </div>
-        <div class="row editor-view">
-            <label>Content</label>
-            <text-angular ng-model="product.content"></text-angular>
-        </div>
+            <div class="row" flow-init="{singleFile: true}"
+                 flow-name="product.flow"
+                 flow-files-added="processFiles($files)">
 
-        <div class="row">
+                <div class="six columns">
 
-            <div class="six columns">
-                <label for="">Condition:
-                    <char-limit input="{{product.condition}}" , limit="140"></char-limit>
+
+                    <h2>Cover Image</h2>
+                    <i>This image will be seen first</i>
+
+                    <div class="drop-zone animated" flow-drop
+                         ng-class="DropZoneClass"
+                         flow-drag-enter="dropZoneEnter()"
+                         flow-drag-leave="dropZoneLeave()"
+                         ng-click="InsertItems($flow)">
+                        Drag And Drop your file here
+                    </div>
+
+                    <input type="file" flow-btn/>
+
+                    <!-- End of image upload -->
+
+
+                </div>
+                <div class="six columns">
+
+                    <div class="flowPreview">
+
+                        <img ng-class="imagePreviewClass" flow-img="product.flow.files[0]"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row editor-view">
+                <h2>Content</h2>
+                <i>Tell us more, technical description, more details, images</i>
+                <text-angular ng-model="product.content"></text-angular>
+            </div>
+
+            <div class="row">
+
+                <div class="six columns">
+                    <h2>Condition</h2>
+                    <i>Is it new or been used?</i>
+                    <!--<char-limit input="{{product.condition}}" , limit="140"></char-limit>-->
                     <p class="textred" ng-show="message.error.description.enable">{{message.error.description.text}}</p>
-                </label>
-                <input class="u-full-width" ng-model="product.condition" type="text"
-                       placeholder="Condition: New, Like New, Damaged, etc.">
+                    <input class="u-full-width" ng-model="product.condition" type="text"
+                           placeholder="Condition: New, Like New, Damaged, etc.">
+                </div>
+                <div class="six columns">
+                    <h2>Days availability</h2>
+                    <i>How many days will it be available for</i>
+                    <p class="textred" ng-show="message.error.days.enable">
+                        {{message.error.days.text}}</p>
+                    <input class="u-full-width" ng-model="product.days" type="number" placeholder="7">
+                </div>
             </div>
-            <div class="six columns">
-                <label for="">Days availability <p class="textred" ng-show="message.error.days.enable">
-                    {{message.error.days.text}}</p></label>
-                <input class="u-full-width" ng-model="product.days" type="number" placeholder="7 Days">
+            <br>
+            <div class="">
+                <h2>Tags</h2>
+                <i>Separate tags with commas ,</i>
+                <input class="u-full-width" ng-model="product.tagsstring" type="text"
+                       placeholder="separate tags with ,">
             </div>
-        </div>
-        <br>
-        <div class="">
-            <label for="tags">Tags</label>
-            <input class="u-full-width" ng-model="product.tags" type="text" placeholder="separate tags with ,">
-        </div>
-        <br>
-        <div class="">
-            <input type="submit" ng-class="uploadButtonClass" value="{{message.button}}">
-        </div>
+            <br>
+            <div class="row">
+                <div class="submission">
+                    <input type="submit" class="button-green-filled" ng-class="uploadButtonClass"
+                           value="{{message.button}}">
+                </div>
+            </div>
+        </form>
+    </div>
 
-
-    </form>
 
 </div>
 
+
+</div>

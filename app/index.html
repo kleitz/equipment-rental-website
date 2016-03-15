@@ -61,7 +61,8 @@
 <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css"/>
 <base href="/">
 </head>
-<body ng-cloak>
+<body class="body" ng-cloak>
+<div class="background" ng-style="bodyStyle"></div>
 
 
 <header ng-controller="AuthCtrl">
@@ -69,7 +70,7 @@
 </header>
 
 <div class="wrapper">
-    <ng-view class="view"></ng-view>
+    <ng-view class="view" autoscroll="true"></ng-view>
     <div class="footer">
         <div class="row">
             <div class="eight columns full-height">
@@ -84,7 +85,6 @@
         </div>
     </div>
 </div>
-
 
 
 <cookiedisplay url="#/cookies"></cookiedisplay>
@@ -178,6 +178,11 @@
 <script src='bower_components/textAngular/dist/textAngular.min.js'></script>
 <script src='bower_components/pleasejs/dist/Please.js'></script>
 <script src='bower_components/ngInfiniteScroll/build/ng-infinite-scroll.min.js'></script>
+<script src="bower_components/angular-socialshare/dist/angular-socialshare.min.js"></script>
 
+<script src="bower_components/flow.js/dist/flow.min.js"></script>
+<script src="bower_components/ng-flow/dist/ng-flow.min.js"></script>
+<script src="bower_components/angular-medium-editor/dist/angular-medium-editor.js"></script>
+<!--<script src="bower_components/Blur.js/blur.js"></script>-->
 </body>
 </html>

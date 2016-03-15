@@ -9,31 +9,123 @@
       margin-top: 5px
       margin-right: 5px
   .main
-    border: $main-border
-    border-radius: $main-border-radius
+    //border: $main-border
+    //border-radius: $main-border-radius
     padding: 5px
     margin-bottom: 60px
+    .mainImage
+      height: 300px
+      overflow: hidden
+      @include center-center
+      img
+        height: auto
+        width: 100%
+
+    .row
+      border: none
   .images-base
     border: $main-border
     border-radius: $main-border-radius
     padding: 5px
+  .columns
+    position: relative
+  .sidebar-base
+    position: fixed
+    //overflow: hidden
+    width: inherit
+    .sidebar-menu
+      height: 100%
+      width: inherit
+      min-width: 200px
+      //padding: 20px
+      ul
+        list-style: none
+        text-decoration: none
+        li
+          min-height: 50px
+          @include center-center
+          border: 1px solid #E3E3E3
+          border-radius: 5px
+        li:hover
+          background: #fafafa
+  hr
+    border-bottom: 4px solid #fafafa*0.98
+    border-top: 4px solid #fafafa*0.98
+    width: 100%
+
+
+.editorImageBase
+  animation-name: bounceIn
+  animation-duration: 0.3s
+.editorImageBase.leave
+  animation-name: bounceOut
+  animation-duration: 0.3s
+
+
+.editorTagClass
+  animation-name: bounceIn
+  animation-duration: 0.3s
+.editorTagClass.leave
+  animation-name: bounceOut
+  animation-duration: 0.3s
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .creator, .editor
   background: white
   padding: 20px
   border: $main-border
   border-radius: $main-border-radius
-  .image-preview
+  position: relative
+  .flowPreview
+    width: 100%
+    @include center-center
+
+
     img
-      //max-width: 500px
-      width: auto
-      max-height: 300px
+      width: 100%
+      height: auto
+    //img
+    //  max-width: 100px
+  //.flowPreview.leave
+  //  animation-duration: 0.3s
+  //  animation-name: fadeOut
+  //.flowPreview.new-product
+  //  animation-duration: 0.3s
+  //  animation-name: fadeIn
+  .drop-zone
+    border: 1px solid #E3E3E3
+    border-radius: 5px
+    min-height: 200px
+    max-width: 400px
+    padding: 20px
+    @include center-center
+  .drop-zone.enter
+    transition: 0.1s
+    border: 5px dotted $navigation-background
   .btn-toolbar
     @include center-tags
   .btn-group
     border: none
     display: flex
     flex-wrap: wrap
-
+  .submission
+    width: 100%
+    @include center-right
+  .textred
+    color: $statusError
   .editor-view
     .ta-editor
       border: $main-border

@@ -1,35 +1,133 @@
 @import 'base'
 
 .itemview
+
   background: white
+  position: relative
   border: $main-border
   border-radius: $main-border-radius
   padding: 20px
+  min-height: 500px
+  .loading
+    @include center-center
+    i
+      font-size: 4rem
+      padding-bottom: 10px
+    p
+      font-size: 1.4rem
+      font-weight: 600
+  .title
+    position: relative
+    min-height: 50px
+    min-width: 100px
+    //display: flex
+    //@include center-left
+    h1
+      //flex-grow: 2
+      margin: 0
+    //.hint
+      //flex-grow: 1
+  .description-holder
+    position: relative
+    min-height: 30px
+  .title-content
+    position: relative!important
 
+    min-height: 50px
+    min-width: 100px
+  .gallery
+    position: relative
+    height: 500px
+    margin-bottom: 20px
+  .hint
+    padding-left: 30px
+    @include center-left
+    //position: absolute
+    //top: 30px
+    //right: 40px
+    white-space: nowrap
+    z-index: 2
+    .Unavailable
+      padding: 5px
+      border: 1px solid $statusError
+
+      border-radius: 5px
+      color: $statusError
+    .Available
+      padding: 5px
+      color: $statusGreen
+      border: 1px solid $statusGreen
+      border-radius: 5px
   .code
     img
       max-width: 150px
   .rent
     padding: 10px
-    border: $main-border
-    border-radius: $main-border-radius
+    //border: $main-border
+    //border-radius: $main-border-radius
     button
       width: 100%
       padding: 0
+      h2
+        margin-bottom: 10px
   .content, .description
+    margin: 0
+    padding: 0
     max-width: 100%
     word-break: break-all
-  .owner
+  .flow-bottom
+    height: 500px
+    display: flex
+    align-items: flex-end
+    .columns
+      width: 100%
+  .qr-pane
+    padding: 20px
+  .owner-pane
     margin: 0
+    margin-top: 30px
+    margin-bottom: 30px
     padding: 10px
-    border: $main-border
-    border-radius: $main-border-radius
+    .detail
+      display: flex
+      .username
+        margin-left: 10px
+        @include center-center
+        a
+          font-size: 1rem
+          text-decoration: none
+
+      .image
+        height: 50px
+        img
+          border-radius: 100%
+          height: 100%
+          width: auto
+    animation-duration: 1s
+    animation-name: fadeIn
+
+  .details
+    ul
+      list-style-type: none
+      margin: 0
+      padding: 0
+      li
+        margin: 0
+        padding: 0
+        min-height: 40px
+        @include center-left
+        font-size: 1.1rem
+  form
+    padding: 0
+    margin: 0
   h3
     margin: 0
   .comment
     margin: 0
     padding: 10px
     min-height: 90px
+    animation-name: fadeIn
+    animation-duration: 0.3s
     .icon
       img
         border-radius: 100%
@@ -45,3 +143,110 @@
   .comment-creator
     .input
       width: 100%
+  .label-pill
+    //margin: 10px
+    border: 1px solid #E3E3E3
+    border-radius: 20px
+    padding: 10px
+  .row
+    padding: 0
+    margin: 0
+
+  .float
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    padding: 50px
+    @include center-center
+  .rent
+    min-height: 300px
+
+  .editor
+    border: none
+  .content-view
+    position: relative
+    .content
+      min-height: 100px
+    button
+      margin-top: 10px
+  .owner-row
+    position: absolute
+    top: 15px
+    right: 15px
+    z-index: 200
+    .button:hover
+      color: #fff!important
+      border: 1px solid #3498db!important
+      background: #3498db!important
+      transition: 0.5s
+      //animation-duration: 0.3s
+  //  animation-name: fadeOut
+  .sharing
+    margin-top: 40px
+    margin-bottom: 30px
+.itemview.edit
+  background: #fafafa * 0.65
+  border: 1px solid #fafafa * 0.65
+  .gallery, .qr-pane, .comment-creator, .sharing, .info
+    -webkit-filter: brightness(80%)
+
+  -webkit-filter: brightness(100%)!important
+.itemview
+  @media screen and (min-width: 0px)
+    .title
+      display: inline
+      .hint
+        padding-left: 0px
+  @media screen and (min-width: $large)
+    .title
+      display: flex
+      .hint
+        padding-left: 30px
+
+
+.floating-edit
+  position: absolute
+  top: 0
+  left: 0
+.textEditor
+  input
+    width: 500px
+//.textEditor
+//  position: fixed
+//  background: rgba(30, 30, 30, 0.5)
+//  box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75)
+//  margin: 10px
+//  padding: 10px
+//  z-index: 500
+//  height: 100%
+//  width: 100%
+//  top: 0
+//  left: 0
+//  @include center-center
+//  input
+//    background: #fafafa
+//    color: #333
+//    width: 100%
+//  form
+//
+//    position: relative
+//    display: inline
+//    background: #fafafa
+//    padding: 10px
+//    margin: 0
+//    max-height: 500px
+//    max-width: 1000px
+//    min-width: 800px
+
+
+.rentbuttonbase
+  position: relative
+  .primary
+    position: absolute
+    animation-duration: 0.3s
+    animation-name: fadeIn
+  .primary.ng-hide
+    animation-duration: 0.3s
+    animation-name: fadeOut

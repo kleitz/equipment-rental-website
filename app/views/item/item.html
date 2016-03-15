@@ -1,128 +1,245 @@
-<div class="itemview">
-    <div class="content">
+<div class="itemview" ng-class="itemClass">
+    <!--<div class="content loading" ng-hide="product">-->
+    <!--<div class="loading-content animated fadeIn">-->
+    <!--<i class="fa fa-circle-o-notch fa-spin"></i>-->
+    <!--<p>Loading...</p>-->
+
+    <!--</div>-->
+    <!--</div>-->
+    <div class="row owner-row">
         <div class="row" ng-show="product.owner.username == auth.username">
-            <button class="button button-red" ng-click="deleteItem()">Delete</button>
-            <a class="button button-green" href="#/listing/{{product.id}}/edit">edit</a>
+            <!--<button class="button button-red" ng-click="deleteItem()">Delete</button>-->
+            <a class="button button-blue" href="#/listing/{{product.id}}/edit"><i class="fa fa-pencil"></i> Edit</a>
         </div>
-        <div class="row title">
-            <h1>{{product.title}}</h1>
-        </div>
-        <div class="row">
-            <div class="eight columns">
-                <div class="row">
-                    <div class="gallery">
+    </div>
 
-                        <image-gallery images="{{product.images}}"></image-gallery>
-                    </div>
+    <div class="content animated fadeIn">
+        <!--<button ng-click="revealEdit()">Edit</button>-->
+        <div class="row title" ng-mouseEnter="setShowTitleEdit(true)"
+             ng-mouseLeave="setShowTitleEdit(false)" ng-hide="showTitleEditor">
+            <div class="title-content">
+                <h1>{{product.title}}</h1>
+                <button class="floating-edit button-hint-filled" ng-class="showTitleButtonClass"
+                        ng-click="showTitleEditor = true"
+                        ng-show="showTitleEdit">
+                    <i class="fa fa-pencil"></i> Edit
+                </button>
+            </div>
+
+
+            <!--<div class="hint">-->
+            <!--<availability class="text" datasource={{product.id}}-->
+            <!--showdays="{{product.product_rental_period_limit}}"></availability>-->
+        </div>
+        <div class="textEditor editors" ng-show="showTitleEditor">
+            <form ng-submit="edit()">
+
+                <input type="text" ng-model="product.title">
+                <button class="button-green">Edit</button>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="eight columns">
+            <div class="row">
+                <div class="gallery">
+
+                    <image-gallery class="animated fadeIn" images="{{product.images}}"></image-gallery>
                 </div>
             </div>
-            <div class="four columns">
-                <div class="row description">
-                    <h3>Description</h3>
-                    {{product.description}}
-                </div>
-                <div class="row condition">
-                    <h3>Condition</h3>
-                    {{product.condition}}
-                </div>
-                <div class="row">
-                    <div class="rent">
-                        <div class="text">
-                            Available for {{product.product_rental_period_limit}} days.
-                        </div>
-                        <rent-button class="select" datasource="product"></rent-button>
-                    </div>
-                </div>
-            </div>
         </div>
-
-
-        <div class="row content">
-            <div class="eight columns">
-                <h3>Content</h3>
-                <span class="content" ng-bind-html="product.content"></span>
-            </div>
-            <div class="four columns">
-                <div class="row">
-
-                    <qrcode class="code row" type="product" source={{product}}></qrcode>
-                    <i class="info row"><b>Mobile app: </b>Scan me</i>
-
-
+        <div class="four columns info">
+            <div class="row">
+                <div class="rent" ng-show="product.title">
+                    <rent-button class="animated fadeIn" datasource="product"></rent-button>
                 </div>
-                <div class="row">
-                    <div class=" owner">
-                        <h4>Owner</h4>
+            </div>
+
+
+            <div class="owner-pane" ng-hide="!product.gotRes">
+                <h4>Owner</h4>
+                <div class="detail">
+                    <div class="image">
+
                         <img ng-cloak
                              ng-src="https://secure.gravatar.com/avatar/{{product.owner.gravatar}}?s=90&d=identicon"
                              width="50px" height="auto"/>
+                    </div>
+                    <div class="username">
+
                         <a href="#/user/{{product.owner.username}}">@{{product.owner.username}}</a>
-                        <div class="row">
-                            Last updated: {{product.date_updated | amCalendar}}
-                        </div>
-                        <div class="row">
-                            Date Added: {{product.date_added | amCalendar}}
-                        </div>
-
-
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="row">
             <h4>Tags</h4>
             <div class="tags">
-                <div class="tag" ng-repeat="tag in product.tags">{{tag.tag}}</div>
+                <div class="tag" ng-repeat="tag in product.tags track by $index | limitTo:5">{{tag.tag}}</div>
             </div>
         </div>
 
 
-        <div class="row comment-creator">
-            <h4>Add comment</h4>
-            <form ng-submit="addComment(comment)">
-                <div class="nine columns">
+    </div>
 
-                    <input class="input" type="text" ng-model="comment.message">
-                </div>
-                <div class="three columns">
+    <div class="row">
+        <!--<div class="eight columns">-->
 
-                    <input type="submit" value="Comment" ng-hide="comment.processing">
-                    <input type="button" value="Processing...." ng-show="comment.processing">
-                </div>
-            </form>
+        <div class="row content-view">
+            <div class="content"
+                 ng-hide="showContentEditor"
+                 ng-mouseEnter="setShowContentEditorEdit(true)"
+                 ng-mouseLeave="setShowContentEditorEdit(false)">
+
+
+                <span ng-bind-html="product.content"></span>
+                <button class="floating-edit button-hint-filled" ng-class="showContentButtonClass"
+                        ng-click="showContentEditor = true"
+                        ng-show="showContentEditorEdit"><i class="fa fa-pencil"></i> Edit
+                </button>
+            </div>
+
+
+            <div class="editor" ng-show="showContentEditor">
+                <text-angular class="editor-view" ng-model="product.content"></text-angular>
+                <button class="button-green" ng-click="edit()">Update</button>
+            </div>
+        </div>
+        <!--</div>-->
+        <!--<div class="four columns">-->
+
+        <!--</div>-->
+    </div>
+
+
+    <div class="row">
+        <div class="eight columns">
+            <div class="row details">
+                <h2>Listing Details</h2>
+                <ul>
+                    <!--<div class="row title" ng-mouseEnter="setShowTitleEdit(true)"-->
+                    <!--ng-mouseLeave="setShowTitleEdit(false)" ng-hide="showTitleEditor">-->
+                    <!--<div class="title-content">-->
+                    <!--<h1>{{product.title}}</h1>-->
+                    <!--<button class="floating-edit button-hint-filled" ng-class="showTitleButtonClass"-->
+                    <!--ng-click="showTitleEditor = true"-->
+                    <!--ng-show="showTitleEdit">-->
+                    <!--<i class="fa fa-pencil"></i> Edit-->
+                    <!--</button>-->
+                    <!--</div>-->
+
+                    <li class="description-holder" ng-mouseEnter="setShowDescriptionEdit(true)"
+                        ng-mouseLeave="setShowDescriptionEdit(false)"
+                        ng-hide="showDescriptionEditor">
+                        <b>Description</b>: {{product.description}}
+                        <button class="floating-edit button-hint-filled" ng-class="showDescriptionButtonClass"
+                                ng-click="showDescriptionEditor = true"
+                                ng-show="showDescriptionEdit">
+                            <i class="fa fa-pencil"></i> Edit
+                        </button>
+                    </li>
+                    <li ng-show="showDescriptionEditor">
+                        <form ng-submit="edit()">
+
+                            <input type="text" ng-model="product.description">
+                            <input type="submit">
+                        </form>
+                    </li>
+
+                    <li ng-mouseEnter="setShowAgeEdit(true)"
+                    ng-mouseLeave="setShowAgeEdit(false)">
+                        <b>Age Rating</b>: {{product.age_rating}}
+                        <span ng-show="showAgeEdit" class="button-icon-row" ng-class="showAgeButtonClass">
+                            <div class="button-plus" ng-click="addAge(1)">+</div>
+                            <div class="button-plus" ng-click="deductAge(1)">-</div>
+                        </span>
+                    </li>
+
+
+
+                    <li><b>Condition</b>: {{product.condition}}</li>
+                    <!--<li><b>Availability</b></li>-->
+                    <li><b>Dated Added</b>: {{product.date_updated | amCalendar}}</li>
+                    <li><b>Dated Updated</b>: {{product.date_added | amCalendar}}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="four columns">
+
+            <div class="qr-pane">
+                <qrcode class="code row" type="product" source={{product}}></qrcode>
+                <i class="info row"><b>Mobile app: </b>Scan me</i>
+            </div>
 
 
         </div>
-        <div class="row">
-            <h4>Comments</h4>
-            <div class="comments">
-                <div class="comment row animated fadeIn"
-                     ng-repeat="comment in product.comments | orderBy:'-date_added'">
-                    <div class="two columns icon">
-                        <img ng-cloak
-                             ng-src="https://secure.gravatar.com/avatar/{{comment.author.gravatar}}?s=90&d=identicon"
-                             width="50px" height="auto"/>
+    </div>
 
-                    </div>
-                    <div class="two columns username">
-                        <a href="#/user/{{comment.author.username}}">@{{comment.author.username}}</a>
-                    </div>
-                    <div class="six columns message">
-                        {{comment.message}}
-                    </div>
-                    <div class="two columns other">
-                        <!--<span am-time-ago="comment.date_added"></span>-->
+
+    <div class="row sharing">
+        <h4>Share</h4>
+        <a socialshare
+           socialshare-provider="twitter"
+           socialshare-text="{{product.title}}: {{product.description}}"
+           socialshare-hashtags="karite, {{product.title}}"
+           socialshare-url="{{domain}}/#/listing/{{product.id}}">
+            Twitter
+        </a>
+        <!--<a socialshare-->
+        <!--socialshare-provider="facebook"-->
+        <!--socialshare-title="{{product.title}}"-->
+        <!--socialshare-description="{{product}}"-->
+        <!--socialshare-description="{{product.description}}"-->
+        <!--socialshare-url="{{domain}}/listing/{{product.id}}">-->
+        <!--Facebook-->
+        <!--</a>-->
+    </div>
+
+
+    <div class="row comment-creator">
+        <h4>Add comment</h4>
+        <form ng-submit="addComment(comment)">
+            <div class="nine columns">
+
+                <input class="input" type="text" ng-model="comment.message">
+            </div>
+            <div class="three columns">
+
+                <input type="submit" value="Comment" ng-hide="comment.processing">
+                <input type="button" value="Processing...." ng-show="comment.processing">
+            </div>
+        </form>
+
+
+    </div>
+    <div class="row">
+        <h4>Comments</h4>
+        <div class="comments">
+            <div class="comment row"
+                 ng-repeat="comment in product.comments | orderBy:'-date_added'">
+                <div class="two columns icon">
+                    <img ng-cloak
+                         ng-src="https://secure.gravatar.com/avatar/{{comment.author.gravatar}}?s=90&d=identicon"
+                         width="50px" height="auto"/>
+
+                </div>
+                <div class="two columns username">
+                    <a href="#/user/{{comment.author.username}}">@{{comment.author.username}}</a>
+                </div>
+                <div class="six columns message">
+                    {{comment.message}}
+                </div>
+                <div class="two columns other">
+                    <!--<span am-time-ago="comment.date_added"></span>-->
                         <span class="deletebutton" ng-click="deleteComment(comment.id, $index)"
                               ng-if="comment.author.username == auth.username"><i class="fa fa-times"></i> Delete</span>
 
                         <span class="approvebutton" ng-click="approveComment(comment.id, $index)"
                               ng-if="!comment.authorized"><i class="fa fa-times"></i> Approve</span>
-                    </div>
-
                 </div>
+
             </div>
         </div>
     </div>
+</div>
 </div>
 

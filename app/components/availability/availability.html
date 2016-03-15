@@ -2,5 +2,5 @@
 <!--<span ng-show="showLoading">Loading...</span>-->
 
 <span ng-class="availability">
-    {{availability}}
+    {{availability}} <span ng-show="showdays" ng-hide="availability == 'Unavailable'">for {{showdays}} days</span>
 </span>

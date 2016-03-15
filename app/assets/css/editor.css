@@ -9,23 +9,91 @@
       margin-top: 5px;
       margin-right: 5px; }
   .editor .main {
-    border: 1.4px solid #e3e3e3;
-    border-radius: 5px;
     padding: 5px;
     margin-bottom: 60px; }
+    .editor .main .mainImage {
+      height: 300px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+      .editor .main .mainImage img {
+        height: auto;
+        width: 100%; }
+    .editor .main .row {
+      border: none; }
   .editor .images-base {
     border: 1.4px solid #e3e3e3;
     border-radius: 5px;
     padding: 5px; }
+  .editor .columns {
+    position: relative; }
+  .editor .sidebar-base {
+    position: fixed;
+    width: inherit; }
+    .editor .sidebar-base .sidebar-menu {
+      height: 100%;
+      width: inherit;
+      min-width: 200px; }
+      .editor .sidebar-base .sidebar-menu ul {
+        list-style: none;
+        text-decoration: none; }
+        .editor .sidebar-base .sidebar-menu ul li {
+          min-height: 50px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 1px solid #E3E3E3;
+          border-radius: 5px; }
+        .editor .sidebar-base .sidebar-menu ul li:hover {
+          background: #fafafa; }
+  .editor hr {
+    border-bottom: 4px solid whitesmoke;
+    border-top: 4px solid whitesmoke;
+    width: 100%; }
+
+.editorImageBase {
+  animation-name: bounceIn;
+  animation-duration: 0.3s; }
+
+.editorImageBase.leave {
+  animation-name: bounceOut;
+  animation-duration: 0.3s; }
+
+.editorTagClass {
+  animation-name: bounceIn;
+  animation-duration: 0.3s; }
+
+.editorTagClass.leave {
+  animation-name: bounceOut;
+  animation-duration: 0.3s; }
 
 .creator, .editor {
   background: white;
   padding: 20px;
   border: 1.4px solid #e3e3e3;
-  border-radius: 5px; }
-  .creator .image-preview img, .editor .image-preview img {
-    width: auto;
-    max-height: 300px; }
+  border-radius: 5px;
+  position: relative; }
+  .creator .flowPreview, .editor .flowPreview {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    .creator .flowPreview img, .editor .flowPreview img {
+      width: 100%;
+      height: auto; }
+  .creator .drop-zone, .editor .drop-zone {
+    border: 1px solid #E3E3E3;
+    border-radius: 5px;
+    min-height: 200px;
+    max-width: 400px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+  .creator .drop-zone.enter, .editor .drop-zone.enter {
+    transition: 0.1s;
+    border: 5px dotted #2C3E50; }
   .creator .btn-toolbar, .editor .btn-toolbar {
     display: flex;
     justify-content: left;
@@ -34,6 +102,13 @@
     border: none;
     display: flex;
     flex-wrap: wrap; }
+  .creator .submission, .editor .submission {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; }
+  .creator .textred, .editor .textred {
+    color: #df2029; }
   .creator .editor-view .ta-editor, .editor .editor-view .ta-editor {
     border: 1.4px solid #e3e3e3;
     border-radius: 5px; }

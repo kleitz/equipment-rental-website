@@ -128,7 +128,7 @@ angular.module('app.editorImage', ['app.config'])
                 );
 
                 $scope.remove = function() {
-                    console.log("removing " + $scope.index)
+                    //console.log("removing " + $scope.index)
                     $http({
                         //url: backend + '/product/' + $routeParams.id + '/tag/' + $scope.title + '/remove',
                         url: backend + '/product/' + $routeParams.id + '/image/' + $scope.data.title + '/delete',
@@ -139,8 +139,11 @@ angular.module('app.editorImage', ['app.config'])
                         }
                     }).success(function (data, status, headers, config) {
                         //$scope.tagclass = "editorTagBase animated fadeOut";
+                        $scope.imageStyleClass = 'leave';
+                        setTimeout(function() {
 
-                        $scope.$emit('refreshImageEditor', $scope.index);
+                            $scope.$emit('refreshImageEditor', $scope.index);
+                        }, 200);
 
 
                     }).error(function (data, status, headers, config) {
