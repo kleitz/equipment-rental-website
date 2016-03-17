@@ -1,6 +1,12 @@
 @import 'base'
 
 .home
+  background: white
+  border: $main-border
+  border-radius: $main-border-radius
+  padding: 10px!important
+  padding-bottom: 20px!important
+  //padding: 100px
   .welcome
     background: white
     border: $main-border
@@ -11,6 +17,9 @@
     .buttons
       .six
         @include center-center
+  .sliders
+    animation-name: fadeIn
+    animation-duration: 0.3s
   .row
     margin-top: 20px
   //background: white
@@ -19,7 +28,32 @@
   padding: 0px
   .header
     @include center-center
-
+  .popular
+    width: 100%
+    @include center-center
+  .pop-items
+    min-height: 600px
+    overflow: visible
+    .pop-item
+      margin-bottom: 20px
+      display: flex
+      .index
+        @include center-left
+        //min-width: 20px
+        font-size: 2rem
+        padding: 10px
+        color: #333 * 3
+      .image
+        height: 100px
+        width: 100px
+        border-radius: 5px
+      .image:hover
+        -webkit-filter: brightness(.9)
+        filter: brightness(.9)
+  .tags
+    @include center-right
+    .tag
+      flex-grow: 2
   .upcoming
     //background: $navigation-background * 0.6
     //color: white
@@ -40,32 +74,31 @@
     color: $navigation-background!important
   .tab:hover
     background: $backgroundcolour * 0.9!important
-
-.updated
-  min-height: 100px
-  .product
-   height: 100px
-  .tab
-    height: 100px
-    color: $navigation-background!important
-  .tab:hover
-    background: $backgroundcolour * 0.9!important
+//.updated
+//  min-height: 100px
+//  .product
+//   height: 100px
+//  .tab
+//    height: 100px
+//    color: $navigation-background!important
+//  .tab:hover
+//    background: $backgroundcolour * 0.9!important
 .newest
   min-height: 100px
   .product
-    height: 100px
+    height: 180px
   .tab
-    height: 100px
+    height: 180px
     color: $navigation-background!important
 
   .tab:hover
     background: $backgroundcolour * 0.9!important
 .added
-  min-height: 200px
+  min-height: 500px
   .product
-    height: 150px
+    height: 200px
   .tab
-    height: 150px
+    height: 200px
     color: $navigation-background!important
   .tab:hover
     background: $backgroundcolour * 0.9!important

@@ -2,7 +2,7 @@
 image-gallery
   height: 100%
   width: 100%
-  overflow: hidden
+  overflow: visible
 
 @media screen and (min-width: 0px)
   .imageGalleryBase
@@ -24,6 +24,9 @@ image-gallery
           box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.3)
           height: 90px
           width: 90px
+        .cover:hover
+          -webkit-filter: brightness(.9)
+          filter: brightness(.9)
         .cover
           height: 100px
           width: 100px
@@ -71,7 +74,7 @@ image-gallery
 @media screen and (min-width: 1575px)
   .imageGalleryBase
     position: relative
-    overflow: hidden
+    overflow: visible
     height: 100%
     width: 100%
     .gallery
@@ -139,7 +142,7 @@ image-gallery
     max-height: 80%
     height: 100%
     background: black
-    overflow: hidden
+    overflow: visible
     z-index: 400
     .left
       color: white

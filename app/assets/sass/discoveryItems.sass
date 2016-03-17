@@ -1,0 +1,90 @@
+@import 'base'
+
+.discoveryItemBase
+  position: relative
+  min-height: 800px
+  //background: pink
+  a
+    color: #333333
+    text-decoration: none
+
+  .d-products
+    //display: flex
+
+    display: flex
+    flex-wrap: wrap
+
+    .d-product
+      min-height: 300px
+      max-width: 500px
+      padding: 20px
+      margin: 10px
+      //border: 1px solid #E3E3E3
+      //border-radius: 5px
+      animation-name: fadeIn
+      animation-duration: 0.3s
+      .d-image
+        position: relative
+        background: #e3e3e3
+      .content
+        padding: 20px
+        padding-top: 5px
+        animation-name: fadeIn
+        animation-duration: 0.3s
+        .title
+          padding: 0
+          margin: 0
+          p
+            font-size: 1.4rem
+            font-weight: 600
+            padding: 0
+            margin: 0
+        .time
+          font-size: 0.9rem
+          color: #333*3.4
+        .description
+          font-size: 1rem
+          color: #333
+    .d-product.main
+      @include center-center
+      .product-a
+        display: inline
+        width: 100%
+      .d-image
+        height: 400px
+        min-height: 400px
+        width: 100%
+        .d-imagebk
+          height: 100%
+          width: 100%
+          animation-name: fadeIn
+          animation-duration: 0.3s
+          border-radius: 2px
+
+    .d-product.sub
+      flex-grow: 1
+      height: 50px
+      min-height: 250px
+      .d-image
+        height: 250px
+        min-height: 250px
+        min-width: 180px
+        max-width: 180px
+        .d-imagebk
+          border-radius: 2px
+          height: 100%
+          width: 100%
+          animation-name: fadeIn
+          animation-duration: 0.3s
+@media screen and (min-width: 0px)
+  .d-product
+    width: 100%
+    .product-a
+      display: inline
+
+@media screen and (min-width: $medium)
+  .d-product
+    @include top-left
+    width: 500px
+    .product-a
+      display: flex

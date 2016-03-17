@@ -58,9 +58,12 @@ angular.module('app', [
     'app.likeHeart',
     'app.imageGallery',
     'app.productSlider',
+    'app.starRating',
+    'app.discoveryItems',
     // Factories
     'app.config',
     'app.auth',
+    'app.titleFactory',
     //  Dependencies
     'angularMoment',
     'ui-notification',
@@ -79,8 +82,7 @@ angular.module('app', [
         $routeProvider.otherwise({redirectTo: '/fourOhFour'});
         $locationProvider.html5Mode(false);
     }])
-
-    .controller('AuthCtrl', ['$scope', '$rootScope', 'authFactory', '$http', '$timeout', function ($scope, $rootScope, authFactory, $http, $timeout) {
+    .controller('AuthCtrl', ['$scope', '$rootScope', 'authFactory', '$http', '$timeout', 'Title', function ($scope, $rootScope, authFactory, $http, $timeout, Title) {
         $rootScope.loggedIn = authFactory.getAuth() !== undefined;
         // console.log( authFactory.getToken);
         $rootScope.auth = authFactory.getAuth();

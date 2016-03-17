@@ -5,6 +5,44 @@
   border-radius: 5px;
   padding: 20px;
   min-height: 500px; }
+  .itemview .reviews {
+    padding-top: 25px; }
+    .itemview .reviews .review {
+      position: relative; }
+      .itemview .reviews .review .hover {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: rgba(200, 200, 200, 0.8);
+        height: 100%;
+        min-width: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center; }
+      .itemview .reviews .review .hover:hover {
+        background: rgba(150, 150, 150, 0.8); }
+      .itemview .reviews .review .message, .itemview .reviews .review .rating {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        min-height: 50px; }
+        .itemview .reviews .review .message star-rating, .itemview .reviews .review .rating star-rating {
+          position: absolute;
+          top: 10px; }
+      .itemview .reviews .review .icon {
+        display: flex; }
+        .itemview .reviews .review .icon img {
+          border-radius: 100%;
+          height: 50px;
+          width: 50px;
+          margin-right: 5px; }
+        .itemview .reviews .review .icon a {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start; }
+  .itemview .editor textarea, .itemview .creator textarea {
+    min-height: 84px;
+    width: 100%; }
   .itemview .loading {
     display: flex;
     align-items: center;

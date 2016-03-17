@@ -10,8 +10,9 @@ angular.module('app.item', ['ngRoute', 'app.config'])
             });
         }
     ])
-    .controller('itemCtrl', ['$rootScope', '$scope', '$http', '$routeParams', '$location', 'Configuration', 'authFactory', 'Notification',
-        function ($rootScope, $scope, $http, $routeParams, $location, Configuration, authFactory, Notification) {
+    .controller('itemCtrl', ['$rootScope', '$scope', '$http', '$routeParams', '$location', 'Configuration', 'authFactory', 'Notification', 'Title',
+        function ($rootScope, $scope, $http, $routeParams, $location, Configuration, authFactory, Notification, Title) {
+            Title.setTitle('Karite: loading listing...');
             $scope.product = {
                 age_rating: 0,
                 comments_enabled: true,
@@ -54,8 +55,25 @@ angular.module('app.item', ['ngRoute', 'app.config'])
                 $scope.showTitleEditor = revealEdit;
                 $scope.showDescriptionEditor = revealEdit;
                 $scope.showAgeEdit = revealEdit;
-            }
+            };
 
+            $scope.review = {};
+            $scope.newReview = {};
+            // Detect change in rating and apply it to the review.rating scope value
+            $scope.$on('ratingChange', function (index) {
+                $scope.review = {};
+                $scope.review = index.targetScope.amount;
+
+                if (index.targetScope.amount.name === 'reviewEdit') {
+                    if ($scope.myReviews.length === 0) {
+                        $scope.newReview.rating = index.targetScope.amount.selected;
+                    } else {
+                        $scope.myReviews[0].rating = index.targetScope.amount.selected;
+                        $scope.editReview($scope.myReviews[0])
+                    }
+                }
+
+            });
             if (enableQuickEdit) {
                 $scope.setShowContentEditorEdit = function (value) {
                     if ($scope.isOwner) {
@@ -118,7 +136,30 @@ angular.module('app.item', ['ngRoute', 'app.config'])
                 };
             }
 
+            $scope.myReviews = [];
 
+            $scope.editReview = function(review) {
+                console.log(review)
+                $http({
+                    url: backend + '/product/' + $routeParams.id + '/comment/' + review.id + '/edit',
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': undefined,
+                        'token': authFactory.getToken(),
+                        'comment': review.message,
+                        'rating': review.rating + 1
+                    }
+                }).success(function (data, status, headers, config) {
+                    Notification.success({message: 'Review Edited successfully', positionY: 'bottom', positionX: 'center'});
+                }).error(function (data, status, headers, config) {
+                    Notification.error({
+                        message: 'Error: Something went wrong',
+                        positionY: 'bottom',
+                        positionX: 'center'
+                    });
+                    $scope.error = true;
+                });
+            }
 
             $http({
                 url: backend + "/product/" + $routeParams.id,
@@ -128,12 +169,23 @@ angular.module('app.item', ['ngRoute', 'app.config'])
                 }
             }).success(function (data, status, headers, config) {
                 $scope.product = data.items[0];
+                Title.setTitle($rootScope.site.title + ': ' + data.items[0].title);
+                console.log(Title.title())
                 console.log(data.items[0]);
                 $scope.product.gotRes = true;
                 if (data.items[0].owner.username === $rootScope.auth.username) {
                     $scope.isOwner = true;
                 } else {
                     $scope.isOwner = false;
+                }
+
+                if (data.items[0].comments.reviewed) {
+                    for (var i = 0; i < data.items[0].comments.reviews.length; i++) {
+                        if (data.items[0].comments.reviews[i].author.username === $rootScope.auth.username) {
+                            $scope.myReviews.push(data.items[0].comments.reviews[i])
+                        }
+
+                    }
                 }
 
                 $rootScope.bodyStyle.background = 'url(' + domain + data.items[0].images[0].size.large + ') no-repeat center center';
@@ -148,7 +200,7 @@ angular.module('app.item', ['ngRoute', 'app.config'])
                 //if (comment.message.length > 5) {
 
 
-                    sendComment(comment.message);
+                    sendComment(comment.message, $scope.review.selected + 1);
 
                 //}
             };
@@ -213,34 +265,40 @@ angular.module('app.item', ['ngRoute', 'app.config'])
                 });
             };
 
-            function sendComment(comment) {
+            function sendComment(comment, rating) {
                 //    /product/:pid/comment
                 $http({
                     url: backend + "/product/" + $routeParams.id + '/comment',
                     method: 'POST',
                     headers: {
                         'token': authFactory.getToken(),
-                        'comment': comment
+                        'comment': comment,
+                        'rating': rating
                     }
                 }).success(function (data, status, headers, config) {
-                    $scope.comment.success = true;
+                    //$scope.comment.success = true;
                     Notification.success({
                         message: 'Comment added: ' + comment,
                         positionY: 'bottom',
                         positionX: 'center',
                         replaceMessage: true
                     });
-                    $scope.product.comments.push({
-                        'message': comment,
-                        'date_added': Date(),
-                        'author': {
-                            'username': $rootScope.auth.username,
-                            'gravatar': $rootScope.auth.gravatar
-                        }
 
-                    });
+                    console.log(data)
 
-                    $scope.comment.message = "";
+                    //$scope.product.comments.push({
+                    //    'message': comment,
+                    //    'date_added': Date(),
+                    //    'author': {
+                    //        'username': $rootScope.auth.username,
+                    //        'gravatar': $rootScope.auth.gravatar
+                    //    }
+                    //
+                    //});
+
+                    //$scope.comment.message = "";
+                    $scope.product.comments.reviews.push(data)
+                    $scope.myReviews.push(data)
                 }).error(function (data, status, headers, config) {
                     console.log('error');
                     Notification.error({
@@ -249,10 +307,10 @@ angular.module('app.item', ['ngRoute', 'app.config'])
                         positionX: 'center',
                         replaceMessage: true
                     });
-                    $scope.comment.success = true;
+                    //$scope.comment.success = true;
                 }).finally(function () {
                     //console.log("its over")
-                    $scope.message.processing = false;
+                    //$scope.message.processing = false;
                 });
             }
 
@@ -292,12 +350,13 @@ angular.module('app.item', ['ngRoute', 'app.config'])
                         'token': authFactory.getToken()
                     }
                 }).success(function (data, status, headers, config) {
-                    $scope.product.comments.splice(index, 1);
+                    $scope.product.comments.reviews.splice(index, 1);
                 }).error(function (data, status, headers, config) {
                     console.log('error');
                     $scope.comment.success = true;
                 }).finally(function () {
                     //console.log("its over")
+                    $scope.myReviews = [];
                     $scope.message.processing = false;
                 });
             }

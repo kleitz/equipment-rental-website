@@ -1,0 +1,27 @@
+@import 'base'
+
+.starratingbase
+  //display: flex
+  position: relative
+  min-height: 40px
+  .stars
+    display: flex
+    width: auto
+  .star
+    margin-right: 5px
+    font-size: 2rem
+    position: relative
+    .filled
+      animation-name: bounceIn
+      animation-duration: 0.5s
+      color: $navigation-background
+    .empty
+      animation-name: fadeOut
+      animation-duration: 0.2s
+    .fa-background
+      position: absolute
+      top: 0
+
+    .filled.locked
+      color: #333
+      //text-border

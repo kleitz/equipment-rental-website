@@ -10,9 +10,14 @@ angular.module('app.items', ['ngRoute'])
             });
         }
     ])
-    .controller('itemsCtrl', ['$rootScope', '$scope', '$http', '$location', 'authFactory', '$colorThief',
-        function ($rootScope, $scope, $http, $location, authFactory, $colorThief, $watch) {
+    .controller('itemsCtrl', ['$rootScope', '$scope', '$http', '$location', 'authFactory', '$colorThief', 'Title',
+        function ($rootScope, $scope, $http, $location, authFactory, $colorThief, Title, $watch) {
             var sortByUrl = '/updated/newest';
+            $scope.$watch('site', function() {
+                if ($rootScope.site) {
+                    Title.setTitle($rootScope.site.title + ': Listing');
+                }
+            });
             $scope.listingOptions = {
                 enablePaging: false
         };
@@ -32,7 +37,7 @@ angular.module('app.items', ['ngRoute'])
                 window.localStorage.setItem("enablePaging", false);
                 $scope.listingOptions.enablePaging = false;
             }
-            console.log($scope.listingOptions.enablePaging)
+            //console.log($scope.listingOptions.enablePaging)
 
             $scope.goto = function (id) {
                 $location.path('/listing/' + id);
@@ -66,7 +71,7 @@ angular.module('app.items', ['ngRoute'])
 
             $scope.changeViewAmount = function (amount) {
                 window.localStorage.setItem("product_count", amount);
-                console.log(amount)
+                //console.log(amount)
 
                 resetProducts();
                 $scope.busy = true;
@@ -172,7 +177,7 @@ angular.module('app.items', ['ngRoute'])
                         }
                     }).success(function (data, status, headers, config) {
                         //$scope.products = data;
-                        console.log(data)
+                        //console.log(data)
                         $scope.products.total += data.total;
                         for (var i = 0; i < data.total; i++) {
                             $scope.products.items.push(data.items[i])
@@ -184,7 +189,7 @@ angular.module('app.items', ['ngRoute'])
                         }
 
                     }).error(function (data, status, headers, config) {
-                        console.log(data);
+                        //console.log(data);
                         $scope.error = true;
                     });
                 }
@@ -264,7 +269,7 @@ angular.module('app.items', ['ngRoute'])
                     }
                 }).success(function (data, status, headers, config) {
                     //$scope.products = data;
-                    console.log(data)
+                    //console.log(data)
                     $scope.products.total += data.total;
                     for (var i = 0; i < data.total; i++) {
                         $scope.products.items.push(data.items[i])

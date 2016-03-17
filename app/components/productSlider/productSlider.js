@@ -8,7 +8,8 @@ angular.module('app.productSlider', ['app.config'])
                 images: '@',
                 endpoint: '@',
                 numbertoshow: '=',
-                type: '@'
+                type: '@',
+                showpreview: '@'
             },
             templateUrl: 'components/productSlider/productSlider.html',
             controller: function ($scope, $http, authFactory, $timeout) {
@@ -46,6 +47,29 @@ angular.module('app.productSlider', ['app.config'])
                     };
 
                 };
+
+                var count = 0;
+                //setInterval(function() {
+                //    if (count > 3) {
+                //        count = 0;
+                //    } else {
+                //        count++;
+                //    }
+                //    console.log($scope.products.items[count].images[0].size.large)
+                //    $scope.PreviewStyles.background = 'url(' + domain + $scope.products.items[count].images[0].size.large + ') no-repeat center center';
+                //    $scope.$apply();
+                //}, 1000);
+
+
+                $scope.PreviewStyles = {
+                    background: 'url() no-repeat center center',
+                    '-webkit-background-size': 'cover',
+                    '-moz-background-size': 'cover',
+                    '-o-background-size': 'cover',
+                    'background-size': 'cover'
+                };
+
+
 
                 function getResults() {
                     $http({

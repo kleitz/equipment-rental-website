@@ -1,0 +1,10 @@
+<div class="starratingbase">
+    <div class="stars"  ng-mouseenter="setSelecting(true)" ng-mouseleave="setSelecting(false)">
+        <div class="star" ng-repeat="star in range(numOfStars) track by $index" ng-mouseenter="RatingChange($index)"
+             ng-click="lockstar($index)">
+            <i ng-class="getStarClass($index)"></i>
+            <i class="fa fa-star-o fa-background"></i>
+        </div>
+    </div>
+
+</div>

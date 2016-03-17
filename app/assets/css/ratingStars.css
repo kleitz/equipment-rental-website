@@ -1,0 +1,22 @@
+.starratingbase {
+  position: relative;
+  min-height: 40px; }
+  .starratingbase .stars {
+    display: flex;
+    width: auto; }
+  .starratingbase .star {
+    margin-right: 5px;
+    font-size: 2rem;
+    position: relative; }
+    .starratingbase .star .filled {
+      animation-name: bounceIn;
+      animation-duration: 0.5s;
+      color: #2C3E50; }
+    .starratingbase .star .empty {
+      animation-name: fadeOut;
+      animation-duration: 0.2s; }
+    .starratingbase .star .fa-background {
+      position: absolute;
+      top: 0; }
+    .starratingbase .star .filled.locked {
+      color: #333; }

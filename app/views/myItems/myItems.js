@@ -10,13 +10,19 @@ angular.module('app.myItems', ['ngRoute'])
             });
         }
     ])
-    .controller('myItemsCtrl', ['$rootScope', '$scope', '$http', 'authFactory', function($rootScope, $scope, $http, authFactory, $watch) {
+    .controller('myItemsCtrl', ['$rootScope', '$scope', '$http', 'authFactory', 'Title', function($rootScope, $scope, $http, authFactory, Title, $watch) {
         if (window.localStorage.getItem("product_count")) {
             $scope.count = parseInt(window.localStorage.getItem("product_count"));
         } else {
             window.localStorage.setItem("product_count", 2);
             $scope.count = 2;
         }
+
+        $scope.$watch('site', function() {
+            if ($rootScope.site) {
+                Title.setTitle($rootScope.site.title + ': My Items');
+            }
+        });
 
 
         $scope.start = 0;

@@ -146,14 +146,13 @@
                     </li>
 
                     <li ng-mouseEnter="setShowAgeEdit(true)"
-                    ng-mouseLeave="setShowAgeEdit(false)">
+                        ng-mouseLeave="setShowAgeEdit(false)">
                         <b>Age Rating</b>: {{product.age_rating}}
                         <span ng-show="showAgeEdit" class="button-icon-row" ng-class="showAgeButtonClass">
                             <div class="button-plus" ng-click="addAge(1)">+</div>
                             <div class="button-plus" ng-click="deductAge(1)">-</div>
                         </span>
                     </li>
-
 
 
                     <li><b>Condition</b>: {{product.condition}}</li>
@@ -196,50 +195,109 @@
 
 
     <div class="row comment-creator">
-        <h4>Add comment</h4>
-        <form ng-submit="addComment(comment)">
-            <div class="nine columns">
+        <button class="button" ng-hide="showReviewCreator || myReviews.length >= 1" ng-click="showReviewCreator = true">
+            Write Review
+        </button>
 
-                <input class="input" type="text" ng-model="comment.message">
-            </div>
-            <div class="three columns">
+        <span ng-show="showReviewCreator">
+            <div ng-hide="myReviews.length >= 1" class="creator">
+                <h3>Create Review</h3>
+                <form ng-submit="addComment(newReview)">
+                    <div class="row">
+                        <div class="eight columns">
+                            <textarea ng-model="newReview.message"></textarea>
+                        </div>
+                        <div class="four columns">
+                            <div class="row">
+                                <star-rating name="reviewEdit" value="3"
+                                             disable-hover="false"></star-rating>
+                            </div>
+                            <div class="row">
+                                <input type="submit" class="button-green-filled" value="Create">
+                            </div>
+                        </div>
+                    </div>
 
-                <input type="submit" value="Comment" ng-hide="comment.processing">
-                <input type="button" value="Processing...." ng-show="comment.processing">
+
+                </form>
             </div>
-        </form>
+        </span>
+
+        <div ng-show="myReviews.length >= 1" class="editor">
+            <h3>Your Review</h3>
+            <div class="review" ng-repeat="review in myReviews">
+                <form ng-submit="editReview(review)">
+                    <div class="row">
+                        <div class="eight columns">
+                            <textarea ng-model="review.message"></textarea>
+                        </div>
+                        <div class="four columns">
+                            <div class="row">
+                                <star-rating name="reviewEdit" value="{{review.rating}}"
+                                             disable-hover="false"></star-rating>
+                            </div>
+                            <div class="row">
+                                <input type="submit" class="button-green-filled" value="edit">
+                            </div>
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+        <!--<h4>Add comment</h4>-->
+        <!--{{product.comments.reviewed}}-->
+        <!--<form ng-submit="addComment(comment)">-->
+        <!--<div class="nine columns">-->
+
+        <!--<input class="input" type="text" ng-model="comment.message">-->
+        <!--<star-rating mrating="{{rating}}"></star-rating>-->
+        <!--&lt;!&ndash;<star-rating my-text="hello {{ bar }}" my-two-way-bind="foo" my-one-way-bind="bar"></star-rating>&ndash;&gt;-->
+        <!--Rating: {{review}}-->
+        <!--</div>-->
+        <!--<div class="three columns">-->
+
+        <!--<input type="submit" value="Comment" ng-hide="comment.processing">-->
+        <!--<input type="button" value="Processing...." ng-show="comment.processing">-->
+        <!--</div>-->
+        <!--</form>-->
 
 
     </div>
     <div class="row">
-        <h4>Comments</h4>
-        <div class="comments">
-            <div class="comment row"
-                 ng-repeat="comment in product.comments | orderBy:'-date_added'">
+        <h3>Reviews</h3>
+        <div class="reviews">
+            <div class="review row" ng-mouseenter="showOptions = true" ng-mouseleave="showOptions = false"
+                 ng-repeat="comment in product.comments.reviews | orderBy:'-date_added'">
                 <div class="two columns icon">
                     <img ng-cloak
                          ng-src="https://secure.gravatar.com/avatar/{{comment.author.gravatar}}?s=90&d=identicon"
                          width="50px" height="auto"/>
-
-                </div>
-                <div class="two columns username">
                     <a href="#/user/{{comment.author.username}}">@{{comment.author.username}}</a>
+
                 </div>
                 <div class="six columns message">
                     {{comment.message}}
+
                 </div>
-                <div class="two columns other">
-                    <!--<span am-time-ago="comment.date_added"></span>-->
+                <div class="four columns rating">
+                    <star-rating name="nil" value="{{comment.rating}}" disable-hover="true"></star-rating>
+                </div>
+                <div class="hover animated fadeIn" ng-show="showOptions">
+
+                    <div class="button-row">
+                        <!--<span am-time-ago="comment.date_added"></span>-->
                         <span class="deletebutton" ng-click="deleteComment(comment.id, $index)"
                               ng-if="comment.author.username == auth.username"><i class="fa fa-times"></i> Delete</span>
 
                         <span class="approvebutton" ng-click="approveComment(comment.id, $index)"
                               ng-if="!comment.authorized"><i class="fa fa-times"></i> Approve</span>
+                    </div>
                 </div>
 
             </div>
         </div>
     </div>
-</div>
 </div>
 

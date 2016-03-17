@@ -9,6 +9,12 @@ angular.module('app.fourohfour', ['ngRoute'])
         });
     }])
 
-    .controller('fourOhFourCtrl', ['$scope', '$rootScope', 'authFactory', function($scope, $rootScope, authFactory) {
+    .controller('fourOhFourCtrl', ['$scope', '$rootScope', 'Title', function($scope, $rootScope, Title) {
+        $scope.$watch('site', function() {
+            if ($rootScope.site) {
+                Title.setTitle($rootScope.site.title + ': 404 Page does not exist');
+            }
+        });
+
         console.log("wrong route");
     }]);

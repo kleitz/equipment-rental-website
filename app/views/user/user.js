@@ -3,53 +3,57 @@
 angular.module('app.user', ['ngRoute'])
 
     .config(['$routeProvider',
-        function($routeProvider) {
+        function ($routeProvider) {
             $routeProvider.when('/user/:user', {
                 templateUrl: 'views/user/user.html',
                 controller: 'UserCtrl'
             });
         }
     ])
-    .controller('UserCtrl', ['$routeParams', '$scope', '$http', function($routeParams, $scope, $http) {
+    .controller('UserCtrl', ['$routeParams', '$scope', '$http', 'Title', function ($routeParams, $scope, $http, Title) {
+        $scope.$watch('site', function () {
+            if ($rootScope.site) {
+                Title.setTitle($rootScope.site.title + ': Profile');
+            }
+        });
+        $scope.view = true;
+        $scope.query = $routeParams.user;
+        $http({
+            url: backend + "/user/" + $routeParams.user,
+            method: 'GET'
+        }).success(function (data, status, headers, config) {
+            //console.log(data);
+            $scope.user = data;
 
-            $scope.view = true;
-            $scope.query = $routeParams.user;
+            Title.setTitle($rootScope.site.title + ': data.username');
+
             $http({
-                url: backend + "/user/" + $routeParams.user,
-                method: 'GET'
-            }).success(function(data, status, headers, config) {
-                //console.log(data);
-                $scope.user = data;
-                $http({
-                    url: backend + "/identify/qr/user",
-                    method: 'GET',
-                    headers: {
-                        'token': window.sessionStorage.token,
-                        'width': 300,
-                        'height': 300,
-                        'code': data.username
-                    }
-                }).success(function(data, status, headers, config) {
+                url: backend + "/identify/qr/user",
+                method: 'GET',
+                headers: {
+                    'token': window.sessionStorage.token,
+                    'width': 300,
+                    'height': 300,
+                    'code': data.username
+                }
+            }).success(function (data, status, headers, config) {
 
-                    $scope.qr = data;
-                }).
-                error(function(data, status, headers, config) {
-                    $scope.error = true;
-                });
-            }).
-                error(function(data, status, headers, config) {
-                    console.log(data);
+                $scope.qr = data;
+            }).error(function (data, status, headers, config) {
+                $scope.error = true;
             });
+        }).error(function (data, status, headers, config) {
+            console.log(data);
+        });
 
 
         $http({
             url: backend + "/products/" + $routeParams.user,
             method: 'GET',
-        }).success(function(data, status, headers, config) {
+        }).success(function (data, status, headers, config) {
             console.log(data);
             $scope.products = data;
-        }).
-        error(function(data, status, headers, config) {
+        }).error(function (data, status, headers, config) {
             $scope.error = true;
         });
 
