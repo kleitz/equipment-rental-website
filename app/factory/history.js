@@ -3,7 +3,13 @@ angular.module('app.historyFactory', [])
         var title = 'default';
         return {
             getProducts: function () {
-                return JSON.parse(window.localStorage.historicItems);
+                var items = [];
+                if (window.localStorage.historicItems !== undefined) {
+                    items = JSON.parse(window.localStorage.historicItems)
+                } else {
+
+                }
+                return items;
             },
             clear: function () {
                 window.localStorage.historicItems = '';
@@ -25,10 +31,10 @@ angular.module('app.historyFactory', [])
             },
             addProduct: function (product) {
                 var items = [];
-                if (window.localStorage.historicItems === undefined) {
-
-                } else {
+                if (window.localStorage.historicItems !== undefined) {
                     items = JSON.parse(window.localStorage.historicItems)
+                } else {
+
                 }
 
 
