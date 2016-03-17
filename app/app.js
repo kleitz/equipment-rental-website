@@ -64,6 +64,7 @@ angular.module('app', [
     'app.config',
     'app.auth',
     'app.titleFactory',
+    'app.historyFactory',
     //  Dependencies
     'angularMoment',
     'ui-notification',
@@ -99,20 +100,19 @@ angular.module('app', [
         getSiteIndex();
 
         var toggle = false;
-        $scope.showUserDropDown = function() {
+        $scope.showUserDropDown = function () {
             $scope.userDropDownShow = !$scope.userDropDownShow;
-            $timeout(function() {
+            $timeout(function () {
                 $scope.$apply();
             }, 1);
 
         };
 
 
-
-        window.addEventListener("mouseup", function onMouseUp(){
+        window.addEventListener("mouseup", function onMouseUp() {
             // Make sure all menu items are closed
             $scope.userDropDownShow = false;
-            $timeout(function() {
+            $timeout(function () {
                 $scope.$apply();
             }, 1);
         }, false);
@@ -140,4 +140,10 @@ angular.module('app', [
                 $rootScope.site = data;
             });
         }
-    }]);
+    }])
+    .filter('reverse', function () {
+        // Filter from http://stackoverflow.com/questions/15266671/angular-ng-repeat-in-reverse
+        return function (items) {
+            return items.slice().reverse();
+        };
+    });

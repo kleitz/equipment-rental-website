@@ -10,8 +10,8 @@ angular.module('app.item', ['ngRoute', 'app.config'])
             });
         }
     ])
-    .controller('itemCtrl', ['$rootScope', '$scope', '$http', '$routeParams', '$location', 'Configuration', 'authFactory', 'Notification', 'Title',
-        function ($rootScope, $scope, $http, $routeParams, $location, Configuration, authFactory, Notification, Title) {
+    .controller('itemCtrl', ['$rootScope', '$scope', '$http', '$routeParams', '$location', 'Configuration', 'authFactory', 'Notification', 'Title', 'History',
+        function ($rootScope, $scope, $http, $routeParams, $location, Configuration, authFactory, Notification, Title, History) {
             Title.setTitle('Karite: loading listing...');
             $scope.product = {
                 age_rating: 0,
@@ -178,6 +178,8 @@ angular.module('app.item', ['ngRoute', 'app.config'])
                 } else {
                     $scope.isOwner = false;
                 }
+
+                History.addProduct(data.items[0])
 
                 if (data.items[0].comments.reviewed) {
                     for (var i = 0; i < data.items[0].comments.reviews.length; i++) {

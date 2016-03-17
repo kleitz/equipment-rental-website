@@ -13,7 +13,13 @@ angular.module('app.home', ['ngRoute'])
         });
     }])
 
-    .controller('HomeCtrl', ['$rootScope', '$scope', '$http', 'authFactory', 'Title', function ($rootScope, $scope, $http, authFactory, Title) {
+    .controller('HomeCtrl', ['$rootScope', '$scope', '$http', 'authFactory', 'Title', 'History', function ($rootScope, $scope, $http, authFactory, Title, History) {
+        $scope.historyListing = History.getProducts();
+        $scope.removeHistoryItem = function(pop, index) {
+            console.log(pop)
+            History.removeProduct(pop)
+            $scope.historyListing.splice(index, 1);
+        };
         $scope.$watch('site', function () {
             if ($rootScope.site) {
                 Title.setTitle($rootScope.site.title + ': Home');

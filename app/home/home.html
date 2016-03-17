@@ -41,7 +41,7 @@
                     <div class="column sub_title">
                         <h4>Recently Updated</h4>
                         <discovery-items class="newest" endpoint="/products/updated/newest" numbertoshow="8"
-                                        limit="3" showpreview="false"></discovery-items>
+                                         limit="3" showpreview="false"></discovery-items>
                     </div>
                     <div class="column sub_title">
                         <h4>Recently Added</h4>
@@ -71,12 +71,29 @@
                     </div>
                 </div>
             </div>
+            <span ng-show="historyListing.length > 0">
+                <h2>Recently Viewed Items</h2>
+                <div class="row popular">
+                    <div class="pop-items">
+                        <div class="pop-item" ng-repeat="pop in historyListing">
+                            <div class="index">
+                                {{$index + 1}}
+                            </div>
+                            <div class="image" ng-style="getPopStyle(pop)" ng-click="removeHistoryItem(pop, $index)">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </span>
+
 
         </div>
         <div class="row">
             <h2>Popular Tags</h2>
             <div class="tags">
-                <div class="tag" ng-if="tag.title != 'undefined'"ng-repeat="tag in populartags" ng-style="getTagClass(tag)">
+                <div class="tag" ng-if="tag.title != 'undefined'" ng-repeat="tag in populartags"
+                     ng-style="getTagClass(tag)">
                     <a href="#/tags/{{tag.title}}">{{tag.title}}: {{tag.amount}}</a>
                 </div>
             </div>

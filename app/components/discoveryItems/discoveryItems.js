@@ -29,7 +29,7 @@ angular.module('app.discoveryItems', ['app.config'])
 
                     var img = new Image();
                     img.onload = function () {
-                        console.log('image loaded: ' + url);
+                        //console.log('image loaded: ' + url);
                         //debugger
                         $scope.ready[index] = true;
                         $scope.$apply();
@@ -106,7 +106,7 @@ angular.module('app.discoveryItems', ['app.config'])
                             }
                             $scope.$apply();
                         }, 1);
-                        console.log(data)
+                        //console.log(data)
                         for (var i = 0; i < data.total; i++) {
                             $scope.ready.push(false)
                             if (i === 0) {
