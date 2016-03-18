@@ -1,14 +1,29 @@
 @import 'base'
 
 .productSliderBase
+  position: relative
   //width: 100%
   //background: $navigation-background * 0.8
+  .preview
+    height: 400px
+    margin-bottom: 100px
+    background: pink
+    .image
+      height: 100%
+      width: 100%
+      position: absolute
+      top: 0
   .products
+    overflow: scroll
+    position: relative
     display: flex
     margin: 0
     padding: 0
 
     .product
+      .thumb:hover
+        -webkit-filter: brightness(.9)
+        filter: brightness(.9)
       .thumb
         height: 100%
         //width: 100%
@@ -59,7 +74,7 @@
     .tab
       @include center-center
       color: #fff
-      background-color: inherit
+      background-color: $backgroundcolour
     .tab:hover
       background-color: inherit
 
@@ -118,7 +133,7 @@
       overflow: hidden
       margin-bottom: 0px
       .thumb
-        flex-grow:
+        flex-grow: 0
         height: 100%
         width: auto
     .tab

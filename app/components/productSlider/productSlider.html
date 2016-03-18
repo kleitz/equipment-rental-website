@@ -1,5 +1,11 @@
 <div class="productSliderBase">
     <div class="row">
+        {{preview}}
+        <div class="preview" ng-show="showpreview == 'true'">
+            <h1>Preview</h1>
+            <div class="image" ng-style="PreviewStyles"></div>
+        </div>
+
         <div class="products">
             <div class="left-arrow tab" ng-show="step > 0" ng-click="getPrevious()">
                 <i class="fa fa-arrow-left"></i>

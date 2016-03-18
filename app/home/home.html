@@ -18,53 +18,85 @@
         </div>
     </div>
     <div class="timeline row" ng-show="loggedIn">
-        <!--<div class="row">-->
-            <!--<div class="header">-->
-                <!--<h3>{{message}}</h3>-->
-            <!--</div>-->
-        <!--</div>-->
         <div class="row">
-            <!--<div class="nine columns">-->
-            <div class="content">
-                <div class="row upcoming">
-                    <div class="column sub_title">
-                        <h3 ng-if="timeline.total > 0">Your upcoming returns</h3>
-                        <product-slider ng-if="timeline.total > 0" class="current-rental" endpoint="/p/rent/current" numbertoshow="3"
-                                        type="holding" limit="3"></product-slider>
+            <div class="header">
+                <h3>{{message}}</h3>
+            </div>
+        </div>
+        <div class="ten columns">
+            <div class="row sliders">
+                <!--<div class="nine columns">-->
+                <div class="content">
+                    <div class="row upcoming" ng-if="timeline.total > 0">
+                        <div class="column sub_title">
+                            <h3>Your upcoming returns</h3>
+                            <product-slider class="current-rental" endpoint="/p/rent/current"
+                                            numbertoshow="3"
+                                            type="holding" limit="3" showpreview="false"></product-slider>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
+                <div class="row">
 
-                <div class="column sub_title">
-                    <h4>Recently Updated</h4>
-                    <product-slider class="newest" endpoint="/products/updated/newest" numbertoshow="4"
-                                    limit="3"></product-slider>
+                    <div class="column sub_title">
+                        <h4>Recently Updated</h4>
+                        <discovery-items class="newest" endpoint="/products/updated/newest" numbertoshow="8"
+                                         limit="3" showpreview="false"></discovery-items>
+                    </div>
+                    <div class="column sub_title">
+                        <h4>Recently Added</h4>
+                        <product-slider class="added" endpoint="/products/added/newest" numbertoshow="5"
+                                        limit="3" showpreview="false"></product-slider>
+                    </div>
+                    <!--<div class="column sub_title">-->
+                    <!--<h4>Most Liked</h4>-->
+                    <!--<product-slider class="updated" endpoint="/products/likes/most" numbertoshow="4"-->
+                    <!--limit="3" showpreview="false"></product-slider>-->
+                    <!--</div>-->
                 </div>
-                <div class="column sub_title">
-                    <h4>Recently Added</h4>
-                    <product-slider class="added" endpoint="/products/added/newest" numbertoshow="5"
-                                    limit="3"></product-slider>
-                </div>
-                <div class="column sub_title">
-                    <h4>Most Liked</h4>
-                    <product-slider class="updated" endpoint="/products/likes/most" numbertoshow="4"
-                                    limit="3"></product-slider>
+
+            </div>
+        </div>
+        <div class="two columns">
+            <h2>Popular Items</h2>
+            <div class="row popular">
+                <div class="pop-items">
+                    <div class="pop-item" ng-repeat="pop in popularitems track by $index">
+                        <div class="index">
+                            {{$index + 1}}
+                        </div>
+                        <div class="image" ng-style="getPopStyle(pop)">
+
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="row">
-                <h4>Popular Tags</h4>
-                <div class="tags">
-                    <div class="tag" ng-repeat="tag in populartags" ng-style="getTagClass(tag)">
-                        <a href="#/tags/{{tag.title}}">{{tag.title}}: {{tag.amount}}</a>
+            <span ng-show="historyListing.length > 0">
+                <h2>Recently Viewed Items</h2>
+                <div class="row popular">
+                    <div class="pop-items">
+                        <div class="pop-item" ng-repeat="pop in historyListing">
+                            <div class="index">
+                                {{$index + 1}}
+                            </div>
+                            <div class="image" ng-style="getPopStyle(pop)" ng-click="removeHistoryItem(pop, $index)">
+
+                            </div>
+                        </div>
                     </div>
+                </div>
+            </span>
+
+
+        </div>
+        <div class="row">
+            <h2>Popular Tags</h2>
+            <div class="tags">
+                <div class="tag" ng-if="tag.title != 'undefined'" ng-repeat="tag in populartags"
+                     ng-style="getTagClass(tag)">
+                    <a href="#/tags/{{tag.title}}">{{tag.title}}: {{tag.amount}}</a>
                 </div>
             </div>
         </div>
-
-
     </div>
-
-
-</div>
 </div>

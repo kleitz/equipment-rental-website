@@ -10,7 +10,13 @@ angular.module('app.admin', ['ngRoute'])
             });
         }
     ])
-    .controller('adminCtrl', ['$rootScope', '$scope', '$http', 'authFactory', '$window', function($rootScope, $scope, $http, authFactory, $window) {
+    .controller('adminCtrl', ['$rootScope', '$scope', '$http', 'authFactory', '$window', 'Title', function($rootScope, $scope, $http, authFactory, $window, Title) {
+        $scope.$watch('site', function() {
+            if ($rootScope.site) {
+                Title.setTitle($rootScope.site.title + ': Admin Manager');
+            }
+        });
+
         if ($rootScope.auth.role !== 'admin') {
             $window.location.href = '#/';
         } else {

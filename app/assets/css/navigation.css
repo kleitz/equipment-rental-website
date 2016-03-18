@@ -1,4 +1,6 @@
 .navigation {
+  position: absolute;
+  top: 0;
   background: #2C3E50;
   height: 60px;
   z-index: 3000; }

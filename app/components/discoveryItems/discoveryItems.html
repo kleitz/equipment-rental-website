@@ -1,0 +1,32 @@
+<div class="discoveryItemBase">
+    <div class="d-products">
+        <div class="d-product" ng-class="getCardClass($index)"ng-repeat="product in products.items track by $index">
+            <a class="product-a" href="#/listing/{{product.id}}">
+                <div class="d-image">
+                    <div class="d-imagebk" ng-show="ready[$index]" ng-style="getClass(product, $index)"></div>
+                </div>
+                <div class="content">
+                    <div class="title">
+                        <p ng-show="type == 'holding'"><b>{{product.title}}</b><br>
+                            Due: {{product.due | amCalendar}}</p>
+                        <p ng-hide="type == 'holding'"><b>{{product.title}}</b></p>
+                    </div>
+                    <div class="time">
+                        {{product.date_updated | amCalendar}}
+                    </div>
+                    <div class="description">
+                        {{product.description}}
+                    </div>
+                    <div class="view">
+
+                        <!--<a class="button">View Listing</a>-->
+                    </div>
+
+
+                </div>
+            </a>
+        </div>
+
+    </div>
+</div>
+

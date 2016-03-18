@@ -9,8 +9,14 @@ angular.module('app.logout', ['ngRoute'])
         });
     }])
 
-    .controller('LogoutCtrl', ['$scope', '$rootScope', 'authFactory', function($scope, $rootScope, authFactory) {
+    .controller('LogoutCtrl', ['$scope', '$rootScope', 'authFactory', 'Title', function($scope, $rootScope, authFactory, Title) {
         $scope.view = $rootScope.loggedIn;
+
+        $scope.$watch('site', function() {
+            if ($rootScope.site) {
+                Title.setTitle($rootScope.site.title + ': Logged out');
+            }
+        });
 
         if ($rootScope.loggedIn) {
             // window.sessionStorage.remov0eItem("token");

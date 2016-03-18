@@ -1,0 +1,85 @@
+.discoveryItemBase {
+  position: relative;
+  min-height: 800px; }
+  .discoveryItemBase a {
+    color: #333333;
+    text-decoration: none; }
+  .discoveryItemBase .d-products {
+    display: flex;
+    flex-wrap: wrap; }
+    .discoveryItemBase .d-products .d-product {
+      min-height: 300px;
+      max-width: 300px;
+      padding: 20px;
+      margin: 10px;
+      animation-name: fadeIn;
+      animation-duration: 0.3s; }
+      .discoveryItemBase .d-products .d-product .d-image {
+        position: relative;
+        background: #e3e3e3; }
+      .discoveryItemBase .d-products .d-product .content {
+        padding: 20px;
+        padding-top: 5px;
+        animation-name: fadeIn;
+        animation-duration: 0.3s; }
+        .discoveryItemBase .d-products .d-product .content .title {
+          padding: 0;
+          margin: 0; }
+          .discoveryItemBase .d-products .d-product .content .title p {
+            font-size: 1.4rem;
+            font-weight: 600;
+            padding: 0;
+            margin: 0; }
+        .discoveryItemBase .d-products .d-product .content .time {
+          font-size: 0.9rem;
+          color: #adadad; }
+        .discoveryItemBase .d-products .d-product .content .description {
+          font-size: 1rem;
+          color: #333; }
+    .discoveryItemBase .d-products .d-product.main {
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+      .discoveryItemBase .d-products .d-product.main .product-a {
+        display: inline;
+        width: 100%; }
+      .discoveryItemBase .d-products .d-product.main .d-image {
+        height: 400px;
+        min-height: 400px;
+        width: 100%; }
+        .discoveryItemBase .d-products .d-product.main .d-image .d-imagebk {
+          height: 100%;
+          width: 100%;
+          animation-name: fadeIn;
+          animation-duration: 0.3s;
+          border-radius: 2px; }
+    .discoveryItemBase .d-products .d-product.sub {
+      flex-grow: 1;
+      width: 100%;
+      max-width: 400px; }
+      .discoveryItemBase .d-products .d-product.sub .d-image {
+        height: 250px;
+        min-height: 250px;
+        min-width: 150px;
+        max-width: 150px; }
+        .discoveryItemBase .d-products .d-product.sub .d-image .d-imagebk {
+          border-radius: 2px;
+          height: 100%;
+          width: 100%;
+          animation-name: fadeIn;
+          animation-duration: 0.3s; }
+
+@media screen and (min-width: 0px) {
+  .d-product {
+    width: 100%; }
+    .d-product .product-a {
+      display: inline; } }
+
+@media screen and (min-width: 700px) {
+  .d-product {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 300px; }
+    .d-product .product-a {
+      display: flex; } }
