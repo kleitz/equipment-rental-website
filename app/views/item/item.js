@@ -299,7 +299,10 @@ angular.module('app.item', ['ngRoute', 'app.config'])
                     //});
 
                     //$scope.comment.message = "";
-                    $scope.product.comments.reviews.push(data)
+                    if ($scope.product.comments.reviews === undefined) {
+                        $scope.product.comments.reviews = [];
+                    }
+                    $scope.product.comments.reviews.push(data);
                     $scope.myReviews.push(data)
                 }).error(function (data, status, headers, config) {
                     console.log('error');

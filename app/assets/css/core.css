@@ -20,9 +20,6 @@ html {
 .background {
   width: 110%;
   height: 120%;
-  -webkit-filter: blur(10px);
-  -moz-filter: blur(10px);
-  filter: blur(10px);
   position: fixed !important;
   background-attachment: fixed;
   margin-left: -100px !important;

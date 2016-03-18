@@ -68,11 +68,12 @@
 <div class="background" ng-style="bodyStyle"></div>
 
 
-<header ng-controller="AuthCtrl">
-    <div class="fullwidth" ng-include="'/views/partials/navigation.html'"></div>
-</header>
+
 
 <div class="wrapper">
+    <header ng-controller="AuthCtrl">
+        <div class="fullwidth" ng-include="'/views/partials/navigation.html'"></div>
+    </header>
     <ng-view class="view" autoscroll="true"></ng-view>
     <div class="footer">
         <div class="row">
