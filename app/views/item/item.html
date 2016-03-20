@@ -1,3 +1,7 @@
+<head>
+    <meta property="og:image" content={{domain}}{{product.image.size.large}}/>
+</head>
+
 <div class="itemview" ng-class="itemClass">
     <!--<div class="content loading" ng-hide="product">-->
     <!--<div class="loading-content animated fadeIn">-->
@@ -174,23 +178,42 @@
     </div>
 
 
+    <h4>Share</h4>
     <div class="row sharing">
-        <h4>Share</h4>
-        <a socialshare
-           socialshare-provider="twitter"
-           socialshare-text="{{product.title}}: {{product.description}}"
-           socialshare-hashtags="karite, {{product.title}}"
-           socialshare-url="{{domain}}/#/listing/{{product.id}}">
-            Twitter
-        </a>
-        <!--<a socialshare-->
-        <!--socialshare-provider="facebook"-->
-        <!--socialshare-title="{{product.title}}"-->
-        <!--socialshare-description="{{product}}"-->
-        <!--socialshare-description="{{product.description}}"-->
-        <!--socialshare-url="{{domain}}/listing/{{product.id}}">-->
-        <!--Facebook-->
-        <!--</a>-->
+        <div class="twitter">
+
+            <a socialshare
+               socialshare-provider="twitter"
+               socialshare-text="{{product.title}}: {{product.description}}"
+               socialshare-hashtags="karite, {{product.title}}"
+               socialshare-url="{{domain}}/#/listing/{{product.id}}">
+                <div class="icon">
+                    <i class="fa fa-twitter"></i>
+                </div>
+                <div class="share">
+                    Twitter
+                </div>
+            </a>
+
+        </div>
+        <div class="facebook">
+
+            <a socialshare class="facebook"
+               socialshare-provider="facebook"
+               socialshare-title="{{product.title}}"
+               socialshare-description="{{product}}"
+               socialshare-description="{{product.description}}"
+               socialshare-media="{{domain}}{{product.images[0].size.large}}"
+               socialshare-url="{{domain}}/#/listing/{{product.id}}">
+                <div class="icon">
+                    <i class="fa fa-facebook-official"></i>
+                </div>
+                <div class="share">
+                    Facebook
+                </div>
+            </a>
+
+        </div>
     </div>
 
 

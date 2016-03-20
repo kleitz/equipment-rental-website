@@ -65,6 +65,8 @@ angular.module('app', [
     'app.auth',
     'app.titleFactory',
     'app.historyFactory',
+    // Services
+    'app.notify',
     //  Dependencies
     'angularMoment',
     'ui-notification',
@@ -83,8 +85,43 @@ angular.module('app', [
         $routeProvider.otherwise({redirectTo: '/fourOhFour'});
         $locationProvider.html5Mode(false);
     }])
-    .controller('AuthCtrl', ['$scope', '$rootScope', 'authFactory', '$http', '$timeout', 'Title', function ($scope, $rootScope, authFactory, $http, $timeout, Title) {
+    .controller('timelineCtrl', ['notify', '$http', 'authFactory', function(notify, $http, authFactory) {
+
+        getTimeline();
+        function getTimeline() {
+           getData();
+        }
+
+        function getData() {
+            $http({
+                url: backend + "/p/rent/current",
+                method: 'GET',
+                headers: {
+                    'Count': 3000,
+                    'token': authFactory.getToken()
+                }
+            }).success(function (data, status, headers, config) {
+                console.log(data.items)
+                for (var i = 0; i < data.items.length; i++) {
+                    var days = -moment().diff(Date.parse(data.items[i].due), 'days');
+                    var hours = -moment().diff(Date.parse(data.items[i].due), 'hours');
+                    if (days < 3) {
+                        if (hours < 48) {
+                            notify.show('DUE IN ' + hours + ' HOURS: ' + data.items[i].title, domain + data.items[i].images[0].size.thumb, 10000, domain, 'error')
+                        } else {
+                            notify.show('Due soon: ' + data.items[i].title, domain + data.items[i].images[0].size.thumb, 10000, domain, 'warning')
+                        }
+                    }
+                }
+            }).error(function (data, status, headers, config) {
+                notify.show('Something went wrong', '', 1000, domain, 'error')
+            });
+        }
+    }])
+    .controller('AuthCtrl', ['$scope', '$rootScope', 'authFactory', '$http', '$timeout', 'Title',
+        function ($scope, $rootScope, authFactory, $http, $timeout, Title) {
         $rootScope.loggedIn = authFactory.getAuth() !== undefined;
+
         // console.log( authFactory.getToken);
         $rootScope.auth = authFactory.getAuth();
         $scope.userDropDownShow = false;
@@ -128,7 +165,6 @@ angular.module('app', [
 
             toggle = !toggle;
         };
-
 
         function getSiteIndex() {
             $http({
