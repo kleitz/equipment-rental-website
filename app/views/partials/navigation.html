@@ -44,7 +44,7 @@
                 <li class="item item-right" ng-click="showUserDropDown()">
                     <div class="details">
                         <div class="username">
-                            @{{auth.username}}
+                            <i ng-show="userDropDownShow" class="fa fa-caret-up"></i><i ng-show="!userDropDownShow" class="fa fa-caret-down"></i> @{{auth.username}}
                         </div>
 
                         <div class="image" ng-style="{
