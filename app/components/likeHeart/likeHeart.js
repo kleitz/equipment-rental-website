@@ -37,7 +37,6 @@ angular.module('app.likeHeart', ['app.config'])
                 });
 
                 $scope.tap = function () {
-                    console.log("we tapped")
                     tab = JSON.parse($scope.scope);
                     if (tab.id) {
                         tab = tab.id;

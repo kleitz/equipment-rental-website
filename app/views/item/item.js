@@ -170,8 +170,6 @@ angular.module('app.item', ['ngRoute', 'app.config'])
             }).success(function (data, status, headers, config) {
                 $scope.product = data.items[0];
                 Title.setTitle($rootScope.site.title + ': ' + data.items[0].title);
-                console.log(Title.title())
-                console.log(data.items[0]);
                 $scope.product.gotRes = true;
                 if (data.items[0].owner.username === $rootScope.auth.username) {
                     $scope.isOwner = true;
@@ -286,19 +284,6 @@ angular.module('app.item', ['ngRoute', 'app.config'])
                         replaceMessage: true
                     });
 
-                    console.log(data)
-
-                    //$scope.product.comments.push({
-                    //    'message': comment,
-                    //    'date_added': Date(),
-                    //    'author': {
-                    //        'username': $rootScope.auth.username,
-                    //        'gravatar': $rootScope.auth.gravatar
-                    //    }
-                    //
-                    //});
-
-                    //$scope.comment.message = "";
                     if ($scope.product.comments.reviews === undefined) {
                         $scope.product.comments.reviews = [];
                     }
@@ -312,15 +297,12 @@ angular.module('app.item', ['ngRoute', 'app.config'])
                         positionX: 'center',
                         replaceMessage: true
                     });
-                    //$scope.comment.success = true;
                 }).finally(function () {
-                    //console.log("its over")
-                    //$scope.message.processing = false;
+                            
                 });
             }
 
             $scope.deleteItem = function () {
-                //console.log("deleteing");
                 $http({
                     url: backend + '/product/' + $routeParams.id + '/delete',
                     method: 'DELETE',

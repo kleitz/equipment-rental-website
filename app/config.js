@@ -1,14 +1,18 @@
 'use strict';
 
- //var domain = 'http://192.168.1.99:3000'
-// var domain = 'http://localhost:3000'
-// var domain = 'http://localhost:3000'
+// Change this to your main domain
 var domain = 'https://karite.xyz';
+
+/*
+
+            Do not edit below
+
+ */
+
 var api = '/api';
 var data = '/data';
 
 var backend = domain + api;
-
 var dataURI = domain + data;
 
 angular.module('app.config', [])

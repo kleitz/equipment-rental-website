@@ -15,6 +15,4 @@ angular.module('app.fourohfour', ['ngRoute'])
                 Title.setTitle($rootScope.site.title + ': 404 Page does not exist');
             }
         });
-
-        console.log("wrong route");
     }]);

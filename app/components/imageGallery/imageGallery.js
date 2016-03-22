@@ -22,7 +22,6 @@ angular.module('app.imageGallery', ['app.config'])
                         $scope.domain = domain;
                         changeImage(0);
                     }
-                    // do something
                 });
 
                 $scope.changeImage = function (index) {
@@ -32,14 +31,8 @@ angular.module('app.imageGallery', ['app.config'])
                 var previousIndexPreview = 100;
 
                 function changeImage(index) {
-                    console.log(index)
-                    //$scope.showImage = images[index].size.large;
-                    //var ele = angular.element(document.querySelector('#thisshowcase'));
-                    //ele.addClass('animated fadeOut');
-                    //ele.addClass('animated  fadeIn')
 
                     setTimeout(function () {
-                        console.log(index + ':' + previousIndexPreview)
                         if (index !== previousIndexPreview) {
 
                             $scope.imagePreviewClass = '';
@@ -53,7 +46,6 @@ angular.module('app.imageGallery', ['app.config'])
                     if (!$scope.images[index].cached) {
                         var img = new Image();
                         img.onload = function () {
-                            console.log('image loaded')
                             $scope.showcaseImage = {
                                 'background': 'url(' + domain + images[index].size.large + ') no-repeat center center',
                                 'background-size': 'contain'
@@ -88,10 +80,7 @@ angular.module('app.imageGallery', ['app.config'])
 
                 function largeScreen(index) {
                     $scope.displayLargeScreen = true;
-                    console.log(index)
                     $scope.largeScreenClass = 'open';
-
-                    //$scope.images = JSON.parse($scope.images)
 
                     $scope.selectedImage = index;
                 }
@@ -102,7 +91,6 @@ angular.module('app.imageGallery', ['app.config'])
 
                 $scope.changeFSIndex = function (index) {
                     var limit = $scope.images.length
-                    console.log(limit)
                     if (index === 0) {
 
                         if ($scope.selectedImage <= 0) {
@@ -117,7 +105,6 @@ angular.module('app.imageGallery', ['app.config'])
                             $scope.selectedImage += 1;
                         }
                     }
-                    console.log($scope.selectedImage)
                 }
 
                 $scope.closeLargeScreen = function () {
@@ -132,11 +119,6 @@ angular.module('app.imageGallery', ['app.config'])
                 $scope.hover = function (hover, index) {
                     changeHoverState(hover, index);
                 };
-            },
-
-            link: function (scope, elem, attrs, http) {
-
-
             }
         };
     });

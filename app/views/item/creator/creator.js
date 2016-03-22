@@ -84,8 +84,6 @@ angular.module('app.creator', ['ngRoute'])
                     'name': file[0].file.name,
                     'file_type': file[0].file.type
                 };
-                //debugger
-                console.log(file[0].relativePath)
 
                 //setTimeout(function(){
                 fileReader.readAsDataURL(file[0].file);
@@ -95,7 +93,6 @@ angular.module('app.creator', ['ngRoute'])
             };
 
             $scope.$watch('product.tagsstring', function() {
-                console.log('hello')
                 $scope.product.tags = [];
                 if ($scope.product.tagsstring) {
                     var tmp = $scope.product.tagsstring.split(',')
@@ -139,8 +136,6 @@ angular.module('app.creator', ['ngRoute'])
 
                         if (product) {
                             if (product.image && product.title && product.description && product.days) {
-                                //console.log(product);
-                                // $scope.uploadButtonClass.push('button-primary');
                                 $scope.message.button = $scope.message.loading;
 
                                 var fd = new FormData();
@@ -152,9 +147,7 @@ angular.module('app.creator', ['ngRoute'])
                                 fd.append('filetype', product.image.file_type);
                                 fd.append('condition', product.condition);
                                 fd.append('content', product.content)
-                                console.log(product)
-
-
+                                
                                 $http({
                                     url: backend + "/p",
                                     method: 'POST',

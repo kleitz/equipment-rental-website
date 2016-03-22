@@ -10,7 +10,7 @@ angular.module('app.user', ['ngRoute'])
             });
         }
     ])
-    .controller('UserCtrl', ['$routeParams', '$scope', '$http', 'Title', function ($routeParams, $scope, $http, Title) {
+    .controller('UserCtrl', ['$routeParams', '$scope', '$http', 'Title', '$rootScope', function ($routeParams, $scope, $http, Title, $rootScope) {
         $scope.$watch('site', function () {
             if ($rootScope.site) {
                 Title.setTitle($rootScope.site.title + ': Profile');
@@ -51,7 +51,6 @@ angular.module('app.user', ['ngRoute'])
             url: backend + "/products/" + $routeParams.user,
             method: 'GET',
         }).success(function (data, status, headers, config) {
-            console.log(data);
             $scope.products = data;
         }).error(function (data, status, headers, config) {
             $scope.error = true;

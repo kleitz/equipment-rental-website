@@ -92,6 +92,10 @@ angular.module('app.items', ['ngRoute'])
                 //}
                 //console.log($scope.listingOptions.enablePaging)
                 //window.localStorage.setItem("enablePaging", $scope.listingOptions.enablePaging);
+            };
+
+            $scope.geturl = function(end) {
+                return domain + end
             }
 
             $scope.back = function () {

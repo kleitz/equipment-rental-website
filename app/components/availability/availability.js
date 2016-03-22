@@ -16,15 +16,13 @@ angular.module('app.availability', ['app.config'])
                     "datasource",
                     function handleFooChange( ) {
                         if ($attrs.datasource != "{{product.id}}") {
-                            console.log("change")
                             $scope.showdays = $attrs.showdays;
                             $scope.showLoading = false;
                             $scope.availabilityClass = {};
                             $http({
                                 url: backend + '/p/' + $attrs.datasource + '/availability',
-                                method: 'GET',
+                                method: 'GET'
                             }).success(function(data, status, headers, config) {
-                               console.log(data)
                                 if (data.available) {
                                     $scope.availability = "Available";
                                     $scope.availabilityClass.color = "green";

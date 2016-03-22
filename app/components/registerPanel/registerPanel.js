@@ -17,11 +17,8 @@ angular.module('app.registerPanel', ['app.config'])
                 }
               );
                 $scope.register = function(user) {
-                    // console.log(user);
-                    console.log(user)
                     if (user !== undefined && user.name !== "" && user.email !== "" && user.password !== "" &&
                     user.name !== " " && user.email !== " " && user.recaptcha != "") {
-                        console.log("time to register")
                         var hash = CryptoJS.SHA512(user.password).toString();
 
                         $http({
@@ -45,9 +42,6 @@ angular.module('app.registerPanel', ['app.config'])
                         });
                     }
                 };
-            },
-            link: function(scope, elem, attrs) {
-                // Just for altering the DOM
             }
         };
     });

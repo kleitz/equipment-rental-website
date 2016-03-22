@@ -41,8 +41,6 @@ angular.module('app.myItems', ['ngRoute'])
         });
 
         $scope.back = function() {
-            //$scope.start + $scope.count > $scope.products.total
-
             if ($scope.start <= 0) {
                 $scope.viewResults = false;
             } else {
@@ -73,7 +71,6 @@ angular.module('app.myItems', ['ngRoute'])
                 }
             }).success(function(data, status, headers, config) {
                 $scope.products = data;
-                console.log(data);
             }).
             error(function(data, status, headers, config) {
                 $scope.error = true;

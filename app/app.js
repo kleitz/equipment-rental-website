@@ -60,13 +60,16 @@ angular.module('app', [
     'app.productSlider',
     'app.starRating',
     'app.discoveryItems',
+
     // Factories
     'app.config',
     'app.auth',
     'app.titleFactory',
     'app.historyFactory',
+
     // Services
     'app.notify',
+
     //  Dependencies
     'angularMoment',
     'ui-notification',
@@ -80,16 +83,14 @@ angular.module('app', [
     'naif.base64'
 ]).config(['$routeProvider', '$locationProvider', '$httpProvider', function ($routeProvider, $locationProvider, $httpProvider) {
         $httpProvider.defaults.useXDomain = true;
-        //console.log("its all set i guess")
         delete $httpProvider.defaults.headers.common['X-Requested-With'];
         $routeProvider.otherwise({redirectTo: '/fourOhFour'});
         $locationProvider.html5Mode(false);
     }])
-    .controller('timelineCtrl', ['notify', '$http', 'authFactory', function(notify, $http, authFactory) {
-
+    .controller('timelineCtrl', ['notify', '$http', 'authFactory', function (notify, $http, authFactory) {
         getTimeline();
         function getTimeline() {
-           getData();
+            getData();
         }
 
         function getData() {
@@ -101,7 +102,6 @@ angular.module('app', [
                     'token': authFactory.getToken()
                 }
             }).success(function (data, status, headers, config) {
-                console.log(data.items)
                 for (var i = 0; i < data.items.length; i++) {
                     var days = -moment().diff(Date.parse(data.items[i].due), 'days');
                     var hours = -moment().diff(Date.parse(data.items[i].due), 'hours');
@@ -120,66 +120,53 @@ angular.module('app', [
     }])
     .controller('AuthCtrl', ['$scope', '$rootScope', 'authFactory', '$http', '$timeout', 'Title',
         function ($scope, $rootScope, authFactory, $http, $timeout, Title) {
-        $rootScope.loggedIn = authFactory.getAuth() !== undefined;
-
-        // console.log( authFactory.getToken);
-        $rootScope.auth = authFactory.getAuth();
-        $scope.userDropDownShow = false;
-        //console.log($rootScope.auth)
-
-        $rootScope.bodyStyle = {
-            background: 'url() no-repeat center center',
-            '-webkit-background-size': 'cover',
-            '-moz-background-size': 'cover',
-            '-o-background-size': 'cover',
-            'background-size': 'cover'
-        };
-        getSiteIndex();
-
-        var toggle = false;
-        $scope.showUserDropDown = function () {
-            $scope.userDropDownShow = !$scope.userDropDownShow;
-            $timeout(function () {
-                $scope.$apply();
-            }, 1);
-
-        };
-
-
-        window.addEventListener("mouseup", function onMouseUp() {
-            // Make sure all menu items are closed
+            $rootScope.loggedIn = authFactory.getAuth() !== undefined;
+            $rootScope.auth = authFactory.getAuth();
             $scope.userDropDownShow = false;
-            $timeout(function () {
-                $scope.$apply();
-            }, 1);
-        }, false);
 
-        $scope.toggleNavi = function () {
-            if (toggle) {
-                angular.element(document.querySelector('.items')).css('display', 'none');
-            } else {
-                angular.element(document.querySelector('.items')).css('display', 'flex');
+            $rootScope.bodyStyle = {
+                background: 'url() no-repeat center center',
+                '-webkit-background-size': 'cover',
+                '-moz-background-size': 'cover',
+                '-o-background-size': 'cover',
+                'background-size': 'cover'
+            };
+            getSiteIndex();
 
+            var toggle = false;
+            $scope.showUserDropDown = function () {
+                $scope.userDropDownShow = !$scope.userDropDownShow;
+                $timeout(function () {
+                    $scope.$apply();
+                }, 1);
+
+            };
+
+            window.addEventListener("mouseup", function onMouseUp() {
+                // Make sure all menu items are closed
+                $scope.userDropDownShow = false;
+                $timeout(function () {
+                    $scope.$apply();
+                }, 1);
+            }, false);
+
+            $scope.toggleNavi = function () {
+                if (toggle) {
+                    angular.element(document.querySelector('.items')).css('display', 'none');
+                } else {
+                    angular.element(document.querySelector('.items')).css('display', 'flex');
+                }
+                toggle = !toggle;
+            };
+
+            function getSiteIndex() {
+                $http({
+                    url: backend + "/",
+                    method: 'GET',
+                }).success(function (data, status, headers, config) {
+                    $rootScope.site = data;
+                }).error(function (data, status, headers, config) {
+                    $rootScope.site = data;
+                });
             }
-
-
-            toggle = !toggle;
-        };
-
-        function getSiteIndex() {
-            $http({
-                url: backend + "/",
-                method: 'GET',
-            }).success(function (data, status, headers, config) {
-                $rootScope.site = data;
-            }).error(function (data, status, headers, config) {
-                $rootScope.site = data;
-            });
-        }
-    }])
-    .filter('reverse', function () {
-        // Filter from http://stackoverflow.com/questions/15266671/angular-ng-repeat-in-reverse
-        return function (items) {
-            return items.slice().reverse();
-        };
-    });
+        }]);

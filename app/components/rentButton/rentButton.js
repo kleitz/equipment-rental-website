@@ -94,23 +94,18 @@ angular.module('app.rentButton', ['app.config'])
                     RentStatus.getAvailability(data.id).then(function (status) {
                         //if (status.available) {
                         $scope.request = status;
-                        console.log(status)
                         RentStatus.getIsOwner(data.id).then(function (isowner) {
-                            console.log(isowner)
                             $scope.status.isOwner = isowner;
                             if (isowner) {
                                 //    We are owner
                                 RentStatus.getOwnerAvailability(data.id).then(function (res3) {
-                                    console.log(res3)
                                     $scope.ownerAvailResult = res3;
                                     if (res3.owner !== 'null') {
                                         //  Someone is holding it
-                                        console.log('someone is holding')
                                         $scope.status.hasHolder = true;
                                         finished();
                                     } else {
                                         //    No one is holding the item
-                                        console.log('no one is holding')
                                         RentStatus.getRequestStatus(data.id).then(function (requests) {
                                             $scope.RequestsStatus = requests;
                                             $scope.status.noHolder = true;
@@ -126,7 +121,6 @@ angular.module('app.rentButton', ['app.config'])
                                     $scope.status.hasRequest = requests.requested;
                                     $scope.userRequest = requests;
                                     if (requests.requested) {
-                                        console.log('we have requested')
                                         finished();
                                     } else {
                                         if (status.owner) {
@@ -135,12 +129,10 @@ angular.module('app.rentButton', ['app.config'])
 
                                             finished();
                                         } else {
-                                            console.log('not holding')
                                             finished();
                                         }
 
                                     }
-                                    console.log(requests)
                                 });
                             }
                         })

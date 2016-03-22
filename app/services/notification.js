@@ -24,7 +24,6 @@ function Notify($timeout, $window, Notification) {
 
         $window.Notification.requestPermission(function(result) {
             // If the user has granted permission
-            console.log(result);
             if (result === 'granted') {
                 // Use Native Notifications
                 notify.notification = new $window.Notification('Karite', {

@@ -54,7 +54,6 @@ angular.module('app.myrequests', ['ngRoute', 'app.config'])
                         'count': 10
                     }
                 }).success(function (data, status, headers, config) {
-                    console.log(data)
                     if (data.total === 0) {
                         $scope.noRequests = true;
                     }

@@ -13,7 +13,9 @@
     border-radius: 5px;
     margin-bottom: 20px;
     padding: 30px;
-    min-height: 180px; }
+    min-height: 180px;
+    position: relative;
+    overflow: hidden; }
     .listing .results .item .image_center {
       display: flex;
       align-items: center;
@@ -27,6 +29,14 @@
       justify-content: flex-end; }
       .listing .results .item .like like-heart {
         height: 30px; }
+    .listing .results .item .imagepreviewbase {
+      position: relative;
+      height: 100%;
+      overflow: hidden; }
+      .listing .results .item .imagepreviewbase .imagepreview {
+        position: absolute;
+        height: 120%;
+        width: 100%; }
     .listing .results .item .avil {
       position: relative;
       white-space: nowrap;

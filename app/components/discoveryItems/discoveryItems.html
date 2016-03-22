@@ -1,6 +1,6 @@
 <div class="discoveryItemBase">
     <div class="d-products">
-        <div class="d-product" ng-class="getCardClass($index)"ng-repeat="product in products.items track by $index">
+        <div class="d-product" ng-class="getCardClass($index)" ng-repeat="product in products.items track by $index">
             <a class="product-a" href="#/listing/{{product.id}}">
                 <div class="d-image">
                     <div class="d-imagebk" ng-show="ready[$index]" ng-style="getClass(product, $index)"></div>
