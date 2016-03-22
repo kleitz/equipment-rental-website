@@ -21,9 +21,9 @@ angular.module('app.editorTag', ['app.config', 'app.auth'])
                         method: 'DELETE',
                         headers: {
                             'Content-Type': undefined,
-                            'token': authFactory.getToken(),
+                            'token': authFactory.getToken()
                         }
-                    }).success(function (data, status, headers, config) {
+                    }).success(function () {
                         //$scope.tagclass = "editorTagBase animated fadeOut";
 
                         $scope.tagclass = 'editorTagBase leave';
@@ -35,7 +35,7 @@ angular.module('app.editorTag', ['app.config', 'app.auth'])
                         }, 300);
 
 
-                    }).error(function (data, status, headers, config) {
+                    }).error(function () {
                         console.log('error');
                         Notification.error({message: 'Error removing ' + $scope.title, positionY: 'bottom', positionX: 'center', replaceMessage: true});
                         $scope.error = true;

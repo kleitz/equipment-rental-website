@@ -25,13 +25,13 @@ angular.module('app.imageViewer', ['app.config'])
                                 $scope.imageStyles['background-image'] = 'url(\"' + $scope.url + '\")';
                                 $scope.$apply();
                             }, 1);
-                        }
+                        };
 
                         img.src = $scope.url;
                         if (img.complete) img.onload();
 
                     }
-                }
+                };
 
                 $scope.hoverstyle = {
                     'height': '100%',
@@ -42,7 +42,7 @@ angular.module('app.imageViewer', ['app.config'])
                     'display': 'flex',
                     'justify-content': 'center',
                     'align-items': 'center'
-                }
+                };
 
                 $scope.previewStyle = {
                     'height': '100%',
@@ -54,20 +54,20 @@ angular.module('app.imageViewer', ['app.config'])
                     'background-size': 'cover',
                     'z-index': 100,
                     'padding': '-20%'
-                }
+                };
                 $scope.imageStyles = {
                     'height': '100%',
                     'width': '100%',
                     'background': 'url("") no-repeat center center',
-                    'background-size': 'contain',
-                }
+                    'background-size': 'contain'
+                };
 
                 $scope.imageStyle = {
                     'height': $scope.height + 'px',
                     'width': $scope.width + 'px',
                     'background': 'url("") no-repeat center center',
                     'background-size': 'cover',
-                    'border-radius': $scope.radius + 'px',
+                    'border-radius': $scope.radius + 'px'
                 };
                 $scope.$watch(
                     "image",
@@ -77,7 +77,7 @@ angular.module('app.imageViewer', ['app.config'])
                         if ($scope.image !== '{{product}}' && $scope.image !== 'undefined' && $scope.image !== '') {
 
                             $scope.data = JSON.parse($scope.image);
-                            console.log($scope.data)
+                            console.log($scope.data);
 
 
                             $scope.url = domain + $scope.data.size.large;
@@ -98,7 +98,7 @@ angular.module('app.imageViewer', ['app.config'])
                             $scope.imageStyle['background-image'] = 'url(\"https://d13yacurqjgara.cloudfront.net/users/12755/screenshots/1037374/hex-loader2.gif\")';
 
                             var img = new Image();
-                            img.crossOrigin = "Anonymous"
+                            img.crossOrigin = "Anonymous";
                             img.onload = function () {
                                 setTimeout(function () {
                                     rgb = $colorThief.getColor(img);

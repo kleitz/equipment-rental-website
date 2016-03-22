@@ -5,7 +5,7 @@ angular.module('app.tagSearch', ['app.config'])
         return {
             restrict: 'AEC',
             templateUrl: 'components/tagSearch/tagSearch.html',
-            controller: function($scope, $http, $rootScope, $location, $attrs) {
+            controller: function ($scope) {
                 $scope.search = function(term) {
 
                 }

@@ -1,6 +1,6 @@
 'use strict';
 angular.module('app.notify', [])
-    .service('notify', Notify)
+    .service('notify', Notify);
 
 function Notify($timeout, $window, Notification) {
     var notify = {
@@ -20,8 +20,7 @@ function Notify($timeout, $window, Notification) {
 
             notify.allowed = false;
             return;
-        };
-
+        }
         $window.Notification.requestPermission(function(result) {
             // If the user has granted permission
             if (result === 'granted') {
@@ -44,12 +43,12 @@ function Notify($timeout, $window, Notification) {
                     notify.notification.close();
                 }, (time || 4000))
             } else {
-                console.log('fallback to angular notifications')
+                console.log('fallback to angular notifications');
                 if (type === undefined) {
                     type = 'success';
                 }
 
-                console.log(type)
+                console.log(type);
 
                 if (type.toLowerCase() === 'error') {
                     Notification.error({'message': message, positionY: 'bottom', positionX: 'right'});
@@ -73,4 +72,4 @@ function Notify($timeout, $window, Notification) {
     }
 
     return notify;
-};
+}

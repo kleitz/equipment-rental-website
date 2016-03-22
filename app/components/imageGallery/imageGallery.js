@@ -5,10 +5,10 @@ angular.module('app.imageGallery', ['app.config'])
         return {
             restrict: 'AEC',
             scope: {
-                images: '@',
+                images: '@'
             },
             templateUrl: 'components/imageGallery/imageGallery.html',
-            controller: function ($scope, $timeout) {
+            controller: function ($scope) {
                 $scope.largeScreenClass = 'closed';
                 var images;
                 $scope.displayLargeScreen = false;
@@ -90,7 +90,7 @@ angular.module('app.imageGallery', ['app.config'])
                 };
 
                 $scope.changeFSIndex = function (index) {
-                    var limit = $scope.images.length
+                    var limit = $scope.images.length;
                     if (index === 0) {
 
                         if ($scope.selectedImage <= 0) {
@@ -105,16 +105,16 @@ angular.module('app.imageGallery', ['app.config'])
                             $scope.selectedImage += 1;
                         }
                     }
-                }
+                };
 
                 $scope.closeLargeScreen = function () {
                     $scope.largeScreenClass = 'closed';
                     $scope.displayLargeScreen = false;
-                }
+                };
 
                 $scope.selectImage = function ($index) {
                     largeScreen($index);
-                }
+                };
 
                 $scope.hover = function (hover, index) {
                     changeHoverState(hover, index);

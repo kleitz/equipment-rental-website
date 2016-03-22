@@ -22,7 +22,7 @@ angular.module('app.availability', ['app.config'])
                             $http({
                                 url: backend + '/p/' + $attrs.datasource + '/availability',
                                 method: 'GET'
-                            }).success(function(data, status, headers, config) {
+                            }).success(function(data) {
                                 if (data.available) {
                                     $scope.availability = "Available";
                                     $scope.availabilityClass.color = "green";
@@ -30,7 +30,7 @@ angular.module('app.availability', ['app.config'])
                                     $scope.availability = "Unavailable";
                                 }
                             }).
-                            error(function(data, status, headers, config) {
+                            error(function() {
                                 $scope.error = true;
                             });
                         } else {

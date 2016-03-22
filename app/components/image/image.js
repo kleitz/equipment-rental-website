@@ -46,7 +46,7 @@ angular.module('app.limage', ['app.config'])
                         if (img.complete) img.onload();
                     }
 
-                }
+                };
 
                 $scope.hoverstyle = {
                     'height': '100%',
@@ -57,7 +57,7 @@ angular.module('app.limage', ['app.config'])
                     'display': 'flex',
                     'justify-content': 'center',
                     'align-items': 'center'
-                }
+                };
 
                 $scope.previewStyle = {
                     'height': '100%',
@@ -69,20 +69,20 @@ angular.module('app.limage', ['app.config'])
                     'background-size': 'cover',
                     'z-index': 100,
                     'padding': '-20%'
-                }
+                };
                 $scope.imageStyles = {
                     'height': '100%',
                     'width': '100%',
                     'background': 'url("") no-repeat center center',
-                    'background-size': 'contain',
-                }
+                    'background-size': 'contain'
+                };
 
                 $scope.imageStyle = {
                     'height': $scope.height + 'px',
                     'width': $scope.width + 'px',
                     'background': 'url("") no-repeat center center',
                     'background-size': 'cover',
-                    'border-radius': $scope.radius + 'px',
+                    'border-radius': $scope.radius + 'px'
                 };
                 $scope.$watch(
                     "image",
@@ -117,7 +117,7 @@ angular.module('app.limage', ['app.config'])
                             $scope.imageStyle['background-image'] = 'url(\"https://d13yacurqjgara.cloudfront.net/users/12755/screenshots/1037374/hex-loader2.gif\")';
 
                             var img = new Image();
-                            img.crossOrigin = "Anonymous"
+                            img.crossOrigin = "Anonymous";
                             img.onload = function () {
                                 setTimeout(function () {
                                     rgb = $colorThief.getColor(img);

@@ -19,7 +19,7 @@ angular.module('app.likeHeart', ['app.config'])
                 var data, tab;
                 $scope.toggleME = false;
 
-                $scope.$watch('likes', function (newval, oldval) {
+                $scope.$watch('likes', function (newval) {
 
                     // Check if input is a json (starts of as a string and then becomes a json?????)
                     if (isObject(newval.constructor)) {
@@ -45,9 +45,9 @@ angular.module('app.likeHeart', ['app.config'])
                     }
 
                     if (data.liked) {
-                        unlike(tab);
+                        unlike();
                     } else {
-                        like(tab);
+                        like();
                     }
 
                 };
@@ -72,7 +72,7 @@ angular.module('app.likeHeart', ['app.config'])
                     }
                 }
 
-                function like(id) {
+                function like() {
                     $http({
                         url: backend + "/product/" + tab + "/like",
                         method: 'POST',
@@ -80,30 +80,30 @@ angular.module('app.likeHeart', ['app.config'])
                             'Content-Type': 'multipart/form-data',
                             'token': authFactory.getToken()
                         }
-                    }).success(function (data, status, headers, config) {
+                    }).success(function () {
                         $scope.likes.likes++;
                         $scope.likes.liked = true;
                         scan();
 
-                    }).error(function (data, status, headers, config) {
+                    }).error(function () {
                         $scope.error = true;
                     });
                     //
                 }
 
-                function unlike(id) {
+                function unlike() {
                     $http({
                         url: backend + "/product/" + tab + "/unlike",
                         method: 'POST',
                         headers: {
                             'Content-Type': 'multipart/form-data',
-                            'token': authFactory.getToken(),
+                            'token': authFactory.getToken()
                         }
-                    }).success(function (data, status, headers, config) {
+                    }).success(function () {
                         $scope.likes.likes--;
                         $scope.likes.liked = false;
                         scan();
-                    }).error(function (data, status, headers, config) {
+                    }).error(function () {
                         $scope.error = true;
                     });
 

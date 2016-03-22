@@ -11,7 +11,7 @@ angular.module('app.qrcode', ['app.config'])
         type: '='
       },
       templateUrl: 'components/qrcode/qrcode.html',
-      controller: function($scope, $http, $rootScope, $location, $attrs, Notification) {
+      controller: function($scope, $http, $rootScope, $location, $attrs) {
 
 
         $scope.$watch(
@@ -28,9 +28,9 @@ angular.module('app.qrcode', ['app.config'])
                   'height': $attrs.height,
                   'width': $attrs.width
                 }
-              }).success(function(data, status, headers, config) {
+              }).success(function(data) {
                 $scope.qr = data;
-              }).error(function(data, status, headers, config) {
+              }).error(function() {
                 $scope.error = true;
               });
             } else {

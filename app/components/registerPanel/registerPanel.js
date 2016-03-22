@@ -11,7 +11,7 @@ angular.module('app.registerPanel', ['app.config'])
             controller: function($scope, $http, $location) {
               $scope.$watch(
                 "user.email",
-                function handleFooChange( newValue, oldValue ) {
+                function handleFooChange( newValue) {
                   var hash = CryptoJS.MD5(newValue);
                   $scope.gravatar = hash.toString();
                 }
@@ -34,10 +34,10 @@ angular.module('app.registerPanel', ['app.config'])
                             headers: {
                                 'Content-Type': 'multipart/form-data'
                             }
-                        }).success(function(data, status, headers, config) {
+                        }).success(function() {
                           $location.path('/login');
                         }).
-                        error(function(data, status, headers, config) {
+                        error(function(data) {
                             $scope.error = data.message;
                         });
                     }

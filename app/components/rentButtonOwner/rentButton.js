@@ -16,7 +16,7 @@ angular.module('app.rentButtonOwner', ['app.config'])
 
                 $scope.$watch(
                     "datasource",
-                    function handleFooChange(oldValue, newValue) {
+                    function handleFooChange() {
                         if ($scope.datasource != undefined) {
                             if ($scope.datasource.id != undefined) {
                                 $scope.showLoading = false;
@@ -28,14 +28,14 @@ angular.module('app.rentButtonOwner', ['app.config'])
                     }
                 );
 
-                $scope.click = function(id) {
+                $scope.click = function() {
                     if ($scope.availability === 'Unavailable') {
                         Notification.error({message: '<i class="fa fa-exclamation-triangle"></i> ' + $scope.datasource.title + ' is not available. :(', positionY: 'bottom', positionX: 'center'});
                     } else {
-                        rent(id);
+                        rent();
 
                     }
-                }
+                };
 
                 function getRentalStatus() {
                     if ($rootScope.loggedIn) {
@@ -45,8 +45,8 @@ angular.module('app.rentButtonOwner', ['app.config'])
                             method: 'GET',
                             headers: {
                                 'token': authFactory.getToken()
-                            },
-                        }).success(function (data, status, headers, config) {
+                            }
+                        }).success(function (data) {
                             $scope.result = data;
                             console.log(data);
                             $scope.gotRes = true;
@@ -71,16 +71,16 @@ angular.module('app.rentButtonOwner', ['app.config'])
                                 }
                             }
                         }).
-                        error(function (data, status, headers, config) {
+                        error(function () {
                             $scope.error = true;
                         });
                     } else {
                         console.log("unlogged in user");
                         $http({
                             url: backend + '/p/' + $scope.datasource.id + '/availability',
-                            method: 'GET',
+                            method: 'GET'
                             // header: headers,
-                        }).success(function (data, status, headers, config) {
+                        }).success(function (data) {
                             $scope.gotRes = true;
                             $scope.rentButtonClass.splice("", 0);
                             if (data.available) {
@@ -97,26 +97,26 @@ angular.module('app.rentButtonOwner', ['app.config'])
                                 }
                             }
                         }).
-                        error(function (data, status, headers, config) {
+                        error(function () {
                             $scope.error = true;
                         });
                     }
                 }
 
-                function rent(id) {
+                function rent() {
                     $http({
                         url: backend + '/p/' + $scope.datasource.id + '/rent',
                         method: 'POST',
                         headers: {
                             'token': authFactory.getToken()
-                        },
-                    }).success(function (data, status, headers, config) {
+                        }
+                    }).success(function () {
                         Notification.success({message: '<i class="fa fa-paper-plane"></i> ' + $scope.datasource.title + ' has just been rented. :)', positionY: 'bottom', positionX: 'center'});
                         $scope.owner = true;
                         getRentalStatus();
                         $scope.rentButtonClass = [];
                     }).
-                    error(function (data, status, headers, config) {
+                    error(function (data, status) {
                       if (status === 409) {
                         Notification.error({message: '<i class="fa fa-paper-plane"></i> Sorry.... ' + $scope.datasource.title + ' has just been rented. :(', positionY: 'bottom', positionX: 'center'});
                       } else {
@@ -133,12 +133,12 @@ angular.module('app.rentButtonOwner', ['app.config'])
                         method: 'POST',
                         headers: {
                             'token': authFactory.getToken()
-                        },
-                    }).success(function (data, status, headers, config) {
+                        }
+                    }).success(function () {
                         getRentalStatus();
                         $scope.owner = false;
                     }).
-                    error(function (data, status, headers, config) {
+                    error(function () {
                         $scope.error = true;
                     });
                 }

@@ -9,7 +9,7 @@ angular.module('app.rentButton', ['app.config'])
                     method: 'GET',
                     headers: {
                         'token': authFactory.getToken()
-                    },
+                    }
                 }).then(function (res) {
                     return res.data;
                 });
@@ -78,7 +78,7 @@ angular.module('app.rentButton', ['app.config'])
 
                 $scope.$watch(
                     "datasource",
-                    function handleFooChange(oldValue, newValue) {
+                    function handleFooChange() {
                         if ($scope.datasource !== undefined) {
                             if ($scope.datasource.owner !== '....') {
                                 availability($scope.datasource)
@@ -125,7 +125,7 @@ angular.module('app.rentButton', ['app.config'])
                                     } else {
                                         if (status.owner) {
                                         //    We are owner
-                                            $scope.status.isHolding = true
+                                            $scope.status.isHolding = true;
 
                                             finished();
                                         } else {
@@ -153,10 +153,10 @@ angular.module('app.rentButton', ['app.config'])
                             replaceMessage: true
                         });
                     } else {
-                        rent(id);
+                        rent();
 
                     }
-                }
+                };
                 //
                 //function getOwnerStatus() {
                 //    if ($rootScope.loggedIn) {
@@ -299,15 +299,15 @@ angular.module('app.rentButton', ['app.config'])
                 //    }
                 //}
                 //
-                function rent(id) {
+                function rent() {
                     if ($rootScope.loggedIn) {
                         $http({
                             url: backend + '/product/' + $scope.datasource.id + '/request',
                             method: 'POST',
                             headers: {
                                 'token': authFactory.getToken()
-                            },
-                        }).success(function (data, status, headers, config) {
+                            }
+                        }).success(function () {
                             Notification.success({
                                 message: '<i class="fa fa-paper-plane"></i> ' + $scope.datasource.title + ' has just been requested. :)',
                                 positionY: 'bottom',
@@ -316,7 +316,7 @@ angular.module('app.rentButton', ['app.config'])
                             });
                             $scope.status.hasRequest = true;
                             $scope.rentButtonClass = [];
-                        }).error(function (data, status, headers, config) {
+                        }).error(function () {
                             $scope.error = true;
                         });
                     } else {
@@ -333,14 +333,14 @@ angular.module('app.rentButton', ['app.config'])
                 ////console.log($rootScope.loggedIn)
                 //
                 //
-                $scope.cancel = function (id) {
+                $scope.cancel = function () {
                     $http({
                         url: backend + '/product/' + $scope.datasource.id + '/request/cancel',
                         method: 'POST',
                         headers: {
                             'token': authFactory.getToken()
-                        },
-                    }).success(function (data, status, headers, config) {
+                        }
+                    }).success(function () {
                         Notification.success({
                             message: '<i class="fa fa-paper-plane">   </i>    ' + $scope.datasource.title + ' request has been canceled. :(',
                             positionY: 'bottom',
@@ -348,29 +348,29 @@ angular.module('app.rentButton', ['app.config'])
                             replaceMessage: true
                         });
                         $scope.status.hasRequest = false;
-                    }).error(function (data, status, headers, config) {
+                    }).error(function () {
                         $scope.error = true;
                     });
                 };
 
-                $scope.return = function (id) {
+                $scope.return = function () {
                     if ($scope.status.isOwner) {
                         $http({
                             url: backend + '/p/' + $scope.datasource.id + '/return',
                             method: 'POST',
                             headers: {
                                 'token': authFactory.getToken()
-                            },
-                        }).success(function (data, status, headers, config) {
+                            }
+                        }).success(function (data) {
                             $scope.status.hasHolder = false;
                             $scope.status.noHolder = true;
                             RentStatus.getRequestStatus(data.id).then(function (requests) {
                                 $scope.RequestsStatus = requests;
                                 finished();
-                            })
+                            });
                             //getRentalStatus();
                             //getOwnerAvailability();
-                        }).error(function (data, status, headers, config) {
+                        }).error(function () {
                             $scope.error = true;
                         });
                     }

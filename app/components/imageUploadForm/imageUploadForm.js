@@ -8,7 +8,7 @@ angular.module('app.imageUploadForm', ['app.config'])
                 datasource: '='
             },
             templateUrl: 'components/imageUploadForm/imageUploadForm.html',
-            controller: function($scope, $http, $rootScope, $location) {
+            controller: function($scope) {
                 $scope.data = false;
 
 

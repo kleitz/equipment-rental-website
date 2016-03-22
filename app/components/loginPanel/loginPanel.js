@@ -18,7 +18,7 @@ angular.module('app.loginPanel', ['app.config'])
                 $scope.enableCookie = function() {
                     console.log("enable cookies");
                     $rootScope.enableCookieSession = true;
-                }
+                };
 
                 $scope.login = function(user) {
                     $scope.loading = true;
@@ -37,8 +37,8 @@ angular.module('app.loginPanel', ['app.config'])
                                 'Content-Type': 'multipart/form-data'
 
                             }
-                        }).success(function(data, status, headers, config) {
-                            authFactory.setAuth(data.token, data.username, data.gravatar, Date.parse(data.expiry), data.role)
+                        }).success(function(data) {
+                            authFactory.setAuth(data.token, data.username, data.gravatar, Date.parse(data.expiry), data.role);
                             $rootScope.auth = authFactory.getAuth();
                             $scope.error = false;
                             $rootScope.loggedIn = true;
@@ -46,7 +46,7 @@ angular.module('app.loginPanel', ['app.config'])
                             $scope.loading = false;
                             Notification.success({message: 'こんにちは, ' + data.username, positionY: 'bottom', positionX: 'center', replaceMessage: true});
                         }).
-                        error(function(data, status, headers, config) {
+                        error(function(data) {
                             $scope.showError = true;
                             $scope.error = data.message;
                             $scope.loading = false;

@@ -26,13 +26,13 @@ angular.module('app.editorImage', ['app.config'])
                                 $scope.imageStyles['background-image'] = 'url(\"' + $scope.url + '\")';
                                 $scope.$apply();
                             }, 1);
-                        }
+                        };
 
                         img.src = $scope.url;
                         if (img.complete) img.onload();
 
                     }
-                }
+                };
                 $scope.hoverstyleCross = {
                     'height': '20%',
                     'width': '100%',
@@ -42,7 +42,7 @@ angular.module('app.editorImage', ['app.config'])
                     'display': 'flex',
                     'justify-content': 'center',
                     'align-items': 'center'
-                }
+                };
                 $scope.hoverstyleOpen = {
                     'height': '80%',
                     'width': '100%',
@@ -52,7 +52,7 @@ angular.module('app.editorImage', ['app.config'])
                     'display': 'flex',
                     'justify-content': 'center',
                     'align-items': 'center'
-                }
+                };
 
                 $scope.previewStyle = {
                     'height': '100%',
@@ -64,20 +64,20 @@ angular.module('app.editorImage', ['app.config'])
                     'background-size': 'cover',
                     'z-index': 100,
                     'padding': '-20%'
-                }
+                };
                 $scope.imageStyles = {
                     'height': '100%',
                     'width': '100%',
                     'background': 'url("") no-repeat center center',
-                    'background-size': 'contain',
-                }
+                    'background-size': 'contain'
+                };
 
                 $scope.imageStyle = {
                     'height': $scope.height + 'px',
                     'width': $scope.width + 'px',
                     'background': 'url("") no-repeat center center',
                     'background-size': 'cover',
-                    'border-radius': $scope.radius + 'px',
+                    'border-radius': $scope.radius + 'px'
                 };
                 $scope.$watch(
                     "image",
@@ -108,7 +108,7 @@ angular.module('app.editorImage', ['app.config'])
                             $scope.imageStyle['background-image'] = 'url(\"https://d13yacurqjgara.cloudfront.net/users/12755/screenshots/1037374/hex-loader2.gif\")';
 
                             var img = new Image();
-                            img.crossOrigin = "Anonymous"
+                            img.crossOrigin = "Anonymous";
                             img.onload = function () {
                                 setTimeout(function () {
                                     rgb = $colorThief.getColor(img);
@@ -135,9 +135,9 @@ angular.module('app.editorImage', ['app.config'])
                         method: 'DELETE',
                         headers: {
                             'Content-Type': undefined,
-                            'token': authFactory.getToken(),
+                            'token': authFactory.getToken()
                         }
-                    }).success(function (data, status, headers, config) {
+                    }).success(function () {
                         //$scope.tagclass = "editorTagBase animated fadeOut";
                         $scope.imageStyleClass = 'leave';
                         setTimeout(function() {
@@ -146,12 +146,12 @@ angular.module('app.editorImage', ['app.config'])
                         }, 200);
 
 
-                    }).error(function (data, status, headers, config) {
+                    }).error(function () {
                         console.log('error');
                         $scope.error = true;
                     });
 
-                }
+                };
 
 
                 $scope.hovering = function () {

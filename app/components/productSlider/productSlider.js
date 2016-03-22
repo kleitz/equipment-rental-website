@@ -13,7 +13,7 @@ angular.module('app.productSlider', ['app.config'])
             },
             templateUrl: 'components/productSlider/productSlider.html',
             controller: function ($scope, $http, authFactory, $timeout) {
-                var images;
+                
                 $scope.step = 0;
                 $scope.displayLargeScreen = false;
                 $scope.isHovering = [{'active': false}, {'active': false}, {'active': false}];
@@ -48,7 +48,7 @@ angular.module('app.productSlider', ['app.config'])
 
                 };
 
-                var count = 0;
+                
                 //setInterval(function() {
                 //    if (count > 3) {
                 //        count = 0;
@@ -81,7 +81,7 @@ angular.module('app.productSlider', ['app.config'])
                             'Count': $scope.numbertoshow,
                             'token': authFactory.getToken()
                         }
-                    }).success(function(data, status, headers, config) {
+                    }).success(function(data) {
                         $scope.products = {};
                         $timeout(function() {
                             $scope.products = data;
@@ -91,7 +91,7 @@ angular.module('app.productSlider', ['app.config'])
                             $scope.$apply();
                         }, 1);
                     }).
-                    error(function(data, status, headers, config) {
+                    error(function() {
                         $scope.error = true;
                     });
                 }

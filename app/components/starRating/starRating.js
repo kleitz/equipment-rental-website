@@ -10,10 +10,10 @@ angular.module('app.starRating', ['app.config'])
                 disableHover: '@'
             },
             templateUrl: 'components/starRating/starRating.html',
-            controller: function ($scope, $http, $rootScope, $location, $attrs, Notification, authFactory, RentStatus) {
+            controller: function ($scope) {
                 $scope.value = $scope.value - 1;
                 $scope.numOfStars = 5;
-                $scope.numOfStarsObj = Array($scope.numOfStars);
+                $scope.numOfStarsObj = new Array($scope.numOfStars);
                 $scope.highlightedStar = 0;
                 $scope.stars = [];
                 $scope.amount = {
@@ -36,13 +36,13 @@ angular.module('app.starRating', ['app.config'])
                         }
                         decorateStars(index);
                     }
-                }
+                };
 
                 for (var i = 0; i < $scope.numOfStars; i++) {
                     $scope.stars.push({'class': 'fa fa-star-o'})
                 }
 
-                decorateStars(Number($scope.value))
+                decorateStars(Number($scope.value));
 
                 $scope.range = function (n) {
                     return new Array(n);
@@ -51,7 +51,7 @@ angular.module('app.starRating', ['app.config'])
                 $scope.getStarClass = function (index) {
                     //debugger
                     return $scope.stars[index].class;
-                }
+                };
 
                 $scope.lock = false;
 
@@ -73,7 +73,7 @@ angular.module('app.starRating', ['app.config'])
                         }
                     }
 
-                }
+                };
 
 
                 $scope.RatingChange = function (index) {

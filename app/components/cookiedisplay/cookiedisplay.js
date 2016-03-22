@@ -29,7 +29,7 @@ angular.module('app.cookiedisplay', ['app.config', 'app.auth'])
 
                 $scope.agreeCookie = function() {
                     createCookie();
-                }
+                };
 
                 function createCookie() {
                     $scope.animation = 'slideOutDown';
