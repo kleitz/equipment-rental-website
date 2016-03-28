@@ -3,26 +3,17 @@
 </head>
 
 <div class="itemview" ng-class="itemClass">
-    <!--<div class="content loading" ng-hide="product">-->
-    <!--<div class="loading-content animated fadeIn">-->
-    <!--<i class="fa fa-circle-o-notch fa-spin"></i>-->
-    <!--<p>Loading...</p>-->
-
-    <!--</div>-->
-    <!--</div>-->
     <div class="row owner-row">
         <div class="row" ng-show="product.owner.username == auth.username">
-            <!--<button class="button button-red" ng-click="deleteItem()">Delete</button>-->
             <a class="button button-blue" href="#/listing/{{product.id}}/edit"><i class="fa fa-pencil"></i> Edit</a>
         </div>
     </div>
 
     <div class="content animated fadeIn">
-        <!--<button ng-click="revealEdit()">Edit</button>-->
         <div class="row title" ng-mouseEnter="setShowTitleEdit(true)"
              ng-mouseLeave="setShowTitleEdit(false)" ng-hide="showTitleEditor">
             <div class="title-content">
-                <h1>{{product.title}}</h1>
+                <h1 ng-bind-html="product.title"></h1>
                 <button class="floating-edit button-hint-filled" ng-class="showTitleButtonClass"
                         ng-click="showTitleEditor = true"
                         ng-show="showTitleEdit">
@@ -30,10 +21,6 @@
                 </button>
             </div>
 
-
-            <!--<div class="hint">-->
-            <!--<availability class="text" datasource={{product.id}}-->
-            <!--showdays="{{product.product_rental_period_limit}}"></availability>-->
         </div>
         <div class="textEditor editors" ng-show="showTitleEditor">
             <form ng-submit="edit()">
@@ -78,7 +65,7 @@
 
             <h4>Tags</h4>
             <div class="tags">
-                <div class="tag" ng-repeat="tag in product.tags track by $index | limitTo:5">{{tag.tag}}</div>
+                <a href="#/tags/{{tag.tag}}" class="tag" ng-repeat="tag in product.tags track by $index | limitTo:5">{{tag.tag}}</a>
             </div>
         </div>
 
@@ -86,8 +73,6 @@
     </div>
 
     <div class="row">
-        <!--<div class="eight columns">-->
-
         <div class="row content-view">
             <div class="content"
                  ng-hide="showContentEditor"
@@ -108,10 +93,6 @@
                 <button class="button-green" ng-click="edit()">Update</button>
             </div>
         </div>
-        <!--</div>-->
-        <!--<div class="four columns">-->
-
-        <!--</div>-->
     </div>
 
 
@@ -120,21 +101,11 @@
             <div class="row details">
                 <h2>Listing Details</h2>
                 <ul>
-                    <!--<div class="row title" ng-mouseEnter="setShowTitleEdit(true)"-->
-                    <!--ng-mouseLeave="setShowTitleEdit(false)" ng-hide="showTitleEditor">-->
-                    <!--<div class="title-content">-->
-                    <!--<h1>{{product.title}}</h1>-->
-                    <!--<button class="floating-edit button-hint-filled" ng-class="showTitleButtonClass"-->
-                    <!--ng-click="showTitleEditor = true"-->
-                    <!--ng-show="showTitleEdit">-->
-                    <!--<i class="fa fa-pencil"></i> Edit-->
-                    <!--</button>-->
-                    <!--</div>-->
 
                     <li class="description-holder" ng-mouseEnter="setShowDescriptionEdit(true)"
                         ng-mouseLeave="setShowDescriptionEdit(false)"
                         ng-hide="showDescriptionEditor">
-                        <b>Description</b>: {{product.description}}
+                        <b>Description</b>: <span ng-bind-html="product.description"></span>
                         <button class="floating-edit button-hint-filled" ng-class="showDescriptionButtonClass"
                                 ng-click="showDescriptionEditor = true"
                                 ng-show="showDescriptionEdit">
