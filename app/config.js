@@ -2,6 +2,7 @@
 
 // Change this to your main domain
 var domain = 'https://karite.xyz';
+// var domain = 'http://localhost:3000';
 
 /*
 
