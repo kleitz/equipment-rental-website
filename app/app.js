@@ -23,6 +23,7 @@ angular.module('app', [
     'app.ownerItems',
     'app.ownerItem',
     'app.cookie',
+    'app.about',
     'app.tags',
     'app.search',
     'app.fourohfour',

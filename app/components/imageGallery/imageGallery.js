@@ -83,6 +83,7 @@ angular.module('app.imageGallery', ['app.config'])
                     $scope.largeScreenClass = 'open';
 
                     $scope.selectedImage = index;
+                    $scope.selectedImageLocation = $scope.images[index].location
                 }
 
                 $scope.keypress = function ($event) {
@@ -105,6 +106,7 @@ angular.module('app.imageGallery', ['app.config'])
                             $scope.selectedImage += 1;
                         }
                     }
+                    $scope.selectedImageLocation = $scope.images[index].location
                 };
 
                 $scope.closeLargeScreen = function () {

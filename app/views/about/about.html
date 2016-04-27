@@ -1,0 +1,5 @@
+<h1>{{content.title}}</h1>
+<div class="item" ng-repeat="para in content.content">
+    <h2>{{para.title}}</h2>
+    <p ng-bind-html="para.content"></p>
+</div>
